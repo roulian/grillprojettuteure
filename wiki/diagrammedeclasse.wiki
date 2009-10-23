@@ -1,0 +1,10 @@
+le diagramme de Classe
+
+= Introduction =
+
+la version 1.0
+
+
+= Details =
+
+-> a venir (ouai là je suis en BD en fait)
