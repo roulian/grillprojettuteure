@@ -5,7 +5,6 @@ le diagramme de Classe
 la version 1.0
 
 
-= Details =
+== Details ==
 
--> a venir (ouai là je suis en BD en fait)
-||diag.PNG
+|| http://grillprojettuteure.googlecode.com/files/diag.PNG
