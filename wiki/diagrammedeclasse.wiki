@@ -7,4 +7,4 @@ la version 1.0
 
 == Details ==
 
-http://grillprojettuteure.googlecode.com/files/diag.PNG
+http://grillprojettuteure.googlecode.com/files/diag.png
