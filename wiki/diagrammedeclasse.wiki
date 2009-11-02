@@ -2,7 +2,7 @@ le diagramme de Classe
 
 = Introduction =
 
-la version 1.0
+la version 0.2
 
 
 == Details ==
