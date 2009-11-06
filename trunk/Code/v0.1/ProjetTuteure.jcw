@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace>
+	<settings>
+		<label>ProjetTuteure</label>
+	</settings>
+	<users>
+		<user>
+			<path>ProjetTuteure.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>ProjetTuteure.jcp</path>
+		</project>
+	</projects>
+</workspace>
