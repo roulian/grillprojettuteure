@@ -13,6 +13,7 @@ public class Case {
 	Vector<Integer> possibilite ;
 	
 	// le giagramme de classe est faux ici, il faut qu'une case soit instencier avec un Int !
+	// c'est du au fait qu'on est besoin de savoir quel taille de batiment on peut construire !
     public Case(int pTaille) {
     	// on n'a aucun batiment sur la Case donc :
     	batiment = null ;
@@ -22,7 +23,7 @@ public class Case {
     	for (int i=1 ; i<=pTaille ; i++)
     		possibilite.add(i) ;
     	
-    	// optimisation en mémoire
+    	// optimisation de la taille du vector en mémoire
     	possibilite.trimToSize() ;
     }
     
