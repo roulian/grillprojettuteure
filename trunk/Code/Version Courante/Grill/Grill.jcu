@@ -14,12 +14,6 @@
 			<folderitem>
 				<path>src\testClasse</path>
 			</folderitem>
-			<folderitem>
-				<path>classes</path>
-			</folderitem>
-			<folderitem>
-				<path>classes\TestClasse</path>
-			</folderitem>
 		</project>
 	</projects>
 	<open_files>
@@ -51,6 +45,12 @@
 			<path>src\Batiment.java</path>
 			<source>true</source>
 			<index>4</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\testClasse\testCase.java</path>
+			<source>true</source>
+			<index>5</index>
 			<active>true</active>
 		</docitem>
 	</open_files>
