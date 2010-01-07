@@ -43,7 +43,6 @@ public class Case {
     
     public void construire(Batiment pBat){
     	batiment = pBat ;
-    	possibilite = new Vector<Integer>() ;
     }
     
     public Batiment getBatiment(){
@@ -55,8 +54,6 @@ public class Case {
     	// un simple possibilite.remove(pBat.getHauteur()) ne marcherais pas, puisqu'on supprimerais l'objet au rang getHauteur()
     	// et non l'Integer contenant getHauteur()... je ne sais pas si un Cast suffirais ou pas... mais je ne pense pas.
     	// Puisqu'avec un cast on obtiendrait un objet integer contenant bien getHauteur() mais de ref diférente de celui du Vector
-    	
-    	// commentaire plus tard : en fait il semblerais que ça marche, Java converti directement les interger en int.
     	
     	boolean del = false ;			
     	int tailleVec=possibilite.size() ;		// variable tempon pour éviter de faire appelle à size() dans le for
