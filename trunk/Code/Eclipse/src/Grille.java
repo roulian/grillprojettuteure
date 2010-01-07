@@ -9,12 +9,16 @@ package src ;
 
 public class Grille {
 	
-	private Case[][] grilleDejeu ;
-	private int tailleGrille ;
-	private Observateur obs ;
+	Case[][] grilleDejeu ;
+	int tailleGrille ;
+	Observateur obs ;
 	
     public Grille() {
-    	this(4, new Observateur(new int[4],new int[4],new int[4],new int[4])) ;
+    	this(4,new Observateur()) ;
+    }
+    
+    public Grille(int pTaille){
+    	this(pTaille,new Observateur()) ;
     }
     
     // dans le diagramme de classe il manque le constructeur de Grille qui permet de "faire" des observateurs !
