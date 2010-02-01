@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class PanelAutoGenerer 
 {
-	private JPanel jpanel, jpNord, jpSud;
+	private JPanel jpanel;
 	private JButton jbCommencer, jbRetour;
 	private JLabel jlTaille, jlDifficulte;
 	
@@ -17,7 +17,8 @@ public class PanelAutoGenerer
 		jpanel = new JPanel();
 		jpanel.setLayout(new GridLayout(2,1));
 		
-			jpNord = new JPanel();
-			jpNord.setLayout(new )
+			jlTaille = new JLabel("Taille  ");
+			
+			jlDifficulte = new JLable("Difficulté  ");
 	}
 }
