@@ -1,12 +1,11 @@
-package vue;
+package vue ;
 
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelAccueil extends JPanel
+public class PanelAccueil
 {
 	private JPanel jpanel;
 	private JButton jbNouveau, jbCharger, jbGenerer;
@@ -14,7 +13,7 @@ public class PanelAccueil extends JPanel
 	public PanelAccueil ()
 	{
 		jpanel = new JPanel ();
-		jpanel.setLayout(new GridLayout(3,8));
+		jpanel.setLayout(new GridLayout(7,3));
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
@@ -25,8 +24,10 @@ public class PanelAccueil extends JPanel
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
+			jpanel.add(new JLabel ());
 			jbCharger = new JButton ("Charger");
 			jpanel.add(jbCharger);
+			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
 			jpanel.add(new JLabel ());
