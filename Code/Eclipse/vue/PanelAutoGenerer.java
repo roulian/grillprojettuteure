@@ -19,6 +19,6 @@ public class PanelAutoGenerer
 		
 			jlTaille = new JLabel("Taille  ");
 			
-			jlDifficulte = new JLable("Difficulté  ");
+			jlDifficulte = new JLabel("Difficulté  ");
 	}
 }
