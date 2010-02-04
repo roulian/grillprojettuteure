@@ -8,5 +8,4 @@ public class ProjetGrill {
 	public static void main(String[] args) {
 		VuePrincipale vue = new VuePrincipale() ;
 	}
-
 }
