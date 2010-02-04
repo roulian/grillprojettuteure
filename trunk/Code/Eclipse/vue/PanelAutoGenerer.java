@@ -16,16 +16,16 @@ public class PanelAutoGenerer
 	private JButton jbCommencer, jbRetour;
 	private JLabel jlTaille, jlDifficulte;
 	private JComboBox jcTaille, jcDifficulte;
-	private Vector <String> taille;
+	private Vector <Integer> taille;
 	private Vector <String> difficulte;
 	
 	public PanelAutoGenerer() 
 	{
 		//Choix des réponses
-		taille = new Vector<String>();
-		taille.add("4");
-		taille.add("5");
-		taille.add("6");
+		taille = new Vector<Integer>();
+		taille.add(4);
+		taille.add(5);
+		taille.add(6);
 				
 		difficulte = new Vector<String>();
 		difficulte.add("Facile");
@@ -37,7 +37,9 @@ public class PanelAutoGenerer
 		jpanel.setLayout(new GridLayout(2,1));
 		
 			jpNord = new JPanel();
-			jpNord.setLayout(new GridLayout(2,2));
+			jpNord.setLayout(new GridLayout(6,2));
+				jpNord.add(new JLabel ());
+				jpNord.add(new JLabel ());
 				jlTaille = new JLabel ("Taille  ");
 				jcTaille = new JComboBox (taille);
 				jcTaille.setEditable(false);
@@ -48,6 +50,8 @@ public class PanelAutoGenerer
 				jcDifficulte.setEditable(false);
 				jpNord.add(jlDifficulte);
 				jpNord.add(jcDifficulte);
+				jpNord.add(new JLabel ());
+				jpNord.add(new JLabel ());
 				
 			jpSud = new JPanel ();
 			jpSud.setLayout(new GridLayout(1,3));
@@ -94,7 +98,7 @@ public class PanelAutoGenerer
 		return jcDifficulte;
 	}
 
-	public Vector<String> getTaille() {
+	public Vector<Integer> getTaille() {
 		return taille;
 	}
 
