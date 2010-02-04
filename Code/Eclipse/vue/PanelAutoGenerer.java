@@ -37,7 +37,7 @@ public class PanelAutoGenerer
 		jpanel.setLayout(new GridLayout(2,1));
 		
 			jpNord = new JPanel();
-			jpNord.setLayout(new GridLayout(6,2));
+			jpNord.setLayout(new GridLayout(4,2));
 				jpNord.add(new JLabel ());
 				jpNord.add(new JLabel ());
 				jlTaille = new JLabel ("Taille  ");
