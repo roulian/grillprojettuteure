@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.Insets;
+import java.awt.GridLayout;
 
 public class PanelAutoGénérer extends JPanel {
 
@@ -23,7 +24,12 @@ public class PanelAutoGénérer extends JPanel {
 	private JLabel jlDifficulté = null;
 	private JComboBox jcTaille = null;
 	private JComboBox jcDifficulté = null;
-	private JLabel jLabel = null;
+	private JPanel jPanel = null;
+	private JPanel jPanel1 = null;
+	private JPanel jPanel2 = null;
+	private JPanel jPanel3 = null;
+	private JPanel jPanel4 = null;
+	private JPanel jPanel5 = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -38,54 +44,21 @@ public class PanelAutoGénérer extends JPanel {
 	 * @return void
 	 */
 	private void initialize() {
-		GridBagConstraints gridBagConstraints12 = new GridBagConstraints();
-		gridBagConstraints12.gridx = 0;
-		gridBagConstraints12.gridy = 2;
-		jLabel = new JLabel();
-		jLabel.setText("                      ");
-		GridBagConstraints gridBagConstraints11 = new GridBagConstraints();
-		gridBagConstraints11.fill = GridBagConstraints.VERTICAL;
-		gridBagConstraints11.gridy = 1;
-		gridBagConstraints11.weightx = 1.0;
-		gridBagConstraints11.insets = new Insets(0, 0, 80, 0);
-		gridBagConstraints11.gridx = 2;
-		GridBagConstraints gridBagConstraints10 = new GridBagConstraints();
-		gridBagConstraints10.fill = GridBagConstraints.VERTICAL;
-		gridBagConstraints10.gridy = 0;
-		gridBagConstraints10.weightx = 1.0;
-		gridBagConstraints10.insets = new Insets(0, 0, 80, 0);
-		gridBagConstraints10.ipadx = 30;
-		gridBagConstraints10.ipady = 0;
-		gridBagConstraints10.gridx = 2;
-		GridBagConstraints gridBagConstraints7 = new GridBagConstraints();
-		gridBagConstraints7.gridx = 1;
-		gridBagConstraints7.insets = new Insets(0, 0, 80, 0);
-		gridBagConstraints7.gridy = 1;
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.setRows(3);
+		gridLayout.setColumns(2);
 		jlDifficulté = new JLabel();
 		jlDifficulté.setText("Difficulté");
-		GridBagConstraints gridBagConstraints6 = new GridBagConstraints();
-		gridBagConstraints6.gridx = 1;
-		gridBagConstraints6.insets = new Insets(0, 0, 80, 0);
-		gridBagConstraints6.ipadx = 20;
-		gridBagConstraints6.ipady = 0;
-		gridBagConstraints6.gridy = 0;
 		jlTaille = new JLabel();
 		jlTaille.setText("Taille");
-		GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
-		gridBagConstraints1.gridx = 2;
-		gridBagConstraints1.gridy = 2;
-		GridBagConstraints gridBagConstraints = new GridBagConstraints();
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 2;
-		this.setSize(426, 343);
-		this.setLayout(new GridBagLayout());
-		this.add(getJbCommencer(), gridBagConstraints);
-		this.add(getJbRetour(), gridBagConstraints1);
-		this.add(jlTaille, gridBagConstraints6);
-		this.add(jlDifficulté, gridBagConstraints7);
-		this.add(getJcTaille(), gridBagConstraints10);
-		this.add(getJcDifficulté(), gridBagConstraints11);
-		this.add(jLabel, gridBagConstraints12);
+		this.setLayout(gridLayout);
+		this.setSize(343, 245);
+		this.add(getJPanel5(), null);
+		this.add(getJPanel3(), null);
+		this.add(getJPanel4(), null);
+		this.add(getJPanel2(), null);
+		this.add(getJPanel1(), null);
+		this.add(getJPanel(), null);
 	}
 
 	/**
@@ -165,4 +138,110 @@ public class PanelAutoGénérer extends JPanel {
 		return jcDifficulté;
 	}
 
-}  //  @jve:decl-index=0:visual-constraint="109,-77"
+	/**
+	 * This method initializes jPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel() {
+		if (jPanel == null) {
+			GridBagConstraints gridBagConstraints = new GridBagConstraints();
+			gridBagConstraints.gridx = 0;
+			gridBagConstraints.gridy = 0;
+			jPanel = new JPanel();
+			jPanel.setLayout(new GridBagLayout());
+			jPanel.add(getJbRetour(), gridBagConstraints);
+		}
+		return jPanel;
+	}
+
+	/**
+	 * This method initializes jPanel1	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel1() {
+		if (jPanel1 == null) {
+			GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
+			gridBagConstraints1.gridx = 0;
+			gridBagConstraints1.gridy = 0;
+			jPanel1 = new JPanel();
+			jPanel1.setLayout(new GridBagLayout());
+			jPanel1.add(getJbCommencer(), gridBagConstraints1);
+		}
+		return jPanel1;
+	}
+
+	/**
+	 * This method initializes jPanel2	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel2() {
+		if (jPanel2 == null) {
+			GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
+			gridBagConstraints2.fill = GridBagConstraints.VERTICAL;
+			gridBagConstraints2.gridy = 0;
+			gridBagConstraints2.weightx = 1.0;
+			gridBagConstraints2.gridx = 0;
+			jPanel2 = new JPanel();
+			jPanel2.setLayout(new GridBagLayout());
+			jPanel2.add(getJcDifficulté(), gridBagConstraints2);
+		}
+		return jPanel2;
+	}
+
+	/**
+	 * This method initializes jPanel3	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel3() {
+		if (jPanel3 == null) {
+			GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
+			gridBagConstraints3.fill = GridBagConstraints.VERTICAL;
+			gridBagConstraints3.gridy = 0;
+			gridBagConstraints3.weightx = 1.0;
+			gridBagConstraints3.gridx = 0;
+			jPanel3 = new JPanel();
+			jPanel3.setLayout(new GridBagLayout());
+			jPanel3.add(getJcTaille(), gridBagConstraints3);
+		}
+		return jPanel3;
+	}
+
+	/**
+	 * This method initializes jPanel4	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel4() {
+		if (jPanel4 == null) {
+			GridBagConstraints gridBagConstraints4 = new GridBagConstraints();
+			gridBagConstraints4.gridx = 0;
+			gridBagConstraints4.gridy = 0;
+			jPanel4 = new JPanel();
+			jPanel4.setLayout(new GridBagLayout());
+			jPanel4.add(jlDifficulté, gridBagConstraints4);
+		}
+		return jPanel4;
+	}
+
+	/**
+	 * This method initializes jPanel5	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel5() {
+		if (jPanel5 == null) {
+			GridBagConstraints gridBagConstraints5 = new GridBagConstraints();
+			gridBagConstraints5.gridx = 0;
+			gridBagConstraints5.gridy = 0;
+			jPanel5 = new JPanel();
+			jPanel5.setLayout(new GridBagLayout());
+			jPanel5.add(jlTaille, gridBagConstraints5);
+		}
+		return jPanel5;
+	}
+
+}  //  @jve:decl-index=0:visual-constraint="109,24"
