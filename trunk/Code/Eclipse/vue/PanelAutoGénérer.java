@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Insets;
 
-public class PanelAutoGénérerV2 extends JPanel {
+public class PanelAutoGénérer extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton jbCommencer = null;
@@ -25,7 +25,7 @@ public class PanelAutoGénérerV2 extends JPanel {
 	/**
 	 * This is the default constructor
 	 */
-	public PanelAutoGénérerV2() {
+	public PanelAutoGénérer() {
 		super();
 		initialize();
 	}
