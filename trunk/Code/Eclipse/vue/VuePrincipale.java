@@ -68,16 +68,9 @@ public class VuePrincipale extends JFrame
 		menuTemp.add(itemTemp);
 		// fin menu
 		
-//		PanelAutoGénérerV2 pouet2 = new PanelAutoGénérerV2() ;
-//		panelAccueilV2 pouet3 = new panelAccueilV2();
-		
 		currentPanel = new PanelAccueil(this);
 //		currentPanel = new PanelAutoGénérerV2() ;
 		add(currentPanel);
-		
-//		menu = new JMenu() ;
-//		add(menu);
-		//setVisible(true); //Effectué dans le main
 	}
 	
 	void rafraichirVue(JPanel pPanel){
