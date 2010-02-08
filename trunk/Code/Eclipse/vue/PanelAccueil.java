@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.GridBagLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
@@ -16,11 +17,13 @@ public class PanelAccueil extends JPanel {
 	private JButton jbNouveau = null;
 	private JButton jbCharger = null;
 	private JButton jbGénérer = null;
+	private VuePrincipale vue; 
 	/**
 	 * This is the default constructor
 	 */
-	public PanelAccueil() {
+	public PanelAccueil(VuePrincipale pVue) {
 		super();
+		vue = pVue ;
 		initialize();
 	}
 
