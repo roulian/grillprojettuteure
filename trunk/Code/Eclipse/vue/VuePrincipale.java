@@ -71,7 +71,7 @@ public class VuePrincipale extends JFrame
 //		PanelAutoGénérerV2 pouet2 = new PanelAutoGénérerV2() ;
 //		panelAccueilV2 pouet3 = new panelAccueilV2();
 		
-		currentPanel = new PanelAccueil();
+		currentPanel = new PanelAccueil(this);
 //		currentPanel = new PanelAutoGénérerV2() ;
 		add(currentPanel);
 		
