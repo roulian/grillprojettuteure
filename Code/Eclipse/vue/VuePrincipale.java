@@ -6,6 +6,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import controleur.ControleurVues;
+
 public class VuePrincipale extends JFrame
 {
 	/**
@@ -14,10 +16,12 @@ public class VuePrincipale extends JFrame
 	private static final long serialVersionUID = -8508924519782174481L;
 	private JMenuBar menu ;
 	private JPanel currentPanel ;
+	private ControleurVues ctrl; 
 	
-	public VuePrincipale(){
+	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ctrl = pCtrl ;
 		setBounds(0,0,300,400);
 		
 		//intégration des onglet (menu)
@@ -80,5 +84,9 @@ public class VuePrincipale extends JFrame
 		currentPanel = pPanel;
 		VuePrincipale.this.add(pPanel);
 		VuePrincipale.this.validate();
+	}
+
+	public ControleurVues getCtrl() {
+		return ctrl;
 	}
 }
