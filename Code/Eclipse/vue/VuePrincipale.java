@@ -1,8 +1,6 @@
 package vue;
 
-import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -10,6 +8,10 @@ import javax.swing.JPanel;
 
 public class VuePrincipale extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8508924519782174481L;
 	private JMenuBar menu ;
 	private JPanel currentPanel ;
 	
@@ -75,7 +77,7 @@ public class VuePrincipale extends JFrame
 		
 //		menu = new JMenu() ;
 //		add(menu);
-		setVisible(true);
+		//setVisible(true); //Effectué dans le main
 	}
 	
 	void rafraichirVue(JPanel pPanel){
