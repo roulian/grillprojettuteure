@@ -42,6 +42,7 @@ public class PanelChargement extends JPanel {
 		this.add(getJbCharger(), null);
 		this.add(getJbRetour(), null);
 		this.add(js, null);
+		this.add(js, null);
 	}
 
 	/**
@@ -88,7 +89,7 @@ public class PanelChargement extends JPanel {
        js = new JScrollPane ();
        js.setVerticalScrollBarPolicy (JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-       js.setBounds(new Rectangle(14, 12, 104, 252));
+       js.setBounds(new Rectangle(10, 10, 104, 252));
 		if (jlPartie1 == null) {
 			jlPartie1 = new JList();
 			js.setViewportView(getJlPartie1());
