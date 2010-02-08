@@ -4,13 +4,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
-import java.awt.Dimension;
-import javax.swing.JLabel;
 import java.awt.Insets;
 
 public class PanelAccueil extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -248764331632761862L;
 	private JButton jbNouveau = null;
 	private JButton jbCharger = null;
 	private JButton jbGénérer = null;
