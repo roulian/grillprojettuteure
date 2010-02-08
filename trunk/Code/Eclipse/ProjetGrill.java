@@ -7,6 +7,6 @@ public class ProjetGrill {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new ControleurVues();
+		new ControleurVues(4);
 	}
 }
