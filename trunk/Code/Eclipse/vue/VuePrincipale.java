@@ -32,6 +32,14 @@ public class VuePrincipale extends JFrame
 		itemTemp = new JMenuItem("Quitter");
 		menuTemp.add(itemTemp);
 		
+
+		/*"aide visuelle trouver"
+		"aide visuelle erreur"
+		"mode triche"
+		
+		"regle"
+		"a propot" */
+
 		menuTemp = new JMenu("Aide");
 		menu.add(menuTemp);
 		itemTemp = new JMenuItem("aide visuelle trouver");
@@ -48,9 +56,10 @@ public class VuePrincipale extends JFrame
 		itemTemp = new JMenuItem("a propot");
 		menuTemp.add(itemTemp);
 		
-		PanelAutoGenerer pouet3 = new PanelAutoGenerer();
+		panelAccueilV2 pouet3 = new panelAccueilV2();
+		panelAccueilV2 pouet4 = new panelAccueilV2();
 		PanelAccueil pouet = new PanelAccueil();
-		add(pouet3.getJpanel());
+		add(pouet4);
 		
 //		menu = new JMenu() ;
 //		add(menu);
