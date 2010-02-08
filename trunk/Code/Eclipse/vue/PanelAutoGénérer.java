@@ -2,19 +2,21 @@ package vue;
 
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
-import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.util.Vector;
 
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Insets;
 
 public class PanelAutoGénérer extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8924003417133315838L;
 	private JButton jbCommencer = null;
 	private JButton jbRetour = null;
 	private JLabel jlTaille = null;
