@@ -26,14 +26,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		gridLayout.setRows(1);
 		this.setLayout(gridLayout);
 		
-		int taille = vue.getCtrl().getTailleGrille() ;
-		
-		for (int i = 0; i < taille; i++) {
-			for (int j = 0; j < taille; j++) {
-				tempGrille[i][j] = new JLabel(""+vue.getCtrl().getCtrlM().getLaGrille().getCase(i,j).getBatiment().getHauteur());
-				this.add(tempGrille[i][j]) ;
-			}
-		}
+		vue.getCtrl().refreshGrilleDeJeu();
 	}
 
 	public VuePrincipale getVue() {

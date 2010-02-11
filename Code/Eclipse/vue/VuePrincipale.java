@@ -75,6 +75,9 @@ public class VuePrincipale extends JFrame
 		currentPanel = new PanelAccueil(this);
 //		currentPanel = new PanelAutoGénérerV2() ;
 		add(currentPanel);
+		
+		rafraichirVue(new PanelGrilleDeJeu(this)) ;
+		
 	}
 	
 	void rafraichirVue(JPanel pPanel){
@@ -88,5 +91,9 @@ public class VuePrincipale extends JFrame
 
 	public ControleurVues getCtrl() {
 		return ctrl;
+	}
+
+	public JPanel getCurrentPanel() {
+		return currentPanel;
 	}
 }
