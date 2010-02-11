@@ -8,7 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import controleur.ControleurVues;
+
 import java.awt.Rectangle;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class PanelGeneration extends JPanel {
 
@@ -21,12 +26,16 @@ public class PanelGeneration extends JPanel {
 	private JButton jbRetour = null;
 	private JPanel jpTaille = null;
 	private JPanel jpBout = null;
-	private JLabel jlTaille = null;  //  @jve:decl-index=0:visual-constraint="583,97"
+	private JLabel jlTaille = null;
+	private JTextField jtTaille = null;
+	private JPanel jPanel = null;
+	private ControleurVues ctrl;
 	/**
 	 * This is the default constructor
 	 */
-	public PanelGeneration() {
+	public PanelGeneration(ControleurVues contr) {
 		super();
+		this.ctrl = contr;
 		initialize();
 	}
 
@@ -85,6 +94,11 @@ public class PanelGeneration extends JPanel {
 		if (jbVerif == null) {
 			jbVerif = new JButton();
 			jbVerif.setText("Vérification");
+			jbVerif.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+				}
+			});
 		}
 		return jbVerif;
 	}
@@ -98,6 +112,11 @@ public class PanelGeneration extends JPanel {
 		if (jbGenSpont == null) {
 			jbGenSpont = new JButton();
 			jbGenSpont.setText("Génération \nspontanée");
+			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+				}
+			});
 		}
 		return jbGenSpont;
 	}
@@ -111,6 +130,11 @@ public class PanelGeneration extends JPanel {
 		if (jbSauvegarder == null) {
 			jbSauvegarder = new JButton();
 			jbSauvegarder.setText("Sauvegarder");
+			jbSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+				}
+			});
 		}
 		return jbSauvegarder;
 	}
@@ -124,6 +148,11 @@ public class PanelGeneration extends JPanel {
 		if (jbRetour == null) {
 			jbRetour = new JButton();
 			jbRetour.setText("Retour");
+			jbRetour.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+				}
+			});
 		}
 		return jbRetour;
 	}
@@ -140,6 +169,7 @@ public class PanelGeneration extends JPanel {
 			gridLayout2.setColumns(2);
 			jpTaille = new JPanel();
 			jpTaille.setLayout(gridLayout2);
+			jpTaille.add(getJPanel(), null);
 		}
 		return jpTaille;
 	}
@@ -173,10 +203,39 @@ public class PanelGeneration extends JPanel {
 		if (jlTaille == null) {
 			jlTaille = new JLabel();
 			jlTaille.setText("Taille");
+			jlTaille.setBounds(new Rectangle(18, 51, 30, 16));
 			jlTaille.setBackground(Color.white);
-			jlTaille.setSize(new Dimension(268, 53));
 		}
 		return jlTaille;
+	}
+
+	/**
+	 * This method initializes jtTaille	
+	 * 	
+	 * @return javax.swing.JTextField	
+	 */
+	private JTextField getJtTaille() {
+		if (jtTaille == null) {
+			jtTaille = new JTextField(15);
+			jtTaille.setColumns(5);
+			jtTaille.setBounds(new Rectangle(102, 51, 59, 20));
+		}
+		return jtTaille;
+	}
+
+	/**
+	 * This method initializes jPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel() {
+		if (jPanel == null) {
+			jPanel = new JPanel();
+			jPanel.setLayout(null);
+			jPanel.add(getJlTaille(), null);
+			jPanel.add(getJtTaille(), null);
+		}
+		return jPanel;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="36,20"
