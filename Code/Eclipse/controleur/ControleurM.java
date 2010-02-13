@@ -22,6 +22,7 @@ public class ControleurM {
 	public void commencerPartie(int pTaille, int pDifficulte){
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
+		gameStart = true ; // pour l'instant on ne gere pas la fin de partie
 //		normalement on devrait générer la grille là, sauf que pour l'instant on ne sait pas encore la résoudre...
 		
 		laGrille = new Grille(tailleGrille) ;
