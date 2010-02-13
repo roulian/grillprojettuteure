@@ -6,11 +6,12 @@ public class ControleurM {
 	private int tailleGrille ;
 	private Grille laGrille ;
 	private ControleurVues ctrlVues ;
-	private boolean gameStart = false ;
+	private boolean gameStart;
 	
-	public ControleurM(int pTaille){
-		tailleGrille = pTaille ;
-		laGrille = new Grille(tailleGrille) ;
+	public ControleurM(){
+		gameStart = false ;
+		laGrille = null ;
+		tailleGrille = 0 ;
 		ctrlVues = new ControleurVues(this) ;
 	}
 
