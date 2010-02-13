@@ -4,6 +4,9 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
+import controleur.ControleurVues;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -17,13 +20,13 @@ public class PanelAccueil extends JPanel {
 	private JButton jbNouveau = null;
 	private JButton jbCharger = null;
 	private JButton jbGénérer = null;
-	private VuePrincipale vue; 
+	private ControleurVues ctrlV; 
 	/**
 	 * This is the default constructor
 	 */
-	public PanelAccueil(VuePrincipale pVue) {
+	public PanelAccueil(ControleurVues pCtrlV) {
 		super();
-		vue = pVue ;
+		ctrlV = pCtrlV ;
 		initialize();
 	}
 

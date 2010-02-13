@@ -8,6 +8,9 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+
+import controleur.ControleurVues;
+
 import java.awt.Insets;
 import java.awt.GridLayout;
 
@@ -18,6 +21,7 @@ public class PanelAutoGénérer extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8924003417133315838L;
+	private ControleurVues ctrlV ;
 	private JButton jbCommencer = null;
 	private JButton jbRetour = null;
 	private JLabel jlTaille = null;
@@ -33,8 +37,9 @@ public class PanelAutoGénérer extends JPanel {
 	/**
 	 * This is the default constructor
 	 */
-	public PanelAutoGénérer() {
+	public PanelAutoGénérer(ControleurVues pCtrlV) {
 		super();
+		ctrlV = pCtrlV ;
 		initialize();
 	}
 

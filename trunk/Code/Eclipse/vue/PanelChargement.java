@@ -11,11 +11,15 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
+
+import controleur.ControleurVues;
+
 import java.awt.Rectangle;
 
 public class PanelChargement extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private ControleurVues ctrlV ;
 	private JButton jbCharger = null;
 	private JPanel jpGrille = null;
 	private JList jlPartie1 = null;
@@ -24,8 +28,9 @@ public class PanelChargement extends JPanel {
 	/**
 	 * This is the default constructor
 	 */
-	public PanelChargement() {
+	public PanelChargement(ControleurVues pCtrlV) {
 		super();
+		ctrlV = pCtrlV ;
 		initialize();
 	}
 
