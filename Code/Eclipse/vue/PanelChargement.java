@@ -42,13 +42,15 @@ public class PanelChargement extends JPanel {
 	private void initialize() {
 		this.setLayout(null);
 		this.setSize(347, 274);
-		this.add(js, null);
-		this.add(getJpGrille(), null);
-		this.add(getJbCharger(), null);
-		this.add(getJbRetour(), null);
-		this.add(js, null);
-		this.add(js, null);
-		this.add(js, null);
+		
+//		cette partie PLENTE ! QUI MA FAIT CE TRUC !!! è_é
+//		this.add(js, null); 
+//		this.add(getJpGrille(), null);
+//		this.add(getJbCharger(), null);
+//		this.add(getJbRetour(), null);
+//		this.add(js, null);
+//		this.add(js, null);
+//		this.add(js, null);
 	}
 
 	/**
