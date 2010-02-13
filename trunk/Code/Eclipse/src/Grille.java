@@ -34,7 +34,7 @@ public class Grille {
     	// on instancie les cases
     	for(int i=0 ; i<tailleGrille ; i++ ){
     		for(int j=0 ; j<tailleGrille ; j++){
-    			grilleDejeu[j][i] = new Case(tailleGrille) ;
+    			grilleDejeu[i][j] = new Case(tailleGrille) ;
     		}
     	}
     }
