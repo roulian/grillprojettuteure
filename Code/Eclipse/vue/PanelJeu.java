@@ -4,6 +4,9 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
+import controleur.ControleurVues;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Rectangle;
@@ -16,12 +19,14 @@ public class PanelJeu extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton jbTricher = null;
 	private JPanel jpGrille = null;
+	private ControleurVues ctrlV ;
 	
 	/**
 	 * This is the default constructor
 	 */
-	public PanelJeu() {
+	public PanelJeu(ControleurVues pCtrlV) {
 		super();
+		ctrlV = pCtrlV ;
 		initialize();
 	}
 

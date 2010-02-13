@@ -15,13 +15,13 @@ public class VuePrincipale extends JFrame
 	 */
 	private static final long serialVersionUID = -8508924519782174481L;
 	private JMenuBar menu ;
-	private JPanel currentPanel ;
-	private ControleurVues ctrl; 
+	private JPanel currentPanel = null ;
+	private ControleurVues ctrlV; 
 	
 	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ctrl = pCtrl ;
+		ctrlV = pCtrl ;
 		setBounds(0,0,300,400);
 		
 		//intégration des onglet (menu)
@@ -37,7 +37,7 @@ public class VuePrincipale extends JFrame
 		menuTemp.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				rafraichirVue(new PanelAutoGénérer());
+				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGeneration()) ;
 			}
 		});
 		//autre sous menu
@@ -72,12 +72,8 @@ public class VuePrincipale extends JFrame
 		menuTemp.add(itemTemp);
 		// fin menu
 		
-		currentPanel = new PanelAccueil(this);
-//		currentPanel = new PanelAutoGénérerV2() ;
-		add(currentPanel);
-		
-		rafraichirVue(new PanelGrilleDeJeu(this)) ;
-		
+		currentPanel = new PanelAccueil(ctrlV) ;
+		add(currentPanel);		
 	}
 	
 	void rafraichirVue(JPanel pPanel){
@@ -90,7 +86,7 @@ public class VuePrincipale extends JFrame
 	}
 
 	public ControleurVues getCtrl() {
-		return ctrl;
+		return ctrlV;
 	}
 
 	public JPanel getCurrentPanel() {

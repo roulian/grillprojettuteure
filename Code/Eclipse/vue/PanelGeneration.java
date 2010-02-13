@@ -29,13 +29,13 @@ public class PanelGeneration extends JPanel {
 	private JLabel jlTaille = null;
 	private JTextField jtTaille = null;
 	private JPanel jPanel = null;
-	private ControleurVues ctrl;
+	private ControleurVues ctrlV;
 	/**
 	 * This is the default constructor
 	 */
 	public PanelGeneration(ControleurVues contr) {
-		super();
-		this.ctrl = contr;
+		super() ;
+		this.ctrlV = contr;
 		initialize();
 	}
 
