@@ -46,5 +46,9 @@ public class ControleurVues {
 		}
 	}
 	
+	public void refreshGrilleDeJeu(int abscisse, int ordonnee){
+//		mmmh
+	}
+	
 	
 }
