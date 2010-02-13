@@ -21,5 +21,9 @@ public class ControleurM {
 		return tailleGrille;
 	}
 	
+	public ControleurVues getCtrlVues() {
+		return ctrlVues ;
+	}
+	
 	
 }
