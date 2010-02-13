@@ -34,11 +34,19 @@ public class VuePrincipale extends JFrame
 		jFicher = new JMenu("Ficher");
 		menu.add(jFicher);
 		//premier sous menu
-		itemTemp = new JMenuItem("Nouveau");
+		itemTemp = new JMenuItem("Nouvelle partie");
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAutoGenerer()) ;
+			}
+		});
+		//autre sous menu
+		itemTemp = new JMenuItem("Partie rapide (temp)");
+		jFicher.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGrilleDeJeu()) ;
 			}
 		});
 		//autre sous menu

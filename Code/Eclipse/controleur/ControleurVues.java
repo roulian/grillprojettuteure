@@ -2,7 +2,6 @@ package controleur;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import vue.PanelAccueil;
 import vue.PanelAutoGénérer;
 import vue.PanelChargement;
@@ -32,8 +31,8 @@ public class ControleurVues {
 		panelAutoGenerer = new PanelAutoGénérer(this);
 		panelGeneration = new PanelGeneration(this);
 		panelChargement = new PanelChargement(this);
-		panelJeu = new PanelJeu(this);
 		panelGrilleDeJeu = new PanelGrilleDeJeu(this) ;
+		panelJeu = new PanelJeu(this);
 		
 		switchPanel(panelAcceuil) ;
 	}

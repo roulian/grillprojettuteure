@@ -49,8 +49,8 @@ public class Case {
     	return batiment ;
     }
     
-    // nom à revoir, puisque cette méthode ne fera que supprimé des integer du vector de possibilité de batiment
-    public void setPossibilite(Batiment pBat){
+    // Méthode qui supprime des integer du vector de possibilité de batiment
+    public void refreshPossibilite(Batiment pBat){
     	// un simple possibilite.remove(pBat.getHauteur()) ne marcherais pas, puisqu'on supprimerais l'objet au rang getHauteur()
     	// et non l'Integer contenant getHauteur()... je ne sais pas si un Cast suffirais ou pas... mais je ne pense pas.
     	// Puisqu'avec un cast on obtiendrait un objet integer contenant bien getHauteur() mais de ref diférente de celui du Vector

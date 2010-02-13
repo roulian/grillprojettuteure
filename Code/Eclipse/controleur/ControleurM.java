@@ -7,11 +7,12 @@ public class ControleurM {
 	private Grille laGrille ;
 	private ControleurVues ctrlVues ;
 	private boolean gameStart;
+	private boolean tricheBouton = false;
 	
 	public ControleurM(){
 		gameStart = false ;
 		laGrille = null ;
-		tailleGrille = 0 ;
+		tailleGrille = 4 ;
 		ctrlVues = new ControleurVues(this) ;
 	}
 
@@ -29,5 +30,9 @@ public class ControleurM {
 	
 	public boolean GetGameStart(){
 		return gameStart ;
+	}
+
+	public boolean isTricheBouton() {
+		return tricheBouton;
 	}
 }
