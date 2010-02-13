@@ -31,7 +31,8 @@ public class PanelGrilleDeJeu extends JPanel {
 				add(affGrille[i][j]);
 			}
 		}
-		
+		refreshGrilleBuffer(1,2) ;
+		validate();
 	}
 	
 	public void refreshGrilleBuffer(){
@@ -41,6 +42,11 @@ public class PanelGrilleDeJeu extends JPanel {
 				affGrille[i][j] = new JLabel("test") ;
 			}
 		}
+	}
+	
+	//méthode qui a terme devrait disparetre.
+	public void refreshGrilleBuffer(int abscisse,int ordonnee){
+		affGrille[ordonnee-1][abscisse-1].setText("poruquoi") ;
 	}
 	
 	public ControleurVues getCtrlV() {
