@@ -46,7 +46,8 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGrilleDeJeu()) ;
+				ctrlV.getCtrlM().commencerPartie(4,1) ;
+				ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
 			}
 		});
 		//autre sous menu

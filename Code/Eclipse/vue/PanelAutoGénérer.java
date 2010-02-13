@@ -77,7 +77,8 @@ public class PanelAutoGénérer extends JPanel {
 			jbCommencer.setText("Commencer");
 			jbCommencer.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					ctrlV.getCtrlM().commencerPartie(4,1) ;
+					ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
 				}
 			});
 		}
@@ -95,7 +96,7 @@ public class PanelAutoGénérer extends JPanel {
 			jbRetour.setText("Retour");
 			jbRetour.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
 				}
 			});
 		}

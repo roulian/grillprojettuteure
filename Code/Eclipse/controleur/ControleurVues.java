@@ -31,8 +31,8 @@ public class ControleurVues {
 		panelAutoGenerer = new PanelAutoGénérer(this);
 		panelGeneration = new PanelGeneration(this);
 		panelChargement = new PanelChargement(this);
-		panelGrilleDeJeu = new PanelGrilleDeJeu(this) ;
-		panelJeu = new PanelJeu(this);
+		
+//		panelJeu = new PanelJeu(this);
 		
 		switchPanel(panelAcceuil) ;
 	}
@@ -59,15 +59,11 @@ public class ControleurVues {
 
 //*********** Partie Grille de jeu ***************/
 	public void refreshGrilleDeJeu(){
-		for (int i = 0; i < tailleGrille; i++) {
-			for (int j = 0; j < tailleGrille; j++) {
-				//panelGrilleDeJeu.add(new JLabel(""+getCtrlM().getLaGrille().getCase(i,j).getBatiment().getHauteur()));
-			}
-		}
+		panelGrilleDeJeu.refreshGrilleBuffer() ;
 	}
 	
 	public void refreshGrilleDeJeu(int abscisse, int ordonnee){
-//		mmmh
+		panelGrilleDeJeu.refreshGrilleBuffer(abscisse, ordonnee) ;
 	}
 
 	
@@ -89,6 +85,9 @@ public class ControleurVues {
 	}
 
 	public PanelGrilleDeJeu getPanelGrilleDeJeu() {
+		if (panelGrilleDeJeu==null) ;
+			panelGrilleDeJeu = new PanelGrilleDeJeu(this) ;
+		
 		return panelGrilleDeJeu;
 	}
 
