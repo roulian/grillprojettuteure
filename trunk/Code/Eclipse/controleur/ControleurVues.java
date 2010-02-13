@@ -26,6 +26,7 @@ public class ControleurVues {
 		ctrlM = pCtrlM ;
 		tailleGrille = ctrlM.getTailleGrille() ;
 		vuePrincipal = new VuePrincipale(this) ;
+		vuePrincipal.setLocationRelativeTo(null) ;
 		vuePrincipal.setVisible(true);
 		panelAcceuil = new PanelAccueil(this);
 		panelAutoGenerer = new PanelAutoGénérer(this);
@@ -37,6 +38,7 @@ public class ControleurVues {
 		switchPanel(panelAcceuil) ;
 	}
 
+//*********** Accesseur Généraux ***************/
 	public int getTailleGrille() {
 		return tailleGrille;
 	}
@@ -45,11 +47,18 @@ public class ControleurVues {
 		return ctrlM ;
 	}
 	
+//*********** Gestion VUE PRINCIPAL ***************/	
 	public void switchPanel(JPanel pPanel){
-		vuePrincipal.remove(vuePrincipal.getCurrentPanel()) ;
-		vuePrincipal.add(pPanel) ;
+		if (pPanel == panelGeneration)
+			vuePrincipal.setSize(600, 400) ;
+		else
+			vuePrincipal.setSize(300, 400) ;
+		vuePrincipal.setContentPane(pPanel) ;
+		vuePrincipal.refreshMenu();
+		vuePrincipal.validate();
 	}
-	
+
+//*********** Partie Grille de jeu ***************/
 	public void refreshGrilleDeJeu(){
 		for (int i = 0; i < tailleGrille; i++) {
 			for (int j = 0; j < tailleGrille; j++) {
@@ -62,6 +71,8 @@ public class ControleurVues {
 //		mmmh
 	}
 
+	
+//*********** Accesseur des PANELS ***************/
 	public PanelAccueil getPanelAcceuil() {
 		return panelAcceuil;
 	}

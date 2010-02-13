@@ -61,6 +61,24 @@ public class PanelAccueil extends JPanel {
 		this.add(getJbNouveau(), gridBagConstraints);
 		this.add(getJbCharger(), gridBagConstraints2);
 		this.add(getJbGénérer(), gridBagConstraints5);
+		
+		jbNouveau.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.switchPanel(ctrlV.getPanelAutoGenerer()) ;
+			}
+		});
+		jbGénérer.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.switchPanel(ctrlV.getPanelGeneration()) ;
+			}
+		});
+		jbCharger.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.switchPanel(ctrlV.getPanelChargement()) ;
+			}
+		});
+		
+		
 	}
 
 	/**

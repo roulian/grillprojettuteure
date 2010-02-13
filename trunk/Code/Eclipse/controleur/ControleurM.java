@@ -3,9 +3,10 @@ package controleur;
 import src.Grille;
 
 public class ControleurM {
-	int tailleGrille ;
-	Grille laGrille ;
-	ControleurVues ctrlVues ;
+	private int tailleGrille ;
+	private Grille laGrille ;
+	private ControleurVues ctrlVues ;
+	private boolean gameStart = false ;
 	
 	public ControleurM(int pTaille){
 		tailleGrille = pTaille ;
@@ -25,5 +26,7 @@ public class ControleurM {
 		return ctrlVues ;
 	}
 	
-	
+	public boolean GetGameStart(){
+		return gameStart ;
+	}
 }
