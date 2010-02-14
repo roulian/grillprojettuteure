@@ -8,10 +8,11 @@
 package src ;
 
 public class Observateur {
-	public static final int NORD = 1;
-	public static int SUD = 2;
-	public static int EST = 3;
-	public static int OUEST = 4;
+	// c'est 4 variable sont en public car se sont des constantes !  
+	public static final int NORD = 0;
+	public static final int SUD = 1;
+	public static final int EST = 2;
+	public static final int OUEST = 3;
 	private int[][] observateur ;
 	
     public Observateur() {

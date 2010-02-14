@@ -2,20 +2,25 @@ package controleur;
 
 import src.Batiment;
 import src.Grille;
+import src.Observateur;
 
 public class ControleurM {
 	private int tailleGrille ;
 	private Grille laGrille ;
+	private Observateur observateur ;
 	private int difficulte ;
 	private ControleurVues ctrlVues ;
+	private ControleurR ctrlRegl;
 	private boolean gameStart;
 	private boolean tricheBouton = false;
 	
 	public ControleurM(){
 		gameStart = false ;
 		laGrille = null ;
+		observateur = null ;
 		difficulte = 0 ;
 		tailleGrille = 4 ;
+		
 		ctrlVues = new ControleurVues(this) ;
 	}
 	
@@ -53,5 +58,9 @@ public class ControleurM {
 
 	public boolean isTricheBouton() {
 		return tricheBouton;
+	}
+
+	public Observateur getObservateur() {
+		return observateur;
 	}
 }

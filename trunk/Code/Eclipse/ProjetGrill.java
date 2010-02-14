@@ -1,6 +1,4 @@
 import controleur.ControleurM;
-import controleur.ControleurVues;
-import vue.VuePrincipale;
 
 public class ProjetGrill {
 
