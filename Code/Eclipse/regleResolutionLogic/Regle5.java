@@ -18,6 +18,7 @@ public class Regle5 implements Regle{
 	}
 
 	// on applique la loi bmax = m - n + d au vecteur de possibilité des batiments
+	// l'algo est assez "complex" niveau temps d'execution... a voir si on ne peut pas simplifier
 	public void resolve() {
 		refreshBuffer();
 		//on parcour les casses de la grille

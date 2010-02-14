@@ -22,9 +22,25 @@ public class Regle1 implements Regle{
 		grille = ctrlR.getGrille() ;
 	}
 
-	// il s'agit de placer les batiment 
+	// il s'agit de construire les batiments de taille maximum lorsque l'Observateur = 1 
 	public void resolve() {
 		refreshBuffer() ;
+		for(int i=0; i<4; i++){
+			if(observateur.getObservateur()[Observateur.NORD][i]==1)
+				grille.getCase(i,1).construire(4);
+		}
+		for(int i=0; i<4; i++){
+			if(observateur.getObservateur()[Observateur.SUD][i]==1)
+				grille.getCase(i,tailleGrille).construire(4);
+		}
+		for(int i=0; i<4; i++){
+			if(observateur.getObservateur()[Observateur.EST][i]==1)
+				grille.getCase(tailleGrille,i).construire(4);
+		}
+		for(int i=0; i<4; i++){
+			if(observateur.getObservateur()[Observateur.OUEST][i]==1)
+				grille.getCase(1,i).construire(4);
+		}
 		
 	}
 
