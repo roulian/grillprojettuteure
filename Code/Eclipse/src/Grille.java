@@ -43,9 +43,15 @@ public class Grille {
     	return grilleDejeu[pOrdonnee-1][pAbscisse-1] ;
     }
     
-    // assez inutile en faite...
+    // contruire avec cette méthode ci uniquement !
     public void construire(int pAbscisse, int pOrdonnee, Batiment pBatiment){
     	getCase(pAbscisse,pOrdonnee).construire(pBatiment) ;
+    	
+    	// on supprime le batiment des vector de possibilité des autres cases
+    	for (int i=1; i<=tailleGrille ;i++)
+    		getCase(pAbscisse,i).refreshPossibilite(pBatiment.getHauteur());
+    	for (int i=1; i<=tailleGrille ;i++)
+    		getCase(i,pOrdonnee).refreshPossibilite(pBatiment.getHauteur());
     }
     
     public Observateur getObervateur(){
