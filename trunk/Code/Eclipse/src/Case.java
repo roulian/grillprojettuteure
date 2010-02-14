@@ -43,6 +43,10 @@ public class Case {
     	return batiment ;
     }
     
+    public Vector<Integer> getPossibilite(){
+    	return possibilite ;
+    }
+    
     // Méthode qui supprime des integer du vector de possibilité de batiment
     public void refreshPossibilite(int hauteur){
     	// un simple possibilite.remove(pBat.getHauteur()) ne marcherais pas, puisqu'on supprimerais l'objet au rang getHauteur()
