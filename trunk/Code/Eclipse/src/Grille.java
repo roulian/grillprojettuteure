@@ -51,4 +51,8 @@ public class Grille {
     public Observateur getObervateur(){
     	return obs ;
     }
+
+	public int getTailleGrille() {
+		return tailleGrille;
+	}
 }
