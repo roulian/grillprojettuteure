@@ -39,7 +39,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
-				affGrille[i][j] = new JLabel(ctrlV.getCtrlM().getLaGrille().getCase(i+1,j+1).getBatiment().getHauteur()+"") ;
+				affGrille[i][j] = new JLabel(ctrlV.getCtrlM().getLaGrille().getCase(i+1,j+1).getBatiment()+"") ;
 			}
 		}
 	}

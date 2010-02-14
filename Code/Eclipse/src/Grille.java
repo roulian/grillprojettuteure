@@ -44,16 +44,14 @@ public class Grille {
     }
     
     // contruire avec cette méthode ci uniquement !
-    public void construire(int pAbscisse, int pOrdonnee, Batiment pBatiment){
+    public void construire(int pAbscisse, int pOrdonnee, int pBatiment){
     	getCase(pAbscisse,pOrdonnee).construire(pBatiment) ;
     	
     	// on supprime le batiment des vector de possibilité des autres cases
-    	/*
     	for (int i=1; i<=tailleGrille ;i++)
-    		getCase(pAbscisse,i).refreshPossibilite(pBatiment.getHauteur());
+    		getCase(pAbscisse,i).refreshPossibilite(pBatiment);
     	for (int i=1; i<=tailleGrille ;i++)
-    		getCase(i,pOrdonnee).refreshPossibilite(pBatiment.getHauteur());
-    	*/
+    		getCase(i,pOrdonnee).refreshPossibilite(pBatiment);
     }
     
     public Observateur getObervateur(){
