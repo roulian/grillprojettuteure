@@ -1,7 +1,6 @@
 package controleur;
 
-import regleResolutionLogic.Regle;
-import regleResolutionLogic.Regle5;
+import regleResolutionLogic.*;
 import src.Grille;
 import src.Observateur;
 
@@ -20,7 +19,11 @@ public class ControleurR {
 		
 		//définition des regles logiques de résolution dans le tableau de regle
 		tabRegle = new Regle[1] ;
-		tabRegle[0] = new Regle5(this) ; 
+		tabRegle[0] = new Regle1(this) ;
+		tabRegle[1] = new Regle2(this) ;
+		tabRegle[2] = new Regle3(this) ;
+		tabRegle[3] = new Regle4(this) ;
+		tabRegle[4] = new Regle5(this) ; 
 	}
 	
 	
