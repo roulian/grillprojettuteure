@@ -10,7 +10,7 @@ public class ControleurM {
 	private Observateur observateur ;
 	private int difficulte ;
 	private ControleurVues ctrlVues ;
-	private ControleurR ctrlRegl;
+//	private ControleurR ctrlRegl;
 	private boolean gameStart;
 	private boolean tricheBouton = false;
 	
@@ -30,6 +30,7 @@ public class ControleurM {
 		gameStart = true ; // pour l'instant on ne gere pas la fin de partie
 //		normalement on devrait générer la grille là, sauf que pour l'instant on ne sait pas encore la résoudre...
 		
+		// ce code ne sert qu'a tester
 		laGrille = new Grille(tailleGrille) ;
 		for(int i=0;i<tailleGrille;i++){
 			for(int j=0;j<tailleGrille;j++){

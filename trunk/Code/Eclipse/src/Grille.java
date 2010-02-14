@@ -48,10 +48,12 @@ public class Grille {
     	getCase(pAbscisse,pOrdonnee).construire(pBatiment) ;
     	
     	// on supprime le batiment des vector de possibilité des autres cases
+    	/*
     	for (int i=1; i<=tailleGrille ;i++)
     		getCase(pAbscisse,i).refreshPossibilite(pBatiment.getHauteur());
     	for (int i=1; i<=tailleGrille ;i++)
     		getCase(i,pOrdonnee).refreshPossibilite(pBatiment.getHauteur());
+    	*/
     }
     
     public Observateur getObervateur(){
