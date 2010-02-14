@@ -1,6 +1,5 @@
 package controleur;
 
-import src.Batiment;
 import src.Grille;
 import src.Observateur;
 
@@ -34,7 +33,7 @@ public class ControleurM {
 		laGrille = new Grille(tailleGrille) ;
 		for(int i=0;i<tailleGrille;i++){
 			for(int j=0;j<tailleGrille;j++){
-				laGrille.construire(i+1, j+1, new Batiment(1)) ;
+				laGrille.construire(i+1, j+1, 1) ;
 			}
 		}
 		
