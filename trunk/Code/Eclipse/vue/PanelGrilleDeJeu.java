@@ -28,6 +28,7 @@ public class PanelGrilleDeJeu extends JPanel {
 			for (int j=0 ; j<lenght ; j++){
 				JLabel tempLabel = new JLabel() ;
 				tempLabel.addMouseListener(new java.awt.event.MouseListener() {
+		
 					public void mouseClicked(MouseEvent arg0) {
 //						Comment récup le label courant...
 //						JLabel.this.tempLabel.setText(tempLabel.getText()+"1");
@@ -71,7 +72,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
-				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(i+1,j+1).getBatiment()+"") ;
+				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
 			}
 		}
 		validate();
