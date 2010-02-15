@@ -28,4 +28,9 @@ public class Regle4 implements Regle{
 		
 	}
 
+	public void applyResolve() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
