@@ -27,26 +27,25 @@ public class Regle1 implements Regle{
 		refreshBuffer() ;
 		for(int i=0; i<4; i++){
 			if(observateur.getObservateur()[Observateur.NORD][i]==1)
-				grille.getCase(i,1).construire(4);
+				grille.construire(i+1,1,4) ;
 		}
 		for(int i=0; i<4; i++){
 			if(observateur.getObservateur()[Observateur.SUD][i]==1)
-				grille.getCase(i,tailleGrille).construire(4);
+				grille.construire(i+1,tailleGrille,4);
 		}
 		for(int i=0; i<4; i++){
 			if(observateur.getObservateur()[Observateur.EST][i]==1)
-				grille.getCase(tailleGrille,i).construire(4);
+				grille.construire(tailleGrille,i+1,4);
 		}
 		for(int i=0; i<4; i++){
 			if(observateur.getObservateur()[Observateur.OUEST][i]==1)
-				grille.getCase(1,i).construire(4);
+				grille.construire(1,i+1,4);
 		}
-		
+		applyResolve() ;
 	}
 
 	public void applyResolve() {
-		// TODO Auto-generated method stub
-		
+		ctrlR.getCtrlM().setLaGrille(grille) ;
 	}
 
 }

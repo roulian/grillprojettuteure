@@ -7,6 +7,7 @@ import src.Grille;
 import src.Observateur;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 
 
 public class PanelGrilleDeJeu extends JPanel {
@@ -22,12 +23,28 @@ public class PanelGrilleDeJeu extends JPanel {
 		ctrlV = pCtrlV ;
 		
 		affGrille = new JLabel[ctrlV.getTailleGrille()][ctrlV.getTailleGrille()];
+		int lenght = ctrlV.getTailleGrille() ;
+		for (int i=0 ; i<lenght ; i++){
+			for (int j=0 ; j<lenght ; j++){
+				JLabel tempLabel = new JLabel() ;
+				tempLabel.addMouseListener(new java.awt.event.MouseListener() {
+					public void mouseClicked(MouseEvent arg0) {
+//						Comment récup le label courant...
+//						JLabel.this.tempLabel.setText(tempLabel.getText()+"1");
+					}
+					public void mouseEntered(MouseEvent arg0) {}
+					public void mouseExited(MouseEvent arg0) {}
+					public void mousePressed(MouseEvent arg0) {}
+					public void mouseReleased(MouseEvent arg0) {}
+				});
+				affGrille[i][j] = tempLabel ;
+			}
+		}
 		refreshGrilleBuffer() ; 
 		
 		GridLayout gridLayout = new GridLayout(ctrlV.getTailleGrille()+2,ctrlV.getTailleGrille()+2);
 		this.setLayout(gridLayout);
 		
-		int lenght = ctrlV.getTailleGrille() ;
 		//gestion de l'observateur NORD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
@@ -48,15 +65,13 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++)
 			add(new JLabel(""+ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.SUD][i]));
 		add(new JLabel(""));
-		
-		refreshGrilleBuffer(1,2) ;
 	}
 	
 	public void refreshGrilleBuffer(){
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
-				affGrille[i][j] = new JLabel(ctrlV.getCtrlM().getLaGrille().getCase(i+1,j+1).getBatiment()+"") ;
+				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(i+1,j+1).getBatiment()+"") ;
 			}
 		}
 		validate();
@@ -64,7 +79,7 @@ public class PanelGrilleDeJeu extends JPanel {
 	
 	//méthode qui a terme devrait disparetre.
 	public void refreshGrilleBuffer(int abscisse,int ordonnee){
-		affGrille[ordonnee-1][abscisse-1].setText("poruquoi") ;
+		affGrille[ordonnee-1][abscisse-1].setText(ctrlV.getCtrlM().getLaGrille().getCase(abscisse,ordonnee).getBatiment()+"") ;
 		validate();
 	}
 	

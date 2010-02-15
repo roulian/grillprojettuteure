@@ -18,7 +18,7 @@ public class Observateur {
     public Observateur() {
 		observateur = new int[4][4] ;
 		for (int i=0; i<4; i++)
-			observateur[NORD][i] = 0;
+			observateur[NORD][i] = (int)(Math.random()*4+1);
 		for (int i=0; i<4; i++)
 			observateur[SUD][i] = 0;
 		for (int i=0; i<4; i++)

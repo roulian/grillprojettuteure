@@ -9,7 +9,7 @@ public class ControleurM {
 	private Observateur observateur ;
 	private int difficulte ;
 	private ControleurVues ctrlVues ;
-//	private ControleurR ctrlRegl;
+	private ControleurR ctrlRegl;
 	private boolean gameStart;
 	private boolean tricheBouton = false;
 	
@@ -33,10 +33,14 @@ public class ControleurM {
 		laGrille = new Grille(tailleGrille) ;
 		for(int i=0;i<tailleGrille;i++){
 			for(int j=0;j<tailleGrille;j++){
-				laGrille.construire(i+1, j+1, 1) ;
+				laGrille.construire(i+1, j+1, 0) ;
 			}
 		}
 		observateur = new Observateur();
+		
+//		pour résoudre une grille c'est comme ça =) 
+//		ctrlRegl = new ControleurR(this) ;
+//		ctrlRegl.applyRegle() ;
 	}
 
 	//******* Accesseur *************/
