@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 
+import controleur.ControleurR;
+import controleur.ControleurVues;
+
 public class PanelChargement extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -19,9 +22,10 @@ public class PanelChargement extends JPanel {
 	private JLabel jLvide = null;
 	private JLabel jLvide1 = null;
 	private JLabel jLvide2 = null;  //  @jve:decl-index=0:visual-constraint="500,121"
-	private JScrollPane jsList = null;  //  @jve:decl-index=0:visual-constraint="715,66"
-	private JList jlPartieCharger = null;  //  @jve:decl-index=0:visual-constraint="602,156"
-	private JPanel jpGrilleJeu = null;  //  @jve:decl-index=0:visual-constraint="443,160"
+	private JScrollPane jsList = null;
+	private JList jlPartieCharger = null;
+	private JPanel jpGrilleJeu = null;
+	private ControleurVues ctrlV;
 
 	/**
 	 * This is the default constructor
@@ -30,6 +34,13 @@ public class PanelChargement extends JPanel {
 		super();
 		initialize();
 	}
+	
+	public PanelChargement(ControleurVues pCtrlV) {
+		super();
+		this.ctrlV = pCtrlV;
+		initialize();
+	}
+
 
 	/**
 	 * This method initializes this
@@ -40,6 +51,10 @@ public class PanelChargement extends JPanel {
 		this.setSize(361, 353);
 		this.setLayout(new BorderLayout());
 		this.add(getJLvide1(), BorderLayout.NORTH);
+		this.add(getJpGrilleJeu(), BorderLayout.EAST);
+		this.add(getJsList(), BorderLayout.WEST);
+		this.add(getJLvide2(), BorderLayout.CENTER);
+		this.add(getJpSud(), BorderLayout.SOUTH);
 	}
 
 	/**
@@ -100,22 +115,6 @@ public class PanelChargement extends JPanel {
 	}
 
 	/**
-	 * This method initializes jPSud	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getJPSud() {
-		if (jPSud == null) {
-			GridLayout gridLayout1 = new GridLayout();
-			gridLayout1.setRows(1);
-			jPSud = new JPanel();
-			jPSud.setLayout(gridLayout1);
-			jPSud.setSize(new Dimension(224, 67));
-		}
-		return jPSud;
-	}
-
-	/**
 	 * This method initializes jLvide1	
 	 * 	
 	 * @return javax.swing.JLabel	
@@ -149,8 +148,8 @@ public class PanelChargement extends JPanel {
 	private JScrollPane getJsList() {
 		if (jsList == null) {
 			jsList = new JScrollPane();
-			jsList.setSize(new Dimension(95, 152));
 			jsList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			jsList.setViewportView(getJlPartieCharger());
 			jsList.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		}
 		return jsList;
@@ -164,7 +163,6 @@ public class PanelChargement extends JPanel {
 	private JList getJlPartieCharger() {
 		if (jlPartieCharger == null) {
 			jlPartieCharger = new JList();
-			jlPartieCharger.setSize(new Dimension(51, 63));
 		}
 		return jlPartieCharger;
 	}
@@ -178,7 +176,6 @@ public class PanelChargement extends JPanel {
 		if (jpGrilleJeu == null) {
 			jpGrilleJeu = new JPanel();
 			jpGrilleJeu.setLayout(new GridBagLayout());
-			jpGrilleJeu.setSize(new Dimension(35, 55));
 		}
 		return jpGrilleJeu;
 	}
