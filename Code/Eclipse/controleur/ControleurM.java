@@ -39,8 +39,8 @@ public class ControleurM {
 		observateur = new Observateur();
 		
 //		pour résoudre une grille c'est comme ça =) 
-//		ctrlRegl = new ControleurR(this) ;
-//		ctrlRegl.applyRegle() ;
+		ctrlRegl = new ControleurR(this) ;
+		ctrlRegl.applyRegle() ;
 	}
 
 	//******* Accesseur *************/
