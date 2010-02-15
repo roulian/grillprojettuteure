@@ -20,11 +20,9 @@ public class PanelChargement extends JPanel {
 	private JButton jbRetour = null;
 	private JPanel jpSud = null;
 	private JLabel jLvide = null;
-	private JLabel jLvide1 = null;
-	private JLabel jLvide2 = null;  //  @jve:decl-index=0:visual-constraint="500,121"
 	private JScrollPane jsList = null;
 	private JList jlPartieCharger = null;
-	private JPanel jpGrilleJeu = null;
+	private JPanel jpGrilleJeu = null;  //  @jve:decl-index=0:visual-constraint="537,58"
 	private ControleurVues ctrlV;
 
 	/**
@@ -50,11 +48,9 @@ public class PanelChargement extends JPanel {
 	private void initialize() {
 		this.setSize(361, 353);
 		this.setLayout(new BorderLayout());
-		this.add(getJLvide1(), BorderLayout.NORTH);
-		this.add(getJpGrilleJeu(), BorderLayout.EAST);
 		this.add(getJsList(), BorderLayout.WEST);
-		this.add(getJLvide2(), BorderLayout.CENTER);
 		this.add(getJpSud(), BorderLayout.SOUTH);
+		this.add(getJpGrilleJeu(), BorderLayout.EAST);
 	}
 
 	/**
@@ -115,32 +111,6 @@ public class PanelChargement extends JPanel {
 	}
 
 	/**
-	 * This method initializes jLvide1	
-	 * 	
-	 * @return javax.swing.JLabel	
-	 */
-	private JLabel getJLvide1() {
-		if (jLvide1 == null) {
-			jLvide1 = new JLabel();
-			jLvide1.setText("JLabel");
-		}
-		return jLvide1;
-	}
-
-	/**
-	 * This method initializes jLvide2	
-	 * 	
-	 * @return javax.swing.JLabel	
-	 */
-	private JLabel getJLvide2() {
-		if (jLvide2 == null) {
-			jLvide2 = new JLabel();
-			jLvide2.setText("JLabel");
-		}
-		return jLvide2;
-	}
-
-	/**
 	 * This method initializes jsList	
 	 * 	
 	 * @return javax.swing.JScrollPane	
@@ -176,7 +146,10 @@ public class PanelChargement extends JPanel {
 		if (jpGrilleJeu == null) {
 			jpGrilleJeu = new JPanel();
 			jpGrilleJeu.setLayout(new GridBagLayout());
+			jpGrilleJeu.setSize(new Dimension(227, 189));
 		}
+		ctrlV.getCtrlM().commencerPartie(4,1) ;
+		jpGrilleJeu.add(ctrlV.getPanelGrilleDeJeu());
 		return jpGrilleJeu;
 	}
 
