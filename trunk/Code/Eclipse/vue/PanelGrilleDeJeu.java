@@ -1,5 +1,6 @@
 package vue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controleur.ControleurVues;
@@ -26,11 +27,13 @@ public class PanelGrilleDeJeu extends JPanel {
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
-				JLabel tempLabel = new JLabel() ;
+				JLabel tempLabel = new JLabel();
+				
+				tempLabel.setIcon(new ImageIcon("images/bat4.png")) ;
 				tempLabel.addMouseListener(new java.awt.event.MouseListener() {
-		
 					public void mouseClicked(MouseEvent arg0) {
 //						Comment récup le label courant...
+//						avec des parametre en entré
 //						JLabel.this.tempLabel.setText(tempLabel.getText()+"1");
 					}
 					public void mouseEntered(MouseEvent arg0) {}
@@ -66,21 +69,23 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++)
 			add(new JLabel(""+ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.SUD][i]));
 		add(new JLabel(""));
+		
+		refreshGrilleBuffer(1,1) ;
 	}
 	
 	public void refreshGrilleBuffer(){
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
-				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
+//				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
+				affGrille[i][j].setIcon(new ImageIcon("images/bat4.png")) ;
 			}
 		}
 		validate();
 	}
 	
-	//méthode qui a terme devrait disparetre.
 	public void refreshGrilleBuffer(int abscisse,int ordonnee){
-		affGrille[ordonnee-1][abscisse-1].setText(ctrlV.getCtrlM().getLaGrille().getCase(abscisse,ordonnee).getBatiment()+"") ;
+		affGrille[ordonnee-1][abscisse-1].setIcon(new ImageIcon("images/bat3.PNG")) ;
 		validate();
 	}
 	
