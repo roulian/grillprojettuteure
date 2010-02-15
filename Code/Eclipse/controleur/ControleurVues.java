@@ -32,7 +32,7 @@ public class ControleurVues {
 		panelGeneration = new PanelGeneration(this);
 		panelChargement = new PanelChargement(this);
 		
-//		panelJeu = new PanelJeu(this);
+		panelJeu = new PanelJeu(this);
 		
 		switchPanel(panelAcceuil) ;
 	}
