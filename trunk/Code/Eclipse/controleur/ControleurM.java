@@ -36,7 +36,7 @@ public class ControleurM {
 				laGrille.construire(i+1, j+1, 1) ;
 			}
 		}
-		
+		observateur = new Observateur();
 	}
 
 	//******* Accesseur *************/
@@ -62,5 +62,9 @@ public class ControleurM {
 
 	public Observateur getObservateur() {
 		return observateur;
+	}
+
+	public void setLaGrille(Grille laGrille) {
+		this.laGrille = laGrille;
 	}
 }

@@ -34,4 +34,9 @@ public class Regle2 implements Regle{
 		}
 	}
 
+	public void applyResolve() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
