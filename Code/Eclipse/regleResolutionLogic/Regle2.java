@@ -28,15 +28,16 @@ public class Regle2 implements Regle{
 		refreshBuffer() ;
 		for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
 			for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
-				if(grille.getCase(abscisse,ordonnee).getPossibilite().size()==0)
+//				si le vector ne contient qu'un élément on le construit
+				if(grille.getCase(abscisse,ordonnee).getPossibilite().size()==1)
 					grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(0));
 			}
 		}
+		applyResolve() ;
 	}
 
 	public void applyResolve() {
-		// TODO Auto-generated method stub
-		
+		ctrlR.getCtrlM().setLaGrille(grille) ;
 	}
 
 }
