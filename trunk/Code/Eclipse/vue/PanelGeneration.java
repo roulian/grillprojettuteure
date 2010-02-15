@@ -64,7 +64,7 @@ public class PanelGeneration extends JPanel {
 		if (jpGrill == null) 
 		{
 			jpGrill = new JPanel();
-			jpGrill.setLayout(new BorderLayout());
+			jpGrill.setLayout(new GridBagLayout());
 		}
 		ctrlV.getCtrlM().commencerPartie(4,1) ;
 		jpGrill.add(ctrlV.getPanelGrilleDeJeu());
