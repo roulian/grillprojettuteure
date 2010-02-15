@@ -28,7 +28,6 @@ public class PanelGrilleDeJeu extends JPanel {
 		this.setLayout(gridLayout);
 		
 		int lenght = ctrlV.getTailleGrille() ;
-
 		//gestion de l'observateur NORD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
