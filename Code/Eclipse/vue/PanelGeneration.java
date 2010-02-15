@@ -14,6 +14,7 @@ import controleur.ControleurVues;
 import java.awt.Rectangle;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.BorderLayout;
 
 public class PanelGeneration extends JPanel {
 
@@ -60,10 +61,13 @@ public class PanelGeneration extends JPanel {
 	 * @return javax.swing.JPanel	
 	 */
 	private JPanel getJpGrill() {
-		if (jpGrill == null) {
+		if (jpGrill == null) 
+		{
 			jpGrill = new JPanel();
-			jpGrill.setLayout(null);
+			jpGrill.setLayout(new BorderLayout());
 		}
+		ctrlV.getCtrlM().commencerPartie(4,1) ;
+		jpGrill.add(ctrlV.getPanelGrilleDeJeu());
 		return jpGrill;
 	}
 
