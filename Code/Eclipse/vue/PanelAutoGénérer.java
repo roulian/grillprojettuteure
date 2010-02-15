@@ -78,7 +78,7 @@ public class PanelAutoGénérer extends JPanel {
 			jbCommencer.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ctrlV.getCtrlM().commencerPartie(4,1) ;
-					ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
+					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 				}
 			});
 		}
