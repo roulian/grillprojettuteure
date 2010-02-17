@@ -23,7 +23,7 @@ public class Case {
     }
     
     public boolean estConstrutible(int pBat){
-    	//déclaration des variables locales
+    	//déclaration des variables locales 
     	boolean constructible = false ;			// la valeur retournée
     	int tailleVec=possibilite.size() ;		// variable tempon pour éviter de faire appelle à size() dans le for
     	
@@ -37,6 +37,7 @@ public class Case {
     
     public void construire(int pBat){
     	batiment = pBat ;
+    	possibilite = new Vector<Integer>() ;
     }
     
     public int getBatiment(){
@@ -48,7 +49,7 @@ public class Case {
     }
     
     // Méthode qui supprime des integer du vector de possibilité de batiment
-    public void refreshPossibilite(int hauteur){
+    public boolean refreshPossibilite(int hauteur){
     	// un simple possibilite.remove(pBat.getHauteur()) ne marcherais pas, puisqu'on supprimerais l'objet au rang getHauteur()
     	// et non l'Integer contenant getHauteur()... je ne sais pas si un Cast suffirais ou pas... mais je ne pense pas.
     	// Puisqu'avec un cast on obtiendrait un objet integer contenant bien getHauteur() mais de ref diférente de celui du Vector
@@ -59,7 +60,8 @@ public class Case {
     			possibilite.removeElementAt(i) ;	// on remove l'Objet au rang i
     			del = true ;
     		}
-    	}	
+    	}
+    	return del ;
     }
     
     

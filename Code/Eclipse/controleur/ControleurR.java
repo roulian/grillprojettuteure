@@ -24,15 +24,20 @@ public class ControleurR {
 		tabRegle.add(new Regle1(this)) ;
 		tabRegle.add(new Regle2(this)) ;
 		tabRegle.add(new Regle3(this)) ;
-		tabRegle.add(new Regle4(this)) ;
+//		tabRegle.add(new Regle4(this)) ;
 		tabRegle.add(new Regle5(this)) ; 
 	}
 	
 	// méthode de résolution des grilles.
 	public void applyRegle(){
 		int nbRegle = tabRegle.size();
-		for (int i=0; i <nbRegle; i++)
-			tabRegle.elementAt(i).resolve() ;
+		boolean solve = true ;
+		while(solve){
+			solve = false ;
+			for (int i=0; i <nbRegle; i++){
+				solve = solve || tabRegle.elementAt(i).resolve() ;
+			}
+		}	
 	}
 	
 	

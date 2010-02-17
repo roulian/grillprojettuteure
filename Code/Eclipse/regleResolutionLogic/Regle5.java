@@ -19,19 +19,22 @@ public class Regle5 implements Regle{
 
 	// on applique la loi bmax = m - n + d au vecteur de possibilité des batiments
 	// l'algo est assez "complex" niveau temps d'execution... a voir si on ne peut pas simplifier
-	public void resolve() {		
+	public boolean resolve() {
+		boolean solve = false ;
 		refreshBuffer();
 		//on parcour les casses de la grille
 		for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
 			for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
 				int hauteurMax = minBMax(abscisse, ordonnee) ;
 				if (hauteurMax<tailleGrille){
-					for (int i=hauteurMax ; i<tailleGrille ; i++)
-						grille.getCase(abscisse,ordonnee).refreshPossibilite(i+1) ;
+					for (int i=hauteurMax ; i<tailleGrille ; i++){
+						solve = grille.getCase(abscisse,ordonnee).refreshPossibilite(i+1) ;
+					}
 				}
 			}
 		}
 		applyResolve() ;
+		return solve ;
 	}
 
 	public void refreshBuffer() {
