@@ -2,6 +2,8 @@ package controleur;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import vue.DifficulteGeneration;
 import vue.PanelAccueil;
 import vue.PanelAutoGénérer;
 import vue.PanelChargement;
@@ -98,6 +100,6 @@ public class ControleurVues {
 	public VuePrincipale getVuePrincipal() {
 		return vuePrincipal;
 	}
-	
+
 	
 }
