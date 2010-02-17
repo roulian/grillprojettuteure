@@ -91,6 +91,20 @@ public class VuePrincipale extends JFrame
 		itemTemp = new JMenuItem("A propos");
 		jAutre.add(itemTemp);
 		// fin menu
+		
+		
+		
+		JMenu debug = new JMenu("DEBUG");
+		menu.add(debug);
+		//premier sous menu
+		itemTemp = new JMenuItem("Nouvelle partie");
+		debug.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().commencerPartie(4,1) ;
+				ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
+			}
+		});
 	}
 	
 	public void refreshMenu(){

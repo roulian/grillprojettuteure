@@ -36,10 +36,48 @@ public class ControleurM {
 				laGrille.construire(i+1, j+1, 0) ;
 			}
 		}
-		observateur = new Observateur();
+		int[][] obsTemp = new int[4][4] ;
+//		obsTemp[Observateur.NORD][0] = 2;
+//		obsTemp[Observateur.NORD][1] = 3;
+//		obsTemp[Observateur.NORD][2] = 1;
+//		obsTemp[Observateur.NORD][3] = 2;
+//		obsTemp[Observateur.EST][0] = 2;
+//		obsTemp[Observateur.EST][1] = 3;
+//		obsTemp[Observateur.EST][2] = 3;
+//		obsTemp[Observateur.EST][3] = 1;
+//		obsTemp[Observateur.SUD][0] = 2;
+//		obsTemp[Observateur.SUD][1] = 2;
+//		obsTemp[Observateur.SUD][2] = 3;
+//		obsTemp[Observateur.SUD][3] = 1;
+//		obsTemp[Observateur.OUEST][0] = 3;
+//		obsTemp[Observateur.OUEST][1] = 1;
+//		obsTemp[Observateur.OUEST][2] = 2;
+//		obsTemp[Observateur.OUEST][3] = 2;
+//		observateur = new Observateur(obsTemp);
+		
+		obsTemp[Observateur.NORD][0] = 1;
+		obsTemp[Observateur.NORD][1] = 2;
+		obsTemp[Observateur.NORD][2] = 2;
+		obsTemp[Observateur.NORD][3] = 2;
+		obsTemp[Observateur.EST][0] = 3;
+		obsTemp[Observateur.EST][1] = 3;
+		obsTemp[Observateur.EST][2] = 1;
+		obsTemp[Observateur.EST][3] = 2;
+		obsTemp[Observateur.SUD][0] = 4;
+		obsTemp[Observateur.SUD][1] = 3;
+		obsTemp[Observateur.SUD][2] = 1;
+		obsTemp[Observateur.SUD][3] = 2;
+		obsTemp[Observateur.OUEST][0] = 1;
+		obsTemp[Observateur.OUEST][1] = 2;
+		obsTemp[Observateur.OUEST][2] = 3;
+		obsTemp[Observateur.OUEST][3] = 3;
+		observateur = new Observateur(obsTemp);
 		
 //		pour résoudre une grille c'est comme ça =) 
 		ctrlRegl = new ControleurR(this) ;
+		ctrlRegl.applyRegle() ;
+		ctrlRegl.applyRegle() ;
+		ctrlRegl.applyRegle() ;
 		ctrlRegl.applyRegle() ;
 	}
 

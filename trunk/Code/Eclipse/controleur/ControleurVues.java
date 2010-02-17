@@ -3,6 +3,7 @@ package controleur;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import src.Grille;
 import vue.DifficulteGeneration;
 import vue.PanelAccueil;
 import vue.PanelAutoGénérer;
@@ -50,7 +51,7 @@ public class ControleurVues {
 	
 //*********** Gestion VUE PRINCIPAL ***************/	
 	public void switchPanel(JPanel pPanel){
-		if (pPanel == panelGeneration)
+		if (pPanel == panelGeneration || pPanel == panelGrilleDeJeu)
 			vuePrincipal.setSize(600, 400) ;
 		else
 			vuePrincipal.setSize(300, 400) ;
@@ -64,9 +65,9 @@ public class ControleurVues {
 		panelGrilleDeJeu.refreshGrilleBuffer() ;
 	}
 	
-	public void refreshGrilleDeJeu(int abscisse, int ordonnee){
-		panelGrilleDeJeu.refreshGrilleBuffer(abscisse, ordonnee) ;
-	}
+//	public void refreshGrilleDeJeu(int abscisse, int ordonnee){
+//		panelGrilleDeJeu.refreshGrilleBuffer(abscisse, ordonnee) ;
+//	}
 
 	
 //*********** Accesseur des PANELS ***************/

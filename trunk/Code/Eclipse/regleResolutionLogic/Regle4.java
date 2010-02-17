@@ -23,9 +23,10 @@ public class Regle4 implements Regle{
 	}
 
 	// il s'agit de placer les batiment 
-	public void resolve() {
+	public boolean resolve() {
+		boolean solve = false ;
 		refreshBuffer() ;
-		
+		return solve ;
 	}
 
 	public void applyResolve() {
