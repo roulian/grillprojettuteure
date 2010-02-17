@@ -32,7 +32,7 @@ public class DifficulteGeneration extends JDialog {
 		this.ctrlV = pCtrlVues;
 		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
-//		Choix des difficultés insérées dans le vector
+		//Choix des difficultés insérées dans le vector
 		difficulte = new Vector<String>();
 		difficulte.add("Facile");
 		difficulte.add("Moyen");
