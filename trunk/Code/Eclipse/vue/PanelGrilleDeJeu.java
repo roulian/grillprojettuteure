@@ -1,5 +1,7 @@
 package vue;
 
+import images.Bat;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,7 +31,7 @@ public class PanelGrilleDeJeu extends JPanel {
 			for (int j=0 ; j<lenght ; j++){
 				JLabel tempLabel = new JLabel();
 				
-				tempLabel.setIcon(new ImageIcon("images/bat4.png")) ;
+				tempLabel.setIcon(new ImageIcon(Bat.BLANC)) ;
 				tempLabel.addMouseListener(new java.awt.event.MouseListener() {
 					public void mouseClicked(MouseEvent arg0) {
 //						Comment récup le label courant...
@@ -78,14 +80,14 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 //				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
-				affGrille[i][j].setIcon(new ImageIcon("images/bat4.png")) ;
+				affGrille[i][j].setIcon(new ImageIcon(Bat.associat(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
 			}
 		}
 		validate();
 	}
 	
 	public void refreshGrilleBuffer(int abscisse,int ordonnee){
-		affGrille[ordonnee-1][abscisse-1].setIcon(new ImageIcon("images/bat3.PNG")) ;
+		affGrille[ordonnee-1][abscisse-1].setIcon(new ImageIcon(Bat.associat(ctrlV.getCtrlM().getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
 		validate();
 	}
 	
