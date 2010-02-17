@@ -31,6 +31,7 @@ public class PanelGeneration extends JPanel {
 	private JTextField jtTaille = null;
 	private JPanel jPanel = null;
 	private ControleurVues ctrlV;
+	private DifficulteGeneration difGen;
 	/**
 	 * This is the default constructor
 	 */
@@ -100,7 +101,7 @@ public class PanelGeneration extends JPanel {
 			jbVerif.setText("Vérification");
 			jbVerif.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					System.out.println("actionPerformed()");
 				}
 			});
 		}
@@ -116,12 +117,13 @@ public class PanelGeneration extends JPanel {
 		if (jbGenSpont == null) {
 			jbGenSpont = new JButton();
 			jbGenSpont.setText("Génération \nspontanée");
-			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
-				}
-			});
 		}
+		jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV);
+				difGen.setVisible(true);
+			}
+		});
 		return jbGenSpont;
 	}
 
@@ -136,7 +138,7 @@ public class PanelGeneration extends JPanel {
 			jbSauvegarder.setText("Sauvegarder");
 			jbSauvegarder.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					System.out.println("actionPerformed()");
 				}
 			});
 		}
@@ -154,7 +156,11 @@ public class PanelGeneration extends JPanel {
 			jbRetour.setText("Retour");
 			jbRetour.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
+					jbRetour.addActionListener(new java.awt.event.ActionListener() {
+						public void actionPerformed(java.awt.event.ActionEvent e) {
+							ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
+						}
+					});
 				}
 			});
 		}
