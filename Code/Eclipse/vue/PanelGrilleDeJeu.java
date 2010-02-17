@@ -56,22 +56,22 @@ public class PanelGrilleDeJeu extends JPanel {
 		//gestion de l'observateur NORD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.NORD][i]))));
+			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.NORD,i+1)))));
 		add(new JLabel(""));
 		
 		//gestion de l'observateur OUEST, de la grille et de l'observateur EST
 		for (int i=0 ; i<lenght ; i++){
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.OUEST][i]))));
+			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.OUEST,i+1)))));
 			for (int j=0 ; j<lenght ; j++){
 				add(affGrille[i][j]);
 			}
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.EST][i]))));
+			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.EST,i+1)))));
 		}
 		
 		//gestion de l'observateur SUD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur()[Observateur.SUD][i]))));
+			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i+1)))));
 		add(new JLabel(""));
 		
 		refreshGrilleBuffer(1,1) ;

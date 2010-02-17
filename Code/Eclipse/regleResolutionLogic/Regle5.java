@@ -40,10 +40,10 @@ public class Regle5 implements Regle{
 	}
 	
 	private int minBMax(int abscisse, int ordonnee){
-		int bNord = tailleGrille - observateur.getObservateur()[Observateur.NORD][abscisse-1] + ordonnee ;
-		int bSud = tailleGrille - observateur.getObservateur()[Observateur.SUD][abscisse-1] + (tailleGrille+1-ordonnee) ;
-		int bEst = tailleGrille - observateur.getObservateur()[Observateur.EST][ordonnee-1] + (tailleGrille+1-abscisse) ;
-		int bOuest = tailleGrille - observateur.getObservateur()[Observateur.NORD][ordonnee-1] + abscisse ;
+		int bNord = tailleGrille - observateur.getObservateur(Observateur.NORD,abscisse) + ordonnee ;
+		int bSud = tailleGrille - observateur.getObservateur(Observateur.SUD,abscisse) + (tailleGrille+1-ordonnee) ;
+		int bEst = tailleGrille - observateur.getObservateur(Observateur.EST,ordonnee) + (tailleGrille+1-abscisse) ;
+		int bOuest = tailleGrille - observateur.getObservateur(Observateur.NORD,ordonnee) + abscisse ;
 		
 		if (bNord>bSud){
 			if(bNord>bEst){
