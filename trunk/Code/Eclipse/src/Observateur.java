@@ -30,7 +30,7 @@ public class Observateur {
     	observateur = pObs ;
     }
     
-    public int[][] getObservateur(){
-    	return observateur ;
+    public int getObservateur(int pCardinal, int pPossition){
+    	return observateur[pCardinal][pPossition-1] ;
     }
 }

@@ -25,21 +25,21 @@ public class Regle1 implements Regle{
 	// il s'agit de construire les batiments de taille maximum lorsque l'Observateur = 1 
 	public void resolve() {
 		refreshBuffer() ;
-		for(int i=0; i<4; i++){
-			if(observateur.getObservateur()[Observateur.NORD][i]==1)
-				grille.construire(i+1,1,4) ;
+		for(int i=1; i<=4; i++){
+			if(observateur.getObservateur(Observateur.NORD,i)==1)
+				grille.construire(i,1,4) ;
 		}
-		for(int i=0; i<4; i++){
-			if(observateur.getObservateur()[Observateur.SUD][i]==1)
-				grille.construire(i+1,tailleGrille,4);
+		for(int i=1; i<=4; i++){
+			if(observateur.getObservateur(Observateur.SUD,i)==1)
+				grille.construire(i,tailleGrille,4);
 		}
-		for(int i=0; i<4; i++){
-			if(observateur.getObservateur()[Observateur.EST][i]==1)
-				grille.construire(tailleGrille,i+1,4);
+		for(int i=1; i<=4; i++){
+			if(observateur.getObservateur(Observateur.EST,i)==1)
+				grille.construire(tailleGrille,i,4);
 		}
-		for(int i=0; i<4; i++){
-			if(observateur.getObservateur()[Observateur.OUEST][i]==1)
-				grille.construire(1,i+1,4);
+		for(int i=1; i<=4; i++){
+			if(observateur.getObservateur(Observateur.OUEST,i)==1)
+				grille.construire(1,i,4);
 		}
 		applyResolve() ;
 	}
