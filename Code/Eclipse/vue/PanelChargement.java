@@ -105,7 +105,7 @@ public class PanelChargement extends JPanel {
 	private JLabel getJLvide() {
 		if (jLvide == null) {
 			jLvide = new JLabel();
-			jLvide.setText("JLabel");
+			jLvide.setText("     ");
 		}
 		return jLvide;
 	}
