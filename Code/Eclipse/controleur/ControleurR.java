@@ -26,7 +26,7 @@ public class ControleurR {
 		tabRegle.add(new Regle1(this)) ;
 		tabRegle.add(new Regle2(this)) ;
 		tabRegle.add(new Regle3(this)) ;
-//		tabRegle.add(new Regle4(this)) ;
+		tabRegle.add(new Regle4(this)) ;
 		tabRegle.add(new Regle5(this)) ;
 		tabRegle.add(new Regle6(this)) ; 
 	}
@@ -41,7 +41,7 @@ public class ControleurR {
 			for (int i=0; i <nbRegle; i++){
 				temp = tabRegle.elementAt(i).resolve() ;
 				solve = solve || temp ;
-				System.out.println(tabRegle.elementAt(i).getClass()+" - solve "+temp);
+				System.out.println("- "+tabRegle.elementAt(i).getClass()+" - solve "+temp);
 			}
 			System.out.println("boucle résolution : solve "+solve);
 		}
