@@ -17,12 +17,12 @@ public class ControleurVues {
 	private int tailleGrille ;
 	private ControleurM ctrlM ;
 	private VuePrincipale vuePrincipal ;
-	private PanelAccueil panelAcceuil ;
-	private PanelAutoGénérer panelAutoGenerer ;
-	private PanelGeneration panelGeneration ;
-	private PanelChargement panelChargement ;
-	private PanelJeu panelJeu ;
-	private PanelGrilleDeJeu panelGrilleDeJeu ;
+	private PanelAccueil panelAcceuil = null ;
+	private PanelAutoGénérer panelAutoGenerer = null ;
+	private PanelGeneration panelGeneration = null ;
+	private PanelChargement panelChargement = null ;
+	private PanelJeu panelJeu = null ;
+	private PanelGrilleDeJeu panelGrilleDeJeu = null ;
 	
 	public ControleurVues(ControleurM pCtrlM) {
 		ctrlM = pCtrlM ;
@@ -34,7 +34,6 @@ public class ControleurVues {
 		panelAutoGenerer = new PanelAutoGénérer(this);
 		panelGeneration = new PanelGeneration(this);
 		panelChargement = new PanelChargement(this);
-		
 		panelJeu = new PanelJeu(this);
 		
 		switchPanel(panelAcceuil) ;
@@ -72,29 +71,38 @@ public class ControleurVues {
 	
 //*********** Accesseur des PANELS ***************/
 	public PanelAccueil getPanelAcceuil() {
+		if(panelAcceuil==null)
+			panelAcceuil = new PanelAccueil(this) ;
 		return panelAcceuil;
 	}
 
 	public PanelAutoGénérer getPanelAutoGenerer() {
+		if(panelAutoGenerer==null)
+			panelAutoGenerer = new PanelAutoGénérer(this) ;
 		return panelAutoGenerer;
 	}
 
 	public PanelChargement getPanelChargement() {
+		if(panelChargement==null)
+			panelChargement = new PanelChargement(this) ; 
 		return panelChargement;
 	}
 
 	public PanelGeneration getPanelGeneration() {
+		if(panelGeneration==null)
+			panelGeneration = new PanelGeneration(this) ;
 		return panelGeneration;
 	}
 
 	public PanelGrilleDeJeu getPanelGrilleDeJeu() {
 		if (panelGrilleDeJeu==null) ;
 			panelGrilleDeJeu = new PanelGrilleDeJeu(this) ;
-		
 		return panelGrilleDeJeu;
 	}
 
 	public PanelJeu getPanelJeu() {
+		if (panelJeu==null)
+			panelJeu = new PanelJeu(this) ;
 		return panelJeu;
 	}
 
