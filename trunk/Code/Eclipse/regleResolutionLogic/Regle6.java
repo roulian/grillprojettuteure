@@ -27,7 +27,7 @@ public class Regle6 implements Regle{
 	public boolean resolve() {
 		boolean solve = false ;
 		
-		// OBSERVATEUR NORD
+		// !!!!!!!!!!!!!!!!!! OBSERVATEUR NORD !!!!!!!!!!!!!!!!!!
 		for(int abscisse=1; abscisse<=tailleGrille; abscisse++){			// on parcourt l'ensemble des observateurs nord
 			int hauteurMaxObs = 0 ;											// on définit la hauteur max observer actuellement par l'obs
 			int nbBatiment = 0 ;											// on définit le nombre de batiment actuellement observé par l'obs
@@ -50,10 +50,13 @@ public class Regle6 implements Regle{
 			}
 			//ici nous avons le nombre de batiment observés, la hauteur du batiment le plus grand, sa distance avec l'observateur.
 			//et surtout nous savons si des batiments sont construit apres le batMax
+			
+			System.out.println("unicité "+unicite);
 			if(unicite){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
 				//on se place dans le cas ou il manque un batiment à l'observateur pour compléter sa vue
 				//et ou derriere le batiment de tailleMax
-				if(observateur.getObservateur(Observateur.NORD,abscisse)==nbBatiment-1){
+				System.out.println("obs "+ observateur.getObservateur(Observateur.NORD,abscisse) + " nbB" + (nbBatiment-1));
+				if(observateur.getObservateur(Observateur.NORD,abscisse)==nbBatiment+1){
 					//je prend la case la plus proche constructible
 					for(int ordonnee=1; ordonnee<distanceBatMax && !solve; ordonnee++){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
