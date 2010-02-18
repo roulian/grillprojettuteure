@@ -1,5 +1,7 @@
 package controleur;
 
+import java.awt.Color;
+import java.awt.SystemColor;
 import java.util.Vector;
 
 import regleResolutionLogic.*;
@@ -42,7 +44,8 @@ public class ControleurR {
 				System.out.println(tabRegle.elementAt(i).getClass()+" - solve "+temp);
 			}
 			System.out.println("boucle résolution : solve "+solve);
-		}	
+		}
+		getCtrlM().getCtrlVues().getPanelGrilleDeJeu().refreshGrilleBuffer() ;
 	}
 	
 	

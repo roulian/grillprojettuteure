@@ -67,7 +67,6 @@ public class PanelJeu extends JPanel {
 			jpGrille.setLayout(new GridBagLayout());
 			jpGrille.setBounds(new Rectangle(25, 10, 250, 250));
 		}
-		ctrlV.getCtrlM().commencerPartie(4,1) ;
 		jpGrille.add(ctrlV.getPanelGrilleDeJeu(), null);
 		return jpGrille;
 	}

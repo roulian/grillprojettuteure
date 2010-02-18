@@ -17,6 +17,10 @@ public final class Bat {
 	public static final String NUM5 = "images/num5.PNG" ;
 	public static final String NUM6 = "images/num6.PNG" ;
 	
+	public static final String ROUTEV = "images/routeV.PNG" ;
+	public static final String ROUTEH = "images/routeH.PNG" ;
+	public static final String CARFOU = "images/routeCar.PNG" ;
+	
 	public static String associatO(int pBatiment){
 		if(pBatiment==1)
 			return NUM1 ;

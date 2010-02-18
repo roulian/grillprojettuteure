@@ -14,7 +14,6 @@ import vue.PanelJeu;
 import vue.VuePrincipale;
 
 public class ControleurVues {
-	private int tailleGrille ;
 	private ControleurM ctrlM ;
 	private VuePrincipale vuePrincipal ;
 	private PanelAccueil panelAcceuil = null ;
@@ -26,22 +25,16 @@ public class ControleurVues {
 	
 	public ControleurVues(ControleurM pCtrlM) {
 		ctrlM = pCtrlM ;
-		tailleGrille = ctrlM.getTailleGrille() ;
 		vuePrincipal = new VuePrincipale(this) ;
 		vuePrincipal.setLocationRelativeTo(null) ;
 		vuePrincipal.setVisible(true);
-		panelAcceuil = new PanelAccueil(this);
-		panelAutoGenerer = new PanelAutoGénérer(this);
-		panelGeneration = new PanelGeneration(this);
-		panelChargement = new PanelChargement(this);
-		panelJeu = new PanelJeu(this);
 		
-		switchPanel(panelAcceuil) ;
+		switchPanel(getPanelAcceuil()) ;
 	}
 
 //*********** Accesseur Généraux ***************/
 	public int getTailleGrille() {
-		return tailleGrille;
+		return ctrlM.getTailleGrille();
 	}
 	
 	public ControleurM getCtrlM(){
@@ -50,10 +43,11 @@ public class ControleurVues {
 	
 //*********** Gestion VUE PRINCIPAL ***************/	
 	public void switchPanel(JPanel pPanel){
-		if (pPanel == panelGeneration || pPanel == panelGrilleDeJeu)
-			vuePrincipal.setSize(600, 400) ;
+		if (pPanel == panelGeneration || pPanel == panelGrilleDeJeu || pPanel == panelChargement)
+			vuePrincipal.setSize(500, 400) ;
 		else
 			vuePrincipal.setSize(300, 400) ;
+		
 		vuePrincipal.setContentPane(pPanel) ;
 		vuePrincipal.refreshMenu();
 		vuePrincipal.validate();
@@ -107,8 +101,8 @@ public class ControleurVues {
 	}
 
 	public VuePrincipale getVuePrincipal() {
+		if(vuePrincipal==null)
+			vuePrincipal = new VuePrincipale(this) ;
 		return vuePrincipal;
 	}
-
-	
 }

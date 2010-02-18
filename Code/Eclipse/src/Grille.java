@@ -52,6 +52,7 @@ public class Grille {
 	    		getCase(pAbscisse,i).refreshPossibilite(pBatiment);
 	    		getCase(i,pOrdonnee).refreshPossibilite(pBatiment);
 	    	}
+	    	System.out.println("Absisse : "+pAbscisse+" Ordonne : "+pOrdonnee+" Batiment : "+pBatiment);
 	    	return true ;
     	}
     	else

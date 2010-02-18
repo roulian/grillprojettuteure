@@ -1,7 +1,10 @@
 package vue;
 
 import java.awt.GridBagLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
@@ -61,6 +64,9 @@ public class PanelAccueil extends JPanel {
 		this.add(getJbNouveau(), gridBagConstraints);
 		this.add(getJbCharger(), gridBagConstraints2);
 		this.add(getJbGénérer(), gridBagConstraints5);
+		
+		// test Gif
+//		this.add(new JLabel(new ImageIcon("images/move.gif"))) ;
 		
 		jbNouveau.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
