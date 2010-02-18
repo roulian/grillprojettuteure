@@ -7,9 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controleur.ControleurVues;
+
+import vue.OptionAPropos;
+import vue.DialogRegles;
 
 public class VuePrincipale extends JFrame
 {
@@ -22,6 +26,7 @@ public class VuePrincipale extends JFrame
 	private JMenu jFicher ;
 	private JMenu jAide ;
 	private JMenu jAutre ;
+	private DialogRegles DialogRegles ;
 	
 	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
@@ -91,8 +96,18 @@ public class VuePrincipale extends JFrame
 		menu.add(jAutre);
 		itemTemp = new JMenuItem("Règles");
 		jAutre.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				DialogRegles = new DialogRegles((VuePrincipale.this));
+			}
+		});
 		itemTemp = new JMenuItem("A propos");
 		jAutre.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Jeux GRILL\nVersion 0.5\nCopyright © IUT Toulouse II Blagnac\nDéveloppé en Java", "A propos de Jeux GRILL", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		// fin menu
 		
 		
