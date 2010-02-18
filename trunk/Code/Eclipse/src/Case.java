@@ -35,6 +35,21 @@ public class Case {
     	return constructible ;
     }
     
+    public boolean isCaseConst(){
+    	return (possibilite.size() != 0) ;
+    }
+    
+    public int tailleMaxBatConst(){
+    	int lenght = possibilite.size() ;
+    	int batTemp = 0;
+    	for(int i=0; i<lenght; i++){
+    		if(possibilite.elementAt(i)>batTemp){
+    			batTemp = possibilite.elementAt(i) ;
+    		}
+    	}
+    	return batTemp ;
+    }
+    
     public void construire(int pBat){
     	batiment = pBat ;
     	possibilite = new Vector<Integer>() ;

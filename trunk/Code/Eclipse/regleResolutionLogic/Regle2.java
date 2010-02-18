@@ -33,11 +33,11 @@ public class Regle2 implements Regle{
 			for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
 //				si le vector ne contient qu'un élément on le construit
 				if(grille.getCase(abscisse,ordonnee).getPossibilite().size()==1){
-					System.out.println("--------- appel regle 2 --------");
-					System.out.print("abs : "+abscisse);
-					System.out.print(" ord : "+ordonnee);
-					System.out.print(" siz : "+grille.getCase(abscisse,ordonnee).getPossibilite().size());
-					System.out.println(" bat : "+grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(0));
+//					System.out.println("--------- appel regle 2 --------");
+//					System.out.print("abs : "+abscisse);
+//					System.out.print(" ord : "+ordonnee);
+//					System.out.print(" siz : "+grille.getCase(abscisse,ordonnee).getPossibilite().size());
+//					System.out.println(" bat : "+grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(0));
 					solve = grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(0));
 				}
 			}

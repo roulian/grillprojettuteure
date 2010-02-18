@@ -76,9 +76,6 @@ public class ControleurM {
 //		pour résoudre une grille c'est comme ça =) 
 		ctrlRegl = new ControleurR(this) ;
 		ctrlRegl.applyRegle() ;
-		ctrlRegl.applyRegle() ;
-		ctrlRegl.applyRegle() ;
-		ctrlRegl.applyRegle() ;
 	}
 
 	//******* Accesseur *************/

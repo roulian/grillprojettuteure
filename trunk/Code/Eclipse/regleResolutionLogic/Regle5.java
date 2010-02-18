@@ -21,7 +21,7 @@ public class Regle5 implements Regle{
 	// l'algo est assez "complex" niveau temps d'execution... a voir si on ne peut pas simplifier
 	public boolean resolve() {
 		boolean solve = false ;
-		refreshBuffer();
+//		refreshBuffer();
 		//on parcour les casses de la grille
 		for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
 			for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
@@ -33,7 +33,7 @@ public class Regle5 implements Regle{
 				}
 			}
 		}
-		applyResolve() ;
+//		applyResolve() ;
 		return solve ;
 	}
 
