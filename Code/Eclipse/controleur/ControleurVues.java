@@ -55,7 +55,7 @@ public class ControleurVues {
 
 //*********** Partie Grille de jeu ***************/
 	public void refreshGrilleDeJeu(){
-		panelGrilleDeJeu.refreshGrilleBuffer() ;
+		panelGrilleDeJeu.refreshGrilleDisplay() ;
 	}
 	
 //	public void refreshGrilleDeJeu(int abscisse, int ordonnee){

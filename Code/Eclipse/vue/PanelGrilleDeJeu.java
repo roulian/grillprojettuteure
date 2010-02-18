@@ -45,35 +45,30 @@ public class PanelGrilleDeJeu extends JPanel {
 		//gestion de l'observateur NORD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.NORD,i+1)))));
+			add(new JLabel(new ImageIcon(Bat.associatNB(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.NORD,i+1)))));
 		add(new JLabel(""));
 		//gestion de l'observateur OUEST, de la grille et de l'observateur EST
 		for (int i=0 ; i<lenght ; i++){
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.OUEST,i+1)))));
+			add(new JLabel(new ImageIcon(Bat.associatNB(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.OUEST,i+1)))));
 			for (int j=0 ; j<lenght ; j++){
 				add(affGrille[i][j]);
 			}
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.EST,i+1)))));
+			add(new JLabel(new ImageIcon(Bat.associatNB(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.EST,i+1)))));
 		}
 		//gestion de l'observateur SUD
 		add(new JLabel(""));
 		for (int i=0 ; i<lenght ; i++)
-			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i+1)))));
+			add(new JLabel(new ImageIcon(Bat.associatNB(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i+1)))));
 		add(new JLabel(""));
 		
-		refreshGrilleBuffer() ;
+		refreshGrilleDisplay() ;
 	}
 	
-	public void refreshGrilleBuffer(){
+	public void refreshGrilleDisplay(){
 		int lenght = ctrlV.getTailleGrille() ;
 		for (int i=0 ; i<lenght ; i++){
-			for (int j=0 ; j<lenght ; j++){
-//				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
-//				if(ctrlV.getCtrlM().GetGameStart()){
-					affGrille[i][j].setIcon(new ImageIcon(Bat.associatB(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
-//					affGrille[i][j].setText(vecpo(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getPossibilite())+"") ;
-//				}
-			}
+			for (int j=0 ; j<lenght ; j++)
+				affGrille[i][j].setIcon(new ImageIcon(Bat.associatNC(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
 		}
 		validate();
 		

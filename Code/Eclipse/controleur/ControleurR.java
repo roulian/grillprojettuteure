@@ -45,7 +45,7 @@ public class ControleurR {
 			}
 			System.out.println("boucle résolution : solve "+solve);
 		}
-		getCtrlM().getCtrlVues().getPanelGrilleDeJeu().refreshGrilleBuffer() ;
+		getCtrlM().getCtrlVues().getPanelGrilleDeJeu().refreshGrilleDisplay() ;
 	}
 	
 	

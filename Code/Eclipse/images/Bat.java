@@ -29,7 +29,7 @@ public final class Bat {
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
 	
-	public static String associatO(int pBatiment){
+	public static String associatNC(int pBatiment){
 		if(pBatiment==1)
 			return NUM1 ;
 		else{
@@ -56,7 +56,34 @@ public final class Bat {
 		}
 	}
 	
-	public static String associatB(int pBatiment){
+	public static String associatNB(int pBatiment){
+		if(pBatiment==1)
+			return NUB1 ;
+		else{
+			if(pBatiment==2)
+				return NUB2 ;
+			else{
+				if(pBatiment==3)
+					return NUB3 ;
+				else{
+					if(pBatiment==4)
+						return NUB4 ;
+					else{
+						if(pBatiment==5)
+							return NUB5 ;
+						else{
+							if(pBatiment==6)
+								return NUB6 ;
+							else
+								return NUB0 ;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public static String associatBA(int pBatiment){
 		if(pBatiment==1)
 			return BAT1 ;
 		else{
