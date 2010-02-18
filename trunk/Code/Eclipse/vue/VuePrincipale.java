@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import controleur.ControleurVues;
 
-import vue.OptionAPropos;
 import vue.DialogRegles;
 
 public class VuePrincipale extends JFrame
