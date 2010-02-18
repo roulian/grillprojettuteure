@@ -18,8 +18,7 @@ public class ControleurM {
 		laGrille = null ;
 		observateur = null ;
 		difficulte = 0 ;
-		tailleGrille = 4 ;
-		
+		tailleGrille = 0 ;
 		ctrlVues = new ControleurVues(this) ;
 	}
 	

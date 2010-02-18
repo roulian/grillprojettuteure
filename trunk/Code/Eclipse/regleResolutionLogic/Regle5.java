@@ -9,6 +9,7 @@ public class Regle5 implements Regle{
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
+	private boolean isResolveOnce = false ;
 	
 	public Regle5(ControleurR pCtrlR){
 		ctrlR = pCtrlR ;
@@ -20,21 +21,30 @@ public class Regle5 implements Regle{
 	// on applique la loi bmax = m - n + d au vecteur de possibilité des batiments
 	// l'algo est assez "complex" niveau temps d'execution... a voir si on ne peut pas simplifier
 	public boolean resolve() {
-		boolean solve = false ;
-//		refreshBuffer();
-		//on parcour les casses de la grille
-		for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
-			for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
-				int hauteurMax = minBMax(abscisse, ordonnee) ;
-				if (hauteurMax<tailleGrille){
-					for (int i=hauteurMax ; i<tailleGrille ; i++){
-						solve = grille.getCase(abscisse,ordonnee).refreshPossibilite(i+1) ;
+		if(!isResolveOnce){
+			boolean solve = false ;
+	//		refreshBuffer();
+			//on parcour les casses de la grille
+			for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
+				for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
+					int hauteurMax = minBMax(abscisse, ordonnee) ;
+					if (hauteurMax<tailleGrille){
+						System.out.print("abscisse "+abscisse+" ordonnee "+ordonnee+" refresh : ");
+						for (int i=hauteurMax ; i<tailleGrille ; i++){
+							System.out.print(" "+(i+1)+",");
+							solve = grille.getCase(abscisse,ordonnee).refreshPossibilite(i+1) ;
+							isResolveOnce = isResolveOnce || solve ;
+						}
+						System.out.println();
 					}
 				}
 			}
+	//		applyResolve() ;
+			return solve ;
 		}
-//		applyResolve() ;
-		return solve ;
+		else{
+			return (!isResolveOnce) ;
+		}
 	}
 
 	public void refreshBuffer() {

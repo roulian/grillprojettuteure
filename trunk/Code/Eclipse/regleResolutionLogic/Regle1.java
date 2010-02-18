@@ -28,19 +28,19 @@ public class Regle1 implements Regle{
 		refreshBuffer() ;
 		for(int i=1; i<=4; i++){
 			if(observateur.getObservateur(Observateur.NORD,i)==1)	
-				solve = grille.construire(i,1,tailleGrille) ; 
+				solve = solve || grille.construire(i,1,tailleGrille) ; 
 		}
 		for(int i=1; i<=4; i++){
 			if(observateur.getObservateur(Observateur.SUD,i)==1)
-				solve = grille.construire(i,tailleGrille,tailleGrille); 
+				solve = solve || grille.construire(i,tailleGrille,tailleGrille); 
 		}
 		for(int i=1; i<=4; i++){
 			if(observateur.getObservateur(Observateur.EST,i)==1)
-				solve = grille.construire(tailleGrille,i,tailleGrille);
+				solve = solve || grille.construire(tailleGrille,i,tailleGrille);
 		}
 		for(int i=1; i<=4; i++){
 			if(observateur.getObservateur(Observateur.OUEST,i)==1)
-				solve = grille.construire(1,i,tailleGrille);
+				solve = solve || grille.construire(1,i,tailleGrille);
 		}
 		applyResolve() ;
 		return solve ;

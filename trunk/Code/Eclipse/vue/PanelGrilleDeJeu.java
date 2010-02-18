@@ -33,25 +33,13 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				JLabel tempLabel = new JLabel();
-				
-				tempLabel.setIcon(new ImageIcon(Bat.BLANC)) ;
-				tempLabel.addMouseListener(new java.awt.event.MouseListener() {
-					public void mouseClicked(MouseEvent arg0) {
-//						Comment récup le label courant...
-//						avec des parametre en entré
-//						JLabel.this.tempLabel.setText(tempLabel.getText()+"1");
-					}
-					public void mouseEntered(MouseEvent arg0) {}
-					public void mouseExited(MouseEvent arg0) {}
-					public void mousePressed(MouseEvent arg0) {}
-					public void mouseReleased(MouseEvent arg0) {}
-				});
+				tempLabel.setIcon(new ImageIcon(Bat.NUM0)) ;
 				affGrille[i][j] = tempLabel ;
 			}
 		}
-		refreshGrilleBuffer() ; 
 		
-		GridLayout gridLayout = new GridLayout(ctrlV.getTailleGrille()+2,ctrlV.getTailleGrille()+2);
+		int JGTaille = ctrlV.getTailleGrille() + 2 ; //+(ctrlV.getTailleGrille()+1) ;
+		GridLayout gridLayout = new GridLayout(JGTaille,JGTaille);
 		this.setLayout(gridLayout);
 		
 		//gestion de l'observateur NORD
@@ -73,7 +61,7 @@ public class PanelGrilleDeJeu extends JPanel {
 			add(new JLabel(new ImageIcon(Bat.associatO(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i+1)))));
 		add(new JLabel(""));
 		
-//		refreshGrilleBuffer(1,1) ;
+		refreshGrilleBuffer() ;
 	}
 	
 	public void refreshGrilleBuffer(){
@@ -81,11 +69,14 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 //				affGrille[i][j].setText(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+"") ;
-				affGrille[i][j].setIcon(new ImageIcon(Bat.associatB(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
-				affGrille[i][j].setText(vecpo(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getPossibilite())+"") ;
+//				if(ctrlV.getCtrlM().GetGameStart()){
+					affGrille[i][j].setIcon(new ImageIcon(Bat.associatB(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
+//					affGrille[i][j].setText(vecpo(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getPossibilite())+"") ;
+//				}
 			}
 		}
 		validate();
+		
 	}
 	
 //	public void refreshGrilleBuffer(int abscisse,int ordonnee){
