@@ -17,6 +17,14 @@ public final class Bat {
 	public static final String NUM5 = "images/num5.PNG" ;
 	public static final String NUM6 = "images/num6.PNG" ;
 	
+	public static final String NUB0 = "images/numB0.PNG" ;
+	public static final String NUB1 = "images/numB1.PNG" ;
+	public static final String NUB2 = "images/numB2.PNG" ;
+	public static final String NUB3 = "images/numB3.PNG" ;
+	public static final String NUB4 = "images/numB4.PNG" ;
+	public static final String NUB5 = "images/numB5.PNG" ;
+	public static final String NUB6 = "images/numB6.PNG" ;
+	
 	public static final String ROUTEV = "images/routeV.PNG" ;
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
