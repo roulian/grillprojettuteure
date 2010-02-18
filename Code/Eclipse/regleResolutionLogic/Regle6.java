@@ -17,21 +17,12 @@ public class Regle6 implements Regle{
 		tailleGrille = grille.getTailleGrille();
 	}
 
-	public void refreshBuffer() {
-		observateur = ctrlR.getObservateur() ;
-		grille = ctrlR.getGrille() ;
-	}
-
-	// il s'agit de placer les batiment 
+	// construit les batiment dans l'ordre croisant depuis l'observateur lorsque ce dernier = taillegrille
 	public boolean resolve() {
 		boolean solve = false ;
-		refreshBuffer() ;
+		
+		// TO DO
+		
 		return solve ;
 	}
-
-	public void applyResolve() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
