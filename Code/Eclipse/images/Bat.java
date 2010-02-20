@@ -1,5 +1,10 @@
 package images;
 
+/**
+ * Classe contenant les constantes contenant les images du projet, ainsi que quelques méthode pour les appeller
+ * @author Andres Gomez Thomas
+ * @version 1.0
+ */
 public final class Bat {
 	public static final String BLANC = "images/blanc.PNG" ;
 	public static final String BAT1 = "images/bat1.PNG" ;
@@ -29,6 +34,12 @@ public final class Bat {
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
 	
+	
+	/**
+	 * accocie un int avec l'image d'un chiffre coloré
+	 * @param pBatiment   un simple int symbolisant le nombre d'étage qu'un batiement comporte
+	 * @return l'adresse phisyque de l'image associé dans un string
+	 */
 	public static String associatNC(int pBatiment){
 		if(pBatiment==1)
 			return NUM1 ;
@@ -56,6 +67,11 @@ public final class Bat {
 		}
 	}
 	
+	/**
+	 * accocie un int avec l'image d'un chiffre en nour et blanc
+	 * @param pBatiment   un simple int symbolisant le nombre d'étage qu'un batiement comporte
+	 * @return l'adresse phisyque de l'image associé dans un string
+	 */
 	public static String associatNB(int pBatiment){
 		if(pBatiment==1)
 			return NUB1 ;
@@ -83,6 +99,11 @@ public final class Bat {
 		}
 	}
 	
+	/**
+	 * accocie un int avec l'image d'un batiment
+	 * @param pBatiment   un simple int symbolisant le nombre d'étage qu'un batiement comporte
+	 * @return l'adresse phisyque de l'image associé dans un string
+	 */
 	public static String associatBA(int pBatiment){
 		if(pBatiment==1)
 			return BAT1 ;

@@ -13,6 +13,10 @@ public class ControleurM {
 	private boolean gameStart;
 	private boolean tricheBouton = false;
 	
+	/**
+	 * constructeur par défaut du controleur Maître
+	 * initialise quelques variables.
+	 */
 	public ControleurM(){
 		gameStart = false ;
 		laGrille = null ;
@@ -22,6 +26,11 @@ public class ControleurM {
 		ctrlVues = new ControleurVues(this) ;
 	}
 	
+	/**
+	 * méthode d'initialisation de partie.
+	 * @param pTaille	     taille de la grille souhaité 
+	 * @param pDifficulte	 dificulté de la grille 
+	 */
 	public void commencerPartie(int pTaille, int pDifficulte){
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
