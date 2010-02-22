@@ -55,6 +55,7 @@ public class VuePrincipale extends JFrame
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : partie rapide");
+				ctrlV.getCtrlM().finirPartie() ;
 				ctrlV.getCtrlM().commencerPartie(4,1) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}

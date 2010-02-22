@@ -14,6 +14,14 @@ public final class Bat {
 	public static final String BAT5 = "images/bat5.png" ;
 	public static final String BAT6 = "images/bat6.png" ;
 	
+	public static final String BLANCANIM = "images/blancAnim.PNG" ;
+	public static final String BAT1ANIM = "images/bat1Anim.PNG" ;
+	public static final String BAT2ANIM = "images/bat2Anim.PNG" ;
+	public static final String BAT3ANIM = "images/bat3Anim.PNG" ;
+	public static final String BAT4ANIM = "images/bat4Anim.png" ;
+	public static final String BAT5ANIM = "images/bat5Anim.png" ;
+	public static final String BAT6ANIM = "images/bat6Anim.png" ;
+	
 	public static final String NUM0 = "images/num0.PNG" ;
 	public static final String NUM1 = "images/num1.PNG" ;
 	public static final String NUM2 = "images/num2.PNG" ;
@@ -33,8 +41,6 @@ public final class Bat {
 	public static final String ROUTEV = "images/routeV.PNG" ;
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
-	
-	public static final String BANIM = "images/blancAnim.PNG" ;
 	
 	
 	/**
@@ -72,7 +78,7 @@ public final class Bat {
 	/**
 	 * accocie un int avec l'image d'un chiffre en nour et blanc
 	 * @param pBatiment   un simple int symbolisant le nombre d'étage qu'un batiement comporte
-	 * @return l'adresse phisyque de l'image associé dans un string
+	 * @return l'adresse physique de l'image associé dans un string
 	 */
 	public static String associatNB(int pBatiment){
 		if(pBatiment==1)
@@ -131,5 +137,29 @@ public final class Bat {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * accocie une image avec sa version encadre et réciproquement
+	 * @param string
+	 * @return string
+	 */
+	public static String switchToAnimatBatIcon(int pIcon){
+		String newIcon = BLANC;
+		if(pIcon == 0)
+			newIcon = BLANCANIM ;
+		if(pIcon == 1)
+			newIcon = BAT1ANIM ;
+		if(pIcon == 2)
+			newIcon = BAT2ANIM ;
+		if(pIcon == 3)
+			newIcon = BAT3ANIM ;
+		if(pIcon == 4)
+			newIcon = BAT4ANIM ;
+		if(pIcon == 5)
+			newIcon = BAT5ANIM ;
+		if(pIcon == 6)
+			newIcon = BAT6ANIM ;
+		return newIcon ;
 	}
 }

@@ -44,23 +44,43 @@ public class ControleurM {
 		laGrille = new Grille(tailleGrille) ;
 		int[][] obsTemp = new int[4][4] ;
 		
-		obsTemp[Observateur.NORD][0] = 2;
-		obsTemp[Observateur.NORD][1] = 3;
-		obsTemp[Observateur.NORD][2] = 1;
-		obsTemp[Observateur.NORD][3] = 2;
-		obsTemp[Observateur.EST][0] = 2;
-		obsTemp[Observateur.EST][1] = 3;
-		obsTemp[Observateur.EST][2] = 3;
-		obsTemp[Observateur.EST][3] = 1;
-		obsTemp[Observateur.SUD][0] = 2;
-		obsTemp[Observateur.SUD][1] = 2;
-		obsTemp[Observateur.SUD][2] = 3;
-		obsTemp[Observateur.SUD][3] = 1;
-		obsTemp[Observateur.OUEST][0] = 3;
-		obsTemp[Observateur.OUEST][1] = 1;
-		obsTemp[Observateur.OUEST][2] = 2;
-		obsTemp[Observateur.OUEST][3] = 2;
-		observateur = new Observateur(obsTemp);
+		observateur = new Observateur() ;
+		
+//		obsTemp[Observateur.NORD][0] = 2;
+//		obsTemp[Observateur.NORD][1] = 3;
+//		obsTemp[Observateur.NORD][2] = 1;
+//		obsTemp[Observateur.NORD][3] = 2;
+//		obsTemp[Observateur.EST][0] = 2;
+//		obsTemp[Observateur.EST][1] = 3;
+//		obsTemp[Observateur.EST][2] = 3;
+//		obsTemp[Observateur.EST][3] = 1;
+//		obsTemp[Observateur.SUD][0] = 2;
+//		obsTemp[Observateur.SUD][1] = 2;
+//		obsTemp[Observateur.SUD][2] = 3;
+//		obsTemp[Observateur.SUD][3] = 1;
+//		obsTemp[Observateur.OUEST][0] = 3;
+//		obsTemp[Observateur.OUEST][1] = 1;
+//		obsTemp[Observateur.OUEST][2] = 2;
+//		obsTemp[Observateur.OUEST][3] = 2;
+//		observateur = new Observateur(obsTemp);
+		
+//		obsTemp[Observateur.NORD][0] = 4;
+//		obsTemp[Observateur.NORD][1] = 0;
+//		obsTemp[Observateur.NORD][2] = 3;
+//		obsTemp[Observateur.NORD][3] = 1;
+//		obsTemp[Observateur.EST][0] = 4;
+//		obsTemp[Observateur.EST][1] = 0;
+//		obsTemp[Observateur.EST][2] = 0;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.SUD][0] = 1;
+//		obsTemp[Observateur.SUD][1] = 0;
+//		obsTemp[Observateur.SUD][2] = 0;
+//		obsTemp[Observateur.SUD][3] = 4;
+//		obsTemp[Observateur.OUEST][0] = 0;
+//		obsTemp[Observateur.OUEST][1] = 0;
+//		obsTemp[Observateur.OUEST][2] = 0;
+//		obsTemp[Observateur.OUEST][3] = 0;
+//		observateur = new Observateur(obsTemp);
 		
 //		obsTemp[Observateur.NORD][0] = 1;
 //		obsTemp[Observateur.NORD][1] = 2;
@@ -84,6 +104,8 @@ public class ControleurM {
 	public void finirPartie(){
 		laGrille = null ;
 		observateur = null ;
+		ctrlVues.reinitialisePanelGrilleDeJeu();
+		ctrlVues.reinitialisePanelJeu() ;
 	}
 
 	//******* Résolution de la Grille ********/

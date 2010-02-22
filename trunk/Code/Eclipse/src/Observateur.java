@@ -20,11 +20,11 @@ public class Observateur {
 		for (int i=0; i<4; i++)
 			observateur[NORD][i] = (int)(Math.random()*4+1);
 		for (int i=0; i<4; i++)
-			observateur[SUD][i] = 0;
+			observateur[SUD][i] = (int)(Math.random()*4+1);
 		for (int i=0; i<4; i++)
-			observateur[EST][i] = 0;
+			observateur[EST][i] = (int)(Math.random()*4+1);
 		for (int i=0; i<4; i++)
-			observateur[OUEST][i] = 0;		
+			observateur[OUEST][i] = (int)(Math.random()*4+1);		
     }
     public Observateur(int[][] pObs) {
     	observateur = pObs ;
