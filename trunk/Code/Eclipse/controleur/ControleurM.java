@@ -13,7 +13,9 @@ public class ControleurM {
 	private ControleurVues ctrlVues ;
 	private ControleurR ctrlRegl;
 	private boolean gameStart;
-	private boolean tricheBouton = false;
+	private boolean tricheBouton = false ;
+	private boolean aideTrouver = false ;
+	private boolean aideErreur = false ;
 	
 	/**
 	 * constructeur par défaut du controleur Maître
@@ -88,6 +90,19 @@ public class ControleurM {
 		ctrlRegl.applyRegle() ;
 	}
 
+	//******* Gestion des booleen de triche ******/
+	public void tricheBouton(){
+		tricheBouton = !tricheBouton ;
+	}
+	
+	public void aideTrouver(){
+		aideTrouver = !aideTrouver ;
+	}
+	
+	public void aideErreur(){
+		aideErreur = !aideErreur ;
+	}
+	
 	//******* Accesseur *************/
 	public Grille getLaGrille() {
 		return laGrille;
@@ -107,6 +122,14 @@ public class ControleurM {
 
 	public boolean isTricheBouton() {
 		return tricheBouton;
+	}
+	
+	public boolean isAideTrouver(){
+		return aideTrouver ;
+	}
+	
+	public boolean isAideErreur(){
+		return aideErreur ;
 	}
 
 	public int getThisObs(int pCardinal,int pPosition){
