@@ -58,9 +58,9 @@ public class ControleurVues {
 		panelGrilleDeJeu.refreshGrilleDisplay() ;
 	}
 	
-//	public void refreshGrilleDeJeu(int abscisse, int ordonnee){
-//		panelGrilleDeJeu.refreshGrilleBuffer(abscisse, ordonnee) ;
-//	}
+	public void refreshGrilleDeJeu(int pAbscisse, int pOrdonnee, String pImBat){
+		panelGrilleDeJeu.refreshGrilleDisplay(pAbscisse, pOrdonnee, pImBat) ;
+	}
 
 	
 //*********** Accesseur des PANELS ***************/

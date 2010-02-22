@@ -116,6 +116,15 @@ public class VuePrincipale extends JFrame
 				System.out.println(" "+ctrlV.getCtrlM().isTricheBouton());
 			}
 		});
+		itemTemp = new JMenuItem("Résolution grille");
+		jAide.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.print("--> onglet : Resolution grille");
+				ctrlV.getCtrlM().resolve() ;
+				ctrlV.refreshGrilleDeJeu() ;
+			}
+		});
 			
 		jAutre = new JMenu("?");
 		menu.add(jAutre);
@@ -134,7 +143,6 @@ public class VuePrincipale extends JFrame
 			}
 		});
 		// fin menu
-		
 		
 		
 		JMenu debug = new JMenu("DEBUG");
