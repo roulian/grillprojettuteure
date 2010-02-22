@@ -1,5 +1,7 @@
 package controleur;
 
+import java.util.Vector;
+
 import src.Grille;
 import src.Observateur;
 
@@ -107,11 +109,31 @@ public class ControleurM {
 		return tricheBouton;
 	}
 
+	public int getThisObs(int pCardinal,int pPosition){
+		return observateur.getObservateur(pCardinal, pPosition) ;
+	}
+	
 	public Observateur getObservateur() {
 		return observateur;
 	}
 
 	public void setLaGrille(Grille laGrille) {
 		this.laGrille = laGrille;
+	}
+	
+	//DEBUGAGE
+	/**
+	 * méthode qui permet de renvoyer un string du contenu du vecteur de possibilité
+	 * utiliser en Debugage des règles
+	 * @param vector d'integer
+	 * @return contenu du vecteur
+	 */
+	public String vecpo( final Vector<Integer> pt){
+		String ret = "None" ;
+		if (pt.size()!=0){
+			for(int i=0; i<pt.size(); i++)
+				ret = ret + pt.elementAt(i) + "," ;
+		}
+		return ret;
 	}
 }
