@@ -2,20 +2,18 @@ package vue;
 
 import images.Bat;
 
-import java.awt.Color;
-import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import src.Observateur;
-
+import sun.awt.RequestFocusController;
 import controleur.ControleurM;
 import controleur.ControleurVues;
 
-public class EcouteurGrille implements MouseListener{
+public class EcouteurGrille implements MouseListener, KeyListener{
 	private ControleurM ctrlM ;
 	private JLabel caseLabel ;
 	private ImageIcon prevIcon ;
@@ -47,6 +45,7 @@ public class EcouteurGrille implements MouseListener{
 	public void mouseEntered(MouseEvent e) {
 		prevIcon = (ImageIcon) caseLabel.getIcon() ;
 		caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
+		caseLabel.requestFocus();	// nécessaire pour le Keylistener
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
@@ -54,8 +53,26 @@ public class EcouteurGrille implements MouseListener{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {}
+	public void mousePressed(MouseEvent e){ }
 	@Override
-	public void mouseReleased(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e){ }
+
+	@Override
+	public void keyPressed(KeyEvent e){ }
+
+	@Override
+	public void keyReleased(KeyEvent e){ }
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		System.out.println("abs:"+abscisse+" ord:"+ordonnee+" KeyPressed:"+e.getKeyChar());
+		if(e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'
+			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'){
+			int temp = Integer.parseInt(e.getKeyChar()+"") ;
+			ctrlM.getLaGrille().construire(abscisse,ordonnee,temp) ;
+			ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+			prevIcon = new ImageIcon(Bat.associatBA(temp));
+		}
+	}
 
 }
