@@ -4,6 +4,7 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+// A FIIIIIIIINIIIIIIIIIIIR
 public class Regle4 implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;

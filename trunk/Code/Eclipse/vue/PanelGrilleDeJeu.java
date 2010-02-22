@@ -91,14 +91,26 @@ public class PanelGrilleDeJeu extends JPanel {
 		refreshGrilleDisplay() ;
 	}
 	
+	public void refreshGrilleDisplay(int pAbscisse, int pOrdonnee, String pImBat){
+		if(pImBat==null)
+			pImBat = Bat.associatBA(ctrlV.getCtrlM().getLaGrille().getCase(pAbscisse,pOrdonnee).getBatiment()) ;
+		affGrille[pOrdonnee-1][pAbscisse-1].setIcon(new ImageIcon(pImBat)) ;		
+		validate();
+	}
+	
 	/**
 	 * méthode qui permet d'afficher les batiments de la grille selon leur taille
 	 */
 	public void refreshGrilleDisplay(){
 		int lenght = ctrlV.getTailleGrille() ;
+		System.out.println("appel de refresGrilleDisplay");
 		for (int i=0 ; i<lenght ; i++){
-			for (int j=0 ; j<lenght ; j++)
+			for (int j=0 ; j<lenght ; j++){
+				System.out.print("abs"+(j+1));
+				System.out.print(" ord"+(i+1));
+				System.out.println(" bat"+ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment());
 				affGrille[i][j].setIcon(new ImageIcon(Bat.associatBA(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
+			}
 		}
 		validate();
 	}
