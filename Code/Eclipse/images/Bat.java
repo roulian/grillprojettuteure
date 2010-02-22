@@ -34,6 +34,8 @@ public final class Bat {
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
 	
+	public static final String BANIM = "images/blancAnim.PNG" ;
+	
 	
 	/**
 	 * accocie un int avec l'image d'un chiffre coloré

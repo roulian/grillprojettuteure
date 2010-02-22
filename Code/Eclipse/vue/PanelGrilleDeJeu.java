@@ -84,6 +84,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				panelGrille.add(affGrille[i][j]);	// passe la référense du label au panel
+				affGrille[i][j].addMouseListener(new EcouteurGrille(ctrlV,affGrille[i][j],j+1,i+1)) ;
 			}
 		}
 		
@@ -100,19 +101,6 @@ public class PanelGrilleDeJeu extends JPanel {
 				affGrille[i][j].setIcon(new ImageIcon(Bat.associatBA(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
 		}
 		validate();
-	}
-	
-	/**
-	 * méthode qui permet de renvoyer un string du contenu du vecteur de possibilité
-	 * utiliser en Debugage des règles
-	 * @param vector d'integer
-	 * @return contenu du vecteur
-	 */
-	private String vecpo( final Vector<Integer> pt){
-		String ret = "" ;
-		for(int i=0; i<pt.size(); i++)
-			ret = ret + pt.elementAt(i) ;
-		return ret;
 	}
 	
 	/**
