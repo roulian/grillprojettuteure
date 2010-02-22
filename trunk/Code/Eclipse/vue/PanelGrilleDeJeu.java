@@ -84,7 +84,9 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				panelGrille.add(affGrille[i][j]);	// passe la référense du label au panel
-				affGrille[i][j].addMouseListener(new EcouteurGrille(ctrlV,affGrille[i][j],j+1,i+1)) ;
+				EcouteurGrille listenCase = new EcouteurGrille(ctrlV,affGrille[i][j],j+1,i+1) ;
+				affGrille[i][j].addMouseListener(listenCase) ;
+				affGrille[i][j].addKeyListener(listenCase) ;
 			}
 		}
 		
