@@ -45,6 +45,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : Nouvelle partie");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAutoGenerer()) ;
 			}
 		});
@@ -53,6 +54,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().commencerPartie(4,1) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
@@ -62,6 +64,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : Charger");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelChargement()) ;
 			}
 		});
@@ -70,6 +73,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : Retour Menu");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAcceuil()) ;
 			}
 		});
@@ -78,6 +82,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : Quitter");
 				System.exit(0);
 			}
 		});
@@ -86,10 +91,31 @@ public class VuePrincipale extends JFrame
 		menu.add(jAide);
 		itemTemp = new JMenuItem("Aide visuelle trouver");
 		jAide.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.print("--> onglet : Aide visuelle trouver");
+				ctrlV.getCtrlM().aideTrouver() ;
+				System.out.println(" "+ctrlV.getCtrlM().isAideTrouver());
+			}
+		});
 		itemTemp = new JMenuItem("Aide visuelle erreur");
 		jAide.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.print("--> onglet : Aide visuelle erreur");
+				ctrlV.getCtrlM().aideErreur() ;
+				System.out.println(" "+ctrlV.getCtrlM().isAideErreur());
+			}
+		});
 		itemTemp = new JMenuItem("Mode triche");
 		jAide.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.print("--> onglet : Mode triche");
+				ctrlV.getCtrlM().tricheBouton() ;
+				System.out.println(" "+ctrlV.getCtrlM().isTricheBouton());
+			}
+		});
 			
 		jAutre = new JMenu("?");
 		menu.add(jAutre);
