@@ -58,7 +58,15 @@ public class Regle4 implements Regle{
 							solveN = solveN || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
 					}
-				}	
+				}
+				
+				if(observateur.getObservateur(Observateur.NORD,abscisse)==(tailleGrille-nbBatiment)){
+					for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
+						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
+							solveN = solveN || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+						}
+					}
+				}
 			}
 		}
 		
@@ -95,7 +103,15 @@ public class Regle4 implements Regle{
 							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
 					}
-				}	
+				}
+				
+				if(observateur.getObservateur(Observateur.SUD,abscisse)==(tailleGrille-nbBatiment)){
+					for(int ordonnee=tailleGrille; ordonnee>=1; ordonnee--){
+						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
+							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+						}
+					}
+				}
 			}
 		}
 		
@@ -127,12 +143,20 @@ public class Regle4 implements Regle{
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.EST,ordonnee)==nbBatiment+1){
 					//je prend la case la plus proche constructible
-					for(int abscisse=tailleGrille; abscisse>tailleGrille-distanceBatMax && !solveS; abscisse--){
+					for(int abscisse=tailleGrille; abscisse>tailleGrille-distanceBatMax && !solveE; abscisse--){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+							solveE = solveE || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
 					}
-				}	
+				}
+				
+				if(observateur.getObservateur(Observateur.EST,ordonnee)==(tailleGrille-nbBatiment)){
+					for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
+						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
+							solveE = solveE || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+						}
+					}
+				}
 			}
 		}
 		
@@ -164,12 +188,20 @@ public class Regle4 implements Regle{
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==nbBatiment+1){
 					//je prend la case la plus proche constructible
-					for(int abscisse=1; abscisse<distanceBatMax && !solveN; abscisse++){
+					for(int abscisse=1; abscisse<distanceBatMax && !solveO; abscisse++){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveN = solveN || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+							solveO = solveO || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
 					}
-				}	
+				}
+				
+				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==(tailleGrille-nbBatiment)){
+					for(int abscisse=tailleGrille; abscisse>=1; abscisse--){
+						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
+							solveO = solveO || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
+						}
+					}
+				}
 			}
 		}
 		

@@ -52,6 +52,14 @@ public class ControleurVues {
 		vuePrincipal.refreshMenu();
 		vuePrincipal.validate();
 	}
+	
+	public void reinitialisePanelGrilleDeJeu(){
+		panelGrilleDeJeu = null ;
+	}
+	
+	public void reinitialisePanelJeu(){
+		panelJeu = null ;
+	}
 
 //*********** Partie Grille de jeu ***************/
 	public void refreshGrilleDeJeu(){

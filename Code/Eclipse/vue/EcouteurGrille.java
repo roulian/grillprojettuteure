@@ -2,6 +2,8 @@ package vue;
 
 import images.Bat;
 
+import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -44,7 +46,7 @@ public class EcouteurGrille implements MouseListener{
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		prevIcon = (ImageIcon) caseLabel.getIcon() ;
-		caseLabel.setIcon(new ImageIcon(Bat.BANIM)) ;
+		caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
