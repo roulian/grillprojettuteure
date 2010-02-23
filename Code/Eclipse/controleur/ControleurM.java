@@ -15,6 +15,7 @@ public class ControleurM {
 	private boolean gameStart;
 	private boolean tricheBouton = false ;
 	private boolean aideTrouver = false ;
+	private int batAideTrouver ;
 	private boolean aideErreur = false ;
 	
 	/**
@@ -38,14 +39,12 @@ public class ControleurM {
 	public void commencerPartie(int pTaille, int pDifficulte){
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
-		gameStart = true ; // pour l'instant on ne gere pas la fin de partie
-		
+		gameStart = true ;
+		observateur = new Observateur() ;
+
 		// ce code ne sert qu'a tester
 		laGrille = new Grille(tailleGrille) ;
 		int[][] obsTemp = new int[4][4] ;
-		
-		observateur = new Observateur() ;
-		
 //		obsTemp[Observateur.NORD][0] = 2;
 //		obsTemp[Observateur.NORD][1] = 3;
 //		obsTemp[Observateur.NORD][2] = 1;
@@ -101,11 +100,21 @@ public class ControleurM {
 //		observateur = new Observateur(obsTemp); 
 	}
 	
+	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs){
+		tailleGrille = pTaille ;
+		difficulte = pDifficulte ;
+		gameStart = true ;
+		observateur = pObs ;
+		laGrille = new Grille(tailleGrille) ;
+	}
+	
 	public void finirPartie(){
 		laGrille = null ;
 		observateur = null ;
 		ctrlVues.reinitialisePanelGrilleDeJeu();
 		ctrlVues.reinitialisePanelJeu() ;
+		gameStart = false ;
+		ctrlVues.getVuePrincipal().refreshMenu() ;
 	}
 
 	//******* Résolution de la Grille ********/
@@ -121,6 +130,7 @@ public class ControleurM {
 	
 	public void aideTrouver(){
 		aideTrouver = !aideTrouver ;
+		ctrlVues.refreshGrilleDeJeu() ;
 	}
 	
 	public void aideErreur(){
@@ -166,6 +176,14 @@ public class ControleurM {
 
 	public void setLaGrille(Grille laGrille) {
 		this.laGrille = laGrille;
+	}
+	
+	public int getBatAideTrouver() {
+		return batAideTrouver;
+	}
+
+	public void setBatAideTrouver(int batAideTrouver) {
+		this.batAideTrouver = batAideTrouver;
 	}
 	
 	//DEBUGAGE
