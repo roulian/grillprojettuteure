@@ -20,7 +20,17 @@ public class ControleurR {
 		ctrlM = pCtrlM ;
 		grille = ctrlM.getLaGrille() ;
 		observateur = ctrlM.getObservateur();
-		
+		initialise() ;
+	}
+	
+	public ControleurR(ControleurM pCtrlM,Grille pGrille,Observateur pObs){
+		ctrlM = pCtrlM ;
+		grille = pGrille ;
+		observateur = pObs ;
+		initialise() ;
+	}
+	
+	public void initialise(){
 		//définition des regles logiques de résolution dans le tableau de regle
 		tabRegle = new Vector<Regle>() ;
 		//regle "d'optimisation".

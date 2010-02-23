@@ -30,7 +30,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// affichage consol
+		// affichage consoLE
 		System.out.print("Mouse Clicked upon case Abs:"+abscisse+" Ord:"+ordonnee);
 		System.out.print(" -- Batiment:"+ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment());
 		System.out.print(" Possibilite:"+ctrlM.vecpo(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getPossibilite()));
@@ -39,24 +39,33 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 		System.out.print(" Est "+ctrlM.getThisObs(Observateur.EST,ordonnee));
 		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
 		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
+		//gestion du comportement du clic
+		if(ctrlM.isAideTrouver())
+			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;
+		
+		ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		prevIcon = (ImageIcon) caseLabel.getIcon() ;
-		caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
+//		prevIcon = (ImageIcon) caseLabel.getIcon() ;
+//		if(!ctrlM.isAideTrouver())
+//			caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
 		caseLabel.requestFocus();	// nécessaire pour le Keylistener
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-		caseLabel.setIcon(prevIcon) ;
+//		if(!ctrlM.isAideTrouver())
+//			caseLabel.setIcon(prevIcon) ;
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e){ }
 	@Override
 	public void mouseReleased(MouseEvent e){ }
-
+	
+	
+	//PARTIE CLAVIER
 	@Override
 	public void keyPressed(KeyEvent e){ }
 
@@ -69,9 +78,10 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 		if(e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'
 			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'){
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
-			ctrlM.getLaGrille().construire(abscisse,ordonnee,temp) ;
-			ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-			prevIcon = new ImageIcon(Bat.associatBA(temp));
+			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
+				ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+				prevIcon = new ImageIcon(Bat.associatBA(temp));
+			}
 		}
 	}
 

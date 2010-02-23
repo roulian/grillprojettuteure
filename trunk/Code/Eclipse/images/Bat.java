@@ -22,6 +22,14 @@ public final class Bat {
 	public static final String BAT5ANIM = "images/bat5Anim.png" ;
 	public static final String BAT6ANIM = "images/bat6Anim.png" ;
 	
+	public static final String REDSQ = "images/redSquare.PNG" ;
+	public static final String BAT1RED = "images/bat1Red.PNG" ;
+	public static final String BAT2RED = "images/bat2Red.PNG" ;
+	public static final String BAT3RED = "images/bat3Red.PNG" ;
+	public static final String BAT4RED = "images/bat4Red.png" ;
+	public static final String BAT5RED = "images/bat5Red.png" ;
+	public static final String BAT6RED = "images/bat6Red.png" ;
+	
 	public static final String NUM0 = "images/num0.PNG" ;
 	public static final String NUM1 = "images/num1.PNG" ;
 	public static final String NUM2 = "images/num2.PNG" ;
@@ -41,6 +49,8 @@ public final class Bat {
 	public static final String ROUTEV = "images/routeV.PNG" ;
 	public static final String ROUTEH = "images/routeH.PNG" ;
 	public static final String CARFOU = "images/routeCar.PNG" ;
+	
+	
 	
 	
 	/**
@@ -160,6 +170,28 @@ public final class Bat {
 			newIcon = BAT5ANIM ;
 		if(pIcon == 6)
 			newIcon = BAT6ANIM ;
+		return newIcon ;
+	}
+		
+	/**
+	 * accocie une image avec sa version barrer
+	 * @param string
+	 * @return string
+	 */
+	public static String associatRed(int pIcon){
+		String newIcon = REDSQ;
+		if(pIcon == 1)
+			newIcon = BAT1RED ;
+		if(pIcon == 2)
+			newIcon = BAT2RED ;
+		if(pIcon == 3)
+			newIcon = BAT3RED ;
+		if(pIcon == 4)
+			newIcon = BAT4RED ;
+		if(pIcon == 5)
+			newIcon = BAT5RED ;
+		if(pIcon == 6)
+			newIcon = BAT6RED ;
 		return newIcon ;
 	}
 }

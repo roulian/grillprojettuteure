@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import controleur.ControleurVues;
 
+import src.Observateur;
 import vue.DialogRegles;
 
 public class VuePrincipale extends JFrame
@@ -25,6 +26,7 @@ public class VuePrincipale extends JFrame
 	private JMenu jFicher ;
 	private JMenu jAide ;
 	private JMenu jAutre ;
+	private JMenuItem itemReco ;
 	private DialogRegles DialogRegles ;
 	
 	public VuePrincipale(ControleurVues pCtrl){
@@ -40,6 +42,18 @@ public class VuePrincipale extends JFrame
 		//premier menu
 		jFicher = new JMenu("Ficher");
 		menu.add(jFicher);
+		//premier sous menu
+		itemReco = new JMenuItem("Recommencer");
+		jFicher.add(itemReco);
+		itemReco.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				System.out.println("--> onglet : Recommencer");
+				Observateur tempObs = ctrlV.getCtrlM().getObservateur() ;
+				ctrlV.getCtrlM().finirPartie() ;
+				ctrlV.getCtrlM().commencerPartie(4,1,tempObs) ;
+				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
+			}
+		});
 		//premier sous menu
 		itemTemp = new JMenuItem("Nouvelle partie");
 		jFicher.add(itemTemp);
@@ -65,6 +79,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Charger");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelChargement()) ;
 			}
@@ -74,6 +89,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Retour Menu");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAcceuil()) ;
 			}
@@ -83,6 +99,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Quitter");
 				System.exit(0);
 			}
@@ -145,7 +162,6 @@ public class VuePrincipale extends JFrame
 		});
 		// fin menu
 		
-		
 		JMenu debug = new JMenu("DEBUG");
 		menu.add(debug);
 		//premier sous menu
@@ -162,9 +178,11 @@ public class VuePrincipale extends JFrame
 	public void refreshMenu(){
 		if (ctrlV.getCtrlM().GetGameStart()){
 			jAide.setEnabled(true) ;
+			itemReco.setEnabled(true) ;
 		}
 		else{
 			jAide.setEnabled(false) ;
+			itemReco.setEnabled(false) ;
 		}
 	}
 
