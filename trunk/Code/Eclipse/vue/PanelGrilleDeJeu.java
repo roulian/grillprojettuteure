@@ -1,5 +1,8 @@
 package vue;
-import images.Bat;
+import images.GestionIcon;
+import images.IconBat;
+
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,7 +36,8 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				JLabel tempLabel = new JLabel();
-				tempLabel.setIcon(new ImageIcon(Bat.BLANC)) ;	// image vide
+				tempLabel.setBorder(BorderFactory.createEtchedBorder()) ;
+				tempLabel.setIcon(new ImageIcon(IconBat.BLANC)) ;	// image vide
 				affGrille[i][j] = tempLabel ;
 			}
 		}
@@ -69,12 +73,14 @@ public class PanelGrilleDeJeu extends JPanel {
 		//gestion des panels observateurs
 		panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer 
 		panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
+		
+		// gestion du type dobservateur (affichage)
 		for (int i=1 ; i<=lenght ; i++){
 			//dans l'ordre Nord, Est, Sud, Ouest
-			panelObsNord.add(new JLabel(new ImageIcon(Bat.associatNC(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.NORD,i)))));
-			panelObsEst.add(new JLabel(new ImageIcon(Bat.associatNC(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.EST,i)))));
-			panelObsSud.add(new JLabel(new ImageIcon(Bat.associatNC(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i)))));
-			panelObsOuest.add(new JLabel(new ImageIcon(Bat.associatNC(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.OUEST,i)))));
+			panelObsNord.add(new JLabel(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.NORD,i),"obs"))));
+			panelObsEst.add(new JLabel(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.EST,i),"obs"))));
+			panelObsSud.add(new JLabel(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.SUD,i),"obs"))));
+			panelObsOuest.add(new JLabel(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getObservateur().getObservateur(Observateur.OUEST,i),"obs"))));
 		}
 		panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer
 		panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
@@ -93,7 +99,7 @@ public class PanelGrilleDeJeu extends JPanel {
 	
 	public void refreshGrilleDisplay(int pAbscisse, int pOrdonnee, String pImBat){
 		if(pImBat==null)
-			pImBat = Bat.associatBA(ctrlV.getCtrlM().getLaGrille().getCase(pAbscisse,pOrdonnee).getBatiment()) ;
+			pImBat = GestionIcon.getImage(ctrlV.getCtrlM().getLaGrille().getCase(pAbscisse,pOrdonnee).getBatiment(),"bat") ;
 		affGrille[pOrdonnee-1][pAbscisse-1].setIcon(new ImageIcon(pImBat)) ;		
 		validate();
 	}
@@ -102,13 +108,15 @@ public class PanelGrilleDeJeu extends JPanel {
 		refreshGrilleDisplay() ;
 		int lenght = ctrlV.getTailleGrille() ;
 		System.out.println("appel de redlyGrilleDisplay");
+		GestionIcon.switchRedBat() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				if(!ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).estConstrutible(pBat)){
-					affGrille[i][j].setIcon(new ImageIcon(Bat.associatRed(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
+					affGrille[i][j].setIcon(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment(),"bat"))) ;
 				}
 			}
 		}
+		GestionIcon.switchRedBat() ;
 		validate();
 	}
 	
@@ -121,7 +129,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 //				System.out.print("| "+ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()+" ");
-				affGrille[i][j].setIcon(new ImageIcon(Bat.associatBA(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment()))) ;
+				affGrille[i][j].setIcon(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment(),"bat"))) ;
 			}
 //			System.out.println("|");
 		}

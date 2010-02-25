@@ -1,13 +1,19 @@
 package vue;
 
-import images.Bat;
+import images.GestionIcon;
+import images.IconBat;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
+
 import src.Observateur;
 import sun.awt.RequestFocusController;
 import controleur.ControleurM;
@@ -40,23 +46,26 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
 		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
 		//gestion du comportement du clic
-		if(ctrlM.isAideTrouver())
+		if(ctrlM.isAideTrouver()){
 			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;
-		
-		ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+			ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		prevIcon = (ImageIcon) caseLabel.getIcon() ;
-//		if(!ctrlM.isAideTrouver())
+		prevIcon = (ImageIcon) caseLabel.getIcon() ;
+//		if(!ctrlM.isAideTrouver()){
 //			caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
+//		}
+		caseLabel.setBorder(BorderFactory.createEtchedBorder(Color.RED, Color.RED)) ;
 		caseLabel.requestFocus();	// nécessaire pour le Keylistener
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 //		if(!ctrlM.isAideTrouver())
 //			caseLabel.setIcon(prevIcon) ;
+		caseLabel.setBorder(BorderFactory.createEtchedBorder()) ;
 	}
 
 	@Override
@@ -80,7 +89,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
 				ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-				prevIcon = new ImageIcon(Bat.associatBA(temp));
+				prevIcon = new ImageIcon(GestionIcon.getImage(temp,"bat"));
 			}
 		}
 	}

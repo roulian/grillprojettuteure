@@ -14,11 +14,11 @@ public class Grille {
 	Observateur obs ;
 	
     public Grille() {
-    	this(4,new Observateur()) ;
+    	this(4,new Observateur(4)) ;
     }
     
     public Grille(int pTaille){
-    	this(pTaille,new Observateur()) ;
+    	this(pTaille,new Observateur(pTaille)) ;
     }
     
     // dans le diagramme de classe il manque le constructeur de Grille qui permet de "faire" des observateurs !

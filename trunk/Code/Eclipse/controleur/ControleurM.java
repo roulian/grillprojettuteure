@@ -37,14 +37,15 @@ public class ControleurM {
 	 * @param pDifficulte	 dificulté de la grille 
 	 */
 	public void commencerPartie(int pTaille, int pDifficulte){
+		System.out.println("-> appel commencerPartie : taille de la grille:"+pTaille);
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
 		gameStart = true ;
-		observateur = new Observateur() ;
+		observateur = new Observateur(tailleGrille) ;
 
 		// ce code ne sert qu'a tester
 		laGrille = new Grille(tailleGrille) ;
-		int[][] obsTemp = new int[4][4] ;
+//		int[][] obsTemp = new int[4][4] ;
 //		obsTemp[Observateur.NORD][0] = 2;
 //		obsTemp[Observateur.NORD][1] = 3;
 //		obsTemp[Observateur.NORD][2] = 1;
@@ -184,6 +185,14 @@ public class ControleurM {
 
 	public void setBatAideTrouver(int batAideTrouver) {
 		this.batAideTrouver = batAideTrouver;
+	}
+	
+	public int getDifficulte() {
+		return difficulte;
+	}
+
+	public void setDifficulte(int difficulte) {
+		this.difficulte = difficulte;
 	}
 	
 	//DEBUGAGE

@@ -40,7 +40,7 @@ public class VuePrincipale extends JFrame
 		setJMenuBar(menu);
 		JMenuItem itemTemp ;
 		//premier menu
-		jFicher = new JMenu("Ficher");
+		jFicher = new JMenu("Jeux");
 		menu.add(jFicher);
 		//premier sous menu
 		itemReco = new JMenuItem("Recommencer");
@@ -49,8 +49,10 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : Recommencer");
 				Observateur tempObs = ctrlV.getCtrlM().getObservateur() ;
+				int tailleTemp = ctrlV.getCtrlM().getTailleGrille() ; 
+				int difTemp = ctrlV.getCtrlM().getDifficulte() ;
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(4,1,tempObs) ;
+				ctrlV.getCtrlM().commencerPartie(tailleTemp,difTemp,tempObs) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -70,7 +72,7 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(4,1) ;
+				ctrlV.getCtrlM().commencerPartie(5,1) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -150,6 +152,14 @@ public class VuePrincipale extends JFrame
 		jAutre.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				// ne fait rien pour l'instant
+				// permettra de faire un choix de style d'affichage
+			}
+		});
+		itemTemp = new JMenuItem("Règles");
+		jAutre.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
 				DialogRegles = new DialogRegles((VuePrincipale.this));
 			}
 		});
@@ -162,17 +172,18 @@ public class VuePrincipale extends JFrame
 		});
 		// fin menu
 		
-		JMenu debug = new JMenu("DEBUG");
-		menu.add(debug);
-		//premier sous menu
-		itemTemp = new JMenuItem("Nouvelle partie");
-		debug.add(itemTemp);
-		itemTemp.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				ctrlV.getCtrlM().commencerPartie(4,1) ;
-				ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
-			}
-		});
+		// PARTIE DEBUGAGE
+//		JMenu debug = new JMenu("DEBUG");
+//		menu.add(debug);
+//		//premier sous menu
+//		itemTemp = new JMenuItem("Nouvelle partie");
+//		debug.add(itemTemp);
+//		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+//			public void actionPerformed(java.awt.event.ActionEvent e) {
+//				ctrlV.getCtrlM().commencerPartie(4,1) ;
+//				ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
+//			}
+//		});
 	}
 	
 	public void refreshMenu(){
