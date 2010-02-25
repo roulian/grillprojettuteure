@@ -15,17 +15,16 @@ public class Observateur {
 	public static final int OUEST = 3;
 	private int[][] observateur ;
 	
-    public Observateur() {
-		observateur = new int[4][4] ;
-		for (int i=0; i<4; i++)
+    public Observateur(int pTailleGrille) {
+		observateur = new int[4][pTailleGrille] ;
+		for (int i=0; i<pTailleGrille; i++){
 			observateur[NORD][i] = (int)(Math.random()*4+1);
-		for (int i=0; i<4; i++)
 			observateur[SUD][i] = (int)(Math.random()*4+1);
-		for (int i=0; i<4; i++)
 			observateur[EST][i] = (int)(Math.random()*4+1);
-		for (int i=0; i<4; i++)
-			observateur[OUEST][i] = (int)(Math.random()*4+1);		
+			observateur[OUEST][i] = (int)(Math.random()*4+1);
+		}
     }
+    
     public Observateur(int[][] pObs) {
     	observateur = pObs ;
     }
