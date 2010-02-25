@@ -67,13 +67,14 @@ public class PanelJeu extends JPanel {
 	public JPanel getPanelVisuel(){
 		if(aideVisu==null){
 			aideVisu = new JPanel() ;
+			aideVisu.setBorder(BorderFactory.createTitledBorder("Voir mes possibilités...")) ;
 			JLabel tempLabel ;
 			for(int i=0; i<ctrlV.getTailleGrille()+1; i++){
 				tempLabel = new JLabel() ;
 				tempLabel.setIcon(new ImageIcon(GestionIcon.getImage(i,"bat"))) ;
 				tempLabel.setBorder(BorderFactory.createEtchedBorder()) ;
 				
-				tempLabel.addMouseListener(new EcouteAideVisuelle(ctrlV,i));
+				tempLabel.addMouseListener(new EcouteAideVisuelle(ctrlV,tempLabel,i));
 				
 				aideVisu.add(tempLabel) ;
 			}

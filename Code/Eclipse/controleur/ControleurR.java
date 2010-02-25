@@ -63,6 +63,11 @@ public class ControleurR {
 		System.out.println("--> FIN DE RESOLUTION DE LA GRILLE <--");
 	}
 	
+	public void applyRegle(Grille pGrille,Observateur pObservateur){
+		Regle_DistanceMin pRegle = new Regle_DistanceMin(this) ;
+		pRegle.resolve(pGrille,pObservateur) ;
+	}
+	
 	
 	//***********	Accessur ***********//
 	public ControleurM getCtrlM() {

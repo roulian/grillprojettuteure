@@ -130,32 +130,32 @@ public class ControleurM {
 //		observateur = new Observateur(obsTemp);
 		
 		//*********** GRILLE 6x6 *************//
-		int[][] obsTemp = new int[6][6] ;
-		obsTemp[Observateur.NORD][0] = 3;
-		obsTemp[Observateur.NORD][1] = 0;
-		obsTemp[Observateur.NORD][2] = 0;
-		obsTemp[Observateur.NORD][3] = 2;
-		obsTemp[Observateur.NORD][4] = 0;
-		obsTemp[Observateur.NORD][5] = 4;
-		obsTemp[Observateur.EST][0] = 3;
-		obsTemp[Observateur.EST][1] = 0;
-		obsTemp[Observateur.EST][2] = 2;
-		obsTemp[Observateur.EST][3] = 0;
-		obsTemp[Observateur.EST][4] = 5;
-		obsTemp[Observateur.EST][5] = 0;
-		obsTemp[Observateur.SUD][0] = 0;
-		obsTemp[Observateur.SUD][1] = 0;
-		obsTemp[Observateur.SUD][2] = 5;
-		obsTemp[Observateur.SUD][3] = 1;
-		obsTemp[Observateur.SUD][4] = 4;
-		obsTemp[Observateur.SUD][5] = 0;
-		obsTemp[Observateur.OUEST][0] = 3;
-		obsTemp[Observateur.OUEST][1] = 3;
-		obsTemp[Observateur.OUEST][2] = 0;
-		obsTemp[Observateur.OUEST][3] = 4;
-		obsTemp[Observateur.OUEST][4] = 0;
-		obsTemp[Observateur.OUEST][5] = 0;
-		observateur = new Observateur(obsTemp);
+//		int[][] obsTemp = new int[6][6] ;
+//		obsTemp[Observateur.NORD][0] = 3;
+//		obsTemp[Observateur.NORD][1] = 0;
+//		obsTemp[Observateur.NORD][2] = 0;
+//		obsTemp[Observateur.NORD][3] = 2;
+//		obsTemp[Observateur.NORD][4] = 0;
+//		obsTemp[Observateur.NORD][5] = 4;
+//		obsTemp[Observateur.EST][0] = 3;
+//		obsTemp[Observateur.EST][1] = 0;
+//		obsTemp[Observateur.EST][2] = 2;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.EST][4] = 5;
+//		obsTemp[Observateur.EST][5] = 0;
+//		obsTemp[Observateur.SUD][0] = 0;
+//		obsTemp[Observateur.SUD][1] = 0;
+//		obsTemp[Observateur.SUD][2] = 5;
+//		obsTemp[Observateur.SUD][3] = 1;
+//		obsTemp[Observateur.SUD][4] = 4;
+//		obsTemp[Observateur.SUD][5] = 0;
+//		obsTemp[Observateur.OUEST][0] = 3;
+//		obsTemp[Observateur.OUEST][1] = 3;
+//		obsTemp[Observateur.OUEST][2] = 0;
+//		obsTemp[Observateur.OUEST][3] = 4;
+//		obsTemp[Observateur.OUEST][4] = 0;
+//		obsTemp[Observateur.OUEST][5] = 0;
+//		observateur = new Observateur(obsTemp);
 	}
 	
 	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs){
@@ -175,6 +175,7 @@ public class ControleurM {
 		aideErreur = false ;
 		aideTrouver = false ;
 		tricheBouton = false ;
+		batAideTrouver = 0 ;
 		ctrlVues.getVuePrincipal().refreshMenu() ;
 	}
 
@@ -195,6 +196,9 @@ public class ControleurM {
 			aideTrouver = !aideTrouver ;
 			tricheBouton = false ;
 			aideErreur = false ;
+			ControleurR ctrlReglTemp = new ControleurR(this) ;
+			ctrlReglTemp.applyRegle(laGrille, observateur) ;
+			ctrlReglTemp = null ;
 		}
 		if(pLabelTriche.equals("aideErreur")){
 			aideErreur = !aideErreur ;

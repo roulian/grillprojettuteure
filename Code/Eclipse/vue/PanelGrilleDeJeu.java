@@ -74,6 +74,8 @@ public class PanelGrilleDeJeu extends JPanel {
 		panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer 
 		panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
 		
+		//************ LIEE AU JEUX ***********/
+		
 		// gestion du type dobservateur (affichage)
 		for (int i=1 ; i<=lenght ; i++){
 			//dans l'ordre Nord, Est, Sud, Ouest
