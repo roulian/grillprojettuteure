@@ -42,9 +42,12 @@ public class ControleurM {
 		difficulte = pDifficulte ;
 		gameStart = true ;
 		observateur = new Observateur(tailleGrille) ;
-
-		// ce code ne sert qu'a tester
 		laGrille = new Grille(tailleGrille) ;
+
+		// le code ne sert qu'a tester
+		
+		
+		//*********** GRILLE 4x4 *************//
 //		int[][] obsTemp = new int[4][4] ;
 //		obsTemp[Observateur.NORD][0] = 2;
 //		obsTemp[Observateur.NORD][1] = 3;
@@ -99,6 +102,58 @@ public class ControleurM {
 //		obsTemp[Observateur.OUEST][2] = 3;
 //		obsTemp[Observateur.OUEST][3] = 3;
 //		observateur = new Observateur(obsTemp); 
+		
+		//*********** GRILLE 5x5 *************//
+//		int[][] obsTemp = new int[5][5] ;
+//		obsTemp[Observateur.NORD][0] = 5;
+//		obsTemp[Observateur.NORD][1] = 0;
+//		obsTemp[Observateur.NORD][2] = 3;
+//		obsTemp[Observateur.NORD][3] = 1;
+//		obsTemp[Observateur.NORD][4] = 0;
+//		obsTemp[Observateur.EST][0] = 0;
+//		obsTemp[Observateur.EST][1] = 0;
+//		obsTemp[Observateur.EST][2] = 0;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.EST][4] = 2;
+//		obsTemp[Observateur.SUD][0] = 0;
+//		obsTemp[Observateur.SUD][1] = 0;
+//		obsTemp[Observateur.SUD][2] = 3;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.EST][4] = 0;
+//		obsTemp[Observateur.OUEST][0] = 0;
+//		obsTemp[Observateur.OUEST][1] = 4;
+//		obsTemp[Observateur.OUEST][2] = 0;
+//		obsTemp[Observateur.OUEST][3] = 0;
+//		obsTemp[Observateur.OUEST][4] = 0;
+//		observateur = new Observateur(obsTemp);
+		
+		//*********** GRILLE 6x6 *************//
+//		int[][] obsTemp = new int[6][6] ;
+//		obsTemp[Observateur.NORD][0] = 3;
+//		obsTemp[Observateur.NORD][1] = 0;
+//		obsTemp[Observateur.NORD][2] = 0;
+//		obsTemp[Observateur.NORD][3] = 2;
+//		obsTemp[Observateur.NORD][4] = 0;
+//		obsTemp[Observateur.NORD][5] = 4;
+//		obsTemp[Observateur.EST][0] = 3;
+//		obsTemp[Observateur.EST][1] = 0;
+//		obsTemp[Observateur.EST][2] = 2;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.EST][4] = 5;
+//		obsTemp[Observateur.EST][5] = 0;
+//		obsTemp[Observateur.SUD][0] = 0;
+//		obsTemp[Observateur.SUD][1] = 0;
+//		obsTemp[Observateur.SUD][2] = 5;
+//		obsTemp[Observateur.EST][3] = 1;
+//		obsTemp[Observateur.EST][4] = 4;
+//		obsTemp[Observateur.EST][5] = 0;
+//		obsTemp[Observateur.OUEST][0] = 3;
+//		obsTemp[Observateur.OUEST][1] = 3;
+//		obsTemp[Observateur.OUEST][2] = 0;
+//		obsTemp[Observateur.OUEST][3] = 4;
+//		obsTemp[Observateur.OUEST][4] = 0;
+//		obsTemp[Observateur.OUEST][5] = 0;
+//		observateur = new Observateur(obsTemp);
 	}
 	
 	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs){
@@ -115,6 +170,9 @@ public class ControleurM {
 		ctrlVues.reinitialisePanelGrilleDeJeu();
 		ctrlVues.reinitialisePanelJeu() ;
 		gameStart = false ;
+		aideErreur = false ;
+		aideTrouver = false ;
+		tricheBouton = false ;
 		ctrlVues.getVuePrincipal().refreshMenu() ;
 	}
 

@@ -109,7 +109,7 @@ public class VuePrincipale extends JFrame
 		
 		jAide = new JMenu("Aide");
 		menu.add(jAide);
-		itemTemp = new JMenuItem("Aide visuelle trouver");
+		itemTemp = new JMenuItem("Voir mes possibilités");
 		jAide.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -118,7 +118,7 @@ public class VuePrincipale extends JFrame
 				System.out.println(" "+ctrlV.getCtrlM().isAideTrouver());
 			}
 		});
-		itemTemp = new JMenuItem("Aide visuelle erreur");
+		itemTemp = new JMenuItem("Voir mes erreurs");
 		jAide.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -134,6 +134,7 @@ public class VuePrincipale extends JFrame
 				System.out.print("--> onglet : Mode triche");
 				ctrlV.getCtrlM().tricheBouton() ;
 				System.out.println(" "+ctrlV.getCtrlM().isTricheBouton());
+				ctrlV.getPanelJeu().getJbTricher().setVisible(ctrlV.getCtrlM().isTricheBouton()) ;
 			}
 		});
 		itemTemp = new JMenuItem("Résolution grille");

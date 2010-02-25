@@ -45,6 +45,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 		System.out.print(" Est "+ctrlM.getThisObs(Observateur.EST,ordonnee));
 		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
 		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
+		
 		//gestion du comportement du clic
 		if(ctrlM.isAideTrouver()){
 			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;
@@ -55,16 +56,11 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		prevIcon = (ImageIcon) caseLabel.getIcon() ;
-//		if(!ctrlM.isAideTrouver()){
-//			caseLabel.setIcon(new ImageIcon(Bat.switchToAnimatBatIcon(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()))) ;
-//		}
 		caseLabel.setBorder(BorderFactory.createEtchedBorder(Color.RED, Color.RED)) ;
 		caseLabel.requestFocus();	// nécessaire pour le Keylistener
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-//		if(!ctrlM.isAideTrouver())
-//			caseLabel.setIcon(prevIcon) ;
 		caseLabel.setBorder(BorderFactory.createEtchedBorder()) ;
 	}
 
