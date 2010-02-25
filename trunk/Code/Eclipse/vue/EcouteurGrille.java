@@ -22,7 +22,6 @@ import controleur.ControleurVues;
 public class EcouteurGrille implements MouseListener, KeyListener{
 	private ControleurM ctrlM ;
 	private JLabel caseLabel ;
-	private ImageIcon prevIcon ;
 	private int abscisse ;
 	private int ordonnee ;
 	
@@ -55,7 +54,6 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		prevIcon = (ImageIcon) caseLabel.getIcon() ;
 		caseLabel.setBorder(BorderFactory.createEtchedBorder(Color.RED, Color.RED)) ;
 		caseLabel.requestFocus();	// nécessaire pour le Keylistener
 	}
@@ -84,8 +82,33 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'){
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
-				ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-				prevIcon = new ImageIcon(GestionIcon.getImage(temp,"bat"));
+				if(ctrlM.isAideTrouver())
+					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+				else
+					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+			}
+		}
+		if(e.getKeyChar()=='&'||e.getKeyChar()=='é'||e.getKeyChar()=='"'
+			||e.getKeyChar()=='\''||e.getKeyChar()=='('||e.getKeyChar()=='-'){
+			int temp = 0 ;
+			if(e.getKeyChar()=='&')
+				temp = 1 ;
+			if(e.getKeyChar()=='é')
+				temp = 2 ;
+			if(e.getKeyChar()=='"')
+				temp = 3 ;
+			if(e.getKeyChar()=='\'')
+				temp = 4 ;
+			if(e.getKeyChar()=='(')
+				temp = 5 ;
+			if(e.getKeyChar()=='-')
+				temp = 6 ;
+	
+			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
+				if(ctrlM.isAideTrouver())
+					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+				else
+					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
 			}
 		}
 	}

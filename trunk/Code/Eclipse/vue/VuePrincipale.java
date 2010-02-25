@@ -72,7 +72,7 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(5,1) ;
+				ctrlV.getCtrlM().commencerPartie(4,1) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -145,7 +145,7 @@ public class VuePrincipale extends JFrame
 			
 		jAutre = new JMenu("?");
 		menu.add(jAutre);
-		itemTemp = new JMenuItem("Règles");
+		itemTemp = new JMenuItem("Option");
 		jAutre.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -168,6 +168,8 @@ public class VuePrincipale extends JFrame
 			}
 		});
 		// fin menu
+		
+		this.setResizable(false) ;
 		
 		// PARTIE DEBUGAGE
 //		JMenu debug = new JMenu("DEBUG");

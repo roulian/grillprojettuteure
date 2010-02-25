@@ -46,6 +46,17 @@ public class Regle_DistanceMin implements Regle{
 			return (!isResolveOnce) ;
 		}
 	}
+	
+	public boolean resolve(Grille pGrille,Observateur pObservateur) {
+		Grille tempGrille = grille;
+		Observateur tempObservateur = observateur;
+		grille = pGrille ;
+		observateur = pObservateur ;
+		boolean temp = resolve();
+		grille = tempGrille ;
+		observateur = tempObservateur ;
+		return temp ;
+	}
 
 	public void refreshBuffer() {
 		observateur = ctrlR.getObservateur() ;
