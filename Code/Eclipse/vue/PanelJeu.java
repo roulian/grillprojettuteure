@@ -1,7 +1,11 @@
 package vue;
 
+import images.GestionIcon;
+
 import java.awt.GridBagLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -18,6 +22,8 @@ import java.awt.Rectangle;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 
@@ -27,6 +33,7 @@ public class PanelJeu extends JPanel {
 	private JButton jbTricher = null;
 	private JPanel jpGrille = null;
 	private ControleurVues ctrlV ;
+	private JPanel aideVisu = null ;
 	
 	/**
 	 * This is the default constructor
@@ -48,9 +55,33 @@ public class PanelJeu extends JPanel {
 		JPanel panelTemp = new JPanel() ;
 		panelTemp.setLayout(new FlowLayout()) ;
 		panelTemp.add(getJbTricher()) ;
+		panelTemp.add(getPanelVisuel()) ;
 		this.add(panelTemp, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * This method initializes panelVisuel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	public JPanel getPanelVisuel(){
+		if(aideVisu==null){
+			aideVisu = new JPanel() ;
+			JLabel tempLabel ;
+			for(int i=0; i<ctrlV.getTailleGrille()+1; i++){
+				tempLabel = new JLabel() ;
+				tempLabel.setIcon(new ImageIcon(GestionIcon.getImage(i,"bat"))) ;
+				tempLabel.setBorder(BorderFactory.createEtchedBorder()) ;
+				
+				tempLabel.addMouseListener(new EcouteAideVisuelle(ctrlV,i));
+				
+				aideVisu.add(tempLabel) ;
+			}
+			aideVisu.setVisible(ctrlV.getCtrlM().isAideTrouver()) ;
+		}
+		return aideVisu ;
+	}
+	
 	/**
 	 * This method initializes jbTricher	
 	 * 	
@@ -59,7 +90,6 @@ public class PanelJeu extends JPanel {
 	public JButton getJbTricher() {
 		if (jbTricher == null) {
 			jbTricher = new JButton();
-//			jbTricher.setBounds(new Rectangle(75, 262, 151, 31));
 			jbTricher.setSize(150, 30) ;
 			jbTricher.setText("Tricher");
 			jbTricher.setVisible(ctrlV.getCtrlM().isTricheBouton()) ;

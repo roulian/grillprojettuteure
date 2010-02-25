@@ -47,6 +47,7 @@ public class ControleurR {
 	
 	// méthode de résolution des grilles.
 	public void applyRegle(){
+		System.out.println("--> DEBUT DE RESOLUTION DE LA GRILLE <--");
 		int nbRegle = tabRegle.size();
 		boolean solve = true ;
 		boolean temp ;
@@ -59,6 +60,7 @@ public class ControleurR {
 			}
 			System.out.println("boucle résolution : solve "+solve);
 		}
+		System.out.println("--> FIN DE RESOLUTION DE LA GRILLE <--");
 	}
 	
 	
