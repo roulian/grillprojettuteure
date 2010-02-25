@@ -20,45 +20,60 @@ public class Regle_DernierTypBat implements Regle{
 		tailleGrille = grille.getTailleGrille();
 	}
 
-	public void refreshBuffer() {
-		observateur = ctrlR.getObservateur() ;
-		grille = ctrlR.getGrille() ;
-	}
-
 	// construit un batiment lorsque c'est le dernier a construire 
 	public boolean resolve() {
 		boolean solve = false ;
-		refreshBuffer() ;
-		//on crée un tableau et on l'initialise
-		int[] temp = new int[tailleGrille+1] ;
-		for (int i=0; i<=tailleGrille; i++)
-			temp[i] = 0 ;
 
-		//on compte le nombre de batiment de toutes les taille
+		//on regarde dans les vector de possibilité de toutes les colonne pour voir un un batiment
+		//ne serait pas constructible à un seul endroit sur une colonne
 		for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
+			//on crée un tableau et on l'initialise à zéro
+			int[] temp = new int[tailleGrille+1] ;	// la taille +1 est pratique pour la suite
+			for (int i=0; i<=tailleGrille; i++)
+				temp[i] = 0 ;
+			
+			// on parcourt les cases verticalement et on stock le nombre de batiment encore constructible
+			// par taille
 			for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
-				temp[grille.getCase(abscisse,ordonnee).getBatiment()]++ ;
+				int lenght = grille.getCase(abscisse,ordonnee).getPossibilite().size() ;
+				for (int z=0 ; z<lenght ; z++)
+					temp[grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(z)]++ ;
+			}
+
+			for (int i=0; i<=tailleGrille; i++){
+				// dans le cas ou il n'y aurait plus qu'un seul batiment sur une colonne
+				if(temp[i]==1){
+					for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++)
+						solve = solve || grille.construire(abscisse,ordonnee,i) ;
+				}
 			}
 		}
 		
-		//on vérifie le nombre de batiment de toutes les tailles
-		for (int i=0; i<=tailleGrille; i++){
-			if(temp[i]==tailleGrille-1){
-				for (int abscisse=1 ; abscisse<tailleGrille ; abscisse++){
-					for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
-						if(grille.getCase(abscisse,ordonnee).estConstrutible(i))
-							solve = grille.construire(abscisse,ordonnee,i) ;
-					}
+		//on regarde dans les vector de possibilité de toutes les lignes pour voir un un batiment
+		//ne serait pas constructible à un seul endroit sur une colonne
+		for (int ordonnee=1 ; ordonnee<=tailleGrille ; ordonnee++){
+			//on crée un tableau et on l'initialise à zéro
+			int[] temp = new int[tailleGrille+1] ;	// la taille +1 est pratique pour la suite
+			for (int i=0; i<=tailleGrille; i++)
+				temp[i] = 0 ;
+			
+			// on parcourt les cases verticalement et on stock le nombre de batiment encore constructible
+			// par taille
+			for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++){
+				int lenght = grille.getCase(abscisse,ordonnee).getPossibilite().size() ;
+				for (int z=0 ; z<lenght ; z++)
+					temp[grille.getCase(abscisse,ordonnee).getPossibilite().elementAt(z)]++ ;
+			}
+
+			for (int i=0; i<=tailleGrille; i++){
+				// dans le cas ou il n'y aurait plus qu'un seul batiment sur une colonne
+				if(temp[i]==1){
+					for (int abscisse=1 ; abscisse<=tailleGrille ; abscisse++)
+						solve = solve || grille.construire(abscisse,ordonnee,i) ;
 				}
 			}
 		}
 		
 		return solve ;
 	}
-
-	public void applyResolve() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

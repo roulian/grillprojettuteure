@@ -113,28 +113,24 @@ public class VuePrincipale extends JFrame
 		jAide.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.print("--> onglet : Aide visuelle trouver");
-				ctrlV.getCtrlM().aideTrouver() ;
-				System.out.println(" "+ctrlV.getCtrlM().isAideTrouver());
+				System.out.println("--> onglet : Aide visuelle trouver");
+				ctrlV.getCtrlM().gestionTriche("aideTrouver") ;
 			}
 		});
 		itemTemp = new JMenuItem("Voir mes erreurs");
 		jAide.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.print("--> onglet : Aide visuelle erreur");
-				ctrlV.getCtrlM().aideErreur() ;
-				System.out.println(" "+ctrlV.getCtrlM().isAideErreur());
+				System.out.println("--> onglet : Aide visuelle erreur");
+				ctrlV.getCtrlM().gestionTriche("aideErreur") ;
 			}
 		});
 		itemTemp = new JMenuItem("Mode triche");
 		jAide.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				System.out.print("--> onglet : Mode triche");
-				ctrlV.getCtrlM().tricheBouton() ;
-				System.out.println(" "+ctrlV.getCtrlM().isTricheBouton());
-				ctrlV.getPanelJeu().getJbTricher().setVisible(ctrlV.getCtrlM().isTricheBouton()) ;
+				System.out.println("--> onglet : Mode triche");
+				ctrlV.getCtrlM().gestionTriche("tricheBouton") ;
 			}
 		});
 		itemTemp = new JMenuItem("Résolution grille");

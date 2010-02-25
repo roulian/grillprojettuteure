@@ -48,7 +48,7 @@ public class Regle_ObsDoitVoir implements Regle{
 			}
 			//ici nous avons le nombre de batiment observés, la hauteur du batiment le plus grand, sa distance avec l'observateur.
 			//et surtout nous savons si des batiments sont construit apres le batMax
-			if(unicite){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
+			if(unicite && hauteurMaxObs==tailleGrille){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
 				//on se place dans le cas ou il manque un batiment à l'observateur pour compléter sa vue
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.NORD,abscisse)==nbBatiment+1){
@@ -60,8 +60,8 @@ public class Regle_ObsDoitVoir implements Regle{
 					}
 				}
 				
-				if(observateur.getObservateur(Observateur.NORD,abscisse)==(tailleGrille-nbBatiment)){
-					for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
+				if(observateur.getObservateur(Observateur.NORD,abscisse)==distanceBatMax){
+					for(int ordonnee=tailleGrille; ordonnee>=1; ordonnee--){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveN = solveN || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
@@ -81,7 +81,7 @@ public class Regle_ObsDoitVoir implements Regle{
 				if(tempBat!=0){		// si un batiment est construit...
 					if(hauteurMaxObs<tempBat){
 						hauteurMaxObs = tempBat ;
-						distanceBatMax = ordonnee ;
+						distanceBatMax = tailleGrille - ordonnee + 1 ;
 						unicite = true ; 			// on réinitialise l'unicité
 						nbBatiment++ ;
 					}
@@ -93,7 +93,7 @@ public class Regle_ObsDoitVoir implements Regle{
 			}
 			//ici nous avons le nombre de batiment observés, la hauteur du batiment le plus grand, sa distance avec l'observateur.
 			//et surtout nous savons si des batiments sont construit apres le batMax
-			if(unicite){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
+			if(unicite && hauteurMaxObs==tailleGrille){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
 				//on se place dans le cas ou il manque un batiment à l'observateur pour compléter sa vue
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.SUD,abscisse)==nbBatiment+1){
@@ -104,9 +104,9 @@ public class Regle_ObsDoitVoir implements Regle{
 						}
 					}
 				}
-				
-				if(observateur.getObservateur(Observateur.SUD,abscisse)==(tailleGrille-nbBatiment)){
-					for(int ordonnee=tailleGrille; ordonnee>=1; ordonnee--){
+
+				if(observateur.getObservateur(Observateur.SUD,abscisse)==distanceBatMax){
+					for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
@@ -126,7 +126,7 @@ public class Regle_ObsDoitVoir implements Regle{
 				if(tempBat!=0){		// si un batiment est construit...
 					if(hauteurMaxObs<tempBat){
 						hauteurMaxObs = tempBat ;
-						distanceBatMax = ordonnee ;
+						distanceBatMax = tailleGrille - abscisse + 1 ;
 						unicite = true ; 			// on réinitialise l'unicité
 						nbBatiment++ ;
 					}
@@ -138,7 +138,7 @@ public class Regle_ObsDoitVoir implements Regle{
 			}
 			//ici nous avons le nombre de batiment observés, la hauteur du batiment le plus grand, sa distance avec l'observateur.
 			//et surtout nous savons si des batiments sont construit apres le batMax
-			if(unicite){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
+			if(unicite && hauteurMaxObs==tailleGrille){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
 				//on se place dans le cas ou il manque un batiment à l'observateur pour compléter sa vue
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.EST,ordonnee)==nbBatiment+1){
@@ -149,8 +149,9 @@ public class Regle_ObsDoitVoir implements Regle{
 						}
 					}
 				}
-				
-				if(observateur.getObservateur(Observateur.EST,ordonnee)==(tailleGrille-nbBatiment)){
+
+				if(observateur.getObservateur(Observateur.EST,ordonnee)==distanceBatMax){
+					// on construit de l'exterieur vers l'observateur du plus grand au plus petit des batiements
 					for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveE = solveE || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
@@ -171,7 +172,7 @@ public class Regle_ObsDoitVoir implements Regle{
 				if(tempBat!=0){		// si un batiment est construit...
 					if(hauteurMaxObs<tempBat){
 						hauteurMaxObs = tempBat ;
-						distanceBatMax = ordonnee ;
+						distanceBatMax = abscisse ;
 						unicite = true ; 			// on réinitialise l'unicité
 						nbBatiment++ ;
 					}
@@ -183,7 +184,7 @@ public class Regle_ObsDoitVoir implements Regle{
 			}
 			//ici nous avons le nombre de batiment observés, la hauteur du batiment le plus grand, sa distance avec l'observateur.
 			//et surtout nous savons si des batiments sont construit apres le batMax
-			if(unicite){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
+			if(unicite && hauteurMaxObs==tailleGrille){	//ne parcourt pas la suite du code si l'unicité n'est pas préservé !
 				//on se place dans le cas ou il manque un batiment à l'observateur pour compléter sa vue
 				//et ou derriere le batiment de tailleMax
 				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==nbBatiment+1){
@@ -195,7 +196,7 @@ public class Regle_ObsDoitVoir implements Regle{
 					}
 				}
 				
-				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==(tailleGrille-nbBatiment)){
+				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==distanceBatMax){
 					for(int abscisse=tailleGrille; abscisse>=1; abscisse--){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveO = solveO || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
