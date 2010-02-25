@@ -4,13 +4,13 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
-public class Regle4 implements Regle{
+public class Regle_ObsDoitVoir implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
 	
-	public Regle4(ControleurR pCtrlR){
+	public Regle_ObsDoitVoir(ControleurR pCtrlR){
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;

@@ -6,13 +6,13 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
-public class Regle2 implements Regle{
+public class Regle_DernierVecBat implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
 	
-	public Regle2(ControleurR pCtrlR){
+	public Regle_DernierVecBat(ControleurR pCtrlR){
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;

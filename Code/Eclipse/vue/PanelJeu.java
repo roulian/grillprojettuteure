@@ -1,16 +1,23 @@
 package vue;
 
 import java.awt.GridBagLayout;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
 import controleur.ControleurVues;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 
@@ -36,10 +43,12 @@ public class PanelJeu extends JPanel {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(300, 300);
-		this.setLayout(null);
-		this.add(getJbTricher(), null);
-		this.add(getJpGrille(), null);
+		this.setLayout(new BorderLayout());
+		this.add(getJpGrille(), BorderLayout.CENTER);
+		JPanel panelTemp = new JPanel() ;
+		panelTemp.setLayout(new FlowLayout()) ;
+		panelTemp.add(getJbTricher()) ;
+		this.add(panelTemp, BorderLayout.SOUTH);
 	}
 
 	/**
@@ -47,11 +56,18 @@ public class PanelJeu extends JPanel {
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	private JButton getJbTricher() {
+	public JButton getJbTricher() {
 		if (jbTricher == null) {
 			jbTricher = new JButton();
-			jbTricher.setBounds(new Rectangle(75, 262, 151, 31));
+//			jbTricher.setBounds(new Rectangle(75, 262, 151, 31));
+			jbTricher.setSize(150, 30) ;
 			jbTricher.setText("Tricher");
+			jbTricher.setVisible(ctrlV.getCtrlM().isTricheBouton()) ;
+			jbTricher.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("Bouton Tricher pressé");
+				}
+			}) ;
 		}
 		return jbTricher;
 	}

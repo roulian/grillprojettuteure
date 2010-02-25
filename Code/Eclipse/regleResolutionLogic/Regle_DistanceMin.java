@@ -4,14 +4,14 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
-public class Regle5 implements Regle{
+public class Regle_DistanceMin implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
 	private boolean isResolveOnce = false ;
 	
-	public Regle5(ControleurR pCtrlR){
+	public Regle_DistanceMin(ControleurR pCtrlR){
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;

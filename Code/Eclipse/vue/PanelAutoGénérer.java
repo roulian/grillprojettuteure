@@ -77,7 +77,9 @@ public class PanelAutoGénérer extends JPanel {
 			jbCommencer.setText("Commencer");
 			jbCommencer.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					ctrlV.getCtrlM().commencerPartie(4,1) ;
+					ctrlV.getCtrlM().finirPartie() ;
+					int taille = (Integer) jcTaille.getSelectedItem() ;
+					ctrlV.getCtrlM().commencerPartie(taille,1) ;
 					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 				}
 			});

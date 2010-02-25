@@ -38,11 +38,11 @@ public class ControleurR {
 		tabRegle.add(new Regle7(this)) ; 
 		tabRegle.add(new Regle8(this)) ;
 		//regle normal
-		tabRegle.add(new Regle1(this)) ;
-		tabRegle.add(new Regle2(this)) ;
-		tabRegle.add(new Regle3(this)) ;
-		tabRegle.add(new Regle4(this)) ;
-		tabRegle.add(new Regle5(this)) ;
+		tabRegle.add(new Regle_Observateur1(this)) ;
+		tabRegle.add(new Regle_DernierVecBat(this)) ;
+		tabRegle.add(new Regle_DernierTypBat(this)) ;
+		tabRegle.add(new Regle_ObsDoitVoir(this)) ;
+		tabRegle.add(new Regle_DistanceMin(this)) ;
 	}
 	
 	// méthode de résolution des grilles.
