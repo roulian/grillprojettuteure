@@ -32,4 +32,8 @@ public class Observateur {
     public int getObservateur(int pCardinal, int pPosition){
     	return observateur[pCardinal][pPosition-1] ;
     }
+    
+    public void setObservateur(int pCardinal,int pPosition,int temp){
+    	observateur[pCardinal][pPosition] = temp ;
+    }
 }

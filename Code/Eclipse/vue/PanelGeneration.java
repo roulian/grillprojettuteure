@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
 
+import src.Observateur;
+
 import controleur.ControleurVues;
 
 import java.awt.Rectangle;
@@ -66,9 +68,8 @@ public class PanelGeneration extends JPanel {
 		{
 			jpGrill = new JPanel();
 			jpGrill.setLayout(new GridBagLayout());
+			jpGrill.add(new PanelGrilleDeJeu(6,new Observateur(6),true));
 		}
-		ctrlV.getCtrlM().commencerPartie(4,1) ;
-		jpGrill.add(ctrlV.getPanelGrilleDeJeu());
 		return jpGrill;
 	}
 

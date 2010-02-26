@@ -40,7 +40,7 @@ public class VuePrincipale extends JFrame
 		setJMenuBar(menu);
 		JMenuItem itemTemp ;
 		//premier menu
-		jFicher = new JMenu("Jeux");
+		jFicher = new JMenu("Jeu");
 		menu.add(jFicher);
 		//premier sous menu
 		itemReco = new JMenuItem("Recommencer");
@@ -66,7 +66,7 @@ public class VuePrincipale extends JFrame
 			}
 		});
 		//autre sous menu
-		itemTemp = new JMenuItem("Partie rapide (temp)");
+		itemTemp = new JMenuItem("Partie rapide");
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
