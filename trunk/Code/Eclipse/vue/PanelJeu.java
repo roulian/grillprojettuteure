@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 
+import Ecouteur.EcouteAideVisuelle;
+
 import controleur.ControleurVues;
 
 import java.awt.BorderLayout;

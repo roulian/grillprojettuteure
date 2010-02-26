@@ -5,10 +5,14 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.border.Border;
+
+import src.Observateur;
 
 import controleur.ControleurR;
 import controleur.ControleurVues;
@@ -24,6 +28,7 @@ public class PanelChargement extends JPanel {
 	private JList jlPartieCharger = null;
 	private JPanel jpGrilleJeu = null;  //  @jve:decl-index=0:visual-constraint="537,58"
 	private ControleurVues ctrlV;
+	private Observateur obsChargement ;
 
 	/**
 	 * This is the default constructor
@@ -50,7 +55,8 @@ public class PanelChargement extends JPanel {
 		this.setLayout(new BorderLayout());
 		this.add(getJsList(), BorderLayout.WEST);
 		this.add(getJpSud(), BorderLayout.SOUTH);
-		this.add(getJpGrilleJeu(), BorderLayout.EAST);
+		this.add(getJpGrilleJeu(), BorderLayout.CENTER);
+		this.add(new JLabel(" "), BorderLayout.EAST) ;
 	}
 
 	/**
@@ -147,9 +153,8 @@ public class PanelChargement extends JPanel {
 			jpGrilleJeu = new JPanel();
 			jpGrilleJeu.setLayout(new GridBagLayout());
 			jpGrilleJeu.setSize(new Dimension(227, 189));
+			jpGrilleJeu.add(new PanelGrilleDeJeu(4,new Observateur(4),false));
 		}
-		ctrlV.getCtrlM().commencerPartie(4,1) ;
-		jpGrilleJeu.add(ctrlV.getPanelGrilleDeJeu());
 		return jpGrilleJeu;
 	}
 

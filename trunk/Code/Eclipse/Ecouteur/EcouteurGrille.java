@@ -1,4 +1,4 @@
-package vue;
+package Ecouteur;
 
 import images.GestionIcon;
 import images.IconBat;

@@ -44,7 +44,7 @@ public class ControleurVues {
 //*********** Gestion VUE PRINCIPAL ***************/	
 	public void switchPanel(JPanel pPanel){
 		if (pPanel == panelGeneration || pPanel == panelGrilleDeJeu || pPanel == panelChargement)
-			vuePrincipal.setSize(500, 400) ;
+			vuePrincipal.setSize(600, 400) ;
 		else
 			vuePrincipal.setSize(300, 400) ;
 		
