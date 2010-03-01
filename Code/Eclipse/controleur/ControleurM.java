@@ -1,6 +1,14 @@
 package controleur;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
 
 import src.Grille;
 import src.Observateur;
@@ -281,5 +289,79 @@ public class ControleurM {
 				ret = ret + pt.elementAt(i) + "," ;
 		}
 		return ret;
+	}
+	public void sauvegarderGrille (String nomFichier)
+	{
+		try 
+		{
+		    FileOutputStream fichierP = new FileOutputStream("sauvegardes\\"+nomFichier);
+		    ObjectOutputStream fichierV = new ObjectOutputStream(fichierP);
+		   
+		    Integer grille[][] = new Integer[tailleGrille][tailleGrille];
+		    Integer observateurs[][] = new Integer[4][tailleGrille];
+		    
+		    for(int i = 0 ; i < tailleGrille ; i++)
+		    	for(int j = 0; j < tailleGrille ; j++)
+		    		grille[i][j] = laGrille.getCase(i+1, j+1).getBatiment();
+		    
+		    for(int i = 0; i < 4 ; i++)
+		    	for(int j = 0; j < tailleGrille ; j++)
+		    		observateurs[i][j] = laGrille.getObervateur().getObservateur(i, j+1);
+		    	
+		    fichierV.writeObject(grille);
+		    fichierV.writeObject(observateurs);
+		} 
+		catch (IOException e) 
+		{
+			JOptionPane.showMessageDialog(null, "Vous ne pouvez pas enregistrer avec ce nom de fichier.");
+		}
+		
+	}
+	
+	public Vector<Integer[][]> chargerGrille(String nomFichier)
+	{
+		try 
+		{
+		    FileInputStream fichierP = new FileInputStream("sauvegardes\\"+nomFichier);
+		    ObjectInputStream fichierV = new ObjectInputStream(fichierP);
+		    
+		    Integer grille[][] = (Integer[][])fichierV.readObject();
+		    Integer observateurs[][] = (Integer[][])fichierV.readObject();
+		    
+		    Vector<Integer[][]>  monV = new Vector<Integer[][]>();
+		    monV.add(grille);
+		    monV.add(observateurs);
+		    
+//		    System.out.println(" **** GRILLE ****");
+//		    for(int i= 0; i < tailleGrille; i++){
+//		    	System.out.println();
+//		    	for(int j = 0; j < tailleGrille ;j++)
+//		    		System.out.print(grille[i][j]+" ");
+//			}
+//		    
+//		    System.out.println("\n\n**** OBS ****");
+//		    for(int i= 0; i < 4; i++){
+//		    	System.out.println();
+//		    
+//		    	for(int j = 0; j < tailleGrille ;j++)
+//		    		System.out.print(observateurs[i][j]+" ");
+//		    }
+		    fichierP.close();
+		    return monV;
+		} 
+		catch (FileNotFoundException e) 
+		{
+			JOptionPane.showMessageDialog(null, "Le fichier n'a pas été trouvé.");
+			//laGrille = new Grille();
+		} 
+		catch (IOException e) 
+		{
+			JOptionPane.showMessageDialog(null, "Ce fichier est inutilisable.");
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			JOptionPane.showMessageDialog(null, "Ce fichier contient des classes non connus.");
+		}
+		return null;
 	}
 }
