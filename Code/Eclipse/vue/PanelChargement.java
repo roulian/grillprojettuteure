@@ -51,7 +51,7 @@ public class PanelChargement extends JPanel {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(361, 353);
+		this.setSize(507, 353);
 		this.setLayout(new BorderLayout());
 		this.add(getJsList(), BorderLayout.WEST);
 		this.add(getJpSud(), BorderLayout.SOUTH);
