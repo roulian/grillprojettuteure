@@ -35,7 +35,7 @@ public class ControleurR {
 		tabRegle = new Vector<Regle>() ;
 		//regle "d'optimisation".
 		tabRegle.add(new Regle6(this)) ;
-		tabRegle.add(new Regle7(this)) ; 
+		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ; 
 		tabRegle.add(new Regle8(this)) ;
 		//regle normal
 		tabRegle.add(new Regle_Observateur1(this)) ;
