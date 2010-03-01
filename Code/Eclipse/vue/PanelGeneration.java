@@ -17,6 +17,9 @@ import java.awt.Rectangle;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
+import java.util.Vector;
+
+import javax.swing.JComboBox;
 
 public class PanelGeneration extends JPanel {
 
@@ -30,10 +33,10 @@ public class PanelGeneration extends JPanel {
 	private JPanel jpTaille = null;
 	private JPanel jpBout = null;
 	private JLabel jlTaille = null;
-	private JTextField jtTaille = null;
 	private JPanel jPanel = null;
 	private ControleurVues ctrlV;
 	private DifficulteGeneration difGen;
+	private JComboBox jCTaille = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -157,13 +160,9 @@ public class PanelGeneration extends JPanel {
 			jbRetour.setText("Retour");
 			jbRetour.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					jbRetour.addActionListener(new java.awt.event.ActionListener() {
-						public void actionPerformed(java.awt.event.ActionEvent e) {
-							ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
-						}
-					});
+					ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
 				}
-			});
+				});
 		}
 		return jbRetour;
 	}
@@ -221,20 +220,6 @@ public class PanelGeneration extends JPanel {
 	}
 
 	/**
-	 * This method initializes jtTaille	
-	 * 	
-	 * @return javax.swing.JTextField	
-	 */
-	private JTextField getJtTaille() {
-		if (jtTaille == null) {
-			jtTaille = new JTextField(15);
-			jtTaille.setColumns(5);
-			jtTaille.setBounds(new Rectangle(102, 51, 59, 20));
-		}
-		return jtTaille;
-	}
-
-	/**
 	 * This method initializes jPanel	
 	 * 	
 	 * @return javax.swing.JPanel	
@@ -244,9 +229,30 @@ public class PanelGeneration extends JPanel {
 			jPanel = new JPanel();
 			jPanel.setLayout(null);
 			jPanel.add(getJlTaille(), null);
-			jPanel.add(getJtTaille(), null);
+			jPanel.add(getJCTaille(), null);
 		}
 		return jPanel;
+	}
+
+	/**
+	 * This method initializes jCTaille	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJCTaille() {
+		Vector<Integer> taille;
+		//Choix des réponses
+		taille = new Vector<Integer>();
+		taille.add(4);
+		taille.add(5);
+		taille.add(6);
+		
+		if (jCTaille == null) {
+			jCTaille = new JComboBox(taille);
+			jCTaille.setBounds(new Rectangle(117, 49, 43, 25));
+		}
+		
+		return jCTaille;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="36,20"
