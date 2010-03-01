@@ -17,7 +17,7 @@ public class Regle7 implements Regle{
 		tailleGrille = grille.getTailleGrille();
 	}
 
-	// gere le cas observateur de taille tailleGrille-1 en face de tailleGrille-2 
+	// gere le cas observateur de taille tailleGrille-1 en face de 2 
 	public boolean resolve() {
 		boolean solve = false ;
 		
