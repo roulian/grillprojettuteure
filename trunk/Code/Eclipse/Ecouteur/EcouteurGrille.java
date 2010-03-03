@@ -44,12 +44,6 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 		System.out.print(" Est "+ctrlM.getThisObs(Observateur.EST,ordonnee));
 		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
 		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
-		
-		//gestion du comportement du clic
-		if(ctrlM.isAideTrouver()){
-			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;
-			ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
-		}
 	}
 
 	@Override
@@ -65,7 +59,16 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 	@Override
 	public void mousePressed(MouseEvent e){ }
 	@Override
-	public void mouseReleased(MouseEvent e){ }
+	public void mouseReleased(MouseEvent e){
+		//gestion du comportement du clic
+		if(ctrlM.isAideTrouver()){
+			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;
+			ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+		}
+		// plus pratique dans cette méthode que dans le mouseClicked car dnas l'autre méthode 
+		// si l'on bouge la sourie lors du clic, meme en restant dans le label, la méthode ne sera
+		// pas appeler. Ici oui
+	}
 	
 	
 	//PARTIE CLAVIER
