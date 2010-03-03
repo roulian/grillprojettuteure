@@ -23,9 +23,7 @@ public class EcouteAideVisuelle implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("Clik sur le représentant "+numBat);
-		ctrlV.getCtrlM().setBatAideTrouver(numBat) ;
-		ctrlV.refreshGrilleDeJeu() ;
+		// nothing to do, voir mouseRealised
 	}
 
 	@Override
@@ -42,13 +40,19 @@ public class EcouteAideVisuelle implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		// mise en page
 		myLabel.setBorder(BorderFactory.createLoweredBevelBorder()) ;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		// mise ne page
 		myLabel.setBorder(BorderFactory.createRaisedBevelBorder()) ;
+		// traitement, gestion du clic
+		System.out.println("Clik sur le représentant "+numBat);
+		ctrlV.getCtrlM().setBatAideTrouver(numBat) ;
+		ctrlV.refreshGrilleDeJeu() ;
 	}
 
 }
