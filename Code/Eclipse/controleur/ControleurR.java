@@ -1,10 +1,8 @@
 package controleur;
 
-import java.awt.Color;
-import java.awt.SystemColor;
 import java.util.Vector;
-
 import regleResolutionLogic.*;
+import regleResolutionLogicObservateur.*;
 import src.Grille;
 import src.Observateur;
 
@@ -12,6 +10,7 @@ public class ControleurR {
 	private ControleurM ctrlM ;
 	private Grille grille ;
 	private Observateur observateur ;
+	private int tailleGrille ;
 	
 	// les règles logique de résolution ;
 	private Vector<Regle> tabRegle ;
@@ -20,13 +19,15 @@ public class ControleurR {
 		ctrlM = pCtrlM ;
 		grille = ctrlM.getLaGrille() ;
 		observateur = ctrlM.getObservateur();
+		tailleGrille = ctrlM.getTailleGrille() ;
 		initialise() ;
 	}
 	
-	public ControleurR(ControleurM pCtrlM,Grille pGrille,Observateur pObs){
+	public ControleurR(ControleurM pCtrlM,Grille pGrille,int pTailleGrille,Observateur pObs){
 		ctrlM = pCtrlM ;
 		grille = pGrille ;
 		observateur = pObs ;
+		tailleGrille = pTailleGrille ;
 		initialise() ;
 	}
 	
@@ -41,8 +42,8 @@ public class ControleurR {
 		tabRegle.add(new Regle_Observateur1(this)) ;
 		tabRegle.add(new Regle_DernierVecBat(this)) ;
 		tabRegle.add(new Regle_DernierTypBat(this)) ;
-		tabRegle.add(new Regle_ObsDoitVoir(this)) ;
 		tabRegle.add(new Regle_DistanceMin(this)) ;
+		tabRegle.add(new Regle_ObservateurDoitVoir(this,tailleGrille)) ;
 	}
 	
 	// méthode de résolution des grilles.
