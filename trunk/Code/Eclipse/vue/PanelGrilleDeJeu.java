@@ -228,5 +228,9 @@ public class PanelGrilleDeJeu extends JPanel {
 	public ControleurVues getCtrlV() {
 		return ctrlV;
 	}
+
+	public Observateur getObsSaisie() {
+		return obsSaisie;
+	}
 }
 

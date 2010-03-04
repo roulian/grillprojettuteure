@@ -164,6 +164,33 @@ public class ControleurM {
 //		obsTemp[Observateur.OUEST][4] = 0;
 //		obsTemp[Observateur.OUEST][5] = 0;
 //		observateur = new Observateur(obsTemp);
+		
+		int[][] obsTemp = new int[6][6] ;
+		obsTemp[Observateur.NORD][0] = 0;
+		obsTemp[Observateur.NORD][1] = 0;
+		obsTemp[Observateur.NORD][2] = 0;
+		obsTemp[Observateur.NORD][3] = 0;
+		obsTemp[Observateur.NORD][4] = 0;
+		obsTemp[Observateur.NORD][5] = 0;
+		obsTemp[Observateur.EST][0] = 0;
+		obsTemp[Observateur.EST][1] = 0;
+		obsTemp[Observateur.EST][2] = 0;
+		obsTemp[Observateur.EST][3] = 0;
+		obsTemp[Observateur.EST][4] = 0;
+		obsTemp[Observateur.EST][5] = 0;
+		obsTemp[Observateur.SUD][0] = 0;
+		obsTemp[Observateur.SUD][1] = 0;
+		obsTemp[Observateur.SUD][2] = 0;
+		obsTemp[Observateur.SUD][3] = 0;
+		obsTemp[Observateur.SUD][4] = 0;
+		obsTemp[Observateur.SUD][5] = 0;
+		obsTemp[Observateur.OUEST][0] = 1;
+		obsTemp[Observateur.OUEST][1] = 2;
+		obsTemp[Observateur.OUEST][2] = 3;
+		obsTemp[Observateur.OUEST][3] = 4;
+		obsTemp[Observateur.OUEST][4] = 5;
+		obsTemp[Observateur.OUEST][5] = 6;
+		observateur = new Observateur(obsTemp);
 	}
 	
 	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs){
@@ -275,39 +302,42 @@ public class ControleurM {
 		this.difficulte = difficulte;
 	}
 	
-	//DEBUGAGE
-	/**
-	 * méthode qui permet de renvoyer un string du contenu du vecteur de possibilité
-	 * utiliser en Debugage des règles
-	 * @param vector d'integer
-	 * @return contenu du vecteur
-	 */
-	public String vecpo( final Vector<Integer> pt){
-		String ret = "None" ;
-		if (pt.size()!=0){
-			for(int i=0; i<pt.size(); i++)
-				ret = ret + pt.elementAt(i) + "," ;
-		}
-		return ret;
-	}
-	public void sauvegarderGrille (String nomFichier)
+	//GESTION DE FICHIER 
+	public void sauvegarderGrille (String nomFichier,Grille pGrille,Observateur pObs,int pTaille)
 	{
 		try 
 		{
-		    FileOutputStream fichierP = new FileOutputStream("sauvegardes\\"+nomFichier);
+		    FileOutputStream fichierP = new FileOutputStream(nomFichier);
 		    ObjectOutputStream fichierV = new ObjectOutputStream(fichierP);
-		   
-		    Integer grille[][] = new Integer[tailleGrille][tailleGrille];
-		    Integer observateurs[][] = new Integer[4][tailleGrille];
 		    
-		    for(int i = 0 ; i < tailleGrille ; i++)
-		    	for(int j = 0; j < tailleGrille ; j++)
-		    		grille[i][j] = laGrille.getCase(i+1, j+1).getBatiment();
+		    Integer grille[][] = new Integer[pTaille][pTaille];
+		    Integer observateurs[][] = new Integer[4][pTaille];
+		    
+		    for(int i = 0 ; i < pTaille ; i++)
+		    	for(int j = 0; j < pTaille ; j++)
+		    		grille[i][j] = pGrille.getCase(i+1, j+1).getBatiment();
 		    
 		    for(int i = 0; i < 4 ; i++)
-		    	for(int j = 0; j < tailleGrille ; j++)
-		    		observateurs[i][j] = laGrille.getObervateur().getObservateur(i, j+1);
-		    	
+		    	for(int j = 0; j < pTaille ; j++)
+		    		observateurs[i][j] = pObs.getObservateur(i, j+1);
+		    
+		    System.out.println("Sauvegarde dans : "+nomFichier);
+		    System.out.print("GRILLE");
+		    for(int i=0; i<pTaille*2-6; i++)
+		    	System.out.print(" ");
+		    System.out.println("| OBS");
+		    for(int i= 0; i < pTaille; i++){
+		    	//grille
+		    	for(int j = 0; j < pTaille ;j++)
+		    		System.out.print(grille[i][j]+" ");
+		    	//observateur
+		    	System.out.print("| ");
+		    	if(i<4)
+			    	for(int j = 0; j < pTaille ;j++)
+			    		System.out.print(observateurs[i][j]+" ");
+		    	System.out.println();
+			}
+		    
 		    fichierV.writeObject(grille);
 		    fichierV.writeObject(observateurs);
 		} 
@@ -322,7 +352,7 @@ public class ControleurM {
 	{
 		try 
 		{
-		    FileInputStream fichierP = new FileInputStream("sauvegardes\\"+nomFichier);
+		    FileInputStream fichierP = new FileInputStream(nomFichier);
 		    ObjectInputStream fichierV = new ObjectInputStream(fichierP);
 		    
 		    Integer grille[][] = (Integer[][])fichierV.readObject();
@@ -363,5 +393,21 @@ public class ControleurM {
 			JOptionPane.showMessageDialog(null, "Ce fichier contient des classes non connus.");
 		}
 		return null;
+	}
+	
+	//DEBUGAGE
+	/**
+	 * méthode qui permet de renvoyer un string du contenu du vecteur de possibilité
+	 * utiliser en Debugage des règles
+	 * @param vector d'integer
+	 * @return contenu du vecteur
+	 */
+	public String vecpo( final Vector<Integer> pt){
+		String ret = "None" ;
+		if (pt.size()!=0){
+			for(int i=0; i<pt.size(); i++)
+				ret = ret + pt.elementAt(i) + "," ;
+		}
+		return ret;
 	}
 }

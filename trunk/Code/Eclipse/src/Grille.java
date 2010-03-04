@@ -11,7 +11,6 @@ public class Grille {
 	
 	Case[][] grilleDejeu ;
 	int tailleGrille ;
-	Observateur obs ;
 	
     public Grille() {
     	this(4,new Observateur(4)) ;
@@ -28,8 +27,6 @@ public class Grille {
     	tailleGrille = pTaille ;
     	// on fait une nouvelle instance d'une grille
     	grilleDejeu = new Case[pTaille][pTaille] ;
-    	// on sauvegarde l'observateur
-    	obs = pObs ;
     	
     	// on instancie les cases
     	for(int i=0 ; i<tailleGrille ; i++ ){
@@ -57,10 +54,6 @@ public class Grille {
     	}
     	else
     		return false ;
-    }
-    
-    public Observateur getObervateur(){
-    	return obs ;
     }
 
 	public int getTailleGrille() {

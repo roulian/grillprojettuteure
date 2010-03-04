@@ -5,13 +5,13 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
-public class Regle_ObsDoitVoir implements Regle{
+public class Regle_ObsVoit_N_1 implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
 	
-	public Regle_ObsDoitVoir(ControleurR pCtrlR){
+	public Regle_ObsVoit_N_1(ControleurR pCtrlR){
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
@@ -60,14 +60,6 @@ public class Regle_ObsDoitVoir implements Regle{
 						}
 					}
 				}
-				
-				if(observateur.getObservateur(Observateur.NORD,abscisse)==distanceBatMax){
-					for(int ordonnee=tailleGrille; ordonnee>=1; ordonnee--){
-						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveN = solveN || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
-						}
-					}
-				}
 			}
 		}
 		
@@ -100,14 +92,6 @@ public class Regle_ObsDoitVoir implements Regle{
 				if(observateur.getObservateur(Observateur.SUD,abscisse)==nbBatiment+1){
 					//je prend la case la plus proche constructible
 					for(int ordonnee=tailleGrille; ordonnee>tailleGrille-distanceBatMax && !solveS; ordonnee--){
-						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
-						}
-					}
-				}
-
-				if(observateur.getObservateur(Observateur.SUD,abscisse)==distanceBatMax){
-					for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveS = solveS || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
@@ -150,15 +134,6 @@ public class Regle_ObsDoitVoir implements Regle{
 						}
 					}
 				}
-
-				if(observateur.getObservateur(Observateur.EST,ordonnee)==distanceBatMax){
-					// on construit de l'exterieur vers l'observateur du plus grand au plus petit des batiements
-					for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
-						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveE = solveE || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
-						}
-					}
-				}
 			}
 		}
 		
@@ -191,14 +166,6 @@ public class Regle_ObsDoitVoir implements Regle{
 				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==nbBatiment+1){
 					//je prend la case la plus proche constructible
 					for(int abscisse=1; abscisse<distanceBatMax && !solveO; abscisse++){
-						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
-							solveO = solveO || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
-						}
-					}
-				}
-				
-				if(observateur.getObservateur(Observateur.OUEST,ordonnee)==distanceBatMax){
-					for(int abscisse=tailleGrille; abscisse>=1; abscisse--){
 						if(grille.getCase(abscisse,ordonnee).isCaseConst()){
 							solveO = solveO || grille.construire(abscisse,ordonnee,grille.getCase(abscisse,ordonnee).tailleMaxBatConst()) ;
 						}
