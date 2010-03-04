@@ -1,5 +1,6 @@
-package regleResolutionLogic;
+package regleResolutionLogicObservateur;
 
+import regleResolutionLogic.Regle;
 import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
