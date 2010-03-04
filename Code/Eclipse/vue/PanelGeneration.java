@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
 
+import src.Grille;
 import src.Observateur;
 
 import controleur.ControleurVues;
@@ -17,6 +18,8 @@ import java.awt.Rectangle;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -37,6 +40,8 @@ public class PanelGeneration extends JPanel {
 	private ControleurVues ctrlV;
 	private DifficulteGeneration difGen;
 	private JComboBox jCTaille = null;
+	private JButton jbOk = null ;
+	private PanelGrilleDeJeu jPanelSasieObs = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -71,7 +76,9 @@ public class PanelGeneration extends JPanel {
 		{
 			jpGrill = new JPanel();
 			jpGrill.setLayout(new GridBagLayout());
-			jpGrill.add(new PanelGrilleDeJeu(6,new Observateur(6),true));
+			int tempTaille = (Integer)(jCTaille.getSelectedItem()) ;
+			jPanelSasieObs = new PanelGrilleDeJeu(tempTaille,new Observateur(tempTaille),true) ;
+			jpGrill.add(jPanelSasieObs);
 		}
 		return jpGrill;
 	}
@@ -121,13 +128,13 @@ public class PanelGeneration extends JPanel {
 		if (jbGenSpont == null) {
 			jbGenSpont = new JButton();
 			jbGenSpont.setText("Génération \nspontanée");
+			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV);
+					difGen.setVisible(true);
+				}
+			});
 		}
-		jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV);
-				difGen.setVisible(true);
-			}
-		});
 		return jbGenSpont;
 	}
 
@@ -142,7 +149,8 @@ public class PanelGeneration extends JPanel {
 			jbSauvegarder.setText("Sauvegarder");
 			jbSauvegarder.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()");
+					System.out.println("actionPerformed ON Bouton Sauvegarder");
+					ctrlV.getCtrlM().sauvegarderGrille("test", new Grille((Integer)(jCTaille.getSelectedItem())), jPanelSasieObs.getObsSaisie(),(Integer)(jCTaille.getSelectedItem())) ;
 				}
 			});
 		}
@@ -162,7 +170,7 @@ public class PanelGeneration extends JPanel {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
 				}
-				});
+			});
 		}
 		return jbRetour;
 	}
@@ -214,7 +222,6 @@ public class PanelGeneration extends JPanel {
 			jlTaille = new JLabel();
 			jlTaille.setText("Taille");
 			jlTaille.setBounds(new Rectangle(18, 51, 30, 16));
-			jlTaille.setBackground(Color.white);
 		}
 		return jlTaille;
 	}
@@ -230,6 +237,20 @@ public class PanelGeneration extends JPanel {
 			jPanel.setLayout(null);
 			jPanel.add(getJlTaille(), null);
 			jPanel.add(getJCTaille(), null);
+			jbOk = new JButton() ;
+			jbOk.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					PanelGeneration.this.remove(jpGrill) ;
+					jpGrill = null ;
+					jpGrill = getJpGrill() ;
+					PanelGeneration.this.add(jpGrill) ;
+					validate() ;
+				}
+			}) ;
+			jbOk.setBounds(new Rectangle(120, 49, 70, 25)) ;
+			jbOk.setText("ok") ;
+			jPanel.add(jbOk) ;
 		}
 		return jPanel;
 	}
@@ -240,16 +261,15 @@ public class PanelGeneration extends JPanel {
 	 * @return javax.swing.JComboBox	
 	 */
 	private JComboBox getJCTaille() {
-		Vector<Integer> taille;
-		//Choix des réponses
-		taille = new Vector<Integer>();
-		taille.add(4);
-		taille.add(5);
-		taille.add(6);
-		
 		if (jCTaille == null) {
+			Vector<Integer> taille;
+			//Choix des réponses
+			taille = new Vector<Integer>();
+			taille.add(4);
+			taille.add(5);
+			taille.add(6);
 			jCTaille = new JComboBox(taille);
-			jCTaille.setBounds(new Rectangle(117, 49, 43, 25));
+			jCTaille.setBounds(new Rectangle(60, 49, 43, 25));
 		}
 		
 		return jCTaille;

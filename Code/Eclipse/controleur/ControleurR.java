@@ -43,6 +43,7 @@ public class ControleurR {
 		tabRegle.add(new Regle_DernierVecBat(this)) ;
 		tabRegle.add(new Regle_DernierTypBat(this)) ;
 		tabRegle.add(new Regle_DistanceMin(this)) ;
+		//regle basé sur les observateur
 		tabRegle.add(new Regle_ObservateurDoitVoir(this,tailleGrille)) ;
 	}
 	

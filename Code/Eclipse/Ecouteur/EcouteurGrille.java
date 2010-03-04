@@ -34,17 +34,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// affichage consoLE
-		System.out.print("Mouse Clicked upon case Abs:"+abscisse+" Ord:"+ordonnee);
-		System.out.print(" -- Batiment:"+ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment());
-		System.out.print(" Possibilite:"+ctrlM.vecpo(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getPossibilite()));
-		System.out.print(" -- Observateur ||");
-		System.out.print(" Nord "+ctrlM.getThisObs(Observateur.NORD,abscisse));
-		System.out.print(" Est "+ctrlM.getThisObs(Observateur.EST,ordonnee));
-		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
-		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
-	}
+	public void mouseClicked(MouseEvent e) {}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
@@ -60,6 +50,15 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 	public void mousePressed(MouseEvent e){ }
 	@Override
 	public void mouseReleased(MouseEvent e){
+		// affichage consoLE
+		System.out.print("Mouse Clicked upon case Abs:"+abscisse+" Ord:"+ordonnee);
+		System.out.print(" -- Batiment:"+ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment());
+		System.out.print(" Possibilite:"+ctrlM.vecpo(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getPossibilite()));
+		System.out.print(" -- Observateur ||");
+		System.out.print(" Nord "+ctrlM.getThisObs(Observateur.NORD,abscisse));
+		System.out.print(" Est "+ctrlM.getThisObs(Observateur.EST,ordonnee));
+		System.out.print(" Sud "+ctrlM.getThisObs(Observateur.SUD,abscisse));
+		System.out.println(" Ouest "+ctrlM.getThisObs(Observateur.OUEST,ordonnee));
 		//gestion du comportement du clic
 		if(ctrlM.isAideTrouver()){
 			ctrlM.setBatAideTrouver(ctrlM.getLaGrille().getCase(abscisse,ordonnee).getBatiment()) ;

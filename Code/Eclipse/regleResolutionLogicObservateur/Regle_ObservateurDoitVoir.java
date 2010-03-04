@@ -18,6 +18,11 @@ public class Regle_ObservateurDoitVoir implements Regle{
 //		observateur = pCtrlR.getObservateur() ;
 		tabRegle = new Vector<Regle>() ;
 		
+		//regle générique (ne dépend pas de la taille
+		tabRegle.add(new Regle_MinTaille(pCtrlR)) ;
+		tabRegle.add(new Regle_ObsVoit_N_1(pCtrlR)) ;
+		
+		//regle spécifique à la taille
 		switch(pTailleGrille){
 		case 4 :
 			//contruction du simili controleur pour taille 4
@@ -36,16 +41,13 @@ public class Regle_ObservateurDoitVoir implements Regle{
 		int nbRegle = tabRegle.size();
 		boolean solve = true ;
 		boolean temp ;
-		boolean resolveBool = false ;
-		while(solve==true){
-			solve = false ;
-			for (int i=0; i <nbRegle; i++){
-				temp = tabRegle.elementAt(i).resolve() ;
-				solve = solve || temp ;
-				System.out.println("- "+tabRegle.elementAt(i).getClass()+" - solve "+temp);
-			}
-			resolveBool = resolveBool || solve ;
+
+		solve = false ;
+		for (int i=0; i <nbRegle; i++){
+			temp = tabRegle.elementAt(i).resolve() ;
+			solve = solve || temp ;
+			System.out.println("- "+tabRegle.elementAt(i).getClass()+" - solve "+temp);
 		}
-		return resolveBool;
+		return solve ;
 	}
 }
