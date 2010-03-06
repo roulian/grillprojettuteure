@@ -6,11 +6,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 
 import src.Grille;
 import src.Observateur;
+import src.SaveObject;
 
 import controleur.ControleurVues;
 
@@ -150,7 +153,10 @@ public class PanelGeneration extends JPanel {
 			jbSauvegarder.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("actionPerformed ON Bouton Sauvegarder");
-					ctrlV.getCtrlM().sauvegarderGrille("test", new Grille((Integer)(jCTaille.getSelectedItem())), jPanelSasieObs.getObsSaisie(),(Integer)(jCTaille.getSelectedItem())) ;
+					JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+					String nomFichier = jop.showInputDialog(PanelGeneration.this, "Veuillez saisir le nom du fichier", "Sauvegarde", JOptionPane.QUESTION_MESSAGE);
+					if(!nomFichier.equals(""))
+						ctrlV.getCtrlM().sauvegarderGrille(nomFichier+".grille",new Grille((Integer)(jCTaille.getSelectedItem())),jPanelSasieObs.getObsSaisie(),(Integer)(jCTaille.getSelectedItem())) ;
 				}
 			});
 		}
