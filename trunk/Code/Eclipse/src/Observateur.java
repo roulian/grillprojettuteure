@@ -29,6 +29,16 @@ public class Observateur {
     	observateur = pObs ;
     }
     
+    public Observateur(Integer[][] pObs){
+    	int[][] pObsTemp = new int[pObs.length][pObs.length];
+    	for(int i=0;i<pObs.length;i++){
+    		for(int j=0;j<pObs.length;j++){
+    			pObsTemp[i][j] = pObs[i][j] ;
+        	}
+    	}
+    	observateur = pObsTemp ;
+    }
+    
     public int getObservateur(int pCardinal, int pPosition){
     	return observateur[pCardinal][pPosition-1] ;
     }

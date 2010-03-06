@@ -7,13 +7,24 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.border.Border;
 
-import src.Observateur;
+import Ecouteur.EcouteCharger;
 
+import java.io.* ;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import src.Observateur;
 import controleur.ControleurR;
 import controleur.ControleurVues;
 
@@ -29,6 +40,7 @@ public class PanelChargement extends JPanel {
 	private JPanel jpGrilleJeu = null;  //  @jve:decl-index=0:visual-constraint="537,58"
 	private ControleurVues ctrlV;
 	private Observateur obsChargement ;
+	private JPanel listeFichier ;
 
 	/**
 	 * This is the default constructor
@@ -136,13 +148,35 @@ public class PanelChargement extends JPanel {
 	 * 	
 	 * @return javax.swing.JList	
 	 */
-	private JList getJlPartieCharger() {
-		if (jlPartieCharger == null) {
+	private JPanel getJlPartieCharger() {
+		if (listeFichier == null) {
+			listeFichier = new JPanel();
 			jlPartieCharger = new JList();
+			
+			String[] listeFichiers;
+			File repertoire = new File(ctrlV.getCtrlM().getPath());
+			listeFichiers = repertoire.list();
+					
+			int nbelem = listeFichiers.length;
+			listeFichier.setLayout(new GridLayout(nbelem,1)); 
+			for(int i=0;i<listeFichiers.length;i++){
+				if(listeFichiers[i].endsWith(".grille")){
+					JLabel tempLabel = new JLabel(listeFichiers[i]) ;
+					tempLabel.addMouseListener(new EcouteCharger(ctrlV,listeFichiers[i])) ;
+					listeFichier.add(tempLabel);
+				}
+			}
 		}
-		return jlPartieCharger;
+		return listeFichier ;
 	}
-
+	
+	public void refreshGrille(){
+		this.remove(jpGrilleJeu) ;
+		jpGrilleJeu = null ;
+		this.add(getJpGrilleJeu()) ;
+		validate() ;
+	}
+	
 	/**
 	 * This method initializes jpGrilleJeu	
 	 * 	
@@ -153,9 +187,17 @@ public class PanelChargement extends JPanel {
 			jpGrilleJeu = new JPanel();
 			jpGrilleJeu.setLayout(new GridBagLayout());
 			jpGrilleJeu.setSize(new Dimension(227, 189));
-			jpGrilleJeu.add(new PanelGrilleDeJeu(4,new Observateur(4),false));
+			jpGrilleJeu.add(new PanelGrilleDeJeu(4,obsChargement,false));
 		}
 		return jpGrilleJeu;
+	}
+
+	public Observateur getObsChargement() {
+		return obsChargement;
+	}
+
+	public void setObsChargement(Observateur obsChargement) {
+		this.obsChargement = obsChargement;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="33,17"

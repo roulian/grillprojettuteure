@@ -77,66 +77,68 @@ public class PanelGrilleDeJeu extends JPanel {
 	 */
 	public PanelGrilleDeJeu(int pTaille,Observateur pObservateur,boolean pModifiable){
 		super();
-		int lenght = pTaille ;
-		initialize(lenght) ;
-		obsSaisie = pObservateur ;
-		//************ LIEE AU CHARGEMENT / GENERATION ***********/
-
-		// gestion des panels observateurs
-		panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer 
-		panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
-		// gestion du type dobservateur (affichage)
-		JLabel temp  ;
-		EcouteurObservateur ecoutTemp ;
-		for (int i=1 ; i<=lenght ; i++){
-			//Nord
-			temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.NORD,i),"obs"))) ;
-			if(pModifiable){
-				temp.setBorder(BorderFactory.createEtchedBorder()) ;
-				ecoutTemp = new EcouteurObservateur(temp,Observateur.NORD,i,obsSaisie) ;
-				temp.addMouseListener(ecoutTemp) ;
-				temp.addKeyListener(ecoutTemp) ;
+		if(pObservateur!=null){
+			int lenght = pTaille ;
+			initialize(lenght) ;
+			obsSaisie = pObservateur ;
+			//************ LIEE AU CHARGEMENT / GENERATION ***********/
+	
+			// gestion des panels observateurs
+			panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer 
+			panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
+			// gestion du type dobservateur (affichage)
+			JLabel temp  ;
+			EcouteurObservateur ecoutTemp ;
+			for (int i=1 ; i<=lenght ; i++){
+				//Nord
+				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.NORD,i),"obs"))) ;
+				if(pModifiable){
+					temp.setBorder(BorderFactory.createEtchedBorder()) ;
+					ecoutTemp = new EcouteurObservateur(temp,Observateur.NORD,i,obsSaisie) ;
+					temp.addMouseListener(ecoutTemp) ;
+					temp.addKeyListener(ecoutTemp) ;
+				}
+				panelObsNord.add(temp);
+				
+				//Est
+				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.EST,i),"obs"))) ;
+				if(pModifiable){
+					temp.setBorder(BorderFactory.createEtchedBorder()) ;
+					ecoutTemp = new EcouteurObservateur(temp,Observateur.EST,i,obsSaisie) ;
+					temp.addMouseListener(ecoutTemp) ;
+					temp.addKeyListener(ecoutTemp) ;
+				}
+				panelObsEst.add(temp);
+				
+				//Sud
+				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.SUD,i),"obs"))) ;
+				if(pModifiable){
+					temp.setBorder(BorderFactory.createEtchedBorder()) ;
+					ecoutTemp = new EcouteurObservateur(temp,Observateur.SUD,i,obsSaisie) ;
+					temp.addMouseListener(ecoutTemp) ;
+					temp.addKeyListener(ecoutTemp) ;
+				}
+				panelObsSud.add(temp);
+				
+				//Ouest
+				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.OUEST,i),"obs"))) ;
+				if(pModifiable){
+					temp.setBorder(BorderFactory.createEtchedBorder()) ;
+					ecoutTemp = new EcouteurObservateur(temp,Observateur.OUEST,i,obsSaisie) ;
+					temp.addMouseListener(ecoutTemp) ;
+					temp.addKeyListener(ecoutTemp) ;
+				}
+				panelObsOuest.add(temp);
 			}
-			panelObsNord.add(temp);
+			panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer
+			panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
 			
-			//Est
-			temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.EST,i),"obs"))) ;
-			if(pModifiable){
-				temp.setBorder(BorderFactory.createEtchedBorder()) ;
-				ecoutTemp = new EcouteurObservateur(temp,Observateur.EST,i,obsSaisie) ;
-				temp.addMouseListener(ecoutTemp) ;
-				temp.addKeyListener(ecoutTemp) ;
+			// gestion du panel de la grille de jeu
+			// on donne au panel les références des label présent dans le tableaux et initialiser plus tot
+			for (int i=0 ; i<lenght ; i++){
+				for (int j=0 ; j<lenght ; j++)
+					panelGrille.add(affGrille[i][j]);	// passe la référense du label au panel
 			}
-			panelObsEst.add(temp);
-			
-			//Sud
-			temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.SUD,i),"obs"))) ;
-			if(pModifiable){
-				temp.setBorder(BorderFactory.createEtchedBorder()) ;
-				ecoutTemp = new EcouteurObservateur(temp,Observateur.SUD,i,obsSaisie) ;
-				temp.addMouseListener(ecoutTemp) ;
-				temp.addKeyListener(ecoutTemp) ;
-			}
-			panelObsSud.add(temp);
-			
-			//Ouest
-			temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.OUEST,i),"obs"))) ;
-			if(pModifiable){
-				temp.setBorder(BorderFactory.createEtchedBorder()) ;
-				ecoutTemp = new EcouteurObservateur(temp,Observateur.OUEST,i,obsSaisie) ;
-				temp.addMouseListener(ecoutTemp) ;
-				temp.addKeyListener(ecoutTemp) ;
-			}
-			panelObsOuest.add(temp);
-		}
-		panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer
-		panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer
-		
-		// gestion du panel de la grille de jeu
-		// on donne au panel les références des label présent dans le tableaux et initialiser plus tot
-		for (int i=0 ; i<lenght ; i++){
-			for (int j=0 ; j<lenght ; j++)
-				panelGrille.add(affGrille[i][j]);	// passe la référense du label au panel
 		}
 	}
 	

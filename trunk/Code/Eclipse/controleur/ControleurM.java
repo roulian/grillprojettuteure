@@ -1,5 +1,6 @@
 package controleur;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -307,7 +308,8 @@ public class ControleurM {
 	{
 		try 
 		{
-		    FileOutputStream fichierP = new FileOutputStream(nomFichier);
+			System.out.println(getPath()+"\\"+nomFichier);
+		    FileOutputStream fichierP = new FileOutputStream(getPath()+"\\"+nomFichier);
 		    ObjectOutputStream fichierV = new ObjectOutputStream(fichierP);
 		    
 		    Integer grille[][] = new Integer[pTaille][pTaille];
@@ -315,8 +317,7 @@ public class ControleurM {
 		    
 		    for(int i = 0 ; i < pTaille ; i++)
 		    	for(int j = 0; j < pTaille ; j++)
-		    		grille[i][j] = pGrille.getCase(i+1, j+1).getBatiment();
-		    
+		    		grille[i][j] = pGrille.getCase(i+1, j+1).getBatiment();    
 		    for(int i = 0; i < 4 ; i++)
 		    	for(int j = 0; j < pTaille ; j++)
 		    		observateurs[i][j] = pObs.getObservateur(i, j+1);
@@ -340,6 +341,8 @@ public class ControleurM {
 		    
 		    fichierV.writeObject(grille);
 		    fichierV.writeObject(observateurs);
+		    fichierP.close() ;
+		    fichierV.close() ;
 		} 
 		catch (IOException e) 
 		{
@@ -362,21 +365,26 @@ public class ControleurM {
 		    monV.add(grille);
 		    monV.add(observateurs);
 		    
-//		    System.out.println(" **** GRILLE ****");
-//		    for(int i= 0; i < tailleGrille; i++){
-//		    	System.out.println();
-//		    	for(int j = 0; j < tailleGrille ;j++)
-//		    		System.out.print(grille[i][j]+" ");
-//			}
-//		    
-//		    System.out.println("\n\n**** OBS ****");
-//		    for(int i= 0; i < 4; i++){
-//		    	System.out.println();
-//		    
-//		    	for(int j = 0; j < tailleGrille ;j++)
-//		    		System.out.print(observateurs[i][j]+" ");
-//		    }
+		    System.out.println("Chargement de : "+nomFichier);
+		    System.out.print("GRILLE");
+		    int pTaille = grille.length ;
+		    for(int i=0; i<pTaille*2-6; i++)
+		    	System.out.print(" ");
+		    System.out.println("| OBS");
+		    for(int i= 0; i < pTaille; i++){
+		    	//grille
+		    	for(int j = 0; j < pTaille ;j++)
+		    		System.out.print(grille[i][j]+" ");
+		    	//observateur
+		    	System.out.print("| ");
+		    	if(i<4)
+			    	for(int j = 0; j < pTaille ;j++)
+			    		System.out.print(observateurs[i][j]+" ");
+		    	System.out.println();
+			}		    
+
 		    fichierP.close();
+		    fichierV.close();
 		    return monV;
 		} 
 		catch (FileNotFoundException e) 
@@ -391,6 +399,18 @@ public class ControleurM {
 		catch (ClassNotFoundException e) 
 		{
 			JOptionPane.showMessageDialog(null, "Ce fichier contient des classes non connus.");
+		}
+		return null;
+	}
+	
+	public String getPath(){
+		File temp = new File(".") ;
+		try {
+			return temp.getCanonicalPath() ;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ERREUR GET PATH");
+			e.printStackTrace();
 		}
 		return null;
 	}
