@@ -29,10 +29,10 @@ public class Observateur {
     	observateur = pObs ;
     }
     
-    public Observateur(Integer[][] pObs){
-    	int[][] pObsTemp = new int[pObs.length][pObs.length];
-    	for(int i=0;i<pObs.length;i++){
-    		for(int j=0;j<pObs.length;j++){
+    public Observateur(Integer[][] pObs,int taille){
+    	int[][] pObsTemp = new int[taille][taille];
+    	for(int i=0;i<4;i++){
+    		for(int j=0;j<taille;j++){
     			pObsTemp[i][j] = pObs[i][j] ;
         	}
     	}

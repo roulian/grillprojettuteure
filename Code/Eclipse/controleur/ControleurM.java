@@ -1,5 +1,7 @@
 package controleur;
 
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +11,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import Ecouteur.EcouteCharger;
 
 import src.Grille;
 import src.Observateur;
@@ -26,6 +31,10 @@ public class ControleurM {
 	private boolean aideTrouver = false ;
 	private int batAideTrouver ;
 	private boolean aideErreur = false ;
+	/**
+	 * 
+	 */
+	private Integer[][] aideGrilleErreur ;
 	
 	/**
 	 * constructeur par défaut du controleur Maître
@@ -52,11 +61,39 @@ public class ControleurM {
 		gameStart = true ;
 		observateur = new Observateur(tailleGrille) ;
 		laGrille = new Grille(tailleGrille) ;
-
+		
+		String[] listeFichiersTemp,listeFichiers;
+		File repertoire = new File(getPath());
+		listeFichiersTemp = repertoire.list();
+				
+		int nbelemMax = listeFichiersTemp.length;
+		int nbelem = 0 ;
+		for(int i=0;i<nbelemMax;i++){
+			if(listeFichiersTemp[i].endsWith(".grille")){
+				nbelem++;
+			}
+		}
+		listeFichiers = new String[nbelem] ;
+		nbelem = 0 ;
+		for(int i=0;i<nbelemMax;i++){
+			if(listeFichiersTemp[i].endsWith(".grille")){
+				listeFichiers[nbelem] = listeFichiersTemp[i] ;
+				nbelem++;
+			}
+		}
+		int random = (int)(Math.random()*nbelem) ;
+		
+		Vector<Integer[][]> temp = new Vector<Integer[][]>() ;
+		temp = chargerGrille(listeFichiers[random]) ;
+		
+		tailleGrille = temp.elementAt(0).length ;
+		observateur = new Observateur(temp.elementAt(1),tailleGrille) ;
+		aideGrilleErreur = temp.elementAt(0) ;
+		
+		
 		// le code ne sert qu'a tester
-		
-		
 		//*********** GRILLE 4x4 *************//
+//		tailleGrille = 4 ;
 //		int[][] obsTemp = new int[4][4] ;
 //		obsTemp[Observateur.NORD][0] = 2;
 //		obsTemp[Observateur.NORD][1] = 3;
@@ -76,6 +113,7 @@ public class ControleurM {
 //		obsTemp[Observateur.OUEST][3] = 2;
 //		observateur = new Observateur(obsTemp);
 		
+//		tailleGrille = 4 ;
 //		int[][] obsTemp = new int[4][4] ;
 //		obsTemp[Observateur.NORD][0] = 0;
 //		obsTemp[Observateur.NORD][1] = 3;
@@ -95,6 +133,7 @@ public class ControleurM {
 //		obsTemp[Observateur.OUEST][3] = 2;
 //		observateur = new Observateur(obsTemp);
 		
+//		tailleGrille = 4 ;
 //		int[][] obsTemp = new int[4][4] ;
 //		obsTemp[Observateur.NORD][0] = 1;
 //		obsTemp[Observateur.NORD][1] = 2;
@@ -115,6 +154,7 @@ public class ControleurM {
 //		observateur = new Observateur(obsTemp); 
 		
 		//*********** GRILLE 5x5 *************//
+//		tailleGrille = 5 ;
 //		int[][] obsTemp = new int[5][5] ;
 //		obsTemp[Observateur.NORD][0] = 5;
 //		obsTemp[Observateur.NORD][1] = 0;
@@ -139,6 +179,7 @@ public class ControleurM {
 //		observateur = new Observateur(obsTemp);
 		
 		//*********** GRILLE 6x6 *************//
+//		tailleGrille = 6 ;
 //		int[][] obsTemp = new int[6][6] ;
 //		obsTemp[Observateur.NORD][0] = 3;
 //		obsTemp[Observateur.NORD][1] = 0;
@@ -166,40 +207,42 @@ public class ControleurM {
 //		obsTemp[Observateur.OUEST][5] = 0;
 //		observateur = new Observateur(obsTemp);
 		
-		int[][] obsTemp = new int[6][6] ;
-		obsTemp[Observateur.NORD][0] = 0;
-		obsTemp[Observateur.NORD][1] = 0;
-		obsTemp[Observateur.NORD][2] = 0;
-		obsTemp[Observateur.NORD][3] = 0;
-		obsTemp[Observateur.NORD][4] = 0;
-		obsTemp[Observateur.NORD][5] = 0;
-		obsTemp[Observateur.EST][0] = 0;
-		obsTemp[Observateur.EST][1] = 0;
-		obsTemp[Observateur.EST][2] = 0;
-		obsTemp[Observateur.EST][3] = 0;
-		obsTemp[Observateur.EST][4] = 0;
-		obsTemp[Observateur.EST][5] = 0;
-		obsTemp[Observateur.SUD][0] = 0;
-		obsTemp[Observateur.SUD][1] = 0;
-		obsTemp[Observateur.SUD][2] = 0;
-		obsTemp[Observateur.SUD][3] = 0;
-		obsTemp[Observateur.SUD][4] = 0;
-		obsTemp[Observateur.SUD][5] = 0;
-		obsTemp[Observateur.OUEST][0] = 1;
-		obsTemp[Observateur.OUEST][1] = 2;
-		obsTemp[Observateur.OUEST][2] = 3;
-		obsTemp[Observateur.OUEST][3] = 4;
-		obsTemp[Observateur.OUEST][4] = 5;
-		obsTemp[Observateur.OUEST][5] = 6;
-		observateur = new Observateur(obsTemp);
+//		tailleGrille = 6 ;
+//		int[][] obsTemp = new int[6][6] ;
+//		obsTemp[Observateur.NORD][0] = 0;
+//		obsTemp[Observateur.NORD][1] = 0;
+//		obsTemp[Observateur.NORD][2] = 0;
+//		obsTemp[Observateur.NORD][3] = 0;
+//		obsTemp[Observateur.NORD][4] = 0;
+//		obsTemp[Observateur.NORD][5] = 0;
+//		obsTemp[Observateur.EST][0] = 0;
+//		obsTemp[Observateur.EST][1] = 0;
+//		obsTemp[Observateur.EST][2] = 0;
+//		obsTemp[Observateur.EST][3] = 0;
+//		obsTemp[Observateur.EST][4] = 0;
+//		obsTemp[Observateur.EST][5] = 0;
+//		obsTemp[Observateur.SUD][0] = 0;
+//		obsTemp[Observateur.SUD][1] = 0;
+//		obsTemp[Observateur.SUD][2] = 0;
+//		obsTemp[Observateur.SUD][3] = 0;
+//		obsTemp[Observateur.SUD][4] = 0;
+//		obsTemp[Observateur.SUD][5] = 0;
+//		obsTemp[Observateur.OUEST][0] = 1;
+//		obsTemp[Observateur.OUEST][1] = 2;
+//		obsTemp[Observateur.OUEST][2] = 3;
+//		obsTemp[Observateur.OUEST][3] = 4;
+//		obsTemp[Observateur.OUEST][4] = 5;
+//		obsTemp[Observateur.OUEST][5] = 6;
+//		observateur = new Observateur(obsTemp);
 	}
 	
-	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs){
+	public void commencerPartie(int pTaille, int pDifficulte, Observateur pObs, Integer[][] grilleErreur){
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
 		gameStart = true ;
 		observateur = pObs ;
 		laGrille = new Grille(tailleGrille) ;
+		aideGrilleErreur = grilleErreur ;
 	}
 	
 	public void finirPartie(){
@@ -246,7 +289,7 @@ public class ControleurM {
 		ctrlVues.refreshGrilleDeJeu() ;
 	}
 	
-	//******* Accesseur *************/
+	//*********** Accesseur *************/
 	public Grille getLaGrille() {
 		return laGrille;
 	}
@@ -282,28 +325,45 @@ public class ControleurM {
 	public Observateur getObservateur() {
 		return observateur;
 	}
-
-	public void setLaGrille(Grille laGrille) {
-		this.laGrille = laGrille;
-	}
 	
 	public int getBatAideTrouver() {
 		return batAideTrouver;
-	}
-
-	public void setBatAideTrouver(int batAideTrouver) {
-		this.batAideTrouver = batAideTrouver;
 	}
 	
 	public int getDifficulte() {
 		return difficulte;
 	}
 
+	public Integer[][] getAideGrilleErreur() {
+		return aideGrilleErreur;
+	}
+	
+	//*********** Setters *************/
+	public void setLaGrille(Grille laGrille) {
+		this.laGrille = laGrille;
+	}
+	
+	public void setBatAideTrouver(int batAideTrouver) {
+		this.batAideTrouver = batAideTrouver;
+	}
+	
+	public void setTailleGrille(int tailleGrille) {
+		this.tailleGrille = tailleGrille;
+	}
+
+	public void setObservateur(Observateur observateur) {
+		this.observateur = observateur;
+	}
+
 	public void setDifficulte(int difficulte) {
 		this.difficulte = difficulte;
 	}
+
+	public void setAideGrilleErreur(Integer[][] aideGrilleErreur) {
+		this.aideGrilleErreur = aideGrilleErreur;
+	}
 	
-	//GESTION DE FICHIER 
+	//*************** GESTION DE FICHIER ****************** 
 	public void sauvegarderGrille (String nomFichier,Grille pGrille,Observateur pObs,int pTaille)
 	{
 		try 

@@ -73,13 +73,13 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 	public void keyTyped(KeyEvent e) {
 		System.out.println("card:"+cardinal+" posi:"+position+" KeyPressed:"+e.getKeyChar());
 		if(e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'
-			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'){
+			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'||e.getKeyChar()=='0'){
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
 			observateur.setObservateur(cardinal, position-1, temp);
 			myLabel.setIcon(new ImageIcon(GestionIcon.getImage(temp,"obs"))) ;
 		}
 		if(e.getKeyChar()=='&'||e.getKeyChar()=='é'||e.getKeyChar()=='"'
-			||e.getKeyChar()=='\''||e.getKeyChar()=='('||e.getKeyChar()=='-'){
+			||e.getKeyChar()=='\''||e.getKeyChar()=='('||e.getKeyChar()=='-'||e.getKeyChar()=='à'){
 			int temp = 0 ;
 			if(e.getKeyChar()=='&')
 				temp = 1 ;
@@ -93,6 +93,8 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 				temp = 5 ;
 			if(e.getKeyChar()=='-')
 				temp = 6 ;
+			if(e.getKeyChar()=='à')
+				temp = 0 ;
 	
 			observateur.setObservateur(cardinal, position-1, temp);
 			myLabel.setIcon(new ImageIcon(GestionIcon.getImage(temp,"obs"))) ;

@@ -51,8 +51,9 @@ public class VuePrincipale extends JFrame
 				Observateur tempObs = ctrlV.getCtrlM().getObservateur() ;
 				int tailleTemp = ctrlV.getCtrlM().getTailleGrille() ; 
 				int difTemp = ctrlV.getCtrlM().getDifficulte() ;
+				Integer[][] aideErreur = ctrlV.getCtrlM().getAideGrilleErreur() ;
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(tailleTemp,difTemp,tempObs) ;
+				ctrlV.getCtrlM().commencerPartie(tailleTemp,difTemp,tempObs,aideErreur) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -83,7 +84,18 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Charger");
+				VuePrincipale.this.ctrlV.getPanelChargement().refreshListe() ;
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelChargement()) ;
+			}
+		});
+		//autre sous menu
+		itemTemp = new JMenuItem("Générer");
+		jFicher.add(itemTemp);
+		itemTemp.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().finirPartie() ;
+				System.out.println("--> onglet : Générer");
+				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGeneration()) ;
 			}
 		});
 		//autre sous menu
