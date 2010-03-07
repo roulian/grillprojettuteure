@@ -92,8 +92,8 @@ public class PanelGrilleDeJeu extends JPanel {
 			for (int i=1 ; i<=lenght ; i++){
 				//Nord
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.NORD,i),"obs"))) ;
+				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					temp.setBorder(BorderFactory.createEtchedBorder()) ;
 					ecoutTemp = new EcouteurObservateur(temp,Observateur.NORD,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
@@ -102,8 +102,8 @@ public class PanelGrilleDeJeu extends JPanel {
 				
 				//Est
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.EST,i),"obs"))) ;
+				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					temp.setBorder(BorderFactory.createEtchedBorder()) ;
 					ecoutTemp = new EcouteurObservateur(temp,Observateur.EST,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
@@ -112,8 +112,8 @@ public class PanelGrilleDeJeu extends JPanel {
 				
 				//Sud
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.SUD,i),"obs"))) ;
+				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					temp.setBorder(BorderFactory.createEtchedBorder()) ;
 					ecoutTemp = new EcouteurObservateur(temp,Observateur.SUD,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
@@ -122,8 +122,8 @@ public class PanelGrilleDeJeu extends JPanel {
 				
 				//Ouest
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.OUEST,i),"obs"))) ;
+				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					temp.setBorder(BorderFactory.createEtchedBorder()) ;
 					ecoutTemp = new EcouteurObservateur(temp,Observateur.OUEST,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;

@@ -80,6 +80,7 @@ public class PanelAccueil extends JPanel {
 		});
 		jbCharger.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getPanelChargement().refreshListe() ;
 				ctrlV.switchPanel(ctrlV.getPanelChargement()) ;
 			}
 		});
