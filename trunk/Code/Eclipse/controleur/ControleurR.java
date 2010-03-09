@@ -48,12 +48,13 @@ public class ControleurR {
 	}
 	
 	// méthode de résolution des grilles.
-	public void applyRegle(){
+	public boolean applyRegle(){
 		System.out.println("--> DEBUT DE RESOLUTION DE LA GRILLE <--");
 		int nbRegle = tabRegle.size();
 		boolean solve = true ;
 		boolean temp ;
-		while(solve==true){
+		int total = ctrlM.getTailleGrille() * ctrlM.getTailleGrille() ;
+		while(solve==true && ctrlM.getBatConstruit()!=total){
 			solve = false ;
 			for (int i=0; i <nbRegle; i++){
 				temp = tabRegle.elementAt(i).resolve() ;
@@ -62,7 +63,12 @@ public class ControleurR {
 			}
 			System.out.println("boucle résolution : solve "+solve);
 		}
-		System.out.println("--> FIN DE RESOLUTION DE LA GRILLE <--");
+		System.out.print("--> FIN DE RESOLUTION DE LA GRILLE <--");
+		if(solve)
+			System.out.println(" RESOLUE");
+		else
+			System.out.println(" probleme rencontré lors de la résolution...");
+		return solve ;
 	}
 	
 	public void applyRegle(Grille pGrille,Observateur pObservateur){

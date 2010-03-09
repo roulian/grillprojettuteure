@@ -1,8 +1,11 @@
 package vue;
 
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -40,7 +43,7 @@ public class VuePrincipale extends JFrame
 		setJMenuBar(menu);
 		JMenuItem itemTemp ;
 		//premier menu
-		jFicher = new JMenu("Jeu");
+		jFicher = new JMenu(" Jeu ");
 		menu.add(jFicher);
 		//premier sous menu
 		itemReco = new JMenuItem("Recommencer");
@@ -119,7 +122,7 @@ public class VuePrincipale extends JFrame
 			}
 		});
 		
-		jAide = new JMenu("Aide");
+		jAide = new JMenu("Aide ");
 		menu.add(jAide);
 		itemTemp = new JMenuItem("Voir mes possibilités");
 		jAide.add(itemTemp);
@@ -155,7 +158,7 @@ public class VuePrincipale extends JFrame
 			}
 		});
 			
-		jAutre = new JMenu("?");
+		jAutre = new JMenu("  ?  ");
 		menu.add(jAutre);
 		itemTemp = new JMenuItem("Option");
 		jAutre.add(itemTemp);

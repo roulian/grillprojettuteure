@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import Ecouteur.EcouteurGrille;
 import Ecouteur.EcouteurObservateur;
+import controleur.ControleurM;
 import controleur.ControleurVues;
 import src.Grille;
 import src.Observateur;
@@ -23,12 +24,14 @@ public class PanelGrilleDeJeu extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel[][] affGrille ;
 	private Observateur obsSaisie ;
+	private Grille grille ;
 	private ControleurVues ctrlV; 
 	private JPanel panelGrille ;
 	private JPanel panelObsNord ;
 	private JPanel panelObsSud ;
 	private JPanel panelObsEst ;
 	private JPanel panelObsOuest ;
+	private int lenght ;
 	
 	/**
 	 * This is the default constructor,
@@ -75,10 +78,11 @@ public class PanelGrilleDeJeu extends JPanel {
 	 * il est nécessaire de l'utiliser pour construire une grille non jouable avec Obs modifiable
 	 * @param pCtrlV controleur des vues
 	 */
-	public PanelGrilleDeJeu(int pTaille,Observateur pObservateur,boolean pModifiable){
+	public PanelGrilleDeJeu(ControleurM pCtrlM,int pTaille,Observateur pObservateur,boolean pModifiable){
 		super();
 		if(pObservateur!=null){
-			int lenght = pTaille ;
+			ctrlV = pCtrlM.getCtrlVues() ;
+			lenght = pTaille ;
 			initialize(lenght) ;
 			obsSaisie = pObservateur ;
 			//************ LIEE AU CHARGEMENT / GENERATION ***********/
@@ -94,7 +98,7 @@ public class PanelGrilleDeJeu extends JPanel {
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.NORD,i),"obs"))) ;
 				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					ecoutTemp = new EcouteurObservateur(temp,Observateur.NORD,i,obsSaisie) ;
+					ecoutTemp = new EcouteurObservateur(ctrlV,temp,Observateur.NORD,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
 				}
@@ -104,7 +108,7 @@ public class PanelGrilleDeJeu extends JPanel {
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.EST,i),"obs"))) ;
 				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					ecoutTemp = new EcouteurObservateur(temp,Observateur.EST,i,obsSaisie) ;
+					ecoutTemp = new EcouteurObservateur(ctrlV,temp,Observateur.EST,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
 				}
@@ -114,7 +118,7 @@ public class PanelGrilleDeJeu extends JPanel {
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.SUD,i),"obs"))) ;
 				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					ecoutTemp = new EcouteurObservateur(temp,Observateur.SUD,i,obsSaisie) ;
+					ecoutTemp = new EcouteurObservateur(ctrlV,temp,Observateur.SUD,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
 				}
@@ -124,7 +128,7 @@ public class PanelGrilleDeJeu extends JPanel {
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.OUEST,i),"obs"))) ;
 				temp.setBorder(BorderFactory.createEtchedBorder()) ;
 				if(pModifiable){
-					ecoutTemp = new EcouteurObservateur(temp,Observateur.OUEST,i,obsSaisie) ;
+					ecoutTemp = new EcouteurObservateur(ctrlV,temp,Observateur.OUEST,i,obsSaisie) ;
 					temp.addMouseListener(ecoutTemp) ;
 					temp.addKeyListener(ecoutTemp) ;
 				}
@@ -146,7 +150,7 @@ public class PanelGrilleDeJeu extends JPanel {
 		// on initialise le tableau à double entrée qui nous permettra par la suite d'afficher
 		// les batiments. c'est un tableau de label, plus facil d'afficher ainsi
 		affGrille = new JLabel[pTaille][pTaille];
-		int lenght = pTaille ;
+		lenght = pTaille ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
 				JLabel tempLabel = new JLabel();
@@ -193,7 +197,6 @@ public class PanelGrilleDeJeu extends JPanel {
 	
 	public void redlyGrilleDisplay(int pBat){
 		refreshGrilleDisplay() ;
-		int lenght = ctrlV.getTailleGrille() ;
 		System.out.println("appel de redlyGrilleDisplay");
 		GestionIcon.switchRedBat() ;
 		for (int i=0 ; i<lenght ; i++){
@@ -211,7 +214,6 @@ public class PanelGrilleDeJeu extends JPanel {
 	 * méthode qui permet d'afficher les batiments de la grille selon leur taille
 	 */
 	public void refreshGrilleDisplay(){
-		int lenght = ctrlV.getTailleGrille() ;
 		System.out.println("appel de refresGrilleDisplay");
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){

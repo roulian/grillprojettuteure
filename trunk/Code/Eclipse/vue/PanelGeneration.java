@@ -2,30 +2,29 @@ package vue;
 
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import javax.swing.JTextField;
-
 import src.Grille;
 import src.Observateur;
-import src.SaveObject;
-
+import controleur.ControleurM;
+import controleur.ControleurR;
 import controleur.ControleurVues;
-
-import java.awt.Rectangle;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
-
 import javax.swing.JComboBox;
+//import java.awt.Dimension;
+//import java.awt.GridLayout;
+//import javax.swing.BorderFactory;
+//import java.awt.Color;
+//import javax.swing.JTextField;
+//import src.SaveObject;
+//import java.awt.FlowLayout;
+//import java.awt.Rectangle;
+//import java.awt.GridBagConstraints;
+//import java.awt.Insets;
+//import java.awt.BorderLayout;
 
 public class PanelGeneration extends JPanel {
 
@@ -36,101 +35,128 @@ public class PanelGeneration extends JPanel {
 	private JButton jbGenSpont = null;
 	private JButton jbSauvegarder = null;
 	private JButton jbRetour = null;
-	private JPanel jpTaille = null;
 	private JPanel jpBout = null;
-	private JLabel jlTaille = null;
-	private JPanel jPanel = null;
 	private ControleurVues ctrlV;
 	private DifficulteGeneration difGen;
 	private JComboBox jCTaille = null;
 	private JButton jbOk = null ;
 	private PanelGrilleDeJeu jPanelSasieObs = null;
+	private boolean boolOk ;
+	private boolean verifOk ;
+	private int taille ;
+	private Observateur obs ;
+	private Grille grille ;
+	private PanelGrilleDeJeu affichage ;
 	/**
 	 * This is the default constructor
 	 */
 	public PanelGeneration(ControleurVues contr) {
 		super() ;
 		this.ctrlV = contr;
-		initialize();
+		this.setLayout(null);
+		this.add(getJpBoutton());
+		this.add(getJpGrill());
+		boolOk = false ;
+		verifOk = false ;
+		refresh();
 	}
-
-	/**
-	 * This method initializes this
-	 * 
-	 * @return void
-	 */
-	private void initialize() {
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.setRows(1);
-		gridLayout.setColumns(2);
-		this.setLayout(gridLayout);
-		this.setSize(385, 229);
-		this.add(getJpBoutton(), null);
-		this.add(getJpGrill(), null);
-	}
-
-	/**
-	 * This method initializes jpGrill	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
+	
 	private JPanel getJpGrill() {
-		if (jpGrill == null) 
-		{
+		if (jpGrill == null){
 			jpGrill = new JPanel();
-			jpGrill.setLayout(new GridBagLayout());
-			int tempTaille = (Integer)(jCTaille.getSelectedItem()) ;
-			jPanelSasieObs = new PanelGrilleDeJeu(tempTaille,new Observateur(tempTaille),true) ;
-			jpGrill.add(jPanelSasieObs);
+			jpGrill.setBounds(200,0,400,350) ;
+			jpGrill.setLayout(new GridBagLayout()) ;
+			taille = (Integer)(jCTaille.getSelectedItem()) ;
+			obs = new Observateur(taille);
+			grille = new Grille(ctrlV.getCtrlM(),taille);
+			affichage = new PanelGrilleDeJeu(ctrlV.getCtrlM(),taille,obs,true) ;
+			jpGrill.add(affichage) ;
 		}
 		return jpGrill;
 	}
-
-	/**
-	 * This method initializes jpBoutton	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getJpBoutton() {
-		if (jpBoutton == null) {
-			GridLayout gridLayout1 = new GridLayout();
-			gridLayout1.setRows(2);
-			gridLayout1.setColumns(1);
-			jpBoutton = new JPanel();
-			jpBoutton.setLayout(gridLayout1);
-			jpBoutton.add(getJpTaille(), null);
-			jpBoutton.add(getJpBout(), null);
+	
+	public JPanel getJpBoutton(){
+		if(jpBoutton==null){
+			jpBoutton = new JPanel() ;
+			jpBoutton.setLayout(null) ;
+			jpBoutton.add(getJpCombo()) ;
+			jpBoutton.add(getJbVerif()) ;
+			jpBoutton.add(getJbGenSpont()) ;
+			jpBoutton.add(getJbSauvegarder()) ;
+			jpBoutton.add(getJbRetour()) ;
+			jpBoutton.setBounds(0,0,200,350) ;
 		}
-		return jpBoutton;
+		return jpBoutton ;
+	}
+	
+	private JPanel getJpCombo(){
+		if(jpBout==null){
+			Vector<Integer> taille;
+			taille = new Vector<Integer>();
+			taille.add(4);
+			taille.add(5);
+			taille.add(6);
+			JLabel tempLabel = new JLabel("Taille") ;
+			jCTaille = new JComboBox(taille) ;
+			jCTaille.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					boolOk = false ;
+					verifOk = false ;
+					refresh() ;
+				}
+			});
+			jbOk = new JButton("Ok") ;
+			tempLabel.setBounds(0,0,60,35) ;
+			jCTaille.setBounds(70,0,60,35) ;
+			jbOk.setBounds(140,0,60,35) ;
+			jbOk.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					jpGrill.setVisible(false) ;
+					PanelGeneration.this.remove(getJpGrill()) ;
+					jpGrill = null ;
+					PanelGeneration.this.add(getJpGrill()) ;
+					validate() ;
+					boolOk = true ;
+					refresh() ;
+				}
+			}) ;
+			jpBout = new JPanel() ;
+			jpBout.add(tempLabel);
+			jpBout.add(jCTaille);
+			jpBout.add(jbOk);
+			jpBout.setBounds(20,80,170,35) ;
+		}
+		return jpBout ;
 	}
 
-	/**
-	 * This method initializes jbVerif	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJbVerif() {
 		if (jbVerif == null) {
 			jbVerif = new JButton();
+			jbVerif.setBounds(20,140,170,30) ;
 			jbVerif.setText("Vérification");
 			jbVerif.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()");
+					ctrlV.getCtrlM().setLaGrille(grille);
+					ctrlV.getCtrlM().setTailleGrille(taille);
+					ctrlV.getCtrlM().setObservateur(obs);
+					ControleurR resol = new ControleurR(ctrlV.getCtrlM()) ;
+					verifOk = resol.applyRegle() ;
+					affichage.refreshGrilleDisplay() ;
+					refresh() ;
 				}
 			});
 		}
 		return jbVerif;
 	}
 
-	/**
-	 * This method initializes jbGenSpont	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJbGenSpont() {
 		if (jbGenSpont == null) {
 			jbGenSpont = new JButton();
-			jbGenSpont.setText("Génération \nspontanée");
+			jbGenSpont.setText("Génération spontanée");
+			jbGenSpont.setBounds(20,175,170,30) ;
 			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV);
@@ -141,37 +167,31 @@ public class PanelGeneration extends JPanel {
 		return jbGenSpont;
 	}
 
-	/**
-	 * This method initializes jbSauvegarder	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJbSauvegarder() {
 		if (jbSauvegarder == null) {
 			jbSauvegarder = new JButton();
 			jbSauvegarder.setText("Sauvegarder");
+			jbSauvegarder.setBounds(20,210,170,30) ;
 			jbSauvegarder.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("actionPerformed ON Bouton Sauvegarder");
 					JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
 					String nomFichier = jop.showInputDialog(PanelGeneration.this, "Veuillez saisir le nom du fichier", "Sauvegarde", JOptionPane.QUESTION_MESSAGE);
-					if(!nomFichier.equals(""))
-						ctrlV.getCtrlM().sauvegarderGrille(nomFichier+".grille",new Grille((Integer)(jCTaille.getSelectedItem())),jPanelSasieObs.getObsSaisie(),(Integer)(jCTaille.getSelectedItem())) ;
+					if(!nomFichier.equals("")){
+						ControleurM ctrl = ctrlV.getCtrlM();
+						ctrl.sauvegarderGrille(nomFichier+".grille",ctrl.getLaGrille(),ctrl.getObservateur(),ctrl.getTailleGrille()) ;
+					}
 				}
 			});
 		}
 		return jbSauvegarder;
 	}
 
-	/**
-	 * This method initializes jbRetour	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJbRetour() {
 		if (jbRetour == null) {
 			jbRetour = new JButton();
 			jbRetour.setText("Retour");
+			jbRetour.setBounds(20,245,170,30) ;
 			jbRetour.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
@@ -180,105 +200,30 @@ public class PanelGeneration extends JPanel {
 		}
 		return jbRetour;
 	}
-
-	/**
-	 * This method initializes jpTaille	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getJpTaille() {
-		if (jpTaille == null) {
-			GridLayout gridLayout2 = new GridLayout();
-			gridLayout2.setRows(1);
-			gridLayout2.setColumns(2);
-			jpTaille = new JPanel();
-			jpTaille.setLayout(gridLayout2);
-			jpTaille.add(getJPanel(), null);
-		}
-		return jpTaille;
+	
+	public void refresh(){
+		jbVerif.setEnabled(boolOk) ;
+		jbGenSpont.setEnabled(boolOk) ;
+		jbSauvegarder.setEnabled(boolOk && verifOk) ;
 	}
 
-	/**
-	 * This method initializes jpBout	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getJpBout() {
-		if (jpBout == null) {
-			GridLayout gridLayout3 = new GridLayout();
-			gridLayout3.setRows(4);
-			gridLayout3.setColumns(1);
-			jpBout = new JPanel();
-			jpBout.setLayout(gridLayout3);
-			jpBout.add(getJbVerif(), null);
-			jpBout.add(getJbGenSpont(), null);
-			jpBout.add(getJbSauvegarder(), null);
-			jpBout.add(getJbRetour(), null);
-		}
-		return jpBout;
+	public PanelGrilleDeJeu getAffichage() {
+		return affichage;
 	}
 
-	/**
-	 * This method initializes jlTaille	
-	 * 	
-	 * @return javax.swing.JLabel	
-	 */
-	private JLabel getJlTaille() {
-		if (jlTaille == null) {
-			jlTaille = new JLabel();
-			jlTaille.setText("Taille");
-			jlTaille.setBounds(new Rectangle(18, 51, 30, 16));
-		}
-		return jlTaille;
+	public boolean isBoolOk() {
+		return boolOk;
 	}
 
-	/**
-	 * This method initializes jPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getJPanel() {
-		if (jPanel == null) {
-			jPanel = new JPanel();
-			jPanel.setLayout(null);
-			jPanel.add(getJlTaille(), null);
-			jPanel.add(getJCTaille(), null);
-			jbOk = new JButton() ;
-			jbOk.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					PanelGeneration.this.remove(jpGrill) ;
-					jpGrill = null ;
-					jpGrill = getJpGrill() ;
-					PanelGeneration.this.add(jpGrill) ;
-					validate() ;
-				}
-			}) ;
-			jbOk.setBounds(new Rectangle(120, 49, 70, 25)) ;
-			jbOk.setText("ok") ;
-			jPanel.add(jbOk) ;
-		}
-		return jPanel;
+	public void setBoolOk(boolean boolOk) {
+		this.boolOk = boolOk;
 	}
 
-	/**
-	 * This method initializes jCTaille	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJCTaille() {
-		if (jCTaille == null) {
-			Vector<Integer> taille;
-			//Choix des réponses
-			taille = new Vector<Integer>();
-			taille.add(4);
-			taille.add(5);
-			taille.add(6);
-			jCTaille = new JComboBox(taille);
-			jCTaille.setBounds(new Rectangle(60, 49, 43, 25));
-		}
-		
-		return jCTaille;
+	public boolean isVerifOk() {
+		return verifOk;
 	}
 
+	public void setVerifOk(boolean verifOk) {
+		this.verifOk = verifOk;
+	}
 }  //  @jve:decl-index=0:visual-constraint="36,20"

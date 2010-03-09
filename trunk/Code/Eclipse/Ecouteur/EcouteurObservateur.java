@@ -12,6 +12,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import controleur.ControleurM;
+import controleur.ControleurVues;
+
+import src.Grille;
 import src.Observateur;
 
 public class EcouteurObservateur implements MouseListener, KeyListener{
@@ -20,12 +24,14 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 	private int cardinal ;
 	private int position ;
 	private Observateur observateur ;
+	private ControleurVues ctrlV ;
 	
-	public EcouteurObservateur(JLabel plabel, int pCardinal, int pPosition, Observateur pObs){
+	public EcouteurObservateur(ControleurVues pCtrlV,JLabel plabel, int pCardinal, int pPosition, Observateur pObs){
 		myLabel = plabel ;
 		cardinal = pCardinal ;
 		position = pPosition ;
 		observateur = pObs ;
+		ctrlV = pCtrlV ;
 	}
 	
 	@Override
@@ -75,6 +81,8 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 		if(e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'
 			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'||e.getKeyChar()=='0'){
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
+			if (ctrlV.getPanelGeneration().isVerifOk() && ctrlV.getPanelGeneration().isBoolOk())
+				keypush() ;
 			observateur.setObservateur(cardinal, position-1, temp);
 			myLabel.setIcon(new ImageIcon(GestionIcon.getImage(temp,"obs"))) ;
 		}
@@ -96,9 +104,17 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 			if(e.getKeyChar()=='à')
 				temp = 0 ;
 	
+			if (ctrlV.getPanelGeneration().isVerifOk() && ctrlV.getPanelGeneration().isBoolOk())
+				keypush() ;
 			observateur.setObservateur(cardinal, position-1, temp);
 			myLabel.setIcon(new ImageIcon(GestionIcon.getImage(temp,"obs"))) ;
 		}
 	}
 
+	private void keypush(){
+		ctrlV.getCtrlM().setLaGrille(new Grille(ctrlV.getCtrlM(),ctrlV.getCtrlM().getTailleGrille())) ;
+		ctrlV.getCtrlM().resetBatConstruit() ;
+		ctrlV.getPanelGeneration().getAffichage().refreshGrilleDisplay() ;
+		ctrlV.getPanelGeneration().setVerifOk(false) ;
+	}
 }

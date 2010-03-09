@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 import src.Observateur;
@@ -107,10 +108,15 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				temp = 6 ;
 	
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
+				ctrlM.addBatConstruit() ;
 				if(ctrlM.isAideTrouver())
 					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+			}
+			
+			if(ctrlM.isFinGame()){
+				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 			}
 		}
 	}

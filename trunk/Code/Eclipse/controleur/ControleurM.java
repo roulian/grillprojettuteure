@@ -31,6 +31,8 @@ public class ControleurM {
 	private boolean aideTrouver = false ;
 	private int batAideTrouver ;
 	private boolean aideErreur = false ;
+	private boolean finJeu = false ;
+	private int nbBatConstruit = 0 ;
 	/**
 	 * 
 	 */
@@ -59,8 +61,9 @@ public class ControleurM {
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
 		gameStart = true ;
+		finJeu = false ;
 		observateur = new Observateur(tailleGrille) ;
-		laGrille = new Grille(tailleGrille) ;
+		laGrille = new Grille(this,tailleGrille) ;
 		
 		String[] listeFichiersTemp,listeFichiers;
 		File repertoire = new File(getPath());
@@ -240,8 +243,9 @@ public class ControleurM {
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
 		gameStart = true ;
+		finJeu = false ;
 		observateur = pObs ;
-		laGrille = new Grille(tailleGrille) ;
+		laGrille = new Grille(this,tailleGrille) ;
 		aideGrilleErreur = grilleErreur ;
 	}
 	
@@ -257,7 +261,23 @@ public class ControleurM {
 		batAideTrouver = 0 ;
 		ctrlVues.getVuePrincipal().refreshMenu() ;
 	}
-
+	
+	public void addBatConstruit(){
+		nbBatConstruit++ ;
+	}
+	
+	public int getBatConstruit(){
+		return nbBatConstruit ;
+	}
+	
+	public void resetBatConstruit(){
+		nbBatConstruit = 0 ;
+	}
+	
+	public boolean isFinGame(){
+		return (nbBatConstruit == (tailleGrille*tailleGrille)) ;
+	}
+	
 	//******* Résolution de la Grille ********/
 	public void resolve(){
 		ctrlRegl = new ControleurR(this) ;
@@ -415,7 +435,7 @@ public class ControleurM {
 	{
 		try 
 		{
-		    FileInputStream fichierP = new FileInputStream(nomFichier);
+		    FileInputStream fichierP = new FileInputStream(getPath()+"\\"+nomFichier);
 		    ObjectInputStream fichierV = new ObjectInputStream(fichierP);
 		    
 		    Integer grille[][] = (Integer[][])fichierV.readObject();
@@ -466,7 +486,7 @@ public class ControleurM {
 	public String getPath(){
 		File temp = new File(".") ;
 		try {
-			return temp.getCanonicalPath() ;
+			return temp.getCanonicalPath()+"\\sauvegardes" ;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("ERREUR GET PATH");
