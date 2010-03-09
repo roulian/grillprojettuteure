@@ -18,10 +18,10 @@ public class Observateur {
     public Observateur(int pTailleGrille) {
 		observateur = new int[4][pTailleGrille] ;
 		for (int i=0; i<pTailleGrille; i++){
-			observateur[NORD][i] = (int)(Math.random()*4+1);
-			observateur[SUD][i] = (int)(Math.random()*4+1);
-			observateur[EST][i] = (int)(Math.random()*4+1);
-			observateur[OUEST][i] = (int)(Math.random()*4+1);
+			observateur[NORD][i] = 0;
+			observateur[SUD][i] = 0;
+			observateur[EST][i] = 0;
+			observateur[OUEST][i] = 0;
 		}
     }
     

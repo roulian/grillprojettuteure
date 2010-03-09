@@ -232,7 +232,7 @@ public class PanelChargement extends JPanel {
 			jpGrilleJeu = new JPanel();
 			jpGrilleJeu.setBounds(200,0,400,300) ;
 			jpGrilleJeu.setLayout(new GridBagLayout());
-			jpGrilleJeu.add(new PanelGrilleDeJeu(tailleObs,obsChargement,false));
+			jpGrilleJeu.add(new PanelGrilleDeJeu(ctrlV.getCtrlM(),tailleObs,obsChargement,false));
 		}
 		return jpGrilleJeu;
 	}

@@ -7,26 +7,27 @@
  */
 package src ;
 
+import controleur.ControleurM;
+
 public class Grille {
 	
 	Case[][] grilleDejeu ;
 	int tailleGrille ;
+	ControleurM ctrlM ;
 	
-    public Grille() {
-    	this(4,new Observateur(4)) ;
+    public Grille(ControleurM pCtrlM) {
+    	this(pCtrlM,4) ;
     }
-    
-    public Grille(int pTaille){
-    	this(pTaille,new Observateur(pTaille)) ;
-    }
-    
+
     // dans le diagramme de classe il manque le constructeur de Grille qui permet de "faire" des observateurs !
     // je le fais quand même
-    public Grille(int pTaille, Observateur pObs){
+    public Grille(ControleurM pCtrlM, int pTaille){
+    	ctrlM = pCtrlM ;
     	// on sauvegarde la taille de la grille dans une variable int
     	tailleGrille = pTaille ;
     	// on fait une nouvelle instance d'une grille
     	grilleDejeu = new Case[pTaille][pTaille] ;
+    	
     	
     	// on instancie les cases
     	for(int i=0 ; i<tailleGrille ; i++ ){
@@ -50,6 +51,8 @@ public class Grille {
 	    		getCase(i,pOrdonnee).refreshPossibilite(pBatiment);
 	    	}
 	    	System.out.println("Absisse : "+pAbscisse+" Ordonne : "+pOrdonnee+" Batiment : "+pBatiment);
+	    	//on ajoute un batiment construit au compteur du controleur;
+	    	ctrlM.addBatConstruit() ;
 	    	return true ;
     	}
     	else
