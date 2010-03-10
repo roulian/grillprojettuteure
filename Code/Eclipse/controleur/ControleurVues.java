@@ -22,6 +22,7 @@ public class ControleurVues {
 	private PanelChargement panelChargement = null ;
 	private PanelJeu panelJeu = null ;
 	private PanelGrilleDeJeu panelGrilleDeJeu = null ;
+	private JPanel currentPanel = null ;
 	
 	public ControleurVues(ControleurM pCtrlM) {
 		ctrlM = pCtrlM ;
@@ -42,15 +43,52 @@ public class ControleurVues {
 	}
 	
 //*********** Gestion VUE PRINCIPAL ***************/	
-	public void switchPanel(JPanel pPanel){
-		if (pPanel == panelGeneration || pPanel == panelGrilleDeJeu || pPanel == panelChargement)
-			vuePrincipal.setSize(600, 400) ;
-		else
-			vuePrincipal.setSize(300, 400) ;
+	public void switchPanel(JPanel pPanel){	
 		
-		vuePrincipal.setContentPane(pPanel) ;
+		
+		// on change le panel afficher
+		if (pPanel == panelAcceuil){
+			vuePrincipal.setSize(300, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelAcceuil());
+		}
+		if (pPanel == panelAutoGenerer){
+			vuePrincipal.setSize(300, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelAutoGenerer());
+		}
+		if (pPanel == panelGeneration){
+			vuePrincipal.setSize(600, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelGeneration());
+		}
+		if (pPanel == panelGrilleDeJeu){
+			vuePrincipal.setSize(300, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelGrilleDeJeu());
+		}
+		if (pPanel == panelChargement){
+			vuePrincipal.setSize(600, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelChargement());
+		}
+		if (pPanel == panelJeu){
+			vuePrincipal.setSize(300, 400) ;
+			reinitialisePanel() ;
+			vuePrincipal.setContentPane(getPanelJeu());
+		}
+		currentPanel = pPanel ;
 		vuePrincipal.refreshMenu();
 		vuePrincipal.validate();
+	}
+	
+	public void reinitialisePanel(){
+		panelAcceuil = null ;
+		panelAutoGenerer = null ;
+		panelGeneration = null ;
+		panelGrilleDeJeu = null ;
+		panelChargement = null ;
+		panelJeu = null ;
 	}
 	
 	public void reinitialisePanelGrilleDeJeu(){

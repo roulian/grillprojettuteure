@@ -44,8 +44,6 @@ public class PanelGeneration extends JPanel {
 	private boolean boolOk ;
 	private boolean verifOk ;
 	private int taille ;
-	private Observateur obs ;
-	private Grille grille ;
 	private PanelGrilleDeJeu affichage ;
 	/**
 	 * This is the default constructor
@@ -67,9 +65,7 @@ public class PanelGeneration extends JPanel {
 			jpGrill.setBounds(200,0,400,350) ;
 			jpGrill.setLayout(new GridBagLayout()) ;
 			taille = (Integer)(jCTaille.getSelectedItem()) ;
-			obs = new Observateur(taille);
-			grille = new Grille(ctrlV.getCtrlM(),taille);
-			affichage = new PanelGrilleDeJeu(ctrlV.getCtrlM(),taille,obs,true) ;
+			affichage = new PanelGrilleDeJeu(ctrlV.getCtrlM(),taille,ctrlV.getCtrlM().getObservateur(),true) ;
 			jpGrill.add(affichage) ;
 		}
 		return jpGrill;
@@ -113,13 +109,25 @@ public class PanelGeneration extends JPanel {
 			jbOk.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					// TODO Auto-generated method stub
+					//on effectue le traitement nécessaire à la résolution plus tard
+					ControleurM ctrlTemp = ctrlV.getCtrlM() ;
+					int tailleTemp = (Integer)(jCTaille.getSelectedItem()) ;
+					//on creer une nouvelle grille vierge dans le controleurM.
+					ctrlTemp.setLaGrille(new Grille(ctrlTemp,tailleTemp)) ;
+					//on détermine la taille de la grille dans le controleurM.
+					ctrlTemp.setTailleGrille(tailleTemp) ;
+					//on creer un observateur vierge dans le controleurM.
+					ctrlTemp.setObservateur(new Observateur(tailleTemp)) ;
+					//on remet à zero le compteur de batiment construit
+					ctrlTemp.resetBatConstruit() ;
+					boolOk = true ;
+					
+					// on (re)construit la grille visible sur la droite
 					jpGrill.setVisible(false) ;
 					PanelGeneration.this.remove(getJpGrill()) ;
 					jpGrill = null ;
 					PanelGeneration.this.add(getJpGrill()) ;
 					validate() ;
-					boolOk = true ;
 					refresh() ;
 				}
 			}) ;
@@ -139,9 +147,6 @@ public class PanelGeneration extends JPanel {
 			jbVerif.setText("Vérification");
 			jbVerif.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					ctrlV.getCtrlM().setLaGrille(grille);
-					ctrlV.getCtrlM().setTailleGrille(taille);
-					ctrlV.getCtrlM().setObservateur(obs);
 					ControleurR resol = new ControleurR(ctrlV.getCtrlM()) ;
 					verifOk = resol.applyRegle() ;
 					affichage.refreshGrilleDisplay() ;
@@ -194,6 +199,9 @@ public class PanelGeneration extends JPanel {
 			jbRetour.setBounds(20,245,170,30) ;
 			jbRetour.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
+					ctrlV.getCtrlM().setLaGrille(null) ;
+					ctrlV.getCtrlM().setTailleGrille(0) ;
+					ctrlV.getCtrlM().setObservateur(null) ;
 					ctrlV.switchPanel(ctrlV.getPanelAcceuil()) ;
 				}
 			});
