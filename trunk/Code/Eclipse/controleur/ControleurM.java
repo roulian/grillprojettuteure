@@ -64,6 +64,7 @@ public class ControleurM {
 		finJeu = false ;
 		observateur = new Observateur(tailleGrille) ;
 		laGrille = new Grille(this,tailleGrille) ;
+		nbBatConstruit = 0 ;
 		
 		String[] listeFichiersTemp,listeFichiers;
 		File repertoire = new File(getPath());
