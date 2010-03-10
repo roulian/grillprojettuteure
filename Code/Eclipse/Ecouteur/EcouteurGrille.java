@@ -82,7 +82,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 	public void keyTyped(KeyEvent e) {
 		System.out.println("abs:"+abscisse+" ord:"+ordonnee+" KeyPressed:"+e.getKeyChar());
 		if(e.getKeyChar()=='1'||e.getKeyChar()=='2'||e.getKeyChar()=='3'
-			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'){
+			||e.getKeyChar()=='4'||e.getKeyChar()=='5'||e.getKeyChar()=='6'||e.getKeyChar()=='0'){
 			int temp = Integer.parseInt(e.getKeyChar()+"") ;
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
 				if(ctrlM.isAideTrouver())
@@ -90,9 +90,17 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
 			}
+			else{
+				if(ctrlM.getLaGrille().reContruire(abscisse,ordonnee,temp)){
+					if(ctrlM.isAideTrouver())
+						ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+					else
+						ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+				}
+			}
 		}
 		if(e.getKeyChar()=='&'||e.getKeyChar()=='é'||e.getKeyChar()=='"'
-			||e.getKeyChar()=='\''||e.getKeyChar()=='('||e.getKeyChar()=='-'){
+			||e.getKeyChar()=='\''||e.getKeyChar()=='('||e.getKeyChar()=='-'||e.getKeyChar()=='à'){
 			int temp = 0 ;
 			if(e.getKeyChar()=='&')
 				temp = 1 ;
@@ -106,7 +114,9 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				temp = 5 ;
 			if(e.getKeyChar()=='-')
 				temp = 6 ;
-	
+			if(e.getKeyChar()=='à')
+				temp = 0 ;
+			
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
 				ctrlM.addBatConstruit() ;
 				if(ctrlM.isAideTrouver())
@@ -114,7 +124,14 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
 			}
-			
+			else{
+				if(ctrlM.getLaGrille().reContruire(abscisse,ordonnee,temp)){
+					if(ctrlM.isAideTrouver())
+						ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+					else
+						ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+				}
+			}
 			if(ctrlM.isFinGame()){
 				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 			}
