@@ -14,8 +14,6 @@ public class GestionIcon {
 	private static boolean redBat= false ;
 	private static int batType = BATNUM ; 
 	private static int obsType = OBSNOIR ;
-//	private static int batType = BATIMAGE ; 
-//	private static int obsType = OBSCOUL ;
 	
 	/**
 	 * accocie un int avec l'image d'un batiment

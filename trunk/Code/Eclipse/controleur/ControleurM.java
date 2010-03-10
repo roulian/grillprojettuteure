@@ -506,6 +506,7 @@ public class ControleurM {
 	public String vecpo( final Vector<Integer> pt){
 		String ret = "None" ;
 		if (pt.size()!=0){
+			ret = "";
 			for(int i=0; i<pt.size(); i++)
 				ret = ret + pt.elementAt(i) + "," ;
 		}
