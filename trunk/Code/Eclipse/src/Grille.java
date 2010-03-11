@@ -104,6 +104,24 @@ public class Grille {
     	return construit ;
     }
 
+    public int getMaxLigne(int pOrdonnee){
+    	int maxBat = 0 ;
+    	for(int i=1;i<=tailleGrille;i++){
+    		if(maxBat<getCase(i,pOrdonnee).tailleMaxBatConst())
+    			maxBat = getCase(i,pOrdonnee).tailleMaxBatConst() ;
+    	}
+    	return maxBat ;
+    }
+    
+    public int getMaxColonne(int pAbscisse){
+    	int maxBat = 0 ;
+    	for(int i=1;i<=tailleGrille;i++){
+    		if(maxBat<getCase(pAbscisse,i).tailleMaxBatConst())
+    			maxBat = getCase(pAbscisse,i).tailleMaxBatConst() ;
+    	}
+    	return maxBat ;
+    }
+    
 	public int getTailleGrille() {
 		return tailleGrille;
 	}

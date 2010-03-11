@@ -1,7 +1,6 @@
-package regleResolutionLogicObservateur;
+package regleResolutionLogic;
 
 import controleur.ControleurR;
-import regleResolutionLogic.Regle;
 import src.Case;
 import src.Grille;
 import src.Observateur;
@@ -9,9 +8,12 @@ import src.Observateur;
 
 /**
  * 
- * @author Thomas
+ * @author Andres Gomez Thomas
+ * @category Regle
+ * 
  * permet de deminuer le vector de possibilité de case lorsque l'observateur n 
  * voit à une distance de n le batiment le plus grand de la grille (m)
+ * Cette regle enleve les batiments de taille min des cases distantes (non adjacente) de l'observateur.
  */
 public class Regle_MinTaille implements Regle {
 	private ControleurR ctrlR ;

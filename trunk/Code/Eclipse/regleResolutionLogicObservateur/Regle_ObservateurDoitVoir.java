@@ -5,22 +5,21 @@ import java.util.Vector;
 import controleur.ControleurR;
 import regleResolutionLogic.Regle;
 
-
+/**
+ * 
+ * @author Andres Gomez Thomas
+ * @category Semi Controleur de Regle
+ * @see ControleurR
+ *
+ * Cette classe à été créer pour gérer les règles plus spécialisées,
+ * elle fonctionne comme le ControleurR, mais permet de gérer en plus des regles ne s'appliquant qu'a une taille de grille particulière. 
+ * 
+ */
 public class Regle_ObservateurDoitVoir implements Regle{
-//	private ControleurR ctrlR ;
-//	private Grille grille ;
-//	private Observateur observateur ;
 	private Vector<Regle> tabRegle ;
 		
 	public Regle_ObservateurDoitVoir(ControleurR pCtrlR, int pTailleGrille){
-//		ctrlR = pCtrlR ;
-//		grille = pCtrlR.getGrille() ;
-//		observateur = pCtrlR.getObservateur() ;
 		tabRegle = new Vector<Regle>() ;
-		
-		//regle générique (ne dépend pas de la taille
-		tabRegle.add(new Regle_MinTaille(pCtrlR)) ;
-		tabRegle.add(new Regle_ObsVoit_N_1(pCtrlR)) ;
 		
 		//regle spécifique à la taille
 		switch(pTailleGrille){
@@ -44,9 +43,10 @@ public class Regle_ObservateurDoitVoir implements Regle{
 
 		solve = false ;
 		for (int i=0; i <nbRegle; i++){
+			System.out.println("--> "+tabRegle.elementAt(i).getClass());
 			temp = tabRegle.elementAt(i).resolve() ;
 			solve = solve || temp ;
-			System.out.println("- "+tabRegle.elementAt(i).getClass()+" - solve "+temp);
+			System.out.println("<-- RETOUR - solve "+temp);
 		}
 		return solve ;
 	}
