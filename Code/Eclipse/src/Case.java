@@ -79,5 +79,24 @@ public class Case {
     	return del ;
     }
     
-    
+    // Méthode qui supprime des integer du vector de possibilité de batiment
+    // compris entre la valeur renseignée (EXCLUE) et la valeur max de la grille
+    public boolean refreshPossibiliteMax(int hauteur){
+    	boolean del = false ;
+    	System.out.print("refreshPossibiliteMax("+hauteur+"): ");
+    	for( int i=0 ; i<possibilite.size() ; i++ ){
+    		int temp = possibilite.elementAt(i) ;
+    		if( temp > hauteur ){
+    			System.out.print(temp+",");
+    			possibilite.removeElementAt(i) ;	// on remove l'Objet au rang i
+    			del = true ;
+    			i-- ;
+    		}
+    	}
+    	if(!del)
+    		System.out.println("NONE");
+    	else
+    		System.out.println("");
+    	return del ;
+    }
 }

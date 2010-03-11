@@ -1,6 +1,5 @@
-package regleResolutionLogicObservateur;
+package regleResolutionLogic;
 
-import regleResolutionLogic.Regle;
 import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
@@ -19,7 +18,7 @@ public class Regle_ObsVoit_N_1 implements Regle{
 	}
 
 	//compte le nombre de batiment qu'un observateur 
-	//voit pour placer le batiment le plus grand sur la case adjascente 
+	//voit pour placer le batiment le plus grand sur la case adjascente (CAS UNICITE)
 	public boolean resolve() {
 		boolean solveN = false ;
 		boolean solveE = false ;
