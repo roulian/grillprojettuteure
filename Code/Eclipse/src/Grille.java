@@ -8,6 +8,7 @@
 package src ;
 
 import controleur.ControleurM;
+import controleur.ControleurR;
 
 public class Grille {
 	
@@ -59,50 +60,53 @@ public class Grille {
     		return false ;
     }
     
-    public boolean reContruire(int pAbscisse, int pOrdonnee, int pBatiment){
-    	// on doit ici reprendre les vecteurs de possibilité des cases sur la meme ligne/colonne
-    	// que le batiment précédemment construit, il faut rajouter à ces cases la valeur du batiment
-    	// remplacer en veillant à ce ces "possibilités" soit "possible"
-    	boolean construit = false;
-    	
-    	// si un batiment est déjà contruit
-    	if (!getCase(pAbscisse,pOrdonnee).estConstrutible(pBatiment)){
-    		construit = true ;
-    
-    		// on définie une nouvelle grille et on l'initialise
-    		Case[][] tempGrille = new Case[tailleGrille][tailleGrille];
-    		for(int i=0 ; i<tailleGrille ; i++ ){
-        		for(int j=0 ; j<tailleGrille ; j++){
-        			tempGrille[i][j] = new Case(tailleGrille) ;
-        		}
-        	}
-    		
-			for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
-    			for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
-    				if(abscisse!=pAbscisse && ordonnee!=pOrdonnee){
-    					// on récupere l'ancienne valeur
-    		    		int ancientBat = getCase(abscisse,ordonnee).getBatiment() ;
-    					// on construit sur la grille temp le batiment contruit sur la case de la grille normale
-    		    		if(ancientBat!=0){
-	    					tempGrille[ordonnee-1][abscisse-1].construire(ancientBat) ;
-	    			    	// on supprime le batiment des vector de possibilité des autres cases
-	    			    	for (int i=0; i<tailleGrille ;i++){
-	    			    		tempGrille[i][abscisse-1].refreshPossibilite(ancientBat);
-	    			    		tempGrille[ordonnee-1][i].refreshPossibilite(ancientBat);
-	    			    	}
-    					}
-    				}
-    			}
-    		}
-    		grilleDejeu = tempGrille ;
-    		if(pBatiment!=0)
-    			construire(pAbscisse, pOrdonnee, pBatiment) ;
-    		
-    		System.out.println("BATIMENT RE-CONSTRUIT Abscisse : "+pAbscisse+" Ordonnee : "+pOrdonnee+" Batiment : "+pBatiment);
-    	}
-    	
-    	return construit ;
-    }
+    // méthode non demander dans le cahier des charges, a l'heur actuel elle pose un confic avec 
+    // l'aide visuel trouver... elle est donc retiré du projet par manque de temps
+//    public boolean reContruire(int pAbscisse, int pOrdonnee, int pBatiment){
+//    	// on doit ici reprendre les vecteurs de possibilité des cases sur la meme ligne/colonne
+//    	// que le batiment précédemment construit, il faut rajouter à ces cases la valeur du batiment
+//    	// remplacer en veillant à ce ces "possibilités" soit "possible"
+//    	boolean construit = false;
+//    	
+//    	// si un batiment est déjà contruit
+//    	if (!getCase(pAbscisse,pOrdonnee).estConstrutible(pBatiment)){
+//    		construit = true ;
+//    		// on définie une nouvelle grille et on l'initialise
+//    		Case[][] tempGrille = new Case[tailleGrille][tailleGrille];
+//    		for(int i=0 ; i<tailleGrille ; i++ ){
+//        		for(int j=0 ; j<tailleGrille ; j++){
+//        			tempGrille[i][j] = new Case(tailleGrille) ;
+//        		}
+//        	}
+//    		
+//			for(int abscisse=1; abscisse<=tailleGrille; abscisse++){
+//    			for(int ordonnee=1; ordonnee<=tailleGrille; ordonnee++){
+//    				if(abscisse!=pAbscisse && ordonnee!=pOrdonnee){
+//    					// on récupere l'ancienne valeur
+//    		    		int ancientBat = getCase(abscisse,ordonnee).getBatiment() ;
+//    					// on construit sur la grille temp le batiment contruit sur la case de la grille normale
+//    		    		if(ancientBat!=0){
+//	    					tempGrille[ordonnee-1][abscisse-1].construire(ancientBat) ;
+//	    			    	// on supprime le batiment des vector de possibilité des autres cases
+//	    			    	for (int i=0; i<tailleGrille ;i++){
+//	    			    		tempGrille[i][abscisse-1].refreshPossibilite(ancientBat);
+//	    			    		tempGrille[ordonnee-1][i].refreshPossibilite(ancientBat);
+//	    			    	}
+//    					}
+//    				}
+//    			}
+//    		}
+//    		grilleDejeu = tempGrille ;
+//    		if(pBatiment!=0)
+//    			construire(pAbscisse, pOrdonnee, pBatiment) ;
+//    		
+//    		ControleurR tempCtrlR = new ControleurR(ctrlM) ;
+//    		tempCtrlR.applyReglePossibilite() ;
+//    		System.out.println("BATIMENT RE-CONSTRUIT Abscisse : "+pAbscisse+" Ordonnee : "+pOrdonnee+" Batiment : "+pBatiment);
+//    	}
+//    	
+//    	return construit ;
+//    }
 
     public int getMaxLigne(int pOrdonnee){
     	int maxBat = 0 ;

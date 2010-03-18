@@ -89,13 +89,9 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-			}
-			else{
-				if(ctrlM.getLaGrille().reContruire(abscisse,ordonnee,temp)){
-					if(ctrlM.isAideTrouver())
-						ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
-					else
-						ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+				
+				if(ctrlM.isFinGame()){
+					JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 				}
 			}
 		}
@@ -118,22 +114,14 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				temp = 0 ;
 			
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
-				ctrlM.addBatConstruit() ;
 				if(ctrlM.isAideTrouver())
 					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-			}
-			else{
-				if(ctrlM.getLaGrille().reContruire(abscisse,ordonnee,temp)){
-					if(ctrlM.isAideTrouver())
-						ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
-					else
-						ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+				
+				if(ctrlM.isFinGame()){
+					JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 				}
-			}
-			if(ctrlM.isFinGame()){
-				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 			}
 		}
 	}

@@ -14,7 +14,7 @@ public class Regle_Obs2etTailleGrille1 implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// gere le cas observateur de taille tailleGrille-1 en face de 2 

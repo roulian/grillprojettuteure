@@ -15,7 +15,7 @@ public class Regle_DistanceMin implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// on applique la loi bmax = m - n + d au vecteur de possibilité des batiments

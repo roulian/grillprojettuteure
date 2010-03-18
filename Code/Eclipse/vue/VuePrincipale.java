@@ -1,12 +1,16 @@
 package vue;
 
+import images.GestionIcon;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -166,6 +170,38 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				// ne fait rien pour l'instant
 				// permettra de faire un choix de style d'affichage
+				String[] option = new String[2] ;
+				option[0] = "Style n°1" ;
+				option[1] = "Style n°2" ;
+				
+				String message = "Choisissez entre les deux modes de vue possibles" +
+						"\nStyle n°1 : Batiment: image / Observateur: couleur" +
+						"\nStyle n°2 : Batiment: couleur / Observateur: noir" ;
+				String titre = "style";
+				
+				int style = JOptionPane.showOptionDialog(
+						VuePrincipale.this,
+						message,
+						titre,
+						JOptionPane.YES_OPTION,
+						JOptionPane.QUESTION_MESSAGE,
+						null,
+						option,
+						null) ; 
+				if(style==0){
+					// Style n°1 : Batiment: image / Observateur: couleur
+					GestionIcon.setBatType(GestionIcon.BATIMAGE) ;
+					GestionIcon.setObsType(GestionIcon.OBSCOUL) ;
+				}
+				else{
+					// Style n°2 : Batiment: couleur / Observateur: noir
+					GestionIcon.setBatType(GestionIcon.BATNUM) ;
+					GestionIcon.setObsType(GestionIcon.OBSNOIR) ;
+				}
+				if(ctrlV.getCtrlM().GetGameStart()){
+					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
+					ctrlV.refreshGrilleDeJeu() ;
+				}
 			}
 		});
 		itemTemp = new JMenuItem("Règles");
@@ -187,17 +223,20 @@ public class VuePrincipale extends JFrame
 		this.setResizable(false) ;
 		
 		// PARTIE DEBUGAGE
-//		JMenu debug = new JMenu("DEBUG");
-//		menu.add(debug);
-//		//premier sous menu
-//		itemTemp = new JMenuItem("Nouvelle partie");
-//		debug.add(itemTemp);
-//		itemTemp.addActionListener(new java.awt.event.ActionListener() {
-//			public void actionPerformed(java.awt.event.ActionEvent e) {
-//				ctrlV.getCtrlM().commencerPartie(4,1) ;
-//				ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
-//			}
-//		});
+		System.out.println(ctrlV.getCtrlM().isDebugMode());
+		if(ctrlV.getCtrlM().isDebugMode()){
+			JMenu debug = new JMenu("DEBUG");
+			menu.add(debug);
+			//premier sous menu
+			itemTemp = new JMenuItem("Nouvelle partie");
+			debug.add(itemTemp);
+			itemTemp.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					ctrlV.getCtrlM().commencerPartie(4,1) ;
+					ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
+				}
+			});
+		}
 	}
 	
 	public void refreshMenu(){

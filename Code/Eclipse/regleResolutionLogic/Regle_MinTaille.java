@@ -25,7 +25,7 @@ public class Regle_MinTaille implements Regle {
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	public boolean resolve() {
