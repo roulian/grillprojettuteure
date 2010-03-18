@@ -14,7 +14,7 @@ public class Regle8 implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// heu à défaut de trouver une meilleur regle :

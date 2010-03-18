@@ -14,7 +14,7 @@ public class Regle_Observateur1 implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// il s'agit de construire les batiments de taille maximum lorsque l'Observateur = 1 

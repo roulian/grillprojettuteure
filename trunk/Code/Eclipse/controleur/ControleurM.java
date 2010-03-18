@@ -33,6 +33,7 @@ public class ControleurM {
 	private boolean aideErreur = false ;
 	private boolean finJeu = false ;
 	private int nbBatConstruit = 0 ;
+	private boolean debugMode ;
 	/**
 	 * 
 	 */
@@ -42,12 +43,16 @@ public class ControleurM {
 	 * constructeur par défaut du controleur Maître
 	 * initialise quelques variables.
 	 */
-	public ControleurM(){
+	public ControleurM(boolean pDebugMode){
+		//initialisation des attribues du controleur
 		gameStart = false ;
 		laGrille = null ;
 		observateur = null ;
 		difficulte = 0 ;
 		tailleGrille = 0 ;
+		debugMode = pDebugMode ;
+		//initialisation des controleurs
+		ctrlRegl = new ControleurR(this) ;
 		ctrlVues = new ControleurVues(this) ;
 	}
 	
@@ -276,6 +281,7 @@ public class ControleurM {
 	}
 	
 	public boolean isFinGame(){
+		System.out.println("nombre de batiment construit"+nbBatConstruit);
 		return (nbBatConstruit == (tailleGrille*tailleGrille)) ;
 	}
 	
@@ -296,9 +302,9 @@ public class ControleurM {
 			aideTrouver = !aideTrouver ;
 			tricheBouton = false ;
 			aideErreur = false ;
-			ControleurR ctrlReglTemp = new ControleurR(this) ;
-			ctrlReglTemp.applyRegle(laGrille, observateur) ;
-			ctrlReglTemp = null ;
+			ctrlRegl = new ControleurR(this) ;
+			ctrlRegl.applyReglePossibilite() ;
+			ctrlVues.refreshGrilleDeJeu() ;
 		}
 		if(pLabelTriche.equals("aideErreur")){
 			aideErreur = !aideErreur ;
@@ -511,5 +517,9 @@ public class ControleurM {
 				ret = ret + pt.elementAt(i) + "," ;
 		}
 		return ret;
+	}
+
+	public boolean isDebugMode() {
+		return debugMode;
 	}
 }

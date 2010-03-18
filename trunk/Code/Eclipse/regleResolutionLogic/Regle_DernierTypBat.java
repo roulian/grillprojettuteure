@@ -17,7 +17,7 @@ public class Regle_DernierTypBat implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// construit un batiment lorsque c'est le dernier a construire 

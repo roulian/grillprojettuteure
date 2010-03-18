@@ -14,7 +14,7 @@ public class Regle6 implements Regle{
 		ctrlR = pCtrlR ;
 		observateur = ctrlR.getObservateur() ;
 		grille = ctrlR.getGrille() ;
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = ctrlR.getTailleGrille();
 	}
 
 	// construit les batiment dans l'ordre croisant depuis l'observateur lorsque ce dernier = taillegrille
