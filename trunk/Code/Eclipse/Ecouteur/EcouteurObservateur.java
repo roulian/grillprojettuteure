@@ -108,6 +108,8 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 				keypush() ;
 			observateur.setObservateur(cardinal, position-1, temp);
 			myLabel.setIcon(new ImageIcon(GestionIcon.getImage(temp,"obs"))) ;
+			ctrlV.getPanelGeneration().setVerifOk(false) ;
+			ctrlV.getPanelGeneration().refresh() ;
 		}
 	}
 
@@ -115,6 +117,5 @@ public class EcouteurObservateur implements MouseListener, KeyListener{
 		ctrlV.getCtrlM().setLaGrille(new Grille(ctrlV.getCtrlM(),ctrlV.getCtrlM().getTailleGrille())) ;
 		ctrlV.getCtrlM().resetBatConstruit() ;
 		ctrlV.getPanelGeneration().getAffichage().refreshGrilleDisplay() ;
-		ctrlV.getPanelGeneration().setVerifOk(false) ;
 	}
 }
