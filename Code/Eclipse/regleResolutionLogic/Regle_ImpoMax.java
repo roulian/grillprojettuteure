@@ -43,9 +43,15 @@ public class Regle_ImpoMax implements Regle {
 			int valeurObservateur = observateur.getObservateur(Observateur.NORD,abscisse) ;		
 			// on vérifie que le batiment observé à la distance de l'observateur soit de tailleMAX
 			if(valeurObservateur!=0 && grille.getCase(abscisse,valeurObservateur).getBatiment() == tailleGrille){
-				for(int ordonnee=valeurObservateur-1; ordonnee>=1; ordonnee--){
-					System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
-					solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxColonne(abscisse)+1)-(valeurObservateur-ordonnee)) ;
+				// on doit vérifier qu'aucun bâtiment n'a été construit entre l'obs et le bat de tailleMax
+				boolean unicite = true ;
+				for(int ordonnee=valeurObservateur-1; ordonnee>=1; ordonnee--)
+					unicite = unicite && (grille.getCase(abscisse,ordonnee).getBatiment()==0) ;
+				if(unicite){
+					for(int ordonnee=valeurObservateur-1; ordonnee>=1; ordonnee--){
+						System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
+						solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxColonne(abscisse)+1)-(valeurObservateur-ordonnee)) ;
+					}
 				}
 			}
 		}
@@ -56,9 +62,14 @@ public class Regle_ImpoMax implements Regle {
 			int valeurObservateur = observateur.getObservateur(Observateur.SUD,abscisse) ;		
 			// on vérifie que le batiment observé à la distance de l'observateur soit de tailleMAX
 			if(valeurObservateur!=0 && grille.getCase(abscisse,tailleGrille-valeurObservateur+1).getBatiment() == tailleGrille){
-				for(int ordonnee=(tailleGrille-valeurObservateur+2); ordonnee<=tailleGrille; ordonnee++){
-					System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
-					solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxColonne(abscisse)+1)-(valeurObservateur-(tailleGrille-ordonnee+1))) ;
+				boolean unicite = true ;
+				for(int ordonnee=(tailleGrille-valeurObservateur+2); ordonnee<=tailleGrille; ordonnee++)
+					unicite = unicite && (grille.getCase(abscisse,ordonnee).getBatiment()==0) ;
+				if(unicite){
+					for(int ordonnee=(tailleGrille-valeurObservateur+2); ordonnee<=tailleGrille; ordonnee++){
+						System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
+						solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxColonne(abscisse)+1)-(valeurObservateur-(tailleGrille-ordonnee+1))) ;
+					}
 				}
 			}
 		}
@@ -69,9 +80,14 @@ public class Regle_ImpoMax implements Regle {
 			int valeurObservateur = observateur.getObservateur(Observateur.EST,ordonnee) ;		
 			// on vérifie que le batiment observé à la distance de l'observateur soit de tailleMAX
 			if(valeurObservateur!=0 && grille.getCase(tailleGrille-valeurObservateur+1,ordonnee).getBatiment() == tailleGrille){
-				for(int abscisse=(tailleGrille-valeurObservateur+2); abscisse<=tailleGrille; abscisse++){
-					System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
-					solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxLigne(ordonnee)+1)-(valeurObservateur-(tailleGrille-abscisse+1))) ;
+				boolean unicite = true ;
+				for(int abscisse=(tailleGrille-valeurObservateur+2); abscisse<=tailleGrille; abscisse++)
+					unicite = unicite && (grille.getCase(abscisse,ordonnee).getBatiment()==0) ;
+				if(unicite){
+					for(int abscisse=(tailleGrille-valeurObservateur+2); abscisse<=tailleGrille; abscisse++){
+						System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
+						solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxLigne(ordonnee)+1)-(valeurObservateur-(tailleGrille-abscisse+1))) ;
+					}
 				}
 			}
 		}
@@ -82,9 +98,14 @@ public class Regle_ImpoMax implements Regle {
 			int valeurObservateur = observateur.getObservateur(Observateur.OUEST,ordonnee) ;		
 			// on vérifie que le batiment observé à la distance de l'observateur soit de tailleMAX
 			if(valeurObservateur!=0 && grille.getCase(valeurObservateur,ordonnee).getBatiment() == tailleGrille){
-				for(int abscisse=valeurObservateur-1; abscisse>=1; abscisse--){
-					System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
-					solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxLigne(ordonnee)+1)-(valeurObservateur-abscisse)) ;
+				boolean unicite = true ;
+				for(int abscisse=valeurObservateur-1; abscisse>=1; abscisse--)
+					unicite = unicite && (grille.getCase(abscisse,ordonnee).getBatiment()==0) ;
+				if(unicite){
+					for(int abscisse=valeurObservateur-1; abscisse>=1; abscisse--){
+						System.out.print("abscisse: "+abscisse+" ordonnee: "+ordonnee+" ");
+						solve = solve || grille.getCase(abscisse,ordonnee).refreshPossibiliteMax((grille.getMaxLigne(ordonnee)+1)-(valeurObservateur-abscisse)) ;
+					}
 				}
 			}
 		}
