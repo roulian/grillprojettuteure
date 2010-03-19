@@ -37,16 +37,16 @@ public class ControleurR {
 		tabRegle = new Vector<Regle>() ;
 		tabReglePossibilite = new Vector<Regle>() ;
 		
-		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;
-		tabReglePossibilite.add(new Regle_MinTaille(this)) ;
-		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;
-		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;
+//		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;	// TESTER
+//		tabReglePossibilite.add(new Regle_MinTaille(this)) ;	// TESTER
+		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;		// TESTER
+//		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;		// TESTER
 		
 		//Regles de possibilité
 		tabRegle.add(new Regle_DistanceMin(this)) ;			// TESTER
 		tabRegle.add(new Regle_MinTaille(this)) ;			// TESTER
 		tabRegle.add(new Regle_ImpoMax(this)) ;				// TESTER foireuse
-		tabRegle.add(new Regle_Pioupiou(this)) ;
+		tabRegle.add(new Regle_Pioupiou(this)) ;			// TESTER
 		
 		//Regles de contruction
 		tabRegle.add(new Regle_Observateur1(this)) ;
