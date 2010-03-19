@@ -45,6 +45,10 @@ public class PanelGeneration extends JPanel {
 	private boolean verifOk ;
 	private int taille ;
 	private PanelGrilleDeJeu affichage ;
+	public enum Mode {
+		NORMAL,DEBUG
+	}
+	private Mode modeOuverture = Mode.NORMAL;
 	/**
 	 * This is the default constructor
 	 */
@@ -213,6 +217,11 @@ public class PanelGeneration extends JPanel {
 		jbVerif.setEnabled(boolOk) ;
 		jbGenSpont.setEnabled(boolOk) ;
 		jbSauvegarder.setEnabled(boolOk && verifOk) ;
+		if(modeOuverture==Mode.DEBUG){
+			jbVerif.setEnabled(true) ;
+			jbGenSpont.setEnabled(false) ;
+			jbSauvegarder.setEnabled(true) ;
+		}
 	}
 
 	public PanelGrilleDeJeu getAffichage() {
@@ -233,5 +242,9 @@ public class PanelGeneration extends JPanel {
 
 	public void setVerifOk(boolean verifOk) {
 		this.verifOk = verifOk;
+	}
+
+	public void setModeOuverture(Mode modeOuverture) {
+		this.modeOuverture = modeOuverture;
 	}
 }  //  @jve:decl-index=0:visual-constraint="36,20"

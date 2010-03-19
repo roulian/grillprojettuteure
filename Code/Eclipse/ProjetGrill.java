@@ -26,9 +26,6 @@ public class ProjetGrill {
 		
 		System.out.println("lancement du PROJET TUTEURE");
 		
-		if(args.equals("debug"))
-			new ControleurM(true);
-		else
-			new ControleurM(false);
+		new ControleurM(true);
 	}
 }

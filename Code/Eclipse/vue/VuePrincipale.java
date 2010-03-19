@@ -34,7 +34,6 @@ public class VuePrincipale extends JFrame
 	private JMenu jAide ;
 	private JMenu jAutre ;
 	private JMenuItem itemReco ;
-	private DialogRegles DialogRegles ;
 	
 	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
@@ -208,7 +207,7 @@ public class VuePrincipale extends JFrame
 		jAutre.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				DialogRegles = new DialogRegles((VuePrincipale.this));
+				new DialogRegles((VuePrincipale.this));
 			}
 		});
 		itemTemp = new JMenuItem("A propos");
@@ -236,7 +235,18 @@ public class VuePrincipale extends JFrame
 					ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
 				}
 			});
+			itemTemp = new JMenuItem("Générer");
+			debug.add(itemTemp);
+			itemTemp.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					ctrlV.getCtrlM().finirPartie() ;
+					System.out.println("--> onglet : Générer DEBUG");
+					VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGeneration()) ;
+					VuePrincipale.this.ctrlV.getPanelGeneration().setModeOuverture(PanelGeneration.Mode.DEBUG) ;
+				}
+			});
 		}
+		
 	}
 	
 	public void refreshMenu(){

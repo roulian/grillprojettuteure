@@ -52,6 +52,7 @@ public class ControleurR {
 		tabRegle.add(new Regle_Observateur1(this)) ;
 		tabRegle.add(new Regle_DernierVecBat(this)) ;
 		tabRegle.add(new Regle_DernierTypBat(this)) ;
+		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ;
 		
 		//regle basé sur une taille particuliere de grille
 //		tabRegle.add(new Regle_ObservateurDoitVoir(this,tailleGrille)) ;
