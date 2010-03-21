@@ -10,7 +10,7 @@ public class DialogRegles extends JDialog {
 
 	public DialogRegles(JFrame parent){
 		//On appelle le construteur de JDialog correspondant
-		super(parent, "Règles", true);
+		super(parent, "Règles", false);
 		//On spécifie une taille
 		this.setSize(400, 500);
 		//La position

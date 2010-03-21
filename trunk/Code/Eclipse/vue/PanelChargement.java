@@ -34,6 +34,7 @@ import src.Observateur;
 import sun.awt.VerticalBagLayout;
 import controleur.ControleurR;
 import controleur.ControleurVues;
+import controleur.ControleurM.Dificulty;
 
 public class PanelChargement extends JPanel {
 
@@ -101,7 +102,7 @@ public class PanelChargement extends JPanel {
 			jbCharger.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ctrlV.getCtrlM().commencerPartie(tailleObs, 1, obsChargement, grlChargment) ;
+					ctrlV.getCtrlM().commencerPartie(tailleObs, Dificulty.FACILE, obsChargement, grlChargment) ;
 					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;			
 				}
 			});
