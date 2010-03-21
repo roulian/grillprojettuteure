@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
 import controleur.ControleurVues;
+import controleur.ControleurM.Dificulty;
 
 import java.awt.Insets;
 import java.awt.GridLayout;
@@ -79,7 +80,7 @@ public class PanelAutoGénérer extends JPanel {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ctrlV.getCtrlM().finirPartie() ;
 					int taille = (Integer) jcTaille.getSelectedItem() ;
-					ctrlV.getCtrlM().commencerPartie(taille,1) ;
+					ctrlV.getCtrlM().commencerPartie(taille,Dificulty.FACILE) ;
 					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 				}
 			});

@@ -15,6 +15,8 @@ public class ControleurR {
 	// les règles logique de résolution ;
 	private Vector<Regle> tabRegle ;
 	private Vector<Regle> tabReglePossibilite ;
+	private Vector<Regle> tabRegleFACILE ;
+	private Vector<Regle> tabRegleNORMAL ;
 	
 	public ControleurR(ControleurM pCtrlM){
 		ctrlM = pCtrlM ;
@@ -36,11 +38,8 @@ public class ControleurR {
 		//définition des regles logiques de résolution dans le tableau de regle
 		tabRegle = new Vector<Regle>() ;
 		tabReglePossibilite = new Vector<Regle>() ;
-		
-		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;	// TESTER
-		tabReglePossibilite.add(new Regle_MinTaille(this)) ;	// TESTER
-		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;		// TESTER
-		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;		// TESTER
+		tabRegleFACILE = new Vector<Regle>() ;
+		tabRegleNORMAL = new Vector<Regle>() ;
 		
 		//Regles de possibilité
 		tabRegle.add(new Regle_DistanceMin(this)) ;				// TESTER
@@ -55,8 +54,28 @@ public class ControleurR {
 		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ;
 		tabRegle.add(new Regle_Obs2ConstruitN1(this)) ;
 		
-		//regle basé sur une taille particuliere de grille
-//		tabRegle.add(new Regle_ObservateurDoitVoir(this,tailleGrille)) ;
+		// regle des possibilités
+		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;
+		tabReglePossibilite.add(new Regle_MinTaille(this)) ;
+		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;
+		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;
+		
+		// regle facile
+		tabRegleFACILE.add(new Regle_DistanceMin(this)) ;
+		tabRegleFACILE.add(new Regle_Observateur1(this)) ;
+		tabRegleFACILE.add(new Regle_DernierVecBat(this)) ;
+		tabRegleFACILE.add(new Regle_DernierTypBat(this)) ;
+		tabRegleFACILE.add(new Regle_Obs2etTailleGrille1(this)) ;
+		tabRegleFACILE.add(new Regle_Obs2ConstruitN1(this)) ;
+		// regle normal
+		tabRegleNORMAL.add(new Regle_DistanceMin(this)) ;
+		tabRegleNORMAL.add(new Regle_MinTaille(this)) ;
+		tabRegleNORMAL.add(new Regle_ImpoMax(this)) ;
+		tabRegleNORMAL.add(new Regle_Observateur1(this)) ;
+		tabRegleNORMAL.add(new Regle_DernierVecBat(this)) ;
+		tabRegleNORMAL.add(new Regle_DernierTypBat(this)) ;
+		tabRegleNORMAL.add(new Regle_Obs2etTailleGrille1(this)) ;
+		tabRegleNORMAL.add(new Regle_Obs2ConstruitN1(this)) ;
 	}
 	
 	// méthode de résolution des grilles.
@@ -81,7 +100,7 @@ public class ControleurR {
 			System.out.println(" RESOLUE");
 		else
 			System.out.println(" probleme rencontré lors de la résolution...");
-		return solve ;
+		return ctrlM.getBatConstruit()==tailleGrille*tailleGrille ;
 	}
 	
 	public boolean applyReglePossibilite(){
@@ -103,6 +122,36 @@ public class ControleurR {
 		System.out.print("--> FIN DE RESTRICTION DE LA GRILLE <--");
 		
 		return solve ;
+	}
+	
+	public boolean applyRegleFACIL(){
+		int nbRegle = tabRegleFACILE.size();
+		boolean solve = true ;
+		boolean temp ;
+		while(solve==true){
+			solve = false ;
+			for (int i=0; i <nbRegle; i++){
+				temp = tabRegleFACILE.elementAt(i).resolve() ;
+				solve = solve || temp ;
+			}
+		}
+		System.out.println(this.getClass()+" "+(ctrlM.getBatConstruit()==tailleGrille*tailleGrille));
+		return ctrlM.getBatConstruit()==tailleGrille*tailleGrille ;
+	}
+	
+	public boolean applyRegleNORMAL(){
+		int nbRegle = tabRegleNORMAL.size();
+		boolean solve = true ;
+		boolean temp ;
+		while(solve==true){
+			solve = false ;
+			for (int i=0; i <nbRegle; i++){
+				temp = tabRegleNORMAL.elementAt(i).resolve() ;
+				solve = solve || temp ;
+			}
+		}
+		System.out.println(this.getClass()+" "+(ctrlM.getBatConstruit()==tailleGrille*tailleGrille));
+		return ctrlM.getBatConstruit()==tailleGrille*tailleGrille ;
 	}
 	
 	//***********	Accessur ***********//

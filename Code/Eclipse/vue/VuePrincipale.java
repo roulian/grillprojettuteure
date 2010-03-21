@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controleur.ControleurVues;
+import controleur.ControleurM.Dificulty;
 
 import src.Observateur;
 import vue.DialogRegles;
@@ -56,7 +57,7 @@ public class VuePrincipale extends JFrame
 				System.out.println("--> onglet : Recommencer");
 				Observateur tempObs = ctrlV.getCtrlM().getObservateur() ;
 				int tailleTemp = ctrlV.getCtrlM().getTailleGrille() ; 
-				int difTemp = ctrlV.getCtrlM().getDifficulte() ;
+				Dificulty difTemp = ctrlV.getCtrlM().getDifficulte() ;
 				Integer[][] aideErreur = ctrlV.getCtrlM().getAideGrilleErreur() ;
 				ctrlV.getCtrlM().finirPartie() ;
 				ctrlV.getCtrlM().commencerPartie(tailleTemp,difTemp,tempObs,aideErreur) ;
@@ -79,7 +80,7 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(4,1) ;
+				ctrlV.getCtrlM().commencerPartie(4,Dificulty.FACILE) ;
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -226,15 +227,6 @@ public class VuePrincipale extends JFrame
 		if(ctrlV.getCtrlM().isDebugMode()){
 			JMenu debug = new JMenu("DEBUG");
 			menu.add(debug);
-			//premier sous menu
-			itemTemp = new JMenuItem("Nouvelle partie");
-			debug.add(itemTemp);
-			itemTemp.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					ctrlV.getCtrlM().commencerPartie(4,1) ;
-					ctrlV.switchPanel(ctrlV.getPanelGrilleDeJeu()) ;
-				}
-			});
 			itemTemp = new JMenuItem("Générer");
 			debug.add(itemTemp);
 			itemTemp.addActionListener(new java.awt.event.ActionListener() {
