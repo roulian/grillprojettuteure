@@ -37,22 +37,23 @@ public class ControleurR {
 		tabRegle = new Vector<Regle>() ;
 		tabReglePossibilite = new Vector<Regle>() ;
 		
-//		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;	// TESTER
-//		tabReglePossibilite.add(new Regle_MinTaille(this)) ;	// TESTER
+		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;	// TESTER
+		tabReglePossibilite.add(new Regle_MinTaille(this)) ;	// TESTER
 		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;		// TESTER
-//		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;		// TESTER
+		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;		// TESTER
 		
 		//Regles de possibilité
-		tabRegle.add(new Regle_DistanceMin(this)) ;			// TESTER
-		tabRegle.add(new Regle_MinTaille(this)) ;			// TESTER
-		tabRegle.add(new Regle_ImpoMax(this)) ;				// TESTER foireuse
-		tabRegle.add(new Regle_Pioupiou(this)) ;			// TESTER
+		tabRegle.add(new Regle_DistanceMin(this)) ;				// TESTER
+		tabRegle.add(new Regle_MinTaille(this)) ;				// TESTER
+		tabRegle.add(new Regle_ImpoMax(this)) ;					// TESTER
+		tabRegle.add(new Regle_Pioupiou(this)) ;				// TESTER
 		
 		//Regles de contruction
 		tabRegle.add(new Regle_Observateur1(this)) ;
 		tabRegle.add(new Regle_DernierVecBat(this)) ;
 		tabRegle.add(new Regle_DernierTypBat(this)) ;
 		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ;
+		tabRegle.add(new Regle_Obs2ConstruitN1(this)) ;
 		
 		//regle basé sur une taille particuliere de grille
 //		tabRegle.add(new Regle_ObservateurDoitVoir(this,tailleGrille)) ;
