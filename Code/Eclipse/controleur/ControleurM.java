@@ -113,23 +113,78 @@ public class ControleurM {
 		
 		// ici on a une grille valide, il ne nou reste plus qu'a suprimer des observateurs.
 //		// tout en vérifiant que la grille reste résoluble
-//		cette partie bug !
-//		if(pDifficulte==Dificulty.DIFFICILE){
-//			Observateur obsswitch = new Observateur(observateur,pTailleGrille) ;
-//			for(int i=(int)(Math.random()*10); i<10; i++){
-//				int cardinal = (int)(Math.random()*4) ;
-//				int position = (int)(Math.random()*tailleGrille) ;
-//				observateur.setObservateur(cardinal,position,0);
-//				laGrille = new Grille(this,tailleGrille) ;
-//				ctrlRegl = new ControleurR(this) ;
-//				if(ctrlRegl.applyRegle())
-//					obsswitch = new Observateur(observateur,tailleGrille) ;
-//				else
-//					observateur = new Observateur(obsswitch,tailleGrille) ;
-//			}
-//			observateur = new Observateur(obsswitch,tailleGrille) ;
-//		}
-//		
+		if(pDifficulte==Dificulty.DIFFICILE){
+			Observateur obsswitch = new Observateur(observateur,pTailleGrille) ;
+			for(int i=(int)(Math.random()*10); i<10; i++){
+				// calcule d'un observateur à supprimer
+				int cardinal = (int)(Math.random()*4) ;
+				int position = (int)(Math.random()*tailleGrille) ;
+				observateur.setObservateur(cardinal,position,0);
+				// réinitialisation de la grille et de la variable comptant les batiments
+				laGrille = new Grille(this,tailleGrille) ;
+				nbBatConstruit = 0 ;
+				// initialisation d'un nouveau controleur de regle
+				ctrlRegl = new ControleurR(this) ;
+				
+				// si la grille est solvable on sauvegarde alors la nouvelle grille dans obsswitch
+				// sinon on revient à la précédente grille.
+				if(ctrlRegl.applyRegle())
+					obsswitch = new Observateur(observateur,tailleGrille) ;
+				else
+					observateur = new Observateur(obsswitch,tailleGrille) ;
+			}
+			// au final par précaution (inutile) on recharge la grille switch 
+			observateur = new Observateur(obsswitch,tailleGrille) ;
+		}
+		
+		if(pDifficulte==Dificulty.NORMAL){
+			Observateur obsswitch = new Observateur(observateur,pTailleGrille) ;
+			for(int i=(int)(Math.random()*tailleGrille*3); i<tailleGrille*3; i++){
+				// calcule d'un observateur à supprimer
+				int cardinal = (int)(Math.random()*4) ;
+				int position = (int)(Math.random()*tailleGrille) ;
+				observateur.setObservateur(cardinal,position,0);
+				// réinitialisation de la grille et de la variable comptant les batiments
+				laGrille = new Grille(this,tailleGrille) ;
+				nbBatConstruit = 0 ;
+				// initialisation d'un nouveau controleur de regle
+				ctrlRegl = new ControleurR(this) ;
+				
+				// si la grille est solvable on sauvegarde alors la nouvelle grille dans obsswitch
+				// sinon on revient à la précédente grille.
+				if(ctrlRegl.applyRegleNORMAL())
+					obsswitch = new Observateur(observateur,tailleGrille) ;
+				else
+					observateur = new Observateur(obsswitch,tailleGrille) ;
+			}
+			// au final par précaution (inutile) on recharge la grille switch 
+			observateur = new Observateur(obsswitch,tailleGrille) ;
+		}
+		
+		if(pDifficulte==Dificulty.FACILE){
+			Observateur obsswitch = new Observateur(observateur,pTailleGrille) ;
+			for(int i=(int)(Math.random()*tailleGrille*3); i<tailleGrille*3; i++){
+				// calcule d'un observateur à supprimer
+				int cardinal = (int)(Math.random()*4) ;
+				int position = (int)(Math.random()*tailleGrille) ;
+				observateur.setObservateur(cardinal,position,0);
+				// réinitialisation de la grille et de la variable comptant les batiments
+				laGrille = new Grille(this,tailleGrille) ;
+				nbBatConstruit = 0 ;
+				// initialisation d'un nouveau controleur de regle
+				ctrlRegl = new ControleurR(this) ;
+				
+				// si la grille est solvable on sauvegarde alors la nouvelle grille dans obsswitch
+				// sinon on revient à la précédente grille.
+				if(ctrlRegl.applyRegleFACIL())
+					obsswitch = new Observateur(observateur,tailleGrille) ;
+				else
+					observateur = new Observateur(obsswitch,tailleGrille) ;
+			}
+			// au final par précaution (inutile) on recharge la grille switch 
+			observateur = new Observateur(obsswitch,tailleGrille) ;
+		}
+		
 		// pour visualiser le résultat à supprimer par la suite 
 		finJeu = false ;
 		gameStart = true ;
