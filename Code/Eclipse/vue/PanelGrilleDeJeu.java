@@ -197,7 +197,7 @@ public class PanelGrilleDeJeu extends JPanel {
 	
 	public void redlyGrilleDisplay(int pBat){
 		refreshGrilleDisplay() ;
-		System.out.println("appel de redlyGrilleDisplay");
+		System.out.println("appel de redlyGrilleDisplay param: "+pBat);
 		GestionIcon.switchRedBat() ;
 		for (int i=0 ; i<lenght ; i++){
 			for (int j=0 ; j<lenght ; j++){
@@ -207,6 +207,28 @@ public class PanelGrilleDeJeu extends JPanel {
 			}
 		}
 		GestionIcon.switchRedBat() ;
+		validate();
+	}
+	
+	public void redlyGrilleDisplay(){
+		refreshGrilleDisplay() ;
+		System.out.println("appel de redlyGrilleDisplay -SANS PARAMETRE-");
+		for (int i=0 ; i<lenght ; i++){
+			for (int j=0 ; j<lenght ; j++){
+				// si le batiment est différent de zéro
+				int tempbat = ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment() ;
+				if( tempbat != 0 ){
+					if( tempbat != ctrlV.getCtrlM().getAideGrilleErreur(j+1,i+1)){
+						GestionIcon.switchRedBat() ;
+						affGrille[i][j].setIcon(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment(),"bat"))) ;
+						GestionIcon.switchRedBat() ;
+					}
+					else{
+						affGrille[i][j].setIcon(new ImageIcon(GestionIcon.getImage(ctrlV.getCtrlM().getLaGrille().getCase(j+1,i+1).getBatiment(),"bat"))) ;
+					}
+				}
+			}
+		}
 		validate();
 	}
 	

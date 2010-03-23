@@ -101,10 +101,17 @@ public class ControleurVues {
 
 //*********** Partie Grille de jeu ***************/
 	public void refreshGrilleDeJeu(){
-		if(ctrlM.isAideTrouver()&&ctrlM.getBatAideTrouver()!=0)
+		if(ctrlM.isAideTrouver()&&ctrlM.getBatAideTrouver()!=0){
 			redlyGrilleDeJeu(ctrlM.getBatAideTrouver()) ;
-		else
-			panelGrilleDeJeu.refreshGrilleDisplay() ;
+		}
+		else{
+			if(ctrlM.isAideErreur()){
+				redlyGrilleDeJeu() ;
+			}
+			else{
+				panelGrilleDeJeu.refreshGrilleDisplay() ;
+			}
+		}
 	}
 	
 	public void refreshGrilleDeJeu(int pAbscisse, int pOrdonnee, String pImBat){
@@ -113,6 +120,10 @@ public class ControleurVues {
 	
 	private void redlyGrilleDeJeu(int pBat){
 		panelGrilleDeJeu.redlyGrilleDisplay(pBat) ;
+	}
+	
+	private void redlyGrilleDeJeu(){
+		panelGrilleDeJeu.redlyGrilleDisplay() ;
 	}
 
 	

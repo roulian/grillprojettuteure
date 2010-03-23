@@ -74,7 +74,7 @@ public class EcouteCharger implements MouseListener{
 //		    		System.out.print(temp.elementAt(1)[i][j]+" ");
 //	    	System.out.println();
 //		}		   
-
+		ctrlV.getCtrlM().setAideGrilleErreur(temp.elementAt(0)) ;
 	    ctrlV.getPanelChargement().setObsChargement(new Observateur(temp.elementAt(1),temp.elementAt(0).length),temp.elementAt(0),temp.elementAt(0).length) ;
 		ctrlV.getPanelChargement().refreshGrille() ;
 	}

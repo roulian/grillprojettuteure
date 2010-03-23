@@ -114,7 +114,7 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 				temp = 0 ;
 			
 			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
-				if(ctrlM.isAideTrouver())
+				if(ctrlM.isAideTrouver()||ctrlM.isAideErreur())
 					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
 				else
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
