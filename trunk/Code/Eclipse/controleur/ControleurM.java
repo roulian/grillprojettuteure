@@ -38,9 +38,6 @@ public class ControleurM {
 	private boolean finJeu = false ;
 	private int nbBatConstruit = 0 ;
 	private boolean debugMode ;
-	/**
-	 * 
-	 */
 	private Integer[][] aideGrilleErreur ;
 	
 	/**
@@ -185,12 +182,26 @@ public class ControleurM {
 			observateur = new Observateur(obsswitch,tailleGrille) ;
 		}
 		
-		// pour visualiser le résultat à supprimer par la suite 
+		aideGrilleErreur = generateGrilleErreur(laGrille) ;
 		finJeu = false ;
 		gameStart = true ;
 		ctrlVues.switchPanel(ctrlVues.getPanelJeu()) ;
 		ctrlVues.refreshGrilleDeJeu() ;
 		ctrlVues.getPanelGrilleDeJeu().refreshGrilleDisplay() ;
+	}
+	
+	/**
+	 * Génère la grille erreur a partir d'une grille.
+	 */
+	public Integer[][] generateGrilleErreur(Grille pGrille){
+		int taille = pGrille.getTailleGrille() ;
+		Integer[][] grilleTemp = new Integer[taille][taille];
+		for(int i=0;i<taille;i++){
+			for(int j=0;j<taille;j++){
+				grilleTemp[i][j] = pGrille.getCase(i+1,j+1).getBatiment() ; 
+			}
+		}
+		return grilleTemp ;
 	}
 	
 	/**
@@ -364,6 +375,13 @@ public class ControleurM {
 			aideErreur = !aideErreur ;
 			aideTrouver = false ;
 			tricheBouton = false ;
+			ctrlVues.refreshGrilleDeJeu() ;
+//			for(int i=1;i<=tailleGrille;i++){
+//				for(int j=1;j<=tailleGrille;j++){
+//					System.out.print(getAideGrilleErreur(j,i)) ;
+//				}
+//				System.out.println();
+//			}
 		}
 		ctrlVues.getPanelJeu().getPanelVisuel().setVisible(ctrlVues.getCtrlM().isAideTrouver()) ;
 		ctrlVues.getPanelJeu().getJbTricher().setVisible(ctrlVues.getCtrlM().isTricheBouton()) ;
@@ -414,9 +432,13 @@ public class ControleurM {
 	public Dificulty getDifficulte() {
 		return difficulte;
 	}
-
+	
 	public Integer[][] getAideGrilleErreur() {
-		return aideGrilleErreur;
+		return aideGrilleErreur ;
+	}
+
+	public int getAideGrilleErreur(int pAbscisse,int pOrdonnee) {
+		return (int)(aideGrilleErreur[pAbscisse-1][pOrdonnee-1]);
 	}
 	
 	//*********** Setters *************/
