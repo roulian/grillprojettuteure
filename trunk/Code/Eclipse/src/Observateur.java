@@ -30,13 +30,22 @@ public class Observateur {
     }
     
     public Observateur(Integer[][] pObs,int taille){
-    	int[][] pObsTemp = new int[taille][taille];
+    	int[][] pObsTemp = new int[4][taille];
     	for(int i=0;i<4;i++){
     		for(int j=0;j<taille;j++){
     			pObsTemp[i][j] = pObs[i][j] ;
         	}
     	}
     	observateur = pObsTemp ;
+    }
+    
+    public Observateur(Observateur pObs, int tailleObs){
+    	observateur = new int[4][tailleObs] ;
+    	for (int i=0;i<4;i++){
+    		for (int j=0;j<tailleObs;j++){
+    			observateur[i][j] = pObs.getObservateur(i,j+1);
+    		}
+    	}
     }
     
     public int getObservateur(int pCardinal, int pPosition){
