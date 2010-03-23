@@ -12,7 +12,8 @@ import controleur.ControleurR;
  * le batiment le plus grand restant ne peut pas être placé sur toutes les cases constructibles non adjacentes à l’observateur 
  * devant le bâtiment de taille max
  * @author julien
- *
+ * @category regleResolutionLogicObservateur
+ * 
  */
 public class Regle_ObsVoitNmoins1 implements Regle
 {
@@ -312,7 +313,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			boolean batConstruit = false;				//Si un batiment est construit sur la ligne/colonne
 			int [] tab = new int[tailleGrille+1];
 			
-			for (int i=0 ; i<6 ; i++)
+			for (int i=0 ; i<tailleGrille ; i++)
 			{
 				tab[i]=0;
 			}

@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import controleur.ControleurR;
 import regleResolutionLogic.Regle;
+import regleResolutionLogic.Regle_MinTaille;
 
 /**
  * 
@@ -20,8 +21,15 @@ public class Regle_ObservateurDoitVoir implements Regle{
 		
 	public Regle_ObservateurDoitVoir(ControleurR pCtrlR, int pTailleGrille){
 		tabRegle = new Vector<Regle>() ;
-		
+
+
+
+		//regle générique (ne dépend pas de la taille
+		tabRegle.add(new Regle_MinTaille(pCtrlR)) ;
+		//tabRegle.add(new Regle_ObsVoit_N_1(pCtrlR)) ;
+
 		//regle spécifique à la taille
+
 		switch(pTailleGrille){
 		case 4 :
 			//contruction du simili controleur pour taille 4
