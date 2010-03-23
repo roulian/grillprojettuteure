@@ -80,7 +80,14 @@ public class PanelAutoGénérer extends JPanel {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ctrlV.getCtrlM().finirPartie() ;
 					int taille = (Integer) jcTaille.getSelectedItem() ;
-					ctrlV.getCtrlM().commencerPartie(taille,Dificulty.FACILE) ;
+					Dificulty dif = Dificulty.FACILE;
+					if(jcDifficulté.getSelectedItem().equals("Facile"))
+						dif = Dificulty.FACILE ;
+					if(jcDifficulté.getSelectedItem().equals("Moyen"))
+						dif = Dificulty.NORMAL ;
+					if(jcDifficulté.getSelectedItem().equals("Difficile"))
+						dif = Dificulty.DIFFICILE ;
+					ctrlV.getCtrlM().commencerPartie(taille,dif) ;
 					ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 				}
 			});

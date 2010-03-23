@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -91,7 +92,7 @@ public class ControleurM {
 		tailleGrille = pTailleGrille ;
 		difficulte = pDifficulte ;
 		
-		boolean start ;
+		boolean start = false ;
 		//construction aléatoire d'une grille.
 		do{
 			generateGrille() ;
@@ -102,19 +103,34 @@ public class ControleurM {
 			if(pDifficulte==Dificulty.FACILE){
 				start = ctrlRegl.applyRegleFACIL() ;
 			}
-			else{
-				if(pDifficulte==Dificulty.NORMAL){
-					start = ctrlRegl.applyRegleNORMAL() ;
-				}
-				else{
-					start = ctrlRegl.applyRegle() ;
-				}	
+			if(pDifficulte==Dificulty.NORMAL){
+				start = ctrlRegl.applyRegleNORMAL() ;
 			}
+			if(pDifficulte==Dificulty.DIFFICILE){
+				start = ctrlRegl.applyRegle() ;
+			}	
 		}while(!start) ;
 		
-		
-		// pour visualiser le résultat à supprimer par la suite
-		 
+		// ici on a une grille valide, il ne nou reste plus qu'a suprimer des observateurs.
+//		// tout en vérifiant que la grille reste résoluble
+//		cette partie bug !
+//		if(pDifficulte==Dificulty.DIFFICILE){
+//			Observateur obsswitch = new Observateur(observateur,pTailleGrille) ;
+//			for(int i=(int)(Math.random()*10); i<10; i++){
+//				int cardinal = (int)(Math.random()*4) ;
+//				int position = (int)(Math.random()*tailleGrille) ;
+//				observateur.setObservateur(cardinal,position,0);
+//				laGrille = new Grille(this,tailleGrille) ;
+//				ctrlRegl = new ControleurR(this) ;
+//				if(ctrlRegl.applyRegle())
+//					obsswitch = new Observateur(observateur,tailleGrille) ;
+//				else
+//					observateur = new Observateur(obsswitch,tailleGrille) ;
+//			}
+//			observateur = new Observateur(obsswitch,tailleGrille) ;
+//		}
+//		
+		// pour visualiser le résultat à supprimer par la suite 
 		finJeu = false ;
 		gameStart = true ;
 		ctrlVues.switchPanel(ctrlVues.getPanelJeu()) ;
