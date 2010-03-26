@@ -1,6 +1,5 @@
-package regleResolutionLogicObservateur;
+package regleResolutionLogic;
 
-import regleResolutionLogic.Regle;
 import src.Grille;
 import src.Observateur;
 import sun.security.x509.AVA;
@@ -27,7 +26,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 		this.ctrlR = pCtrlR;
 		grille = pCtrlR.getGrille();
 		obs = pCtrlR.getObservateur();
-		tailleGrille = grille.getTailleGrille();
+		tailleGrille = pCtrlR.getTailleGrille();
 	}
 
 	public boolean resolve() {
@@ -274,7 +273,6 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			//Recherche du batiment maximum à construire grace au tableau
 			if(batConstruit)
 			{
-				System.out.println(nbCaseRestante);
 				int cpt = tailleGrille - 1;
 				while (tab[cpt] != 0)
 				{
@@ -290,11 +288,9 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			//Restriction des vecteurs de possibilité
 			if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.EST,ordonnee)-1)
 			{
-				System.out.println(nbCaseRestante);
 				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
 				for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
 				{	
-					System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 					//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
 					solve = solve || this.grille.getCase(i, ordonnee).refreshPossibilite(batMaxAConstruire); 
 				}
@@ -365,7 +361,6 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			//Recherche du batiment maximum à construire grace au tableau
 			if(batConstruit)
 			{
-				System.out.println(nbCaseRestante);
 				int cpt = tailleGrille - 1;
 				while (tab[cpt] != 0)
 				{

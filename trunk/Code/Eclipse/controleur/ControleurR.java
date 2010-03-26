@@ -46,7 +46,7 @@ public class ControleurR {
 		tabRegle.add(new Regle_MinTaille(this)) ;				// TESTER
 		tabRegle.add(new Regle_ImpoMax(this)) ;					// TESTER
 		tabRegle.add(new Regle_Pioupiou(this)) ;				// TESTER
-		
+//		tabRegle.add(new Regle_ObsVoitNmoins1(this)) ;			// FOIREUSE !
 		//Regles de contruction
 		tabRegle.add(new Regle_Observateur1(this)) ;
 		tabRegle.add(new Regle_DernierVecBat(this)) ;
@@ -59,6 +59,7 @@ public class ControleurR {
 		tabReglePossibilite.add(new Regle_MinTaille(this)) ;
 		tabReglePossibilite.add(new Regle_ImpoMax(this)) ;
 		tabReglePossibilite.add(new Regle_Pioupiou(this)) ;
+		tabReglePossibilite.add(new Regle_ObsVoitNmoins1(this)) ;
 		
 		// regle facile
 		tabRegleFACILE.add(new Regle_DistanceMin(this)) ;
@@ -71,6 +72,7 @@ public class ControleurR {
 		tabRegleNORMAL.add(new Regle_DistanceMin(this)) ;
 		tabRegleNORMAL.add(new Regle_MinTaille(this)) ;
 		tabRegleNORMAL.add(new Regle_ImpoMax(this)) ;
+		tabRegleNORMAL.add(new Regle_ObsVoitNmoins1(this)) ;
 		tabRegleNORMAL.add(new Regle_Observateur1(this)) ;
 		tabRegleNORMAL.add(new Regle_DernierVecBat(this)) ;
 		tabRegleNORMAL.add(new Regle_DernierTypBat(this)) ;
