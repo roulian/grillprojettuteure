@@ -69,6 +69,7 @@ public class VuePrincipale extends JFrame
 		jFicher.add(itemTemp);
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
+				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Nouvelle partie");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAutoGenerer()) ;
 			}
@@ -80,7 +81,18 @@ public class VuePrincipale extends JFrame
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().finirPartie() ;
-				ctrlV.getCtrlM().commencerPartie(4,Dificulty.FACILE) ;
+				int dif = (int)(Math.random()*3) ;
+				switch (dif) {
+				case 0:
+					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.FACILE) ;
+				break;
+				case 1:
+					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.NORMAL) ;
+				break;
+				default:
+					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.DIFFICILE) ;
+				break;
+				}
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
 			}
 		});
@@ -157,7 +169,7 @@ public class VuePrincipale extends JFrame
 		itemTemp.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				System.out.print("--> onglet : Resolution grille");
-				ctrlV.getCtrlM().resolve() ;
+				ctrlV.getCtrlM().resolveSansErreur() ;
 				ctrlV.refreshGrilleDeJeu() ;
 			}
 		});
@@ -235,6 +247,15 @@ public class VuePrincipale extends JFrame
 					System.out.println("--> onglet : Générer DEBUG");
 					VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGeneration()) ;
 					VuePrincipale.this.ctrlV.getPanelGeneration().setModeOuverture(PanelGeneration.Mode.DEBUG) ;
+				}
+			});
+			itemTemp = new JMenuItem("Resoudre");
+			debug.add(itemTemp);
+			itemTemp.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.print("--> onglet : Resolution grille");
+					ctrlV.getCtrlM().resolve() ;
+					ctrlV.refreshGrilleDeJeu() ;
 				}
 			});
 		}

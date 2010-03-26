@@ -113,15 +113,18 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 			if(e.getKeyChar()=='à')
 				temp = 0 ;
 			
-			if (ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)){
-				if(ctrlM.isAideTrouver()||ctrlM.isAideErreur())
-					ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
-				else
-					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
-				
-				if(ctrlM.isFinGame()){
-					JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
-				}
+			if (!(ctrlM.getLaGrille().construire(abscisse,ordonnee,temp)))
+				ctrlM.getLaGrille().reContruire(abscisse,ordonnee,temp) ;
+			if(ctrlM.isAideTrouver()||ctrlM.isAideErreur()){
+				ctrlM.resolvePossibiliter() ;
+				ctrlM.getCtrlVues().refreshGrilleDeJeu() ;
+			}
+			else{
+				ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
+			}
+			
+			if(ctrlM.isFinGame()){
+				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
 			}
 		}
 	}

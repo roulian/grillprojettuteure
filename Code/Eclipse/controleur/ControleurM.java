@@ -181,13 +181,12 @@ public class ControleurM {
 			// au final par précaution (inutile) on recharge la grille switch 
 			observateur = new Observateur(obsswitch,tailleGrille) ;
 		}
-		
+		ctrlRegl = new ControleurR(this) ;
+		ctrlRegl.applyRegle() ;
 		aideGrilleErreur = generateGrilleErreur(laGrille) ;
 		finJeu = false ;
 		gameStart = true ;
 		ctrlVues.switchPanel(ctrlVues.getPanelJeu()) ;
-		ctrlVues.refreshGrilleDeJeu() ;
-		ctrlVues.getPanelGrilleDeJeu().refreshGrilleDisplay() ;
 	}
 	
 	/**
@@ -334,7 +333,13 @@ public class ControleurM {
 	}
 	
 	public void addBatConstruit(){
-		nbBatConstruit++ ;
+		resetBatConstruit() ;
+		for(int abs=1;abs<=tailleGrille;abs++){
+			for(int ord=1; ord<=tailleGrille; ord++){
+				if(laGrille.getCase(abs,ord).getBatiment()!=0)
+					nbBatConstruit++ ;
+			}
+		}
 	}
 	
 	public int getBatConstruit(){
@@ -354,6 +359,19 @@ public class ControleurM {
 	public void resolve(){
 		ctrlRegl = new ControleurR(this) ;
 		ctrlRegl.applyRegle() ;
+	}
+	
+	public void resolvePossibiliter(){
+		ctrlRegl = new ControleurR(this) ;
+		ctrlRegl.applyReglePossibilite() ;
+	}
+	
+	public void resolveSansErreur(){
+		for(int i=0; i<tailleGrille; i++){
+			for(int j=0; j<tailleGrille; j++){
+				laGrille.construireFORCE(i+1,j+1,aideGrilleErreur[i][j]) ;
+			}
+		}
 	}
 	
 	//******* Gestion des booleen de triche ******/
