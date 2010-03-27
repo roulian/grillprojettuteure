@@ -109,7 +109,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.NORD,abscisse)-1)
+			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.NORD,abscisse)-1)
 			{
 				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
 				for (int i=2 ; i<(2+nbCaseRestante-1) ; i++) 
@@ -119,7 +119,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 				}
 			}
 		}
-
+		
 		//------------------------OBSERVATEUR SUD------------------------
 		
 		for(int abscisse = 1 ; abscisse <= tailleGrille ; abscisse++) //Pour chaque abservateur du NORD
@@ -128,7 +128,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			int batMaxAConstruire = tailleGrille;		//Batimment maximum restant à construire					
 			boolean existBatMax = false;				//Si le batiment de taille TailleGrille existe
 			int nbCaseRestante = 0;						//Nombre de case restante avant le batiment maximum s'il existe
-			int hauteurBatMaxObs = 0 ;						//On définit la hauteur max observer actuellement par l'obs
+			int hauteurBatMaxObs = 0 ;					//On définit la hauteur max observer actuellement par l'obs
 			boolean batConstruit = false;				//Si un batiment est construit sur la ligne/colonne
 			int [] tab = new int[tailleGrille+1];
 			
@@ -198,7 +198,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.SUD,abscisse)-1)
+			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.SUD,abscisse)-1)
 			{
 				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
 				for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
@@ -286,7 +286,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.EST,ordonnee)-1)
+			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.EST,ordonnee)-1)
 			{
 				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
 				for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
@@ -299,7 +299,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 		
 		//------------------------OBSERVATEUR OUEST------------------------
 		
-		for(int ordonnee = 1 ; ordonnee <= tailleGrille ; ordonnee++) //Pour chaque abservateur du NORD
+		for(int ordonnee = 1 ; ordonnee <= tailleGrille ; ordonnee++) //Pour chaque observateur du NORD
 		{			
 			int batVu = 0;								//Nombre de batiment que voit l'observateur
 			int batMaxAConstruire = tailleGrille;		//Batimment maximum restant à construire					
@@ -374,7 +374,7 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.OUEST,ordonnee)-1)
+			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.OUEST,ordonnee)-1)
 			{
 				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
 				for (int i=2 ; i<2+nbCaseRestante-1 ; i++) 
@@ -384,7 +384,6 @@ public class Regle_ObsVoitNmoins1 implements Regle
 				}
 			}
 		}
-		
 		return solve;
 	}
 	
