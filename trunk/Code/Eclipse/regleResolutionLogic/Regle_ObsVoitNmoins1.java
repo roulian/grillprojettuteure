@@ -109,13 +109,16 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.NORD,abscisse)-1)
+			if (this.obs.getObservateur(Observateur.NORD,abscisse) != 0)
 			{
-				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
-				for (int i=2 ; i<(2+nbCaseRestante-1) ; i++) 
+				if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.NORD,abscisse)-1)
 				{
-					//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
-					solve = solve || this.grille.getCase(abscisse, i).refreshPossibilite(batMaxAConstruire); 
+					//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
+					for (int i=2 ; i<(2+nbCaseRestante-1) ; i++) 
+					{
+						//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
+						solve = solve || this.grille.getCase(abscisse, i).refreshPossibilite(batMaxAConstruire); 
+					}
 				}
 			}
 		}
@@ -198,13 +201,16 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.SUD,abscisse)-1)
+			if (this.obs.getObservateur(Observateur.SUD,abscisse) != 0)
 			{
-				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
-				for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
+				if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.SUD,abscisse)-1)
 				{
-					//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
-					solve = solve || this.grille.getCase(abscisse, i).refreshPossibilite(batMaxAConstruire); 
+					//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
+					for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
+					{
+						//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
+						solve = solve || this.grille.getCase(abscisse, i).refreshPossibilite(batMaxAConstruire); 
+					}
 				}
 			}
 		}
@@ -286,13 +292,16 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.EST,ordonnee)-1)
+			if (this.obs.getObservateur(Observateur.EST,ordonnee) != 0)
 			{
-				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
-				for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
-				{	
-					//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
-					solve = solve || this.grille.getCase(i, ordonnee).refreshPossibilite(batMaxAConstruire); 
+				if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.EST,ordonnee)-1)
+				{
+					//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
+					for (int i=tailleGrille-1 ; i>tailleGrille-1 -(nbCaseRestante-1) ; i--) 
+					{	
+						//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
+						solve = solve || this.grille.getCase(i, ordonnee).refreshPossibilite(batMaxAConstruire); 
+					}
 				}
 			}
 		}
@@ -374,13 +383,16 @@ public class Regle_ObsVoitNmoins1 implements Regle
 			}
 			
 			//Restriction des vecteurs de possibilité
-			if(existBatMax == true && batVu <= this.obs.getObservateur(Observateur.OUEST,ordonnee)-1)
+			if (this.obs.getObservateur(Observateur.OUEST,ordonnee) != 0)
 			{
-				//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
-				for (int i=2 ; i<2+nbCaseRestante-1 ; i++) 
+				if(existBatMax == true && batVu >= this.obs.getObservateur(Observateur.OUEST,ordonnee)-1)
 				{
-					//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
-					solve = solve || this.grille.getCase(i, ordonnee).refreshPossibilite(batMaxAConstruire); 
+					//Pour les cases non adjacente à l'observateur (à partir de 2) pendant un nb de case "nbCaseRestante - la première"
+					for (int i=2 ; i<2+nbCaseRestante-1 ; i++) 
+					{
+						//On supprime dans le vecteur de possibilité la valeur max restante a construire défini au dessus
+						solve = solve || this.grille.getCase(i, ordonnee).refreshPossibilite(batMaxAConstruire); 
+					}
 				}
 			}
 		}
