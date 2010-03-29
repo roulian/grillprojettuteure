@@ -91,7 +91,8 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 					ctrlM.getCtrlVues().refreshGrilleDeJeu(abscisse,ordonnee,null);
 				
 				if(ctrlM.isFinGame()){
-					JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
+//					JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
+					ctrlM.getCtrlVues().getVictoire() ;
 				}
 			}
 		}
@@ -124,7 +125,8 @@ public class EcouteurGrille implements MouseListener, KeyListener{
 			}
 			
 			if(ctrlM.isFinGame()){
-				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
+//				JOptionPane.showMessageDialog(ctrlM.getCtrlVues().getVuePrincipal(), "BRAAAAAAVOOOOOO");
+				ctrlM.getCtrlVues().getVictoire() ;
 			}
 		}
 	}
