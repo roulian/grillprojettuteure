@@ -35,11 +35,14 @@ public class VuePrincipale extends JFrame
 	private JMenu jAide ;
 	private JMenu jAutre ;
 	private JMenuItem itemReco ;
+	private String GameTittle ;
 	
 	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ctrlV = pCtrl ;
+		GameTittle = "Grilling Panic" ;
+		setTitle(GameTittle) ;
 		setBounds(0,0,300,400);
 		
 		//intégration des onglet (menu)
@@ -72,6 +75,7 @@ public class VuePrincipale extends JFrame
 				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Nouvelle partie");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAutoGenerer()) ;
+				setTitle(GameTittle) ;
 			}
 		});
 		//autre sous menu
@@ -82,18 +86,24 @@ public class VuePrincipale extends JFrame
 				System.out.println("--> onglet : partie rapide");
 				ctrlV.getCtrlM().finirPartie() ;
 				int dif = (int)(Math.random()*3) ;
+				int taille = (int)(Math.random()*2+4) ;
+				String tittle = GameTittle+" "+taille+"x"+taille+" : ";
 				switch (dif) {
 				case 0:
-					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.FACILE) ;
+					ctrlV.getCtrlM().commencerPartie(taille,Dificulty.FACILE) ;
+					tittle = tittle + "facile" ;
 				break;
 				case 1:
-					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.NORMAL) ;
+					ctrlV.getCtrlM().commencerPartie(taille,Dificulty.NORMAL) ;
+					tittle = tittle + "normal" ;
 				break;
 				default:
-					ctrlV.getCtrlM().commencerPartie((int)(Math.random()*2+4),Dificulty.DIFFICILE) ;
+					ctrlV.getCtrlM().commencerPartie(taille,Dificulty.DIFFICILE) ;
+					tittle = tittle + "difficile" ;
 				break;
 				}
 				ctrlV.switchPanel(ctrlV.getPanelJeu()) ;
+				VuePrincipale.this.setTitle(tittle) ;
 			}
 		});
 		//autre sous menu
@@ -105,6 +115,7 @@ public class VuePrincipale extends JFrame
 				System.out.println("--> onglet : Charger");
 				VuePrincipale.this.ctrlV.getPanelChargement().refreshListe() ;
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelChargement()) ;
+				setTitle(GameTittle) ;
 			}
 		});
 		//autre sous menu
@@ -115,6 +126,7 @@ public class VuePrincipale extends JFrame
 				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Générer");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelGeneration()) ;
+				setTitle(GameTittle) ;
 			}
 		});
 		//autre sous menu
@@ -125,6 +137,7 @@ public class VuePrincipale extends JFrame
 				ctrlV.getCtrlM().finirPartie() ;
 				System.out.println("--> onglet : Retour Menu");
 				VuePrincipale.this.ctrlV.switchPanel(VuePrincipale.this.ctrlV.getPanelAcceuil()) ;
+				setTitle(GameTittle) ;
 			}
 		});
 		//autre sous menu

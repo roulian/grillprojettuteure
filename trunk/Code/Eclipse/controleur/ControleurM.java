@@ -351,8 +351,19 @@ public class ControleurM {
 	}
 	
 	public boolean isFinGame(){
-		System.out.println("nombre de batiment construit"+nbBatConstruit);
-		return (nbBatConstruit == (tailleGrille*tailleGrille)) ;
+		boolean gameWin = true ;
+		if (nbBatConstruit == (tailleGrille*tailleGrille)){
+			for(int i=0; i<tailleGrille; i++){
+				for(int j=0; j<tailleGrille; j++){
+					
+				}
+			}
+		}
+		else{
+			gameWin = false ;
+		}
+		
+		return gameWin ;
 	}
 	
 	//******* Résolution de la Grille ********/
