@@ -1,7 +1,16 @@
 package controleur;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controleur.ControleurM.Dificulty;
 
 import src.Grille;
 import vue.DifficulteGeneration;
@@ -168,5 +177,35 @@ public class ControleurVues {
 		if(vuePrincipal==null)
 			vuePrincipal = new VuePrincipale(this) ;
 		return vuePrincipal;
+	}
+	
+	public void getVictoire(){
+		JDialog victoire = new JDialog(vuePrincipal) ;
+		JPanel contentPane = new JPanel();
+		victoire.setContentPane(contentPane) ;
+		victoire.setLayout(new BorderLayout()) ;
+		victoire.setSize(300,150) ;
+		victoire.setModal(true) ;
+		victoire.setLocationRelativeTo(vuePrincipal) ;
+		contentPane.add(new JLabel("  "),BorderLayout.NORTH) ;
+		contentPane.add(new JLabel("  "),BorderLayout.SOUTH) ;
+		contentPane.add(new JLabel("         "),BorderLayout.WEST) ;
+		contentPane.add(new JLabel("         "),BorderLayout.EAST) ;
+		victoire.setTitle("Victoire") ;
+		
+		if(ctrlM.getDifficulte()==Dificulty.FACILE){
+			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+		}
+		if(ctrlM.getDifficulte()==Dificulty.FACILE){
+			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+		}
+		if(ctrlM.getDifficulte()==Dificulty.FACILE){
+			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+		}
+		
+		victoire.setVisible(true) ;
 	}
 }
