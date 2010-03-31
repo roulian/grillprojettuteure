@@ -189,22 +189,62 @@ public class ControleurVues {
 		victoire.setLocationRelativeTo(vuePrincipal) ;
 		contentPane.add(new JLabel("  "),BorderLayout.NORTH) ;
 		contentPane.add(new JLabel("  "),BorderLayout.SOUTH) ;
-		contentPane.add(new JLabel("         "),BorderLayout.WEST) ;
-		contentPane.add(new JLabel("         "),BorderLayout.EAST) ;
+		contentPane.add(new JLabel("  "),BorderLayout.WEST) ;
+		contentPane.add(new JLabel("  "),BorderLayout.EAST) ;
 		victoire.setTitle("Victoire") ;
+		JPanel panelCenter = new JPanel();
+		panelCenter.setLayout(new GridLayout(4,1));
 		
-		if(ctrlM.getDifficulte()==Dificulty.FACILE){
-			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+		if(ctrlM.getDifficulte() == Dificulty.FACILE)
+		{
+			panelCenter.add(new JLabel(" "));
+			panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
+			panelCenter.add(new JLabel("        Essayez maintenant une difficulté supérieure.")) ;
+			panelCenter.add(new JLabel(" "));
+			contentPane.add(panelCenter, BorderLayout.CENTER);
 			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
 		}
-		if(ctrlM.getDifficulte()==Dificulty.FACILE){
-			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
-			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+		else
+		{
+			if(ctrlM.getDifficulte() == Dificulty.NORMAL)
+			{
+				panelCenter.add(new JLabel(" "));
+				panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
+				panelCenter.add(new JLabel("      Frottez-vous maintenant à une grille difficile.")) ;
+				panelCenter.add(new JLabel(" "));
+				contentPane.add(panelCenter, BorderLayout.CENTER);
+				contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+			}
+			else
+			{
+				if(ctrlM.getDifficulte() == Dificulty.DIFFICILE)
+				{
+					if(ctrlM.getTailleGrille() == 4)
+					{
+						contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+						contentPane.add(new JLabel("Augmentez maintenant la taille des grilles pour plus de challenge."),BorderLayout.CENTER) ;
+						contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+					}
+					else
+					{
+						if(ctrlM.getTailleGrille() == 5)
+						{
+							contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+							contentPane.add(new JLabel("             Tentez l'ultime défi des grilles 6x6 !!!"),BorderLayout.CENTER) ;
+							contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+						}
+						else
+						{
+							contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
+							contentPane.add(new JLabel("              Même notre programme n'y arrive pas :p"),BorderLayout.CENTER) ;
+							contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
+						}
+					}
+				}
+				
+			}
 		}
-		if(ctrlM.getDifficulte()==Dificulty.FACILE){
-			contentPane.add(new JLabel("Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
-			contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
-		}
+
 		
 		victoire.setVisible(true) ;
 	}
