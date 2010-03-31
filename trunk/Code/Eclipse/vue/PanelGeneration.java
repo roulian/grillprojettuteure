@@ -14,17 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.JComboBox;
-//import java.awt.Dimension;
-//import java.awt.GridLayout;
-//import javax.swing.BorderFactory;
-//import java.awt.Color;
-//import javax.swing.JTextField;
-//import src.SaveObject;
-//import java.awt.FlowLayout;
-//import java.awt.Rectangle;
-//import java.awt.GridBagConstraints;
-//import java.awt.Insets;
-//import java.awt.BorderLayout;
+import javax.xml.bind.ParseConversionEvent;
 
 public class PanelGeneration extends JPanel {
 
@@ -89,7 +79,7 @@ public class PanelGeneration extends JPanel {
 			jpBoutton.setLayout(null) ;
 			jpBoutton.add(getJpCombo()) ;
 			jpBoutton.add(getJbVerif()) ;
-			jpBoutton.add(getJbGenSpont()) ;
+//			jpBoutton.add(getJbGenSpont()) ;
 			jpBoutton.add(getJbSauvegarder()) ;
 			jpBoutton.add(getJbRetour()) ;
 			jpBoutton.setBounds(0,0,200,350) ;
@@ -177,6 +167,19 @@ public class PanelGeneration extends JPanel {
 		return jbVerif;
 	}
 
+//	private JButton getJbGenSpont() {
+//		if (jbGenSpont == null) {
+//			jbGenSpont = new JButton();
+//			jbGenSpont.setText("Génération spontanée");
+//			jbGenSpont.setBounds(20,175,170,30) ;
+//			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
+//				public void actionPerformed(java.awt.event.ActionEvent e) {
+//					difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV, Integer.parseInt(jCTaille.getSelectedItem().toString()));
+//				}
+//			});
+//		}
+//		return jbGenSpont;
+//	}
 	
 	private JButton getJbGenSpont() {
 		if (jbGenSpont == null) {
@@ -244,7 +247,7 @@ public class PanelGeneration extends JPanel {
 	 */
 	public void refresh(){
 		jbVerif.setEnabled(boolOk) ;
-		jbGenSpont.setEnabled(boolOk) ;
+//		jbGenSpont.setEnabled(boolOk) ;
 		jbSauvegarder.setEnabled(boolOk && verifOk) ;
 		if(modeOuverture==Mode.DEBUG){
 			jbVerif.setEnabled(true) ;

@@ -66,11 +66,9 @@ public class ControleurM {
 		System.out.println("-> appel commencerPartie : taille de la grille:"+pTaille);
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
+		initialisationGeneration(pTaille,pDifficulte) ;
 		gameStart = true ;
 		finJeu = false ;
-		nbBatConstruit = 0 ;
-		
-		initialisationGeneration(pTaille,pDifficulte) ;
 		nbBatConstruit = 0 ;
 		laGrille = new Grille(this, pTaille) ;
 	}
@@ -88,7 +86,7 @@ public class ControleurM {
 	public void initialisationGeneration(int pTailleGrille, Dificulty pDifficulte){
 		tailleGrille = pTailleGrille ;
 		difficulte = pDifficulte ;
-		
+		nbBatConstruit = 0 ;
 		boolean start = false ;
 		//construction aléatoire d'une grille.
 		do{
@@ -181,24 +179,33 @@ public class ControleurM {
 			// au final par précaution (inutile) on recharge la grille switch 
 			observateur = new Observateur(obsswitch,tailleGrille) ;
 		}
-		ctrlRegl = new ControleurR(this) ;
-		ctrlRegl.applyRegle() ;
-		aideGrilleErreur = generateGrilleErreur(laGrille) ;
-		finJeu = false ;
-		gameStart = true ;
-		ctrlVues.switchPanel(ctrlVues.getPanelJeu()) ;
+		aideGrilleErreur = generateGrilleErreur() ;
 	}
 	
 	/**
 	 * Génère la grille erreur a partir d'une grille.
 	 */
-	public Integer[][] generateGrilleErreur(Grille pGrille){
-		int taille = pGrille.getTailleGrille() ;
-		Integer[][] grilleTemp = new Integer[taille][taille];
-		for(int i=0;i<taille;i++){
-			for(int j=0;j<taille;j++){
-				grilleTemp[i][j] = pGrille.getCase(i+1,j+1).getBatiment() ; 
+	public Integer[][] generateGrilleErreur(){
+		nbBatConstruit = 0 ;
+		laGrille = null ;
+		laGrille = new Grille(this, tailleGrille) ;
+		ctrlRegl = null ; 
+		ctrlRegl = new ControleurR(this) ;
+		
+		if(difficulte == Dificulty.DIFFICILE)
+			ctrlRegl.applyRegle() ;
+		if(difficulte == Dificulty.NORMAL)
+			ctrlRegl.applyRegleNORMAL() ;
+		if(difficulte == Dificulty.FACILE)
+			ctrlRegl.applyRegleFACIL() ;
+		
+		Integer[][] grilleTemp = new Integer[tailleGrille][tailleGrille];
+		for(int i=0;i<tailleGrille;i++){
+			for(int j=0;j<tailleGrille;j++){
+				grilleTemp[i][j] = laGrille.getCase(i+1,j+1).getBatiment() ;
+				System.out.print(laGrille.getCase(i+1,j+1).getBatiment()+" ");
 			}
+			System.out.println();
 		}
 		return grilleTemp ;
 	}
@@ -353,9 +360,11 @@ public class ControleurM {
 	public boolean isFinGame(){
 		boolean gameWin = true ;
 		if (nbBatConstruit == (tailleGrille*tailleGrille)){
-			for(int i=0; i<tailleGrille; i++){
-				for(int j=0; j<tailleGrille; j++){
-					
+			for(int i=0; i<tailleGrille && gameWin; i++){
+				for(int j=0; j<tailleGrille && gameWin; j++){
+					if(getLaGrille().getCase(i+1,j+1).getBatiment() != aideGrilleErreur[i][j]){
+						gameWin = false ;
+					}
 				}
 			}
 		}
@@ -628,7 +637,7 @@ public class ControleurM {
 		return debugMode;
 	}
 	
-	// CHARGEMENT ALEATOIRE D'UNE PARTIE
+	// CHARGEMENT ALEATOIRE D'UNE PARTIE PREALABLEMENT ENREGISTRE
 
 	//	String[] listeFichiersTemp,listeFichiers;
 	//	File repertoire = new File(getPath());

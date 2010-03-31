@@ -31,6 +31,7 @@ public class PanelGrilleDeJeu extends JPanel {
 	private JPanel panelObsSud ;
 	private JPanel panelObsEst ;
 	private JPanel panelObsOuest ;
+	private JLabel[][] obslab ;
 	private int lenght ;
 	
 	/**
@@ -85,6 +86,7 @@ public class PanelGrilleDeJeu extends JPanel {
 			lenght = pTaille ;
 			initialize(lenght) ;
 			obsSaisie = pObservateur ;
+			obslab = new JLabel[4][pTaille] ;
 			//************ LIEE AU CHARGEMENT / GENERATION ***********/
 	
 			// gestion des panels observateurs
@@ -103,6 +105,7 @@ public class PanelGrilleDeJeu extends JPanel {
 					temp.addKeyListener(ecoutTemp) ;
 				}
 				panelObsNord.add(temp);
+				obslab[Observateur.NORD][i-1]=temp ;
 				
 				//Est
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.EST,i),"obs"))) ;
@@ -113,6 +116,7 @@ public class PanelGrilleDeJeu extends JPanel {
 					temp.addKeyListener(ecoutTemp) ;
 				}
 				panelObsEst.add(temp);
+				obslab[Observateur.EST][i-1]=temp ;
 				
 				//Sud
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.SUD,i),"obs"))) ;
@@ -123,6 +127,7 @@ public class PanelGrilleDeJeu extends JPanel {
 					temp.addKeyListener(ecoutTemp) ;
 				}
 				panelObsSud.add(temp);
+				obslab[Observateur.SUD][i-1]=temp ;
 				
 				//Ouest
 				temp = new JLabel(new ImageIcon(GestionIcon.getImage(obsSaisie.getObservateur(Observateur.OUEST,i),"obs"))) ;
@@ -133,6 +138,7 @@ public class PanelGrilleDeJeu extends JPanel {
 					temp.addKeyListener(ecoutTemp) ;
 				}
 				panelObsOuest.add(temp);
+				obslab[Observateur.OUEST][i-1]=temp ;
 			}
 			panelObsNord.add(new JLabel());				// blancs nécessaire pour centrer
 			panelObsSud.add(new JLabel());				// blancs nécessaire pour centrer

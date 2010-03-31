@@ -14,14 +14,6 @@ public final class IconBat {
 	public static final String BAT5 = "images/bat5.png" ;
 	public static final String BAT6 = "images/bat6.png" ;
 	
-	public static final String BLANCANIM = "images/blancAnim.PNG" ;
-	public static final String BAT1ANIM = "images/bat1Anim.PNG" ;
-	public static final String BAT2ANIM = "images/bat2Anim.PNG" ;
-	public static final String BAT3ANIM = "images/bat3Anim.PNG" ;
-	public static final String BAT4ANIM = "images/bat4Anim.png" ;
-	public static final String BAT5ANIM = "images/bat5Anim.png" ;
-	public static final String BAT6ANIM = "images/bat6Anim.png" ;
-	
 	public static final String REDSQ = "images/redSquare.PNG" ;
 	public static final String BAT1RED = "images/bat1Red.PNG" ;
 	public static final String BAT2RED = "images/bat2Red.PNG" ;
@@ -52,8 +44,4 @@ public final class IconBat {
 	public static final String NUB4 = "images/numB4.PNG" ;
 	public static final String NUB5 = "images/numB5.PNG" ;
 	public static final String NUB6 = "images/numB6.PNG" ;
-	
-	public static final String ROUTEV = "images/routeV.PNG" ;
-	public static final String ROUTEH = "images/routeH.PNG" ;
-	public static final String CARFOU = "images/routeCar.PNG" ;
 }
