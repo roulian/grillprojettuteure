@@ -26,7 +26,9 @@ import vue.DialogRegles;
 public class VuePrincipale extends JFrame
 {
 	/**
+	 * Vue permettant d'afficher la fenètre principals du jeu accueillant les panels des différentes étapes du jeu
 	 * 
+	 * @author Thomas
 	 */
 	private static final long serialVersionUID = -8508924519782174481L;
 	private JMenuBar menu ;
@@ -37,6 +39,11 @@ public class VuePrincipale extends JFrame
 	private JMenuItem itemReco ;
 	private String GameTittle ;
 	
+	/**
+	 * Constructeur par default
+	 * 
+	 * @param pCtrl
+	 */
 	public VuePrincipale(ControleurVues pCtrl){
 		super("GRILL") ;
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -275,6 +282,10 @@ public class VuePrincipale extends JFrame
 		
 	}
 	
+	/**
+	 * Permet de griser ou pas les options du menu
+	 * @return void
+	 */
 	public void refreshMenu(){
 		if (ctrlV.getCtrlM().GetGameStart()){
 			jAide.setEnabled(true) ;
@@ -286,6 +297,10 @@ public class VuePrincipale extends JFrame
 		}
 	}
 
+	/**
+	 * Retourne le controleur des Vues
+	 * @return ControleurVues
+	 */
 	public ControleurVues getCtrl() {
 		return ctrlV;
 	}

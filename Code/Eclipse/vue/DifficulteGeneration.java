@@ -26,6 +26,15 @@ public class DifficulteGeneration extends JDialog
 	private JComboBox jcDifficulte = null;
 	private Vector<String> difficulte;
 	
+	/**
+	 * Fenètre permettant de générer une grille.
+	 * 
+	 * @param Fenètre 
+	 * @param Le titre de la vue appelante
+	 * @param Le controleur des vues
+	 * 
+	 * @author julien
+	 */
 	public DifficulteGeneration  (JFrame modale, String _t, ControleurVues pCtrlVues)
 	{
 		super(modale,_t,true);
@@ -121,21 +130,36 @@ public class DifficulteGeneration extends JDialog
 		this.pack();
 	}
 
+	/**
+	 * Retourne le controleur des Vues
+	 * @return ControleurVues
+	 */
 	public ControleurVues getCtrlV() {
 		return ctrlV;
 	}
-
+	
+	/**
+	 * Retourne le vector des difficultés 
+	 * @return Vector<String>
+	 */
 	public Vector<String> getDifficulte() 
 	{
 		return difficulte;
 	}
 
+	/**
+	 * Retourne l'élément : boutton annuler
+	 * @return JButton
+	 */
 	public JButton getJbAnnuler() 
 	{
-		
 		return jbAnnuler;
 	}
 
+	/**
+	 * Retourne l'élément : boutton ok
+	 * @return JButton
+	 */
 	public JButton getJbOk() 
 	{
 		jbOk.addActionListener(new java.awt.event.ActionListener() {
@@ -149,14 +173,26 @@ public class DifficulteGeneration extends JDialog
 		return jbOk;
 	}
 
+	/**
+	 * Retourne la comboBox des difficultées
+	 * @return JComboBox
+	 */
 	public JComboBox getJcDifficulte() {
 		return jcDifficulte;
 	}
 
+	/**
+	 * Retourne le panel du centre
+	 * @return JPanel
+	 */
 	public JPanel getJpCentre() {
 		return jpCentre;
 	}
 
+	/**
+	 * Retourne le panel du sud
+	 * @return JPanel
+	 */
 	public JPanel getJpSud() {
 		return jpSud;
 	}
