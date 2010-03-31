@@ -63,6 +63,10 @@ public class PanelGeneration extends JPanel {
 		refresh();
 	}
 	
+	/**
+	 * Retourne le panel Grille à droite
+	 * @return JPanel
+	 */
 	private JPanel getJpGrill() {
 		if (jpGrill == null){
 			jpGrill = new JPanel();
@@ -75,6 +79,10 @@ public class PanelGeneration extends JPanel {
 		return jpGrill;
 	}
 	
+	/**
+	 * Retourne le panel contenant les bouttons
+	 * @return JPanel
+	 */
 	public JPanel getJpBoutton(){
 		if(jpBoutton==null){
 			jpBoutton = new JPanel() ;
@@ -89,6 +97,10 @@ public class PanelGeneration extends JPanel {
 		return jpBoutton ;
 	}
 	
+	/**
+	 * Retourne le panel contenant les tailles
+	 * @return JPanel
+	 */
 	private JPanel getJpCombo(){
 		if(jpBout==null){
 			Vector<Integer> taille;
@@ -144,6 +156,10 @@ public class PanelGeneration extends JPanel {
 		return jpBout ;
 	}
 
+	/**
+	 * Retourne le boutton Vérification
+	 * @return JButton
+	 */
 	private JButton getJbVerif() {
 		if (jbVerif == null) {
 			jbVerif = new JButton();
@@ -161,6 +177,7 @@ public class PanelGeneration extends JPanel {
 		return jbVerif;
 	}
 
+	
 	private JButton getJbGenSpont() {
 		if (jbGenSpont == null) {
 			jbGenSpont = new JButton();
@@ -176,6 +193,10 @@ public class PanelGeneration extends JPanel {
 		return jbGenSpont;
 	}
 
+	/**
+	 * Retourne le boutton Sauvegarder
+	 * @return JButton
+	 */
 	private JButton getJbSauvegarder() {
 		if (jbSauvegarder == null) {
 			jbSauvegarder = new JButton();
@@ -196,6 +217,10 @@ public class PanelGeneration extends JPanel {
 		return jbSauvegarder;
 	}
 
+	/**
+	 * Retourne le boutton Retour
+	 * @return JButton
+	 */
 	private JButton getJbRetour() {
 		if (jbRetour == null) {
 			jbRetour = new JButton();
@@ -213,6 +238,10 @@ public class PanelGeneration extends JPanel {
 		return jbRetour;
 	}
 	
+	/**
+	 * Permet de griser ou pas les bouttons suivant les actions de l'utilisateur
+	 * @return void
+	 */
 	public void refresh(){
 		jbVerif.setEnabled(boolOk) ;
 		jbGenSpont.setEnabled(boolOk) ;
@@ -224,26 +253,50 @@ public class PanelGeneration extends JPanel {
 		}
 	}
 
+	/**
+	 * Retourne la grille de jeu
+	 * @return PanelGrilleDeJeu
+	 */
 	public PanelGrilleDeJeu getAffichage() {
 		return affichage;
 	}
 
+	/**
+	 * Permet de savoir si le boolean ok est True ou False
+	 * @return boolean
+	 */
 	public boolean isBoolOk() {
 		return boolOk;
 	}
 
+	/**
+	 * Permet de mettre à jour le booléen ok
+	 * @return void
+	 */
 	public void setBoolOk(boolean boolOk) {
 		this.boolOk = boolOk;
 	}
 
+	/**
+	 * Permet de savoir si le booléen verifOk est True ou False
+	 * @return boolean
+	 */
 	public boolean isVerifOk() {
 		return verifOk;
 	}
 
+	/**
+	 * Permet de mettre à jour le booléen verifOk
+	 * @return void
+	 */
 	public void setVerifOk(boolean verifOk) {
 		this.verifOk = verifOk;
 	}
 
+	/**
+	 * Permet de mettre à jour lmode d'ouverture
+	 * @return void
+	 */
 	public void setModeOuverture(Mode modeOuverture) {
 		this.modeOuverture = modeOuverture;
 	}

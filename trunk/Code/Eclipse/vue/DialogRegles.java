@@ -8,6 +8,13 @@ import controleur.ControleurVues;
 
 public class DialogRegles extends JDialog {
 
+	/**
+	 * Vue permettant l'affichage des règles du jeu.
+	 * 
+	 * @param Fenètre d'où est appelée cette vue.
+	 * @author Thibault
+	 * 
+	 */
 	public DialogRegles(JFrame parent){
 		//On appelle le construteur de JDialog correspondant
 		super(parent, "Règles", false);
