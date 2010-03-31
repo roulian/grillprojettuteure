@@ -20,6 +20,11 @@ import Ecouteur.EcouteCharger;
 import src.Grille;
 import src.Observateur;
 
+/**
+ * C'est le controleur maître du projet (nous avons essayé au possible de respecter les contraintes MVC)
+ * @author Andres Gomez Thomas
+ * @see {@link ControleurR}, {@link ControleurVues}
+ */
 public class ControleurM {
 	private int tailleGrille ;
 	private Grille laGrille ;
@@ -73,6 +78,13 @@ public class ControleurM {
 		laGrille = new Grille(this, pTaille) ;
 	}
 	
+	/**
+	 * méthode d'initialisation de partie avec plus de parametre.
+	 * @param pTaille	    taille de la grille souhaité 
+	 * @param pDifficulte	dificulté de la grille 
+	 * @param pObs			un observateur
+	 * @param grilleErreur	la grille contenant la solution
+	 */
 	public void commencerPartie(int pTaille, Dificulty pDifficulte, Observateur pObs, Integer[][] grilleErreur){
 		tailleGrille = pTaille ;
 		difficulte = pDifficulte ;
@@ -83,6 +95,11 @@ public class ControleurM {
 		aideGrilleErreur = grilleErreur ;	
 	}
 	
+	/**
+	 * méthode de génération d'une grille à solution unique de taille et de dificulté passé en parametre
+	 * @param pTailleGrille
+	 * @param pDifficulte
+	 */
 	public void initialisationGeneration(int pTailleGrille, Dificulty pDifficulte){
 		tailleGrille = pTailleGrille ;
 		difficulte = pDifficulte ;
@@ -183,7 +200,7 @@ public class ControleurM {
 	}
 	
 	/**
-	 * Génère la grille erreur a partir d'une grille.
+	 * Génère la grille erreur (observateurs doivent etre chargé en mémoire dans le controleurM)
 	 */
 	public Integer[][] generateGrilleErreur(){
 		nbBatConstruit = 0 ;
@@ -211,7 +228,7 @@ public class ControleurM {
 	}
 	
 	/**
-	 * Genere une grille de façon aléatoire.
+	 * Genere une grille de façon aléatoire. (respectant les contraintes de contructions pour qu'elle puisse etre solvable
 	 */
 	private void generateGrille(){
 		boolean generateSucces ;
@@ -236,7 +253,7 @@ public class ControleurM {
 	}
 	
 	/**
-	 * contruit les observateurs en comptant le nombre de batiment qu'ils voient
+	 * contruit les observateurs en comptant le nombre de batiment qu'ils voient (une grille doit etre chargé en mémoire du controleur)
 	 */
 	private void generateObserver(){
 		int[][] obsSee = new int[4][tailleGrille] ;
@@ -324,7 +341,9 @@ public class ControleurM {
 		observateur = new Observateur(obsSee) ;
 	}
 	
-	
+	/**
+	 * réinitialise les variable du controleur maitre pour qu'il corresponde à l'état fin de partie
+	 */
 	public void finirPartie(){
 		laGrille = null ;
 		observateur = null ;
@@ -339,6 +358,9 @@ public class ControleurM {
 		ctrlVues.getVuePrincipal().refreshMenu() ;
 	}
 	
+	/**
+	 * méthode qui compte le nombre de batiment placé sur la grille
+	 */
 	public void addBatConstruit(){
 		resetBatConstruit() ;
 		for(int abs=1;abs<=tailleGrille;abs++){
@@ -349,14 +371,26 @@ public class ControleurM {
 		}
 	}
 	
+	/**
+	 * retourne nombre de batiment construit sur la grille
+	 * @return int
+	 */
 	public int getBatConstruit(){
 		return nbBatConstruit ;
 	}
 	
+	/**
+	 * réinitialise le nombre de batiment construit sur la grille
+	 * @return int
+	 */
 	public void resetBatConstruit(){
 		nbBatConstruit = 0 ;
 	}
 	
+	/**
+	 * retourne true si l'état de la partie correspond à une victoire, sinon false
+	 * @return {@link Boolean}
+	 */
 	public boolean isFinGame(){
 		boolean gameWin = true ;
 		if (nbBatConstruit == (tailleGrille*tailleGrille)){
@@ -371,21 +405,30 @@ public class ControleurM {
 		else{
 			gameWin = false ;
 		}
-		
 		return gameWin ;
 	}
 	
 	//******* Résolution de la Grille ********/
+	
+	/**
+	 * appelle méthode de résolution stantard (difficil) du controleurR
+	 */
 	public void resolve(){
 		ctrlRegl = new ControleurR(this) ;
 		ctrlRegl.applyRegle() ;
 	}
 	
+	/**
+	 * appelle méthode de résoltion Uniquement regles de possibilité du controleurR
+	 */
 	public void resolvePossibiliter(){
 		ctrlRegl = new ControleurR(this) ;
 		ctrlRegl.applyReglePossibilite() ;
 	}
 	
+	/**
+	 * charge à l'écrant la grille aideErreur, permettant ainsi de résoudre la grille sans avoir à appeller le controleurR en cour de partie
+	 */
 	public void resolveSansErreur(){
 		for(int i=0; i<tailleGrille; i++){
 			for(int j=0; j<tailleGrille; j++){
@@ -395,6 +438,9 @@ public class ControleurM {
 	}
 	
 	//******* Gestion des booleen de triche ******/
+	/**
+	 * méthode de gestion des variables de triche, permet de switch entre les différents modes de triche
+	 */
 	public void gestionTriche(String pLabelTriche){
 		if(pLabelTriche.equals("tricheBouton")){
 			tricheBouton = !tricheBouton ;
@@ -505,6 +551,13 @@ public class ControleurM {
 	}
 	
 	//*************** GESTION DE FICHIER ****************** 
+	/**
+	 * méthode de sauvegarde de la grille
+	 * @author Jérémy Lapalu
+	 * @param nomFichier
+	 * @param pGrille
+	 * @param pTaille
+	 */
 	public void sauvegarderGrille (String nomFichier,Grille pGrille,Observateur pObs,int pTaille)
 	{
 		try 
@@ -552,6 +605,11 @@ public class ControleurM {
 		
 	}
 	
+	/**
+	 * méthode de chargment de la grille, il retourne un vector d'Integer avec la grille et les observateurs
+	 * @author Jérémy Lapalu
+	 * @return Vector<Integer[][]>
+	 */
 	public Vector<Integer[][]> chargerGrille(String nomFichier)
 	{
 		try 
@@ -604,6 +662,10 @@ public class ControleurM {
 		return null;
 	}
 	
+	/**
+	 * cette méthode retourne une chaine contenant le répertoire courant avec le repertoire de sauvegarde
+	 * @return String
+	 */
 	public String getPath(){
 		File temp = new File(".") ;
 		try {
@@ -638,7 +700,8 @@ public class ControleurM {
 	}
 	
 	// CHARGEMENT ALEATOIRE D'UNE PARTIE PREALABLEMENT ENREGISTRE
-
+	// CODE INUTILISE, mais bon je ne voulais pas le perdre au cas ou...
+	
 	//	String[] listeFichiersTemp,listeFichiers;
 	//	File repertoire = new File(getPath());
 	//	listeFichiersTemp = repertoire.list();

@@ -22,6 +22,11 @@ import vue.PanelGrilleDeJeu;
 import vue.PanelJeu;
 import vue.VuePrincipale;
 
+/**
+ * controleur des vues, cette classe gère tous les panel et la frame principale 
+ * @author Andres Gomez Thomas
+ *
+ */
 public class ControleurVues {
 	private ControleurM ctrlM ;
 	private VuePrincipale vuePrincipal ;
@@ -51,10 +56,12 @@ public class ControleurVues {
 		return ctrlM ;
 	}
 	
-//*********** Gestion VUE PRINCIPAL ***************/	
+//*********** Gestion VUE PRINCIPAL ***************/
+	/**
+	 * permet de changer le panel courant afficher sur l'écran
+	 * @param pPanel
+	 */
 	public void switchPanel(JPanel pPanel){	
-		
-		
 		// on change le panel afficher
 		if (pPanel == panelAcceuil){
 			vuePrincipal.setSize(300, 400) ;
@@ -91,6 +98,9 @@ public class ControleurVues {
 		vuePrincipal.validate();
 	}
 	
+	/**
+	 * méthode qui permet de réinitialisé tous les panels
+	 */
 	public void reinitialisePanel(){
 		panelAcceuil = null ;
 		panelAutoGenerer = null ;
@@ -100,15 +110,24 @@ public class ControleurVues {
 		panelJeu = null ;
 	}
 	
+	/**
+	 * méthode qui permet de réinitialisé uniquement le panel grille de jeu
+	 */
 	public void reinitialisePanelGrilleDeJeu(){
 		panelGrilleDeJeu = null ;
 	}
 	
+	/**
+	 * méthode qui permet de réinitialisé uniquement le panel de jeu
+	 */
 	public void reinitialisePanelJeu(){
 		panelJeu = null ;
 	}
 
 //*********** Partie Grille de jeu ***************/
+	/**
+	 * méthode qui permet de rafraichir la grille de jeu suivant les conditions contenut dans le controleurM 
+	 */
 	public void refreshGrilleDeJeu(){
 		if(ctrlM.isAideTrouver()&&ctrlM.getBatAideTrouver()!=0){
 			redlyGrilleDeJeu(ctrlM.getBatAideTrouver()) ;
@@ -123,14 +142,27 @@ public class ControleurVues {
 		}
 	}
 	
+	/**
+	 * méthode qui permet de rafraichir la grille de jeu suivant les parametres
+	 * @param pAbscisse
+	 * @param pOrdonnee
+	 * @param pImBat
+	 */
 	public void refreshGrilleDeJeu(int pAbscisse, int pOrdonnee, String pImBat){
 		panelGrilleDeJeu.refreshGrilleDisplay(pAbscisse, pOrdonnee, pImBat) ;
 	}
 	
+	/**
+	 * méthode qui permet de rayer la grille en fonction d'un batiment
+	 * @param pBat
+	 */
 	private void redlyGrilleDeJeu(int pBat){
 		panelGrilleDeJeu.redlyGrilleDisplay(pBat) ;
 	}
 	
+	/**
+	 * méthode qui permet de rayer les batiments s'ils sont faux 
+	 */
 	private void redlyGrilleDeJeu(){
 		panelGrilleDeJeu.redlyGrilleDisplay() ;
 	}

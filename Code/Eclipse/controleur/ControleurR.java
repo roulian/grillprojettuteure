@@ -5,7 +5,11 @@ import regleResolutionLogic.*;
 import regleResolutionLogicObservateur.*;
 import src.Grille;
 import src.Observateur;
-
+/**
+ *le controleurR permet de résoudre une grille de jeu 
+ * @author Andres Gomez Thomas
+ *
+ */
 public class ControleurR {
 	private ControleurM ctrlM ;
 	private Grille grille ;
@@ -18,6 +22,10 @@ public class ControleurR {
 	private Vector<Regle> tabRegleFACILE ;
 	private Vector<Regle> tabRegleNORMAL ;
 	
+	/**
+	 * constructeur par défaut de la classe
+	 * @param pCtrlM
+	 */
 	public ControleurR(ControleurM pCtrlM){
 		ctrlM = pCtrlM ;
 		grille = ctrlM.getLaGrille() ;
@@ -26,6 +34,10 @@ public class ControleurR {
 		initialise() ;
 	}
 	
+	/**
+	 * constructeur paramêtré de la classe
+	 * @param pCtrlM
+	 */
 	public ControleurR(ControleurM pCtrlM,Grille pGrille,int pTailleGrille,Observateur pObs){
 		ctrlM = pCtrlM ;
 		grille = pGrille ;
@@ -34,6 +46,9 @@ public class ControleurR {
 		initialise() ;
 	}
 	
+	/**
+	 * méthode d'initialisation de la classe, est appellé par défaut par les constructeurs
+	 */
 	public void initialise(){
 		//définition des regles logiques de résolution dans le tableau de regle
 		tabRegle = new Vector<Regle>() ;
@@ -80,7 +95,10 @@ public class ControleurR {
 		tabRegleNORMAL.add(new Regle_Obs2ConstruitN1(this)) ;
 	}
 	
-	// méthode de résolution des grilles.
+	/**
+	 * méthode de résolution standart des grilles (difficile).
+	 * @return {@link boolean}
+	 */
 	public boolean applyRegle(){
 		System.out.println("--> DEBUT DE RESOLUTION DE LA GRILLE <--");
 		int nbRegle = tabRegle.size();
@@ -105,6 +123,10 @@ public class ControleurR {
 		return ctrlM.getBatConstruit()==tailleGrille*tailleGrille ;
 	}
 	
+	/**
+	 * méthode de résolution des possibilités des grilles.
+	 * @return {@link boolean}
+	 */
 	public boolean applyReglePossibilite(){
 		System.out.println("--> DEBUT DE RESTRICTION DE LA GRILLE <--");
 		int nbRegle = tabReglePossibilite.size();
@@ -126,6 +148,10 @@ public class ControleurR {
 		return solve ;
 	}
 	
+	/**
+	 * méthode de résolution des grilles (facile).
+	 * @return {@link boolean}
+	 */
 	public boolean applyRegleFACIL(){
 		int nbRegle = tabRegleFACILE.size();
 		boolean solve = true ;
@@ -141,6 +167,10 @@ public class ControleurR {
 		return ctrlM.getBatConstruit()==tailleGrille*tailleGrille ;
 	}
 	
+	/**
+	 * méthode de résolution des grilles (normal).
+	 * @return {@link boolean}
+	 */
 	public boolean applyRegleNORMAL(){
 		int nbRegle = tabRegleNORMAL.size();
 		boolean solve = true ;
@@ -172,6 +202,4 @@ public class ControleurR {
 	public int getTailleGrille() {
 		return tailleGrille;
 	}
-	
-	
 }
