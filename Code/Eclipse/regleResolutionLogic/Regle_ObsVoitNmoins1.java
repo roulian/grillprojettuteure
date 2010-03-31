@@ -21,6 +21,10 @@ public class Regle_ObsVoitNmoins1 implements Regle
 	private int tailleGrille;
 	private Grille grille;
 	
+	/**
+	 * Constructeur de la classe
+	 * @param pCtrlR
+	 */
 	public Regle_ObsVoitNmoins1 (ControleurR pCtrlR)
 	{
 		this.ctrlR = pCtrlR;
@@ -29,6 +33,11 @@ public class Regle_ObsVoitNmoins1 implements Regle
 		tailleGrille = pCtrlR.getTailleGrille();
 	}
 
+	/**
+	 * Appelle de la méthode de l'interface Règle permettant de faire le traitement de cette règle
+	 * 
+	 * @return boolean
+	 */
 	public boolean resolve() {
 		boolean solve = false;
 		
