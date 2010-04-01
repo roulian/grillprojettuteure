@@ -7,6 +7,10 @@
  */
 package src ;
 
+/**
+ * 
+ * @author Andres Gomez Thomas
+ */
 public class Observateur {
 	// c'est 4 variable sont en public car se sont des constantes !  
 	public static final int NORD = 0;

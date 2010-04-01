@@ -10,6 +10,10 @@ package src ;
 import controleur.ControleurM;
 import controleur.ControleurR;
 
+/**
+ * 
+ * @author Andres Gomez Thomas
+ */
 public class Grille {
 	
 	Case[][] grilleDejeu ;

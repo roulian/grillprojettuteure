@@ -61,13 +61,13 @@ public class ControleurR {
 		tabRegle.add(new Regle_MinTaille(this)) ;				// TESTER
 		tabRegle.add(new Regle_ImpoMax(this)) ;					// TESTER
 		tabRegle.add(new Regle_Pioupiou(this)) ;				// TESTER
-		tabRegle.add(new Regle_ObsVoitNmoins1(this)) ;			// FOIREUSE !
+		tabRegle.add(new Regle_ObsVoitNmoins1(this)) ;			// TESTER
 		//Regles de contruction
-		tabRegle.add(new Regle_Observateur1(this)) ;
-		tabRegle.add(new Regle_DernierVecBat(this)) ;
-		tabRegle.add(new Regle_DernierTypBat(this)) ;
-		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ;
-		tabRegle.add(new Regle_Obs2ConstruitN1(this)) ;
+		tabRegle.add(new Regle_Observateur1(this)) ;			// TESTER
+		tabRegle.add(new Regle_DernierVecBat(this)) ;			// TESTER
+		tabRegle.add(new Regle_DernierTypBat(this)) ;			// TESTER
+		tabRegle.add(new Regle_Obs2etTailleGrille1(this)) ;		// TESTER
+		tabRegle.add(new Regle_Obs2ConstruitN1(this)) ;			// TESTER
 		
 		// regle des possibilités
 		tabReglePossibilite.add(new Regle_DistanceMin(this)) ;

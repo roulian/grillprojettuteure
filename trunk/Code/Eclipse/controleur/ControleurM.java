@@ -472,6 +472,21 @@ public class ControleurM {
 		ctrlVues.refreshGrilleDeJeu() ;
 	}
 	
+	/**
+	 * méthode qui permet de placer un batiment sur la grille de jeu ed façon aléatoire
+	 */
+	public void ticher(){
+		if(!isFinGame()){
+			int pAbscisse ;
+			int pOrdonnee ;
+			do{
+				pAbscisse = (int)(Math.random()*tailleGrille) ;
+				pOrdonnee = (int)(Math.random()*tailleGrille) ;
+			}while(!laGrille.getCase(pAbscisse+1,pOrdonnee+1).isCaseConst()) ;
+			laGrille.construire(pAbscisse+1,pOrdonnee+1,aideGrilleErreur[pAbscisse][pOrdonnee]) ;
+		}
+	}
+	
 	//*********** Accesseur *************/
 	public Grille getLaGrille() {
 		return laGrille;

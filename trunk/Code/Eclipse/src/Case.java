@@ -1,13 +1,10 @@
-/**
- * @(#)Case.java
- *
- *
- * @author 
- * @version 1.00 2009/11/18
- */
 package src ;
 import java.util.Vector ;
 
+/**
+ * 
+ * @author Andres Gomez Thomas
+ */
 public class Case {
 	int batiment ;
 	Vector<Integer> possibilite ;

@@ -4,6 +4,10 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+/**
+ * place le batiement de taille maximum adjacent au observateur de taille 1
+ * @author Andres Gomez Thomas
+ */
 public class Regle_Observateur1 implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
