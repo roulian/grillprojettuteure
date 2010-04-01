@@ -15,12 +15,18 @@ import controleur.ControleurM.Dificulty;
 import java.awt.Insets;
 import java.awt.GridLayout;
 
+/**
+ * Ce panel apparait lorsqu'on clique sur le boutton Nouveau du panel Accueil. 
+ * Il permet de choisir la taille et la difficulté de la grille.
+ *  
+ * @author julien
+ *
+ */
+
 public class PanelAutoGénérer extends JPanel {
 
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8924003417133315838L;
 	private ControleurVues ctrlV ;
 	private JButton jbCommencer = null;
@@ -35,6 +41,7 @@ public class PanelAutoGénérer extends JPanel {
 	private JPanel jPanel3 = null;
 	private JPanel jPanel4 = null;
 	private JPanel jPanel5 = null;
+	
 	/**
 	 * This is the default constructor
 	 */

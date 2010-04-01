@@ -23,13 +23,14 @@ import controleur.ControleurM.Dificulty;
 import src.Observateur;
 import vue.DialogRegles;
 
-public class VuePrincipale extends JFrame
-{
-	/**
+/**
 	 * Vue permettant d'afficher la fenètre principals du jeu accueillant les panels des différentes étapes du jeu
 	 * 
 	 * @author Thomas
-	 */
+*/
+public class VuePrincipale extends JFrame
+{
+	
 	private static final long serialVersionUID = -8508924519782174481L;
 	private JMenuBar menu ;
 	private ControleurVues ctrlV;

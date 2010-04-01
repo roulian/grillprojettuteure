@@ -13,6 +13,12 @@ import controleur.ControleurVues;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+/**
+ * Ce panel permet d'avoir la vue de debut de jeu avec les 3 bouttons (nouveau, charger, générer)
+ * 
+ * @author julien
+ *
+ */
 public class PanelAccueil extends JPanel 
 {
 
