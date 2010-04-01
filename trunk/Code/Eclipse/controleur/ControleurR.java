@@ -2,7 +2,6 @@ package controleur;
 
 import java.util.Vector;
 import regleResolutionLogic.*;
-import regleResolutionLogicObservateur.*;
 import src.Grille;
 import src.Observateur;
 /**
