@@ -4,6 +4,10 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+/**
+ * Regle qui implémente la regle tailleMaxPossible = m - n + d 
+ * @author Andres Gomez Thomas
+ */
 public class Regle_DistanceMin implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;

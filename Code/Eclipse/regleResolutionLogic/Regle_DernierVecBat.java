@@ -6,6 +6,10 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+/**
+ * lorsqu'il ne reste plus qu'une valeur dans le vecteur de possibilité cette regle contruit le batiemnet sur la grille
+ * @author Andres Gomez Thomas
+ */
 public class Regle_DernierVecBat implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;

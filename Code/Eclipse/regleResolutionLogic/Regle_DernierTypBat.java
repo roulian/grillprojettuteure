@@ -6,6 +6,10 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+/**
+ * permet de construire le dernier batiment lorsque tous ceux de ça taille ont été constuit
+ * @author Andres Gomez Thomas
+ */
 public class Regle_DernierTypBat implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
