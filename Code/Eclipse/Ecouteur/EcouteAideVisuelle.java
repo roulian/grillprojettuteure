@@ -9,6 +9,11 @@ import javax.swing.JLabel;
 
 import controleur.ControleurVues;
 
+/**
+ * cette écouteur permet de traiter le cas de l'aideVisuel trouver
+ * @author Andres Gomez Thomas
+ *
+ */
 public class EcouteAideVisuelle implements MouseListener{
 	private int numBat ;
 	private ControleurVues ctrlV ;

@@ -13,6 +13,11 @@ import src.Observateur;
 
 import controleur.ControleurVues;
 
+/**
+ * cette écotueur permet de traiter le cas du pânel de jeu inséré dans le panel chargment
+ * @author Andres Gomez Thomas
+ *
+ */
 public class EcouteCharger implements MouseListener{
 	private String fichier ;
 	private ControleurVues ctrlV ;
