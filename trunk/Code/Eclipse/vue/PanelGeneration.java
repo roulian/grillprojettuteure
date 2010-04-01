@@ -180,21 +180,6 @@ public class PanelGeneration extends JPanel {
 //		}
 //		return jbGenSpont;
 //	}
-	
-	private JButton getJbGenSpont() {
-		if (jbGenSpont == null) {
-			jbGenSpont = new JButton();
-			jbGenSpont.setText("Génération spontanée");
-			jbGenSpont.setBounds(20,175,170,30) ;
-			jbGenSpont.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					difGen = new DifficulteGeneration(ctrlV.getVuePrincipal(),"difficulté", ctrlV);
-					difGen.setVisible(true);
-				}
-			});
-		}
-		return jbGenSpont;
-	}
 
 	/**
 	 * Retourne le boutton Sauvegarder
