@@ -255,7 +255,7 @@ public class ControleurVues {
 					{
 						panelCenter.add(new JLabel(" "));
 						panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
-						panelCenter.add(new JLabel("    Augmentez maintenant la taille des grilles pour plus de challenge.")) ;
+						panelCenter.add(new JLabel("   Augmentez maintenant la taille des grilles pour plus de challenge.")) ;
 						panelCenter.add(new JLabel(" "));
 						contentPane.add(panelCenter, BorderLayout.CENTER);
 						contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
@@ -275,7 +275,7 @@ public class ControleurVues {
 						{
 							panelCenter.add(new JLabel(" "));
 							panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
-							panelCenter.add(new JLabel("          Il n'y a rien a dire vous être trop bon pour nous ;)")) ;
+							panelCenter.add(new JLabel("       Il n'y a rien a dire vous être trop bon pour nous ;)")) ;
 							panelCenter.add(new JLabel(" "));
 							contentPane.add(panelCenter, BorderLayout.CENTER);
 							contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
