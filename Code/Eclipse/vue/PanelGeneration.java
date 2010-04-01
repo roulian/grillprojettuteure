@@ -16,6 +16,13 @@ import java.util.Vector;
 import javax.swing.JComboBox;
 import javax.xml.bind.ParseConversionEvent;
 
+/**
+ * Ce panel apparait lorsqu'on clique sur le boutton généré de la vue principale. Il permet
+ * de générer des grilles de taille entre 4 et 6.
+ * 
+ * @author julien
+ *
+ */
 public class PanelGeneration extends JPanel {
 
 	private static final long serialVersionUID = 1L;
