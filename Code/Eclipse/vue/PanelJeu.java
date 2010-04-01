@@ -27,7 +27,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
+/**
+ * Ce panel apparait lorsqu'on clique sur le boutton nouvelle partie et apres avoir 
+ * défini les caractéristiques de la grille (taille et difficulté)
+ * Il permet de jouer
+ * 
+ * @author Thomas
+ *
+ */
 
 public class PanelJeu extends JPanel {
 
