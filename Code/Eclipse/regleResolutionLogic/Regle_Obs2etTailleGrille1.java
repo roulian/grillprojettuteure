@@ -4,20 +4,33 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
+/**
+ * Cette règle permet de construire le batiment de taille max lorsque qu'un 
+ * observateur vaut 2 et sont opposé vaut taille grille -1.
+ * @author julien
+ *
+ */
 public class Regle_Obs2etTailleGrille1 implements Regle{
 	private ControleurR ctrlR ;
 	private Observateur observateur ;
 	private Grille grille ;
 	private int tailleGrille ;
 	
+	/**
+	 * Constructeur avec un controleur des Vues en paramètre.
+	 * @param pCtrlR
+	 */
 	public Regle_Obs2etTailleGrille1(ControleurR pCtrlR){
-		ctrlR = pCtrlR ;
-		observateur = ctrlR.getObservateur() ;
-		grille = ctrlR.getGrille() ;
+		ctrlR = pCtrlR;
+		observateur = ctrlR.getObservateur();
+		grille = ctrlR.getGrille();
 		tailleGrille = ctrlR.getTailleGrille();
 	}
 
-	// gere le cas observateur de taille tailleGrille-1 en face de 2 
+	/**
+	 * Méthode traitant la règle.
+	 * @return boolean
+	 */
 	public boolean resolve() {
 		boolean solve = false ;
 		
