@@ -24,7 +24,7 @@ public class Regle_Observateur1 implements Regle{
 	// il s'agit de construire les batiments de taille maximum lorsque l'Observateur = 1 
 	public boolean resolve() {
 		boolean solve = false;
-		for(int i=1; i<=4; i++){
+		for(int i=1; i<=tailleGrille; i++){
 			if(observateur.getObservateur(Observateur.NORD,i)==1)	
 				solve = solve || grille.construire(i,1,tailleGrille) ; 
 			if(observateur.getObservateur(Observateur.SUD,i)==1)
