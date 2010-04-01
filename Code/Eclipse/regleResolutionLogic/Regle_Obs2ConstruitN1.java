@@ -4,9 +4,9 @@ import src.Grille;
 import src.Observateur;
 import controleur.ControleurR;
 
-/** cette Regle permet le placement du batiment de taille max sur une ligne collone devant le
+/** Cette Regle permet le placement du batiment de taille max sur une ligne/colonne devant le
  * l'obs 2 si l'unicité est respecté (soit que les batiment derriere celui de taillemax soient
- * construit
+ * construit)
  * 
  * @author Andres Gomez
  * @see {@link Regle}, {@link ControleurR}
