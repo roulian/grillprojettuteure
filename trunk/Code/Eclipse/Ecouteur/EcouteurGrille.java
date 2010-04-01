@@ -20,6 +20,12 @@ import sun.awt.RequestFocusController;
 import controleur.ControleurM;
 import controleur.ControleurVues;
 
+/**
+ * ce panel permet de traiter le cas général de la grille de jeu, il permet de récupérer les informations
+ * saisie aux claviers lors d'une partie et appelle les méthode de traitement de l'information.
+ * @author Andres Gomez Thomas
+ *
+ */
 public class EcouteurGrille implements MouseListener, KeyListener{
 	private ControleurM ctrlM ;
 	private JLabel caseLabel ;

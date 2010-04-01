@@ -18,6 +18,11 @@ import controleur.ControleurVues;
 import src.Grille;
 import src.Observateur;
 
+/**
+ * cette écouteur permet de gérer le cas ou l'on génère des grilles de jeu via leur observateurs
+ * @author Andres Gomez Thomas
+ *
+ */
 public class EcouteurObservateur implements MouseListener, KeyListener{
 
 	private JLabel myLabel ;
