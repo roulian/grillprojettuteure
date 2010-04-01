@@ -20,6 +20,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
+
 public class PanelGrilleDeJeu extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel[][] affGrille ;
@@ -75,7 +76,7 @@ public class PanelGrilleDeJeu extends JPanel {
 	}
 	
 	/**
-	 * c'est le deuxieme construteur
+	 * c'est le deuxieme constructeur
 	 * il est nécessaire de l'utiliser pour construire une grille non jouable avec Obs modifiable
 	 * @param pCtrlV controleur des vues
 	 */
