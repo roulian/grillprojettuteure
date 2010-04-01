@@ -106,6 +106,8 @@ public class PanelJeu extends JPanel {
 			jbTricher.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("Bouton Tricher pressé");
+					ctrlV.getCtrlM().ticher() ;
+					ctrlV.refreshGrilleDeJeu() ;
 				}
 			}) ;
 		}
