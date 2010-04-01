@@ -36,6 +36,13 @@ import controleur.ControleurR;
 import controleur.ControleurVues;
 import controleur.ControleurM.Dificulty;
 
+/**
+ * Ce panel apparait lorsqu'on clique sur le boutton charger du panel Accueil.
+ * Il permet de sélectionner une grille déjà générée et de la résoudre.
+ * 
+ * @author julien
+ *
+ */
 public class PanelChargement extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -60,6 +67,10 @@ public class PanelChargement extends JPanel {
 		initialize();
 	}
 	
+	/**
+	 * Constructeur du panel avec un controleur des vues en paramètre.
+	 * @param pCtrlV
+	 */
 	public PanelChargement(ControleurVues pCtrlV) {
 		super();
 		this.ctrlV = pCtrlV;
@@ -199,8 +210,13 @@ public class PanelChargement extends JPanel {
 		return panelListeFichier ;
 	}
 	
+	/**
+	 * Cette méthode permet de mettre à jour la grille en affichant la nouvelle grille sélectionné
+	 * 
+	 * @return void
+	 */
 	public void refreshGrille(){
-		jpGrilleJeu.setVisible(false) ;			//évite de voir l'ancient panel sous le nouveau
+		jpGrilleJeu.setVisible(false) ;			//évite de voir l'ancien panel sous le nouveau
 		validate() ;							//on redessine
 		this.remove(jpGrilleJeu) ;
 		jpGrilleJeu = null ;
@@ -214,6 +230,11 @@ public class PanelChargement extends JPanel {
 		validate() ;
 	}
 	
+	/**
+	 * Cette méthode met à jour la liste des grille à charger
+	 * 
+	 * @return void
+	 */
 	public void refreshListe(){
 		jsList.setVisible(false) ;				//dans le cas ou le nouveau est plus petit
 		validate() ;							//on redessine
@@ -238,10 +259,23 @@ public class PanelChargement extends JPanel {
 		return jpGrilleJeu;
 	}
 
+	/**
+	 * Cette méthode retourne les observateurs de la grille sélectionnée.
+	 * @return Observateur
+	 */
 	public Observateur getObsChargement() {
 		return obsChargement;
 	}
 
+	/**
+	 * Met à jour les observateurs dans la grille de jeu.
+	 * 
+	 * @param obsChargement
+	 * @param grlChargment
+	 * @param ptaille
+	 * 
+	 * @return void
+	 */
 	public void setObsChargement(Observateur obsChargement,Integer[][] grlChargment , int ptaille) {
 		this.obsChargement = obsChargement;
 		this.tailleObs = ptaille ;

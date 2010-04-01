@@ -27,11 +27,11 @@ public class DifficulteGeneration extends JDialog
 	private Vector<String> difficulte;
 	
 	/**
-	 * Fenètre permettant de générer une grille.
+	 * Constructeur 
 	 * 
-	 * @param Fenètre 
-	 * @param Le titre de la vue appelante
-	 * @param Le controleur des vues
+	 * @param modale
+	 * @param _t
+	 * @param pCtrlVues
 	 * 
 	 * @author julien
 	 */
