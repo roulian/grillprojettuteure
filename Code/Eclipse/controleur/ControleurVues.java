@@ -253,22 +253,31 @@ public class ControleurVues {
 				{
 					if(ctrlM.getTailleGrille() == 4)
 					{
-						contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
-						contentPane.add(new JLabel("Augmentez maintenant la taille des grilles pour plus de challenge."),BorderLayout.CENTER) ;
+						panelCenter.add(new JLabel(" "));
+						panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
+						panelCenter.add(new JLabel("    Augmentez maintenant la taille des grilles pour plus de challenge.")) ;
+						panelCenter.add(new JLabel(" "));
+						contentPane.add(panelCenter, BorderLayout.CENTER);
 						contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
 					}
 					else
 					{
 						if(ctrlM.getTailleGrille() == 5)
 						{
-							contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
-							contentPane.add(new JLabel("             Tentez l'ultime défi des grilles 6x6 !!!"),BorderLayout.CENTER) ;
+							panelCenter.add(new JLabel(" "));
+							panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
+							panelCenter.add(new JLabel("             Tentez l'ultime défi des grilles 6x6 !!!")) ;
+							panelCenter.add(new JLabel(" "));
+							contentPane.add(panelCenter, BorderLayout.CENTER);
 							contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
 						}
 						else
 						{
-							contentPane.add(new JLabel("            Félicitation vous avez complété la grille !"),BorderLayout.CENTER) ;
-							contentPane.add(new JLabel("              Même notre programme n'y arrive pas :p"),BorderLayout.CENTER) ;
+							panelCenter.add(new JLabel(" "));
+							panelCenter.add(new JLabel("            Félicitation vous avez complété la grille !")) ;
+							panelCenter.add(new JLabel("          Il n'y a rien a dire vous être trop bon pour nous ;)")) ;
+							panelCenter.add(new JLabel(" "));
+							contentPane.add(panelCenter, BorderLayout.CENTER);
 							contentPane.setBorder(BorderFactory.createEtchedBorder()) ;
 						}
 					}
