@@ -134,7 +134,7 @@ public class PanelGeneration extends JPanel {
 					//on remet à zero le compteur de batiment construit
 					ctrlTemp.resetBatConstruit() ;
 					boolOk = true ;
-					
+					verifOk = false ;
 					// on (re)construit la grille visible sur la droite
 					jpGrill.setVisible(false) ;
 					PanelGeneration.this.remove(getJpGrill()) ;
